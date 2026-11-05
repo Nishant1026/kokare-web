@@ -25,6 +25,7 @@ const DRAWER_LINKS = [
   { name: 'Diwali Festive Edit 2026', path: '/festive-collection', featured: true },
   { name: 'New Arrivals', path: '/new-arrivals' },
   { name: 'Best Sellers', path: '/best-sellers' },
+  { name: 'Track Order & Account', path: '/track-order' },
   { name: 'The Maison Story', path: '/about' },
   { name: 'Atelier & Contact', path: '/contact' }
 ];

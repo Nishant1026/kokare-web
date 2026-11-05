@@ -427,7 +427,7 @@ export default function Cart() {
                 <div className="space-y-2.5 pt-2">
                   <button
                     onClick={() => navigate('/checkout')}
-                    className="w-full py-4 bg-[#161616] hover:bg-[#C8A27A] text-white font-normal text-xs uppercase tracking-[0.25em] transition-all flex items-center justify-center gap-2 border border-[#161616] hover:border-[#C8A27A] shadow-xs cursor-pointer"
+                    className="w-full py-4 bg-[#721C2B] hover:bg-[#581422] text-white font-normal text-xs uppercase tracking-[0.28em] transition-all flex items-center justify-center gap-2 border border-[#721C2B] hover:border-[#581422] shadow-sm cursor-pointer"
                   >
                     <span>Proceed To Atelier Checkout</span>
                     <ArrowRight className="w-4 h-4 ml-1" />

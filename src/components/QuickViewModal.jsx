@@ -236,10 +236,10 @@ export default function QuickViewModal({ product, isOpen, onClose }) {
                     <div className="flex gap-2">
                       <button
                         onClick={handleAddToCart}
-                        className={`flex-1 py-3.5 font-normal text-xs uppercase tracking-[0.2em] transition-all flex items-center justify-center gap-2 border cursor-pointer ${
+                        className={`flex-1 py-3.5 font-normal text-xs uppercase tracking-[0.24em] transition-all flex items-center justify-center gap-2 border cursor-pointer ${
                           isInBag
                             ? 'bg-[#161616] hover:bg-[#222222] text-white border-[#C8A27A] shadow-md'
-                            : 'bg-[#C8A27A] hover:bg-[#161616] text-white border-[#C8A27A] hover:border-[#161616]'
+                            : 'bg-[#161616] hover:bg-[#721C2B] text-white border-[#161616] hover:border-[#721C2B]'
                         }`}
                       >
                         {isInBag ? (

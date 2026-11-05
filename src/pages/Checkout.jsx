@@ -412,7 +412,7 @@ export default function Checkout() {
                     {/* Place Order Button */}
                     <button
                       type="submit"
-                      className="w-full py-4 bg-[#161616] hover:bg-[#C8A27A] text-white font-normal text-xs uppercase tracking-[0.25em] transition-all flex items-center justify-center gap-2 border border-[#161616] hover:border-[#C8A27A] shadow-xs cursor-pointer"
+                      className="w-full py-4 bg-[#721C2B] hover:bg-[#581422] text-white font-normal text-xs uppercase tracking-[0.28em] transition-all flex items-center justify-center gap-2 border border-[#721C2B] hover:border-[#581422] shadow-sm cursor-pointer"
                     >
                       <Lock className="w-4 h-4" />
                       <span>Confirm & Place Order</span>

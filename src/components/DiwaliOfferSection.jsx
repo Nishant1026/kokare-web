@@ -115,7 +115,7 @@ export default function DiwaliOfferSection({
 
               <Link
                 to="/festive-collection"
-                className="inline-flex items-center justify-center px-8 sm:px-10 py-3.5 sm:py-4 border border-[#161616] text-[#161616] hover:bg-[#161616] hover:text-white font-normal text-xs uppercase tracking-[0.25em] transition-all duration-300 shadow-xs cursor-pointer"
+                className="inline-flex items-center justify-center px-8 sm:px-10 py-3.5 sm:py-4 border border-[#161616] text-[#161616] hover:bg-[#721C2B] hover:border-[#721C2B] hover:text-white font-normal text-xs uppercase tracking-[0.25em] transition-all duration-300 shadow-xs cursor-pointer"
               >
                 <span>Claim Privilege</span>
                 <ArrowRight className="w-3.5 h-3.5 ml-2.5" />

@@ -1,36 +1,50 @@
 @import "tailwindcss";
 
 @theme {
-  /* Zoya Luxury Fine Jewellery & Haute Couture Palette */
-  /* 1. Primary Canvas: Pure Pearl White & Warm Cashmere Alabaster */
+  /* ============================================================ */
+  /* KOKARÉ Haute Couture Palette & Design Tokens                 */
+  /* Burgundy, Deep Black, Gold, Ivory, White                     */
+  /* ============================================================ */
+
+  /* 1. Primary Canvas & Ivory */
   --color-canvas: #FFFFFF;
   --color-canvas-alabaster: #FAF7F2;
   --color-canvas-warm: #F6F1EA;
   --color-canvas-stone: #FAF7F2;
+  --color-ivory: #FAF7F2;
+  --color-ivory-warm: #F6F1EA;
   --color-white: #FFFFFF;
   --color-border: #EAE4DC;
   --color-border-dark: #DDD4C7;
+  --color-border-gold: rgba(200, 162, 122, 0.4);
 
-  /* 2. Primary Onyx & Charcoal Structure */
+  /* 2. Deep Obsidian Black Structure */
   --color-charcoal: #161616;
   --color-onyx: #111111;
   --color-midnight: #161616;
   --color-obsidian: #181818;
+  --color-black-pure: #0A0A0A;
   --color-muted: #736E66;
   --color-muted-light: #9B958B;
 
-  /* 3. Signature Zoya Warm Rose Gold & Champagne Brass Accents */
+  /* 3. Signature Champagne Rose Gold & Antique Zari Accents */
   --color-gold: #C8A27A;
   --color-gold-bright: #D8B28A;
   --color-gold-light: #E8D3BD;
   --color-gold-deep: #A0784E;
   --color-gold-soft: #FBF8F4;
+  --color-gold-antique: #B8860B;
 
-  /* Royal Gemstone Accents */
+  /* 4. Royal Festive Burgundy (Heritage Silk & Wine) */
+  --color-burgundy: #721C2B;
+  --color-burgundy-deep: #581422;
+  --color-burgundy-dark: #4A0E1A;
+  --color-burgundy-light: #8E2B3E;
+  --color-burgundy-soft: #FBF1F2;
   --color-ruby: #721C2B;
   --color-emerald: #183D31;
 
-  /* Luxury Typography Pairing */
+  /* 5. Luxury Typography Pairing */
   --font-serif: "Cormorant Garamond", "Playfair Display", Georgia, serif;
   --font-display: "Playfair Display", "Cormorant Garamond", Georgia, serif;
   --font-sans: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
@@ -38,7 +52,7 @@
 
 @layer base {
   html {
-    /* Explicit requirement: 17px base font size for luxury editorial legibility */
+    /* Strict Standard 17px base font size for luxury editorial legibility */
     font-size: 17px;
     width: 100%;
     max-width: 100vw;
@@ -49,7 +63,7 @@
 
   body {
     font-size: 17px;
-    line-height: 1.65;
+    line-height: 1.68;
     background-color: #FAF7F2;
     color: #161616;
     font-family: var(--font-sans);
@@ -59,6 +73,8 @@
     overscroll-behavior-x: none;
     position: relative;
     letter-spacing: -0.01em;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
   }
 
   #root {
@@ -69,16 +85,28 @@
   }
 
   p, span, li, button, input, select, textarea {
-    font-size: 1rem; /* 17px */
+    font-size: 1rem; /* 17px standard */
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-serif);
+    font-weight: 400;
+    letter-spacing: -0.02em;
+    line-height: 1.15;
   }
 }
 
 /* Force suppress horizontal scrollbars across all viewports */
-html, body {
+html, body, #root {
   overflow-x: hidden !important;
+  max-width: 100% !important;
 }
 
-/* Zoya Luxury Atelier Scrollbar */
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+/* Zoya & Amrapali Luxury Atelier Scrollbar */
 ::-webkit-scrollbar {
   width: 5px;
   height: 0px;
@@ -96,4 +124,85 @@ html, body {
 }
 ::-webkit-scrollbar-thumb:hover {
   background: #C8A27A;
+}
+
+/* Refined Utility Classes for Luxury Haute Couture Feel */
+.luxury-gold-border {
+  border: 1px solid rgba(200, 162, 122, 0.45);
+}
+
+.luxury-card {
+  background: #FFFFFF;
+  border: 1px solid #EAE4DC;
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.luxury-card:hover {
+  border-color: #C8A27A;
+  box-shadow: 0 12px 30px -10px rgba(0, 0, 0, 0.06);
+}
+
+.luxury-btn-primary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.85rem 2.25rem;
+  background-color: #161616;
+  color: #FFFFFF;
+  font-size: 0.75rem;
+  font-weight: 400;
+  text-transform: uppercase;
+  letter-spacing: 0.25em;
+  border: 1px solid #161616;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  cursor: pointer;
+}
+
+.luxury-btn-primary:hover {
+  background-color: #C8A27A;
+  border-color: #C8A27A;
+  color: #FFFFFF;
+}
+
+.luxury-btn-secondary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.85rem 2.25rem;
+  background-color: #FFFFFF;
+  color: #161616;
+  font-size: 0.75rem;
+  font-weight: 400;
+  text-transform: uppercase;
+  letter-spacing: 0.25em;
+  border: 1px solid #161616;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  cursor: pointer;
+}
+
+.luxury-btn-secondary:hover {
+  background-color: #161616;
+  color: #FFFFFF;
+}
+
+.luxury-btn-burgundy {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.85rem 2.25rem;
+  background-color: #721C2B;
+  color: #FFFFFF;
+  font-size: 0.75rem;
+  font-weight: 400;
+  text-transform: uppercase;
+  letter-spacing: 0.25em;
+  border: 1px solid #721C2B;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  cursor: pointer;
+}
+
+.luxury-btn-burgundy:hover {
+  background-color: #581422;
+  border-color: #581422;
+  color: #FFFFFF;
 }

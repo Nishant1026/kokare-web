@@ -190,18 +190,18 @@ export default function Header({ onOpenDrawer }) {
         {/* 2. MAIN NAVIGATION BAR                                       */}
         {/* Left: Brand Logo | Center: Links | Right: Icons             */}
         {/* ============================================================ */}
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3.5 sm:py-4 flex items-center justify-between">
+        <div className="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8 py-3 sm:py-4 flex items-center justify-between">
           {/* Left: Brand Logo KOKARÉ */}
-          <div className="flex items-center gap-8">
+          <div className="flex items-center">
             <Link to="/" className="group flex flex-col">
               <span
-                className={`font-serif text-2xl sm:text-3xl font-normal tracking-[0.2em] sm:tracking-[0.28em] transition-colors ${
+                className={`font-serif text-xl sm:text-2xl lg:text-3xl font-normal tracking-[0.2em] sm:tracking-[0.28em] transition-colors ${
                   isTransparent ? 'text-white group-hover:text-[#C8A27A]' : 'text-[#161616] group-hover:text-[#C8A27A]'
                 }`}
               >
                 KOKARÉ
               </span>
-              <span className="text-[9px] tracking-[0.26em] sm:tracking-[0.38em] uppercase text-[#C8A27A] font-medium -mt-0.5">
+              <span className="text-[8px] sm:text-[9px] tracking-[0.24em] sm:tracking-[0.38em] uppercase text-[#C8A27A] font-medium -mt-0.5">
                 The Jharkhand Edit
               </span>
             </Link>
@@ -209,7 +209,7 @@ export default function Header({ onOpenDrawer }) {
 
           {/* Desktop Center Navigation Links */}
           <nav
-            className={`hidden lg:flex items-center space-x-7 text-xs tracking-[0.22em] uppercase font-normal transition-colors ${
+            className={`hidden lg:flex items-center space-x-8 lg:space-x-10 text-[13px] tracking-[0.24em] uppercase font-normal transition-colors ${
               isTransparent ? 'text-white' : 'text-[#161616]'
             }`}
           >
@@ -320,10 +320,10 @@ export default function Header({ onOpenDrawer }) {
             <Link
               to="/festive-collection"
               className={`flex items-center gap-1.5 transition-colors py-2 font-medium ${
-                isTransparent ? 'text-[#C8A27A] hover:text-white' : 'text-[#C8A27A] hover:text-[#161616]'
+                isTransparent ? 'text-[#C8A27A] hover:text-white' : 'text-[#C8A27A] hover:text-[#721C2B]'
               }`}
             >
-              <Sparkles className="w-3 h-3 text-[#C8A27A]" />
+              <Sparkles className="w-3.5 h-3.5 text-[#C8A27A]" />
               <span>Festive Edit</span>
             </Link>
 
@@ -360,60 +360,48 @@ export default function Header({ onOpenDrawer }) {
             </Link>
           </nav>
 
-          {/* Right Action Icons (Search, User, Wishlist, Cart) */}
+          {/* Right Action Icons: Strictly Icon-Only Buttons (Search, Account, Wishlist, Bag) */}
           <div
-            className={`flex items-center space-x-4 sm:space-x-5 transition-colors ${
+            className={`flex items-center gap-1 sm:gap-2 lg:gap-3 transition-colors ${
               isTransparent ? 'text-white' : 'text-[#161616]'
             }`}
           >
-            {/* Search */}
+            {/* 1. Search (Icon-Only) */}
             <button
               onClick={() => setIsSearchOpen(true)}
               aria-label="Search Collection"
-              className="p-1 hover:text-[#C8A27A] transition-colors focus:outline-none cursor-pointer"
+              title="Search"
+              className="w-9 h-9 sm:w-10 sm:h-10 flex items-center justify-center rounded-full hover:bg-white/10 text-inherit hover:text-[#C8A27A] transition-all cursor-pointer focus:outline-none"
             >
-              <Search className="w-4 h-4 sm:w-4.5 sm:h-4.5 stroke-[1.5]" />
+              <Search className="w-4.5 h-4.5 sm:w-5 sm:h-5 stroke-[1.5]" />
             </button>
 
-            {/* Book Appointment / Atelier Finder */}
-            <Link
-              to="/contact"
-              aria-label="Book Atelier Appointment"
-              className={`hidden md:flex items-center gap-1.5 px-3 py-1 border text-[11px] uppercase tracking-[0.2em] transition-all ${
-                isTransparent
-                  ? 'border-white/40 text-white hover:bg-white hover:text-[#161616]'
-                  : 'border-[#C8A27A]/40 text-[#C8A27A] hover:bg-[#161616] hover:text-white hover:border-[#161616]'
-              }`}
-            >
-              <Compass className="w-3 h-3" />
-              <span>Book Atelier</span>
-            </Link>
-
-            {/* Account / Track Order */}
+            {/* 2. Account / Track Order (Desktop icon-only; mobile is in drawer) */}
             <Link
               to="/track-order"
-              aria-label="Order Tracking & Concierge"
-              className="hidden sm:block p-1 hover:text-[#C8A27A] transition-colors focus:outline-none"
-              title="Track Order / Concierge"
+              aria-label="Account & Orders"
+              title="Account & Orders"
+              className="hidden sm:flex w-9 h-9 sm:w-10 sm:h-10 items-center justify-center rounded-full hover:bg-white/10 text-inherit hover:text-[#C8A27A] transition-all cursor-pointer focus:outline-none"
             >
-              <User className="w-4 h-4 sm:w-4.5 sm:h-4.5 stroke-[1.5]" />
+              <User className="w-4.5 h-4.5 sm:w-5 sm:h-5 stroke-[1.5]" />
             </Link>
 
-            {/* Wishlist */}
+            {/* 3. Wishlist (Icon-Only as requested) */}
             <Link
               to="/wishlist"
-              aria-label="Wishlist"
-              className="relative p-1 hover:text-[#C8A27A] transition-colors focus:outline-none"
+              aria-label={`Wishlist (${wishlistCount} items)`}
+              title={wishlistCount > 0 ? `Wishlist: ${wishlistCount} items` : 'Wishlist'}
+              className="relative w-9 h-9 sm:w-10 sm:h-10 flex items-center justify-center rounded-full hover:bg-white/10 text-inherit hover:text-[#C8A27A] transition-all cursor-pointer focus:outline-none"
             >
-              <Heart className="w-4 h-4 sm:w-4.5 sm:h-4.5 stroke-[1.5]" />
+              <Heart className={`w-4.5 h-4.5 sm:w-5 sm:h-5 stroke-[1.5] ${wishlistCount > 0 ? 'fill-[#C8A27A] text-[#C8A27A]' : ''}`} />
               {wishlistCount > 0 && (
-                <span className="absolute -top-1 -right-1.5 bg-[#C8A27A] text-white text-[10px] font-medium rounded-full h-4 w-4 flex items-center justify-center border border-white">
+                <span className="absolute top-0.5 right-0.5 bg-[#C8A27A] text-white text-[9px] sm:text-[10px] font-semibold rounded-full h-4 sm:h-4.5 min-w-[16px] sm:min-w-[18px] px-1 flex items-center justify-center border border-white shadow-xs">
                   {wishlistCount}
                 </span>
               )}
             </Link>
 
-            {/* Shopping Bag Icon with Hover Mini-Preview & Click to Open Bag Drawer */}
+            {/* 4. Shopping Bag (Icon-Only as requested) */}
             <div
               className="relative"
               onMouseEnter={() => setIsBagHovered(true)}
@@ -422,20 +410,20 @@ export default function Header({ onOpenDrawer }) {
               <button
                 onClick={() => setIsCartOpen(true)}
                 aria-label={`Shopping Bag (${totalItems} items)`}
-                className={`relative p-1.5 transition-all duration-300 focus:outline-none cursor-pointer group ${
+                className={`relative w-9 h-9 sm:w-10 sm:h-10 flex items-center justify-center rounded-full hover:bg-white/10 text-inherit transition-all focus:outline-none cursor-pointer group ${
                   cartBump ? 'text-[#C8A27A] scale-110' : 'hover:text-[#C8A27A]'
                 }`}
                 title={totalItems > 0 ? `Shopping Bag: ${totalItems} items` : 'Shopping Bag'}
               >
-                <div className="relative">
+                <div className="relative flex items-center justify-center">
                   <ShoppingBag
-                    className={`w-4 h-4 sm:w-4.5 sm:h-4.5 stroke-[1.5] transition-transform duration-300 ${
-                      cartBump ? 'animate-bounce text-[#C8A27A]' : 'group-hover:scale-110'
+                    className={`w-4.5 h-4.5 sm:w-5 sm:h-5 stroke-[1.5] transition-transform duration-300 ${
+                      cartBump ? 'animate-bounce text-[#C8A27A]' : 'group-hover:scale-105'
                     }`}
                   />
                   {totalItems > 0 && (
                     <span
-                      className={`absolute -top-1.5 -right-2 bg-[#C8A27A] text-white text-[10px] font-semibold rounded-full h-4.5 min-w-[18px] px-1 flex items-center justify-center border border-white shadow-xs transition-transform ${
+                      className={`absolute -top-1 -right-1.5 bg-[#C8A27A] text-white text-[9px] sm:text-[10px] font-semibold rounded-full h-4 sm:h-4.5 min-w-[16px] sm:min-w-[18px] px-1 flex items-center justify-center border border-white shadow-xs transition-transform ${
                         cartBump ? 'scale-125 ring-2 ring-[#C8A27A]/60 ring-offset-1' : ''
                       }`}
                     >
@@ -539,7 +527,7 @@ export default function Header({ onOpenDrawer }) {
             <button
               onClick={onOpenDrawer}
               aria-label="Open Navigation Menu"
-              className="lg:hidden p-1.5 hover:text-[#C8A27A] transition-colors focus:outline-none cursor-pointer"
+              className="lg:hidden w-9 h-9 flex items-center justify-center rounded-full hover:bg-white/10 hover:text-[#C8A27A] transition-colors focus:outline-none cursor-pointer"
             >
               <Menu className="w-5 h-5 stroke-[1.5]" />
             </button>

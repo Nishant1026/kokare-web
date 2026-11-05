@@ -247,7 +247,7 @@ export default function Shop({ defaultCategory, defaultGender, defaultType, defa
                 </p>
                 <button
                   onClick={resetFilters}
-                  className="px-8 py-3.5 bg-[#161616] hover:bg-[#C8A27A] text-white text-xs font-normal uppercase tracking-[0.25em] transition-colors cursor-pointer border border-[#161616] hover:border-[#C8A27A]"
+                  className="px-8 py-3.5 bg-[#161616] hover:bg-[#721C2B] text-white text-xs font-normal uppercase tracking-[0.25em] transition-colors cursor-pointer border border-[#161616] hover:border-[#721C2B]"
                 >
                   Reset All Filters
                 </button>

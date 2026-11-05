@@ -138,9 +138,9 @@ export default function Hero() {
         </motion.div>
       </AnimatePresence>
 
-      {/* Atmospheric Overlays for Crystal-Clear Text & Royal Ambiance */}
-      <div className="absolute inset-0 bg-gradient-to-r from-black/85 via-black/45 to-transparent pointer-events-none z-10" />
-      <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-black/60 pointer-events-none z-10" />
+      {/* Atmospheric Overlays for Crystal-Clear Text & Royal Burgundy-Onyx Ambiance */}
+      <div className="absolute inset-0 bg-gradient-to-r from-black/90 via-[#260e14]/45 to-transparent pointer-events-none z-10" />
+      <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-transparent to-black/60 pointer-events-none z-10" />
 
       {/* ============================================================ */}
       {/* 2. LEFT-ALIGNED HERO CONTENT (Aligned to Header Logo Margin)  */}
@@ -152,22 +152,22 @@ export default function Hero() {
             initial={{ opacity: 0, y: 22 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -18 }}
-            transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
+            transition={{ duration: 0.75, ease: [0.16, 1, 0.3, 1] }}
             className="w-full max-w-2xl text-left pointer-events-auto"
           >
             {/* Minimal Festive Badge */}
-            <div className="inline-flex flex-wrap items-center gap-1.5 sm:gap-2 text-[10px] sm:text-xs uppercase tracking-[0.2em] sm:tracking-[0.35em] text-[#C8A27A] font-medium mb-2.5 sm:mb-3 max-w-full">
+            <div className="inline-flex flex-wrap items-center gap-1.5 sm:gap-2 text-[10px] sm:text-xs uppercase tracking-[0.25em] sm:tracking-[0.35em] text-[#C8A27A] font-medium mb-2.5 sm:mb-3.5 max-w-full">
               <Sparkles className="w-3.5 h-3.5 text-[#C8A27A] shrink-0" />
               <span className="break-words">{active.subtitle}</span>
             </div>
 
             {/* Main Grand Serif Display Heading (Exact "Masterpieces" Style) */}
-            <h1 className="font-serif text-3xl sm:text-6xl md:text-7xl lg:text-8xl xl:text-9xl text-white font-normal tracking-tight leading-[1.08] mb-2.5 sm:mb-5 drop-shadow-lg break-words max-w-full">
+            <h1 className="font-serif text-3xl sm:text-6xl md:text-7xl lg:text-8xl xl:text-9xl text-white font-normal tracking-tight leading-[1.06] mb-3 sm:mb-5 drop-shadow-md break-words max-w-full">
               {active.title}
             </h1>
 
             {/* Poetic Tagline */}
-            <p className="font-serif italic text-xs sm:text-xl lg:text-2xl text-white/90 font-light mb-5 sm:mb-8 max-w-xl break-words line-clamp-2 sm:line-clamp-none">
+            <p className="font-serif italic text-sm sm:text-xl lg:text-2xl text-white/90 font-light mb-6 sm:mb-9 max-w-xl break-words line-clamp-2 sm:line-clamp-none">
               "{active.tagline}"
             </p>
 
@@ -175,7 +175,7 @@ export default function Hero() {
             <div>
               <Link
                 to={active.ctaLink}
-                className="inline-flex items-center justify-center px-6 sm:px-10 py-3 sm:py-4 border border-white text-white font-normal text-xs uppercase tracking-[0.22em] sm:tracking-[0.28em] hover:bg-white hover:text-[#161616] transition-all duration-300 shadow-md backdrop-blur-xs cursor-pointer"
+                className="inline-flex items-center justify-center px-7 sm:px-11 py-3.5 sm:py-4 border border-white/90 text-white font-normal text-xs uppercase tracking-[0.26em] sm:tracking-[0.3em] hover:bg-white hover:text-[#161616] hover:border-white transition-all duration-300 shadow-lg backdrop-blur-xs cursor-pointer"
               >
                 <span>{active.ctaText}</span>
               </Link>
@@ -191,7 +191,7 @@ export default function Hero() {
       <button
         onClick={handlePrev}
         aria-label="Previous Slide"
-        className="hidden sm:flex absolute left-4 lg:left-8 top-1/2 -translate-y-1/2 z-30 w-11 h-11 sm:w-13 sm:h-13 rounded-full border border-white/60 bg-black/30 hover:bg-white/20 hover:border-white text-white items-center justify-center transition-all backdrop-blur-xs cursor-pointer shadow-md"
+        className="hidden sm:flex absolute left-4 lg:left-8 top-1/2 -translate-y-1/2 z-30 w-11 h-11 sm:w-13 sm:h-13 rounded-full border border-white/50 bg-black/40 hover:bg-white hover:text-[#161616] hover:border-white text-white items-center justify-center transition-all duration-300 backdrop-blur-md cursor-pointer shadow-xl"
       >
         <ChevronLeft className="w-5 h-5 sm:w-6 sm:h-6 stroke-[1.5]" />
       </button>
@@ -200,19 +200,19 @@ export default function Hero() {
       <button
         onClick={handleNext}
         aria-label="Next Slide"
-        className="hidden sm:flex absolute right-4 lg:right-8 top-1/2 -translate-y-1/2 z-30 w-11 h-11 sm:w-13 sm:h-13 rounded-full border border-white/60 bg-black/30 hover:bg-white/20 hover:border-white text-white items-center justify-center transition-all backdrop-blur-xs cursor-pointer shadow-md"
+        className="hidden sm:flex absolute right-4 lg:right-8 top-1/2 -translate-y-1/2 z-30 w-11 h-11 sm:w-13 sm:h-13 rounded-full border border-white/50 bg-black/40 hover:bg-white hover:text-[#161616] hover:border-white text-white items-center justify-center transition-all duration-300 backdrop-blur-md cursor-pointer shadow-xl"
       >
         <ChevronRight className="w-5 h-5 sm:w-6 sm:h-6 stroke-[1.5]" />
       </button>
 
       {/* ============================================================ */}
-      {/* 4. BOTTOM CENTER PAGINATION DOTS (Exact to Reference)         */}
+      {/* 4. BOTTOM CENTER PAGINATION INDICATORS (Sleek Luxury Pills)   */}
       {/* ============================================================ */}
-      <div className="absolute bottom-4 sm:bottom-10 left-1/2 -translate-x-1/2 z-30 flex items-center gap-3 sm:gap-3.5">
+      <div className="absolute bottom-4 sm:bottom-10 left-1/2 -translate-x-1/2 z-30 flex items-center gap-2.5 sm:gap-3">
         <button
           onClick={handlePrev}
           aria-label="Previous Slide"
-          className="sm:hidden p-1 text-white/70 hover:text-white transition-colors cursor-pointer"
+          className="sm:hidden p-1.5 text-white/70 hover:text-white transition-colors cursor-pointer"
         >
           <ChevronLeft className="w-4 h-4 stroke-[2]" />
         </button>
@@ -224,10 +224,10 @@ export default function Hero() {
               key={slide.id}
               onClick={() => handleDotClick(idx)}
               aria-label={`Go to slide ${idx + 1}: ${slide.title}`}
-              className={`transition-all duration-300 cursor-pointer ${
+              className={`transition-all duration-400 cursor-pointer ${
                 isCurrent
-                  ? 'w-3 h-3 rounded-full bg-white ring-2 ring-white/50 scale-110 shadow-sm'
-                  : 'w-2.5 h-2.5 rounded-full border border-white/80 bg-transparent hover:bg-white/40'
+                  ? 'w-7 sm:w-9 h-1 sm:h-1.5 rounded-full bg-[#C8A27A] shadow-sm'
+                  : 'w-2 sm:w-2.5 h-1 sm:h-1.5 rounded-full bg-white/40 hover:bg-white/70'
               }`}
             />
           );
@@ -236,7 +236,7 @@ export default function Hero() {
         <button
           onClick={handleNext}
           aria-label="Next Slide"
-          className="sm:hidden p-1 text-white/70 hover:text-white transition-colors cursor-pointer"
+          className="sm:hidden p-1.5 text-white/70 hover:text-white transition-colors cursor-pointer"
         >
           <ChevronRight className="w-4 h-4 stroke-[2]" />
         </button>

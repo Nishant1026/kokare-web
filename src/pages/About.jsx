@@ -82,7 +82,7 @@ export default function About() {
                 <Sparkles className="w-5 h-5 text-[#C8A27A] shrink-0 mt-0.5" />
                 <div>
                   <strong className="text-[#161616] block text-xs uppercase tracking-wider mb-1 font-normal">Wearable Artistry</strong>
-                  <p className="text-[15px] font-light">Translating historic indigenous motifs into minimal, contemporary sculptural silhouettes.</p>
+                  <p className="text-[17px] font-light">Translating historic indigenous motifs into minimal, contemporary sculptural silhouettes.</p>
                 </div>
               </div>
 
@@ -90,7 +90,7 @@ export default function About() {
                 <Compass className="w-5 h-5 text-[#C8A27A] shrink-0 mt-0.5" />
                 <div>
                   <strong className="text-[#161616] block text-xs uppercase tracking-wider mb-1 font-normal">Generational Weaving Guilds</strong>
-                  <p className="text-[15px] font-light">Sustaining 450+ master craft families across pit looms in rural Jharkhand.</p>
+                  <p className="text-[17px] font-light">Sustaining 450+ master craft families across pit looms in rural Jharkhand.</p>
                 </div>
               </div>
 
@@ -98,7 +98,7 @@ export default function About() {
                 <Heart className="w-5 h-5 text-[#C8A27A] shrink-0 mt-0.5" />
                 <div>
                   <strong className="text-[#161616] block text-xs uppercase tracking-wider mb-1 font-normal">Ethical Wild Silk Harvesting</strong>
-                  <p className="text-[15px] font-light">Certified non-mulberry Ahimsa tussar silk gathered in harmony with forest flora.</p>
+                  <p className="text-[17px] font-light">Certified non-mulberry Ahimsa tussar silk gathered in harmony with forest flora.</p>
                 </div>
               </div>
             </div>

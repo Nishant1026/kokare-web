@@ -98,11 +98,11 @@ export default function Wishlist() {
                       {item.category}
                     </span>
                     <Link to={`/product/${item.id}`}>
-                      <h3 className="font-serif text-base font-normal text-[#161616] hover:text-[#C8A27A] transition-colors line-clamp-1">
+                      <h3 className="font-serif text-[17px] font-normal text-[#161616] hover:text-[#C8A27A] transition-colors line-clamp-1">
                         {item.name}
                       </h3>
                     </Link>
-                    <p className="font-serif text-base text-[#161616] mt-2 font-normal">
+                    <p className="font-serif text-[17px] text-[#161616] mt-2 font-normal">
                       ₹{item.price.toLocaleString('en-IN')}
                     </p>
                   </div>
@@ -110,7 +110,7 @@ export default function Wishlist() {
                   <div className="pt-4 mt-3 border-t border-[#EAE4DC]">
                     <button
                       onClick={() => handleMoveToCart(item)}
-                      className="w-full py-2.5 bg-[#161616] hover:bg-[#C8A27A] text-white text-xs font-normal uppercase tracking-[0.2em] transition-colors flex items-center justify-center gap-2 border border-[#161616] hover:border-[#C8A27A] cursor-pointer"
+                      className="w-full py-3 bg-[#161616] hover:bg-[#721C2B] text-white text-xs font-normal uppercase tracking-[0.24em] transition-colors flex items-center justify-center gap-2 border border-[#161616] hover:border-[#721C2B] cursor-pointer"
                     >
                       <ShoppingBag className="w-3.5 h-3.5" />
                       <span>Move To Bag</span>

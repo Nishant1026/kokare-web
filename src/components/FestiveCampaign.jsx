@@ -5,7 +5,7 @@ import { ArrowRight, Sparkles } from 'lucide-react';
 
 export default function FestiveCampaign() {
   return (
-    <section className="relative bg-[#161616] text-white overflow-hidden py-20 sm:py-28 border-y border-[#C8A27A]/30">
+    <section className="relative bg-gradient-to-r from-[#161616] via-[#2A0E15] to-[#161616] text-white overflow-hidden py-24 sm:py-32 border-y border-[#C8A27A]/35 w-full max-w-full">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-center">
           
@@ -41,7 +41,7 @@ export default function FestiveCampaign() {
             <div className="pt-4">
               <Link
                 to="/festive-collection"
-                className="inline-flex items-center justify-center px-8 sm:px-10 py-3.5 sm:py-4 border border-white text-white hover:bg-white hover:text-[#161616] font-normal text-xs uppercase tracking-[0.28em] transition-all duration-300 shadow-md cursor-pointer"
+                className="inline-flex items-center justify-center px-8 sm:px-10 py-3.5 sm:py-4 border border-white text-white hover:bg-[#721C2B] hover:border-[#721C2B] hover:text-white font-normal text-xs uppercase tracking-[0.28em] transition-all duration-300 shadow-md cursor-pointer"
               >
                 <span>Shop The Festive Edit</span>
                 <ArrowRight className="w-4 h-4 ml-2.5" />

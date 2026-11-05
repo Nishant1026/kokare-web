@@ -327,7 +327,7 @@ export default function ProductDetails() {
                   className={`flex-1 py-4 font-normal text-xs tracking-[0.25em] uppercase transition-all flex items-center justify-center gap-2 border shadow-xs cursor-pointer ${
                     isInBag
                       ? 'bg-[#161616] hover:bg-[#222222] text-white border-[#C8A27A]'
-                      : 'bg-[#C8A27A] hover:bg-[#161616] text-white border-[#C8A27A] hover:border-[#161616]'
+                      : 'bg-[#161616] hover:bg-[#721C2B] text-white border-[#161616] hover:border-[#721C2B]'
                   }`}
                 >
                   {isInBag ? (
@@ -376,7 +376,7 @@ export default function ProductDetails() {
 
               <button
                 onClick={handleBuyNow}
-                className="w-full py-4 bg-transparent hover:bg-[#161616] hover:text-white border border-[#161616] text-[#161616] font-normal text-xs tracking-[0.25em] uppercase transition-all duration-300 cursor-pointer"
+                className="w-full py-4 bg-[#721C2B] hover:bg-[#581422] text-white border border-[#721C2B] hover:border-[#581422] font-normal text-xs tracking-[0.25em] uppercase transition-all duration-300 cursor-pointer shadow-xs"
               >
                 Instant Buy Now
               </button>

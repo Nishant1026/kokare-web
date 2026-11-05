@@ -235,7 +235,7 @@ export default function Contact() {
 
                   <button
                     type="submit"
-                    className="w-full py-4 bg-[#161616] hover:bg-[#C8A27A] text-white font-normal text-xs uppercase tracking-[0.25em] transition-all flex items-center justify-center gap-2 border border-[#161616] hover:border-[#C8A27A] cursor-pointer shadow-xs"
+                    className="w-full py-4 bg-[#161616] hover:bg-[#721C2B] text-white font-normal text-xs uppercase tracking-[0.25em] transition-all flex items-center justify-center gap-2 border border-[#161616] hover:border-[#721C2B] cursor-pointer shadow-xs"
                   >
                     <Send className="w-4 h-4" />
                     <span>Transmit Message To Concierge</span>

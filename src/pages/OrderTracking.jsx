@@ -110,7 +110,7 @@ export default function OrderTracking() {
             </div>
             <button
               type="submit"
-              className="px-8 py-3 bg-[#161616] hover:bg-[#C8A27A] text-white text-xs font-normal uppercase tracking-[0.25em] transition-all border border-[#161616] hover:border-[#C8A27A] cursor-pointer"
+              className="px-8 py-3 bg-[#161616] hover:bg-[#721C2B] text-white text-xs font-normal uppercase tracking-[0.25em] transition-all border border-[#161616] hover:border-[#721C2B] cursor-pointer"
             >
               Track Order
             </button>

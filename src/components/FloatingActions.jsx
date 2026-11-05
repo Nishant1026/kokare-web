@@ -61,17 +61,17 @@ export default function FloatingActions() {
           )}
         </AnimatePresence>
 
-        {/* 2. Circular Concierge / Chat Button (Amrapali red circle with white chat icon) */}
+        {/* 2. Circular Concierge / Chat Button (Haute Couture Burgundy circle with white chat icon) */}
         <motion.button
           whileHover={{ scale: 1.08 }}
           whileTap={{ scale: 0.95 }}
           onClick={() => setIsConciergeOpen(!isConciergeOpen)}
           aria-label="Atelier Concierge & Stylist Assistance"
-          className="w-11 h-11 sm:w-13 sm:h-13 rounded-full bg-[#B91C1C] hover:bg-[#991B1B] text-white shadow-2xl flex items-center justify-center transition-all duration-300 cursor-pointer relative group border-2 border-white/40"
+          className="w-11 h-11 sm:w-13 sm:h-13 rounded-full bg-[#721C2B] hover:bg-[#581422] text-white shadow-2xl flex items-center justify-center transition-all duration-300 cursor-pointer relative group border-2 border-[#C8A27A]/40"
           title="Atelier Concierge"
         >
           {/* Subtle pulse ring */}
-          <span className="absolute inset-0 rounded-full bg-red-500/30 animate-ping pointer-events-none" />
+          <span className="absolute inset-0 rounded-full bg-[#721C2B]/30 animate-ping pointer-events-none" />
           {isConciergeOpen ? (
             <X className="w-5 h-5 sm:w-6 sm:h-6 stroke-[2]" />
           ) : (

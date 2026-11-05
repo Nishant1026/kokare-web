@@ -110,22 +110,22 @@ export default function ProductCard({ product }) {
             </motion.div>
           </button>
 
-          {/* Hover Action Bar (Desktop) */}
+          {/* Desktop Hover Action Bar */}
           <div
-            className={`absolute bottom-0 inset-x-0 p-3 bg-gradient-to-t from-black/80 via-black/40 to-transparent flex items-center justify-center gap-2 transition-all duration-300 z-10 ${
+            className={`hidden sm:flex absolute bottom-0 inset-x-0 p-3 bg-gradient-to-t from-black/85 via-black/45 to-transparent items-center justify-center gap-2 transition-all duration-300 z-10 ${
               isHovered ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-2 pointer-events-none'
             }`}
           >
             <button
               onClick={handleOpenQuickView}
-              className="flex-1 py-2.5 bg-white/90 hover:bg-white text-[#161616] text-[11px] font-normal uppercase tracking-[0.2em] transition-colors flex items-center justify-center gap-1.5 cursor-pointer backdrop-blur-xs"
+              className="flex-1 py-2.5 bg-white/95 hover:bg-white text-[#161616] text-[11px] font-normal uppercase tracking-[0.2em] transition-colors flex items-center justify-center gap-1.5 cursor-pointer backdrop-blur-xs shadow-xs"
             >
               <Eye className="w-3.5 h-3.5" />
               <span>Quick View</span>
             </button>
             <button
               onClick={handleQuickAdd}
-              className={`py-2.5 px-3 transition-colors flex items-center justify-center cursor-pointer ${
+              className={`py-2.5 px-3.5 transition-colors flex items-center justify-center cursor-pointer shadow-xs ${
                 isInBag
                   ? 'bg-[#161616] text-[#C8A27A] border border-[#C8A27A] hover:bg-[#C8A27A] hover:text-white'
                   : 'bg-[#161616] hover:bg-[#C8A27A] text-white'
@@ -150,22 +150,22 @@ export default function ProductCard({ product }) {
         <div className="p-4 sm:p-5 flex flex-col flex-1 justify-between bg-white">
           <div>
             {/* Category / Collection Tag */}
-            <div className="flex items-center justify-between text-[11px] text-[#736E66] uppercase tracking-[0.2em] mb-1 font-light">
+            <div className="flex items-center justify-between text-[11px] text-[#736E66] uppercase tracking-[0.24em] mb-1 font-light">
               <span>{product.category}</span>
               {product.discountPercent && (
-                <span className="text-[#C8A27A] font-medium">{product.discountPercent}% OFF</span>
+                <span className="text-[#721C2B] font-medium">{product.discountPercent}% OFF</span>
               )}
             </div>
 
-            {/* Product Name */}
+            {/* Product Name (Strict 17px Display Typography) */}
             <Link to={`/product/${product.id}`} className="block">
-              <h3 className="font-serif text-base sm:text-lg font-normal text-[#161616] group-hover:text-[#C8A27A] transition-colors leading-snug line-clamp-1">
+              <h3 className="font-serif text-[17px] font-normal text-[#161616] group-hover:text-[#C8A27A] transition-colors leading-snug line-clamp-1">
                 {product.name}
               </h3>
             </Link>
 
             {/* Fabric Tagline */}
-            <p className="text-xs text-[#736E66] font-light mt-0.5 line-clamp-1">
+            <p className="text-[13px] text-[#736E66] font-light mt-0.5 line-clamp-1">
               {product.fabric || product.tagline}
             </p>
           </div>
@@ -173,7 +173,7 @@ export default function ProductCard({ product }) {
           {/* Pricing & Colors */}
           <div className="mt-3 pt-3 border-t border-[#EAE4DC] flex items-center justify-between">
             <div className="flex items-baseline gap-2">
-              <span className="font-serif text-base sm:text-lg text-[#161616] font-normal">
+              <span className="font-serif text-[17px] text-[#161616] font-normal">
                 ₹{product.price.toLocaleString('en-IN')}
               </span>
               {product.originalPrice && (
@@ -201,6 +201,28 @@ export default function ProductCard({ product }) {
                 )}
               </div>
             )}
+          </div>
+
+          {/* Mobile Tap Action Bar (Strictly touch-friendly on phone screens) */}
+          <div className="sm:hidden mt-3 pt-2.5 border-t border-[#EAE4DC]/60 flex items-center gap-2">
+            <button
+              onClick={handleQuickAdd}
+              className={`flex-1 py-2 px-3 text-xs uppercase tracking-wider font-normal flex items-center justify-center gap-1.5 transition-colors cursor-pointer ${
+                isInBag
+                  ? 'bg-[#161616] text-[#C8A27A] border border-[#C8A27A]'
+                  : 'bg-[#161616] text-white hover:bg-[#C8A27A]'
+              }`}
+            >
+              <ShoppingBag className="w-3.5 h-3.5" />
+              <span>{isInBag ? 'In Bag' : 'Add to Bag'}</span>
+            </button>
+            <button
+              onClick={handleOpenQuickView}
+              className="py-2 px-2.5 border border-[#EAE4DC] text-[#161616] hover:bg-[#FAF7F2] transition-colors"
+              aria-label="Quick View Silhouette"
+            >
+              <Eye className="w-3.5 h-3.5" />
+            </button>
           </div>
         </div>
       </div>
