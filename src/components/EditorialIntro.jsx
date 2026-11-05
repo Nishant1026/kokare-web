@@ -1,0 +1,77 @@
+import React from 'react';
+import { motion } from 'framer-motion';
+import { Link } from 'react-router-dom';
+import { ArrowRight, Sparkles } from 'lucide-react';
+
+export default function EditorialIntro() {
+  return (
+    <section className="py-20 sm:py-28 bg-[#FFFFFF] border-b border-[#EAE4DC] overflow-hidden w-full max-w-full">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
+          
+          {/* Left: Editorial Statement (7 cols) */}
+          <div className="lg:col-span-7 space-y-6">
+            <div className="inline-flex items-center gap-2 text-[11px] uppercase tracking-[0.3em] text-[#C8A27A] font-medium">
+              <Sparkles className="w-3.5 h-3.5 text-[#C8A27A]" />
+              <span>The House of KOKARÉ · Atelier Philosophy</span>
+            </div>
+
+            <h2 className="font-serif text-3xl sm:text-5xl lg:text-6xl font-normal text-[#161616] tracking-tight leading-[1.12]">
+              Wearable Art Crafted For <br />
+              <span className="italic text-[#C8A27A]">Moments of Grace</span>
+            </h2>
+
+            {/* Slender champagne separator line */}
+            <div className="w-16 h-[1.5px] bg-[#C8A27A]" />
+
+            <p className="text-[17px] text-[#736E66] leading-relaxed font-light max-w-xl">
+              Where the ancestral artisanal heritage of Jharkhand meets the refined elegance of modern Indian luxury. Discover meticulously hand-loomed creations conceived not merely as attire, but as timeless expressions of wearable art.
+            </p>
+
+            <p className="text-[17px] text-[#736E66] leading-relaxed font-light max-w-lg">
+              Every fold of unbleached wild tussar, handloom chanderi, and structured raw silk carries a narrative of restraint and grandeur. Tailored with devotion for festive rituals, joyful family celebrations, and Diwali evenings.
+            </p>
+
+            <div className="pt-4">
+              <Link
+                to="/about"
+                className="inline-flex items-center justify-center px-8 sm:px-10 py-3.5 sm:py-4 border border-[#161616] text-[#161616] hover:bg-[#161616] hover:text-white text-xs font-normal uppercase tracking-[0.25em] transition-all duration-300 cursor-pointer"
+              >
+                <span>Discover Our World</span>
+                <ArrowRight className="w-3.5 h-3.5 ml-2.5" />
+              </Link>
+            </div>
+          </div>
+
+          {/* Right: Supporting Fashion Editorial Photograph (5 cols) */}
+          <div className="lg:col-span-5">
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.7 }}
+              className="relative aspect-[4/5] border border-[#EAE4DC] bg-[#FAF7F2] group overflow-hidden shadow-xs"
+            >
+              <img
+                src="https://images.unsplash.com/photo-1583391733956-3750e0ff4e8b?auto=format&fit=crop&w=900&q=85"
+                alt="Fine Indian textile embroidery and craftsmanship"
+                className="w-full h-full object-cover object-center filter contrast-[1.03] group-hover:scale-105 transition-transform duration-700 ease-out"
+                loading="lazy"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/75 via-black/20 to-transparent" />
+              <div className="absolute bottom-6 left-6 right-6 text-white">
+                <span className="text-[10px] uppercase tracking-[0.25em] text-[#C8A27A] font-medium block mb-1">
+                  Artisanal Intricacy
+                </span>
+                <p className="font-serif italic text-base sm:text-lg text-white font-light">
+                  Hand-embroidered zardozi and antique rose-gold resham work.
+                </p>
+              </div>
+            </motion.div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+  );
+}
