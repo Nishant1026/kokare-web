@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Mail, Sparkles, CheckCircle2 } from 'lucide-react';
+import { FadeInUp, ParallaxWatermark } from './Parallax';
 
 export default function Newsletter() {
   const [email, setEmail] = useState('');
@@ -21,8 +22,11 @@ export default function Newsletter() {
   };
 
   return (
-    <section className="py-20 sm:py-24 bg-[#FFFFFF] border-b border-[#EAE4DC] overflow-hidden w-full max-w-full">
-      <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+    <section className="relative py-20 sm:py-24 bg-[#FFFFFF] border-b border-[#EAE4DC] overflow-hidden w-full max-w-full">
+      {/* Background Watermark Parallax */}
+      <ParallaxWatermark text="MAISON" speed={65} />
+
+      <FadeInUp className="relative z-10 max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
         
         {/* Subtle Icon */}
         <div className="w-10 h-10 rounded-full border border-[#EAE4DC] bg-[#FAF7F2] flex items-center justify-center text-[#161616] mx-auto mb-4 shadow-2xs">
@@ -51,7 +55,7 @@ export default function Newsletter() {
               >
                 <CheckCircle2 className="w-6 h-6 text-[#C8A27A]" />
                 <h4 className="font-serif text-xl font-normal">Welcome to the Maison</h4>
-                <p className="text-[15px] text-[#736E66] font-light">
+                <p className="text-[17px] text-[#736E66] font-light">
                   Your 10% welcome privilege token has been reserved.
                 </p>
               </motion.div>
@@ -88,7 +92,7 @@ export default function Newsletter() {
           We honor your privacy. Unsubscribe at any time with a single click.
         </p>
 
-      </div>
+      </FadeInUp>
     </section>
   );
 }

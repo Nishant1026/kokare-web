@@ -56,7 +56,7 @@
     font-size: 17px;
     width: 100%;
     max-width: 100vw;
-    overflow-x: hidden;
+    overflow-x: clip;
     overscroll-behavior-x: none;
     -webkit-text-size-adjust: 100%;
   }
@@ -69,7 +69,7 @@
     font-family: var(--font-sans);
     width: 100%;
     max-width: 100vw;
-    overflow-x: hidden;
+    overflow-x: clip;
     overscroll-behavior-x: none;
     position: relative;
     letter-spacing: -0.01em;
@@ -80,7 +80,7 @@
   #root {
     width: 100%;
     max-width: 100vw;
-    overflow-x: hidden;
+    overflow-x: clip;
     position: relative;
   }
 
@@ -96,14 +96,33 @@
   }
 }
 
-/* Force suppress horizontal scrollbars across all viewports */
+/* Force suppress horizontal scrollbars without breaking position: sticky */
 html, body, #root {
-  overflow-x: hidden !important;
+  overflow-x: clip !important;
   max-width: 100% !important;
 }
 
 *, *::before, *::after {
   box-sizing: border-box;
+}
+
+/* Luxury Filter Sidebar Custom Scrollbar */
+.luxury-sidebar-scroll {
+  scrollbar-width: thin;
+  scrollbar-color: #EAE4DC transparent;
+}
+.luxury-sidebar-scroll::-webkit-scrollbar {
+  width: 4px;
+}
+.luxury-sidebar-scroll::-webkit-scrollbar-track {
+  background: transparent;
+}
+.luxury-sidebar-scroll::-webkit-scrollbar-thumb {
+  background: #EAE4DC;
+  border-radius: 4px;
+}
+.luxury-sidebar-scroll::-webkit-scrollbar-thumb:hover {
+  background: #C8A27A;
 }
 
 /* Zoya & Amrapali Luxury Atelier Scrollbar */
@@ -206,3 +225,25 @@ html, body, #root {
   border-color: #581422;
   color: #FFFFFF;
 }
+
+/* ============================================================ */
+/* Festive Fixed Background Parallax (Stationary Viewport BG)    */
+/* "bg is stop, content move like up" - Tripledots Parallax Style*/
+/* ============================================================ */
+.festive-parallax-section {
+  position: relative;
+  background-image: url('/images/festive-campaign-bg.jpg');
+  background-attachment: fixed;
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  overflow: hidden;
+}
+
+@media (max-width: 768px) {
+  /* On touch devices where fixed background causes repaints, smooth scroll */
+  .festive-parallax-section {
+    background-attachment: scroll;
+  }
+}
+

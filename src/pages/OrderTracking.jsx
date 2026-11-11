@@ -11,6 +11,7 @@ import {
   ShieldCheck,
   ArrowRight
 } from 'lucide-react';
+import { ParallaxWatermark, FadeInUp } from '../components/Parallax';
 
 export default function OrderTracking() {
   const [searchParams] = useSearchParams();
@@ -77,8 +78,11 @@ export default function OrderTracking() {
   ];
 
   return (
-    <div className="bg-[#FAF7F2] min-h-screen py-14 text-[#161616]">
-      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div className="relative bg-[#FAF7F2] min-h-screen py-14 text-[#161616] overflow-x-clip">
+      {/* Background Watermark Parallax */}
+      <ParallaxWatermark text="TRACKING" speed={65} />
+
+      <div className="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Header */}
         <div className="text-center max-w-xl mx-auto mb-12">
@@ -162,7 +166,7 @@ export default function OrderTracking() {
                 {/* Step Content */}
                 <div>
                   <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-1">
-                    <h4 className="font-serif text-lg sm:text-xl font-normal text-[#161616]">
+                    <h4 className="font-serif text-xl sm:text-2xl font-normal text-[#161616]">
                       {step.title}
                     </h4>
                     <span className="text-xs font-mono text-[#736E66] font-light">

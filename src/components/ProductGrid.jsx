@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import { Sparkles, ArrowRight } from 'lucide-react';
 import ProductCard from './ProductCard';
 import { PRODUCTS } from '../data/products';
+import { FadeInUp, ParallaxReveal, ParallaxWatermark } from './Parallax';
 
 export default function ProductGrid({
   title = 'The Pieces Everyone Loves',
@@ -46,27 +47,30 @@ export default function ProductGrid({
   }, [activeTab, filterGender, filterCategory, limit, showTabs]);
 
   return (
-    <section className="py-20 sm:py-28 bg-[#FAF7F2] border-b border-[#EAE4DC] overflow-hidden w-full max-w-full">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section className="relative py-20 sm:py-28 bg-[#FAF7F2] border-b border-[#EAE4DC] overflow-hidden w-full max-w-full">
+      {/* Background Runway Watermark Parallax */}
+      <ParallaxWatermark text="COUTURE" speed={80} />
+
+      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Section Header (Amrapali & Zoya Haute Joaillerie Presentation) */}
-        <div className="text-center max-w-2xl mx-auto mb-10">
-          <div className="inline-flex items-center gap-1.5 text-[11px] font-medium uppercase tracking-[0.3em] text-[#C8A27A] mb-2">
-            <Sparkles className="w-3.5 h-3.5 text-[#C8A27A]" />
+        <FadeInUp className="text-center max-w-2xl mx-auto mb-10">
+          <div className="inline-flex items-center gap-2 text-[13px] sm:text-[14px] font-medium uppercase tracking-[0.26em] text-[#C8A27A] mb-2.5">
+            <Sparkles className="w-4 h-4 text-[#C8A27A]" />
             <span>{subtitle}</span>
           </div>
           <h2 className="font-serif text-3xl sm:text-5xl lg:text-6xl font-normal text-[#161616] tracking-tight mb-3">
             {title}
           </h2>
           <div className="w-16 h-[1.5px] bg-[#C8A27A] mx-auto mb-4" />
-          <p className="text-[17px] text-[#736E66] tracking-normal font-light">
+          <p className="text-[16px] sm:text-[17px] text-[#736E66] tracking-normal font-light">
             Heirloom textiles sculpted with master precision. Each piece a timeless celebratory statement.
           </p>
-        </div>
+        </FadeInUp>
 
-        {/* Filter Tabs (Minimalist Hairline Tabs) */}
+        {/* Filter Tabs (Strict 16px Luxury Editorial Typography) */}
         {showTabs && (
-          <div className="flex flex-wrap items-center justify-center gap-1 sm:gap-2 mb-12 border-b border-[#EAE4DC] pb-4">
+          <FadeInUp delay={0.1} className="flex flex-wrap items-center justify-center gap-2 sm:gap-4 md:gap-6 mb-12 border-b border-[#EAE4DC] pb-4">
             {[
               { id: 'all', label: 'All Curations' },
               { id: 'women', label: 'Women’s Edit' },
@@ -79,13 +83,13 @@ export default function ProductGrid({
                 <button
                   key={tab.id}
                   onClick={() => setActiveTab(tab.id)}
-                  className={`px-5 py-2.5 text-xs font-normal tracking-[0.22em] uppercase transition-all duration-300 relative cursor-pointer ${
+                  className={`px-4 sm:px-6 py-2.5 sm:py-3 text-[16px] font-normal tracking-[0.16em] uppercase transition-all duration-300 relative cursor-pointer ${
                     isActive
                       ? 'text-[#161616] font-medium'
                       : 'text-[#736E66] hover:text-[#161616]'
                   }`}
                 >
-                  <span>{tab.label}</span>
+                  <span className="text-[16px] leading-snug tracking-[0.16em] uppercase">{tab.label}</span>
                   {isActive && (
                     <motion.div
                       layoutId="tabUnderline"
@@ -95,27 +99,33 @@ export default function ProductGrid({
                 </button>
               );
             })}
-          </div>
+          </FadeInUp>
         )}
 
-        {/* Product Cards Grid */}
+        {/* Product Cards Grid with Parallel Parallax */}
         <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 sm:gap-6 lg:gap-8">
-          {filteredProducts.map((product) => (
-            <ProductCard key={product.id} product={product} />
+          {filteredProducts.map((product, idx) => (
+            <ParallaxReveal
+              key={product.id}
+              delay={(idx % 4) * 0.05}
+              speed={idx % 2 === 0 ? 16 : -16}
+            >
+              <ProductCard product={product} />
+            </ParallaxReveal>
           ))}
         </div>
 
         {/* View Complete Collection CTA Button (Clean Rectangular Outline Button) */}
         {limit && (
-          <div className="mt-14 sm:mt-16 text-center">
+          <FadeInUp delay={0.2} className="mt-14 sm:mt-16 text-center">
             <Link
               to="/shop"
-              className="inline-flex items-center justify-center px-8 sm:px-12 py-3.5 sm:py-4 border border-[#161616] text-[#161616] hover:bg-[#161616] hover:text-white text-xs font-normal uppercase tracking-[0.28em] transition-all duration-300 shadow-xs cursor-pointer"
+              className="inline-flex items-center justify-center px-8 sm:px-12 py-3.5 sm:py-4 border border-[#161616] text-[#161616] hover:bg-[#161616] hover:text-white text-[15px] sm:text-[16px] font-normal uppercase tracking-[0.22em] transition-all duration-300 shadow-xs cursor-pointer"
             >
-              <span>Explore All Silhouettes</span>
-              <ArrowRight className="w-3.5 h-3.5 ml-2.5" />
+              <span className="text-[15px] sm:text-[16px]">Explore All Silhouettes</span>
+              <ArrowRight className="w-4 h-4 ml-2.5" />
             </Link>
-          </div>
+          </FadeInUp>
         )}
 
       </div>

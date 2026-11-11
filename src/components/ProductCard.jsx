@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { Link, useNavigate } from 'react-router-dom';
-import { Heart, Eye, ShoppingBag, Check } from 'lucide-react';
+import { Heart, Eye, ShoppingBag, Check, Sparkles } from 'lucide-react';
 import { useWishlist } from '../context/WishlistContext';
 import { useCart } from '../context/CartContext';
 import QuickViewModal from './QuickViewModal';
@@ -16,6 +16,14 @@ export default function ProductCard({ product }) {
   const isFavorited = isInWishlist(product.id);
   const totalInBag = getProductTotalInCart(product.id);
   const isInBag = totalInBag > 0;
+
+  // Exact discount percentage for luxury offer showcase
+  const discountVal =
+    product.discountPercent ||
+    product.discount ||
+    (product.originalPrice && product.price
+      ? Math.round(((product.originalPrice - product.price) / product.originalPrice) * 100)
+      : 0);
 
   // Primary and secondary image for swap
   const primaryImg = product.images[0];
@@ -75,22 +83,28 @@ export default function ProductCard({ product }) {
             )}
           </Link>
 
-          {/* Badges: Bestseller / New / In Bag */}
+          {/* Badges: Bestseller / New / In Bag / Festive Privilege */}
           <div className="absolute top-3 left-3 flex flex-col gap-1.5 z-10 pointer-events-none">
             {isInBag && (
-              <span className="bg-[#161616] text-[#C8A27A] border border-[#C8A27A]/80 text-[10px] font-medium uppercase tracking-[0.2em] px-2.5 py-0.5 shadow-xs flex items-center gap-1.5 backdrop-blur-xs">
+              <span className="bg-[#161616] text-[#C8A27A] border border-[#C8A27A]/80 text-[11px] sm:text-[12px] font-medium uppercase tracking-[0.2em] px-2.5 py-1 shadow-xs flex items-center gap-1.5 backdrop-blur-xs">
                 <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
                 <span>In Bag ({totalInBag})</span>
               </span>
             )}
             {product.isBestseller && (
-              <span className="bg-[#161616] text-white text-[10px] font-normal uppercase tracking-[0.22em] px-2.5 py-0.5 shadow-xs border border-[#C8A27A]/40">
+              <span className="bg-[#161616] text-white text-[11px] sm:text-[12px] font-normal uppercase tracking-[0.22em] px-2.5 py-1 shadow-xs border border-[#C8A27A]/40">
                 Bestseller
               </span>
             )}
-            {product.isNew && (
-              <span className="bg-white text-[#161616] border border-[#EAE4DC] text-[10px] font-normal uppercase tracking-[0.22em] px-2.5 py-0.5 shadow-xs">
+            {product.isNew && !product.isBestseller && (
+              <span className="bg-white text-[#161616] border border-[#EAE4DC] text-[11px] sm:text-[12px] font-normal uppercase tracking-[0.22em] px-2.5 py-1 shadow-xs">
                 New Arrival
+              </span>
+            )}
+            {discountVal > 0 && !product.isBestseller && !product.isNew && (
+              <span className="bg-[#721C2B] text-[#FAF7F2] border border-[#C8A27A]/40 text-[11px] sm:text-[12px] font-normal uppercase tracking-[0.2em] px-2.5 py-1 shadow-xs backdrop-blur-xs flex items-center gap-1">
+                <Sparkles className="w-3 h-3 text-[#C8A27A] shrink-0" />
+                <span>{discountVal}% Privilege</span>
               </span>
             )}
           </div>
@@ -118,9 +132,9 @@ export default function ProductCard({ product }) {
           >
             <button
               onClick={handleOpenQuickView}
-              className="flex-1 py-2.5 bg-white/95 hover:bg-white text-[#161616] text-[11px] font-normal uppercase tracking-[0.2em] transition-colors flex items-center justify-center gap-1.5 cursor-pointer backdrop-blur-xs shadow-xs"
+              className="flex-1 py-2.5 bg-white/95 hover:bg-white text-[#161616] text-[12px] sm:text-[13px] font-normal uppercase tracking-[0.2em] transition-colors flex items-center justify-center gap-1.5 cursor-pointer backdrop-blur-xs shadow-xs"
             >
-              <Eye className="w-3.5 h-3.5" />
+              <Eye className="w-4 h-4" />
               <span>Quick View</span>
             </button>
             <button
@@ -134,58 +148,63 @@ export default function ProductCard({ product }) {
             >
               {isInBag ? (
                 <div className="relative flex items-center justify-center">
-                  <ShoppingBag className="w-3.5 h-3.5" />
+                  <ShoppingBag className="w-4 h-4" />
                   <span className="absolute -bottom-1 -right-1 bg-emerald-500 text-white rounded-full p-[1px]">
                     <Check className="w-2 h-2 stroke-[3]" />
                   </span>
                 </div>
               ) : (
-                <ShoppingBag className="w-3.5 h-3.5" />
+                <ShoppingBag className="w-4 h-4" />
               )}
             </button>
           </div>
         </div>
 
         {/* Product Information */}
-        <div className="p-4 sm:p-5 flex flex-col flex-1 justify-between bg-white">
+        <div className="p-3.5 sm:p-5 flex flex-col flex-1 justify-between bg-white">
           <div>
             {/* Category / Collection Tag */}
-            <div className="flex items-center justify-between text-[11px] text-[#736E66] uppercase tracking-[0.24em] mb-1 font-light">
-              <span>{product.category}</span>
-              {product.discountPercent && (
-                <span className="text-[#721C2B] font-medium">{product.discountPercent}% OFF</span>
-              )}
+            <div className="flex items-center justify-between text-[13px] sm:text-[14px] text-[#736E66] uppercase tracking-[0.18em] mb-1.5 font-light">
+              <span className="text-[#161616] font-normal tracking-[0.16em]">{product.category}</span>
+              <span className="text-[12px] sm:text-[13px] uppercase tracking-[0.16em] text-[#C8A27A] font-medium">
+                {product.collection === 'festive-edit' ? 'Diwali 2026' : 'Atelier Edit'}
+              </span>
             </div>
 
-            {/* Product Name (Strict 17px Display Typography) */}
+            {/* Product Name (Strict 16px - 17px Editorial Typography) */}
             <Link to={`/product/${product.id}`} className="block">
-              <h3 className="font-serif text-[17px] font-normal text-[#161616] group-hover:text-[#C8A27A] transition-colors leading-snug line-clamp-1">
+              <h3 className="font-serif text-[16px] sm:text-[17px] font-normal text-[#161616] group-hover:text-[#C8A27A] transition-colors leading-snug line-clamp-1">
                 {product.name}
               </h3>
             </Link>
 
             {/* Fabric Tagline */}
-            <p className="text-[13px] text-[#736E66] font-light mt-0.5 line-clamp-1">
+            <p className="text-[15px] sm:text-[17px] text-[#736E66] font-light mt-1 line-clamp-1">
               {product.fabric || product.tagline}
             </p>
           </div>
 
-          {/* Pricing & Colors */}
-          <div className="mt-3 pt-3 border-t border-[#EAE4DC] flex items-center justify-between">
-            <div className="flex items-baseline gap-2">
-              <span className="font-serif text-[17px] text-[#161616] font-normal">
+          {/* Pricing & Offers Showcase */}
+          <div className="mt-2.5 pt-2.5 sm:mt-3 sm:pt-3 border-t border-[#EAE4DC] flex items-center justify-between gap-2">
+            <div className="flex items-baseline gap-1.5 sm:gap-2 flex-wrap">
+              <span className="font-serif text-[16px] sm:text-[17px] text-[#161616] font-normal">
                 ₹{product.price.toLocaleString('en-IN')}
               </span>
               {product.originalPrice && (
-                <span className="text-xs text-[#736E66] line-through font-light">
+                <span className="text-[13px] sm:text-[14px] text-[#736E66] line-through font-light">
                   ₹{product.originalPrice.toLocaleString('en-IN')}
+                </span>
+              )}
+              {discountVal > 0 && (
+                <span className="inline-flex items-center text-[12px] uppercase tracking-wider text-[#721C2B] font-medium bg-[#FBF1F2] border border-[#721C2B]/25 px-2 py-[2px] leading-tight shrink-0 whitespace-nowrap">
+                  Save {discountVal}%
                 </span>
               )}
             </div>
 
             {/* Color Swatch Previews */}
             {product.colors && product.colors.length > 0 && (
-              <div className="flex items-center gap-1">
+              <div className="flex items-center gap-1 shrink-0">
                 {product.colors.slice(0, 3).map((col) => (
                   <span
                     key={col.name}
@@ -195,7 +214,7 @@ export default function ProductCard({ product }) {
                   />
                 ))}
                 {product.colors.length > 3 && (
-                  <span className="text-[10px] text-[#736E66] font-mono">
+                  <span className="text-[11px] text-[#736E66] font-mono">
                     +{product.colors.length - 3}
                   </span>
                 )}
@@ -203,26 +222,54 @@ export default function ProductCard({ product }) {
             )}
           </div>
 
-          {/* Mobile Tap Action Bar (Strictly touch-friendly on phone screens) */}
-          <div className="sm:hidden mt-3 pt-2.5 border-t border-[#EAE4DC]/60 flex items-center gap-2">
-            <button
-              onClick={handleQuickAdd}
-              className={`flex-1 py-2 px-3 text-xs uppercase tracking-wider font-normal flex items-center justify-center gap-1.5 transition-colors cursor-pointer ${
+          {/* Mobile Tap Action Bar (Refined Atelier Architectural Segmented Bar) */}
+          <div className="sm:hidden mt-3 pt-2.5 border-t border-[#EAE4DC]/60">
+            <div
+              className={`flex items-stretch border transition-all duration-300 shadow-2xs ${
                 isInBag
-                  ? 'bg-[#161616] text-[#C8A27A] border border-[#C8A27A]'
-                  : 'bg-[#161616] text-white hover:bg-[#C8A27A]'
+                  ? 'border-[#721C2B] bg-[#721C2B]'
+                  : 'border-[#161616] bg-white hover:border-[#C8A27A]'
               }`}
             >
-              <ShoppingBag className="w-3.5 h-3.5" />
-              <span>{isInBag ? 'In Bag' : 'Add to Bag'}</span>
-            </button>
-            <button
-              onClick={handleOpenQuickView}
-              className="py-2 px-2.5 border border-[#EAE4DC] text-[#161616] hover:bg-[#FAF7F2] transition-colors"
-              aria-label="Quick View Silhouette"
-            >
-              <Eye className="w-3.5 h-3.5" />
-            </button>
+              {/* Add To Bag Primary Touch Action */}
+              <button
+                onClick={handleQuickAdd}
+                className={`flex-1 h-9 px-2.5 flex items-center justify-center gap-1.5 transition-colors cursor-pointer whitespace-nowrap overflow-hidden ${
+                  isInBag
+                    ? 'text-white'
+                    : 'text-[#161616] hover:text-[#C8A27A] active:bg-[#FAF7F2]'
+                }`}
+              >
+                {isInBag ? (
+                  <span className="text-[11px] leading-none uppercase tracking-[0.18em] font-medium flex items-center gap-1.5 text-white">
+                    <Check className="w-3.5 h-3.5 stroke-[3] text-[#C8A27A]" />
+                    IN BAG
+                  </span>
+                ) : (
+                  <span className="text-[11px] leading-none uppercase tracking-[0.2em] font-normal flex items-center gap-1.5">
+                    <ShoppingBag className="w-3.5 h-3.5 text-[#161616] stroke-[1.5]" />
+                    ADD TO BAG
+                  </span>
+                )}
+              </button>
+
+              {/* Slender Vertical Divider */}
+              <div className={`w-[1px] ${isInBag ? 'bg-white/20' : 'bg-[#EAE4DC]'}`} />
+
+              {/* Quick View End-cap */}
+              <button
+                onClick={handleOpenQuickView}
+                className={`w-9 h-9 flex items-center justify-center transition-colors cursor-pointer shrink-0 ${
+                  isInBag
+                    ? 'text-white/80 hover:text-white'
+                    : 'bg-[#FAF7F2] hover:bg-white text-[#736E66] hover:text-[#161616]'
+                }`}
+                aria-label="Quick View Silhouette"
+                title="Quick View"
+              >
+                <Eye className="w-3.5 h-3.5 stroke-[1.5]" />
+              </button>
+            </div>
           </div>
         </div>
       </div>

@@ -79,13 +79,13 @@ export default function CartDrawer() {
               animate={{ x: 0 }}
               exit={{ x: '100%' }}
               transition={{ duration: 0.38, ease: [0.32, 0.72, 0, 1] }}
-              className="w-full sm:w-screen max-w-md bg-white border-l border-[#EAE4DC] text-[#161616] shadow-2xl flex flex-col h-full"
+              className="w-[90vw] sm:w-[420px] max-w-md bg-white border-l border-[#EAE4DC] text-[#161616] shadow-2xl flex flex-col h-full"
             >
               {/* Header */}
-              <div className="px-6 py-5 border-b border-[#EAE4DC] flex items-center justify-between bg-white">
+              <div className="px-5 sm:px-6 py-4 sm:py-5 border-b border-[#EAE4DC] flex items-center justify-between bg-white">
                 <div className="flex items-center gap-2.5">
                   <ShoppingBag className="w-5 h-5 text-[#C8A27A]" />
-                  <h3 className="font-serif text-2xl font-normal text-[#161616]">
+                  <h3 className="font-serif text-xl sm:text-2xl font-normal text-[#161616]">
                     Shopping Bag ({totalItems})
                   </h3>
                 </div>
@@ -99,7 +99,7 @@ export default function CartDrawer() {
               </div>
 
               {/* Free Shipping Progress Indicator */}
-              <div className="px-6 py-3 bg-[#FAF7F2] border-b border-[#EAE4DC]">
+              <div className="px-5 sm:px-6 py-2.5 sm:py-3 bg-[#FAF7F2] border-b border-[#EAE4DC]">
                 <div className="flex items-center justify-between text-xs text-[#161616] mb-1 font-light">
                   <span>
                     {amountNeededForFreeShipping === 0 ? (
@@ -123,7 +123,7 @@ export default function CartDrawer() {
               </div>
 
               {/* Items List */}
-              <div className="flex-1 overflow-y-auto px-6 py-4 divide-y divide-[#EAE4DC]">
+              <div data-lenis-prevent className="flex-1 overflow-y-auto px-4 sm:px-6 py-3 sm:py-4 divide-y divide-[#EAE4DC]">
                 {cart.length === 0 ? (
                   <div className="h-full flex flex-col items-center justify-center text-center py-16">
                     <ShoppingBag className="w-12 h-12 text-[#C8A27A]/60 mb-3" />
@@ -236,7 +236,7 @@ export default function CartDrawer() {
 
               {/* Footer Checkout Summary */}
               {cart.length > 0 && (
-                <div className="p-6 border-t border-[#EAE4DC] bg-[#FAF7F2] space-y-4">
+                <div className="p-4 sm:p-6 border-t border-[#EAE4DC] bg-[#FAF7F2] space-y-3 sm:space-y-4">
                   
                   {/* Coupon Box */}
                   <div>
@@ -310,7 +310,7 @@ export default function CartDrawer() {
                   <div className="space-y-2 pt-1">
                     <button
                       onClick={handleCheckout}
-                      className="w-full py-4 bg-[#721C2B] hover:bg-[#581422] text-white font-normal text-xs tracking-[0.28em] uppercase transition-all flex items-center justify-center gap-2 border border-[#721C2B] hover:border-[#581422] shadow-sm cursor-pointer"
+                      className="w-full py-3.5 sm:py-4 bg-[#721C2B] hover:bg-[#581422] text-white font-normal text-xs tracking-[0.22em] sm:tracking-[0.28em] uppercase transition-all flex items-center justify-center gap-2 border border-[#721C2B] hover:border-[#581422] shadow-sm cursor-pointer"
                     >
                       <span>Proceed to Checkout</span>
                       <ArrowRight className="w-4 h-4" />

@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Mail, Phone, MapPin, Clock, Send, CheckCircle2, ChevronDown, Compass } from 'lucide-react';
+import { ParallaxWatermark, FadeInUp } from '../components/Parallax';
 
 const FAQS = [
   {
@@ -39,8 +40,11 @@ export default function Contact() {
   };
 
   return (
-    <div className="bg-[#FAF7F2] min-h-screen py-14 text-[#161616]">
-      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div className="relative bg-[#FAF7F2] min-h-screen py-14 text-[#161616] overflow-x-clip">
+      {/* Background Watermark Parallax */}
+      <ParallaxWatermark text="CONCIERGE" speed={65} />
+
+      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Header */}
         <div className="text-center max-w-2xl mx-auto mb-16">
@@ -119,7 +123,7 @@ export default function Contact() {
               <h4 className="font-serif text-2xl font-normal text-white">
                 Book An Atelier Visit
               </h4>
-              <p className="text-xs text-white/75 font-light leading-relaxed">
+              <p className="text-[17px] text-white/80 font-light leading-relaxed">
                 Experience our wild tussar silks and bespoke ceremonial draping in person with a dedicated master stylist at our Ranchi flagship.
               </p>
               <div className="pt-2">
@@ -148,7 +152,7 @@ export default function Contact() {
                     <CheckCircle2 className="w-6 h-6" />
                   </div>
                   <h4 className="font-serif text-2xl font-normal text-[#161616]">Message Received</h4>
-                  <p className="text-sm text-[#736E66] max-w-sm mx-auto font-light">
+                  <p className="text-[17px] text-[#736E66] max-w-sm mx-auto font-light leading-relaxed">
                     Our atelier styling team will review your note and respond within 4 business hours.
                   </p>
                   <button

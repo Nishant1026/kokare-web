@@ -52,7 +52,7 @@ export default function Checkout() {
         <div className="max-w-md bg-white p-8 sm:p-12 border border-[#EAE4DC] shadow-2xs">
           <Package className="w-12 h-12 text-[#C8A27A] mx-auto mb-4" />
           <h2 className="font-serif text-2xl sm:text-3xl mb-2 font-normal">No items in your bag</h2>
-          <p className="text-[16px] text-[#736E66] mb-6 font-light">
+          <p className="text-[17px] text-[#736E66] mb-6 font-light leading-relaxed">
             Please add silhouettes to your cart before proceeding to checkout.
           </p>
           <Link
@@ -67,7 +67,7 @@ export default function Checkout() {
   }
 
   return (
-    <div className="bg-[#FAF7F2] min-h-screen py-12 text-[#161616] w-full max-w-full overflow-x-hidden">
+    <div className="bg-[#FAF7F2] min-h-screen py-12 text-[#161616] w-full max-w-full overflow-x-clip">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Order Confirmation Screen */}

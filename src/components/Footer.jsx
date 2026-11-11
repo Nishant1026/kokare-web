@@ -2,14 +2,18 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { Mail, Phone, MapPin, ShieldCheck, Truck, RefreshCw, Award } from 'lucide-react';
 import { InstagramIcon, FacebookIcon, PinterestIcon } from './SocialIcons';
+import { FadeInUp, ParallaxWatermark } from './Parallax';
 
 export default function Footer() {
   return (
-    <footer className="bg-[#161616] text-[#FAF7F2] pt-16 pb-12 border-t border-[#C8A27A]/30 overflow-hidden w-full max-w-full">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <footer className="relative bg-[#161616] text-[#FAF7F2] pt-16 pb-12 border-t border-[#C8A27A]/30 overflow-hidden w-full max-w-full">
+      {/* Background Watermark Parallax */}
+      <ParallaxWatermark text="KOKARÉ" speed={60} className="!text-white/[0.025]" />
+
+      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Trust & Heritage Markers (Amrapali & Zoya Hallmark Row) */}
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-6 pb-12 mb-12 border-b border-white/10 text-center">
+        <FadeInUp className="grid grid-cols-2 md:grid-cols-4 gap-6 pb-12 mb-12 border-b border-white/10 text-center">
           <div className="flex flex-col items-center p-3">
             <Truck className="w-6 h-6 text-[#C8A27A] mb-2" />
             <h5 className="font-serif text-base text-white font-normal">Insured Express Courier</h5>
@@ -30,7 +34,7 @@ export default function Footer() {
             <h5 className="font-serif text-base text-white font-normal">Keepsake Luxury Box</h5>
             <p className="text-xs text-[#FAF7F2]/60 font-light mt-0.5">Rigid gold-foiled preservation packaging</p>
           </div>
-        </div>
+        </FadeInUp>
 
         {/* Main Footer Columns */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-10 pb-12 border-b border-white/10">

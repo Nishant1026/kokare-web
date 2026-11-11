@@ -190,26 +190,26 @@ export default function Header({ onOpenDrawer }) {
         {/* 2. MAIN NAVIGATION BAR                                       */}
         {/* Left: Brand Logo | Center: Links | Right: Icons             */}
         {/* ============================================================ */}
-        <div className="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8 py-3 sm:py-4 flex items-center justify-between">
-          {/* Left: Brand Logo KOKARÉ */}
-          <div className="flex items-center">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3.5 sm:py-4 flex items-center justify-between">
+          {/* Left: Brand Logo KOKARÉ — Perfectly balanced and aligned with content margin */}
+          <div className="flex items-center shrink-0">
             <Link to="/" className="group flex flex-col">
               <span
-                className={`font-serif text-xl sm:text-2xl lg:text-3xl font-normal tracking-[0.2em] sm:tracking-[0.28em] transition-colors ${
+                className={`font-serif text-xl sm:text-2xl lg:text-[27px] font-normal tracking-[0.2em] sm:tracking-[0.26em] transition-colors ${
                   isTransparent ? 'text-white group-hover:text-[#C8A27A]' : 'text-[#161616] group-hover:text-[#C8A27A]'
                 }`}
               >
                 KOKARÉ
               </span>
-              <span className="text-[8px] sm:text-[9px] tracking-[0.24em] sm:tracking-[0.38em] uppercase text-[#C8A27A] font-medium -mt-0.5">
+              <span className="text-[8px] sm:text-[9px] tracking-[0.22em] sm:tracking-[0.32em] uppercase text-[#C8A27A] font-medium -mt-0.5">
                 The Jharkhand Edit
               </span>
             </Link>
           </div>
 
-          {/* Desktop Center Navigation Links */}
+          {/* Desktop Center Navigation Links — Balanced separation from Logo */}
           <nav
-            className={`hidden lg:flex items-center space-x-8 lg:space-x-10 text-[13px] tracking-[0.24em] uppercase font-normal transition-colors ${
+            className={`hidden lg:flex items-center justify-center space-x-5 xl:space-x-7 text-[12px] xl:text-[13px] tracking-[0.16em] xl:tracking-[0.2em] uppercase font-normal transition-colors ml-8 lg:ml-10 xl:ml-14 ${
               isTransparent ? 'text-white' : 'text-[#161616]'
             }`}
           >

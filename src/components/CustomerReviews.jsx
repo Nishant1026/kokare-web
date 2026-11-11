@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Star, ChevronLeft, ChevronRight, Quote, Sparkles, CheckCircle2 } from 'lucide-react';
 import { REVIEWS } from '../data/products';
+import { FadeInUp, ParallaxWatermark, ParallaxContent } from './Parallax';
 
 export default function CustomerReviews() {
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -17,11 +18,14 @@ export default function CustomerReviews() {
   const activeReview = REVIEWS[currentIndex];
 
   return (
-    <section className="py-20 sm:py-28 bg-[#FFFFFF] border-b border-[#EAE4DC] relative overflow-hidden">
+    <section className="py-20 sm:py-28 bg-[#FFFFFF] border-b border-[#EAE4DC] relative overflow-hidden w-full max-w-full">
+      {/* Background Watermark Parallax */}
+      <ParallaxWatermark text="PATRONS" speed={65} />
+
       <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         
         {/* Section Header (Curated Patron Voices) */}
-        <div className="text-center mb-14">
+        <FadeInUp className="text-center mb-14">
           <div className="inline-flex items-center gap-1.5 text-[11px] font-medium uppercase tracking-[0.3em] text-[#C8A27A] mb-2">
             <Sparkles className="w-3.5 h-3.5 text-[#C8A27A]" />
             <span>Patron Voices</span>
@@ -33,10 +37,10 @@ export default function CustomerReviews() {
           <p className="text-[17px] text-[#736E66] tracking-normal font-light">
             Cherished across celebratory gatherings from Ranchi to Mumbai, Bengaluru, and New Delhi.
           </p>
-        </div>
+        </FadeInUp>
 
         {/* Carousel Card (Architectural Geometry) */}
-        <div className="relative bg-[#FAF7F2] border border-[#EAE4DC] p-8 sm:p-14 shadow-2xs">
+        <FadeInUp delay={0.15} className="relative bg-[#FAF7F2] border border-[#EAE4DC] p-8 sm:p-14 shadow-2xs">
           <Quote className="w-12 h-12 text-[#EAE4DC] absolute top-6 left-6 -scale-x-100" />
 
           <div className="min-h-[200px] flex flex-col justify-between">
@@ -117,7 +121,7 @@ export default function CustomerReviews() {
               </button>
             </div>
           </div>
-        </div>
+        </FadeInUp>
 
       </div>
     </section>

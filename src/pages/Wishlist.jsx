@@ -4,6 +4,7 @@ import { motion } from 'framer-motion';
 import { Heart, ShoppingBag, Trash2, ArrowRight, Sparkles } from 'lucide-react';
 import { useWishlist } from '../context/WishlistContext';
 import { useCart } from '../context/CartContext';
+import { ParallaxWatermark, ParallaxReveal, FadeInUp } from '../components/Parallax';
 
 export default function Wishlist() {
   const { wishlist, removeFromWishlist, clearWishlist } = useWishlist();
@@ -17,8 +18,11 @@ export default function Wishlist() {
   };
 
   return (
-    <div className="bg-[#FAF7F2] min-h-screen py-12 text-[#161616]">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div className="relative bg-[#FAF7F2] min-h-screen py-12 text-[#161616] overflow-x-clip">
+      {/* Background Watermark Parallax */}
+      <ParallaxWatermark text="VAULT" speed={65} />
+
+      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Page Header */}
         <div className="flex flex-col sm:flex-row sm:items-end justify-between border-b border-[#EAE4DC] pb-6 mb-10">
@@ -52,7 +56,7 @@ export default function Wishlist() {
               <Heart className="w-7 h-7 text-[#C8A27A]" />
             </div>
             <h3 className="font-serif text-2xl mb-2 text-[#161616] font-normal">Your wishlist is empty</h3>
-            <p className="text-[16px] text-[#736E66] leading-relaxed mb-6 font-light">
+            <p className="text-[17px] text-[#736E66] leading-relaxed mb-6 font-light">
               Bookmark your favorite royal silks, festive sarees, and tailored bandhgalas to revisit them anytime.
             </p>
             <Link

@@ -2,114 +2,115 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { Sparkles, Feather, ArrowRight } from 'lucide-react';
 import { Link } from 'react-router-dom';
+import { ParallaxImage, ParallaxContent, ParallaxWatermark, FadeInUp } from './Parallax';
 
 export default function BrandStory() {
   return (
-    <section className="py-20 sm:py-28 bg-[#FAF7F2] border-b border-[#EAE4DC] overflow-hidden">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section className="relative py-20 sm:py-28 bg-[#FAF7F2] border-b border-[#EAE4DC] overflow-hidden w-full max-w-full">
+      {/* Background Watermark Parallax */}
+      <ParallaxWatermark text="HERITAGE" speed={75} />
+
+      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
           
-          {/* Left Column: Large Editorial Craftsmanship Photograph (6 cols) */}
-          <motion.div
-            initial={{ opacity: 0, x: -20 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.7 }}
-            className="lg:col-span-6 relative"
-          >
-            <div className="relative aspect-[4/5] border border-[#EAE4DC] bg-white overflow-hidden shadow-sm">
-              <img
-                src="https://images.unsplash.com/photo-1617627143750-d86bc21e42bb?auto=format&fit=crop&w=1200&q=85"
-                alt="Jharkhand handloom textile craftsmanship"
-                className="w-full h-full object-cover object-top"
-                loading="lazy"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/75 via-transparent to-transparent" />
-              <div className="absolute bottom-6 left-6 right-6 text-white">
-                <span className="text-[10px] uppercase tracking-[0.28em] text-[#C8A27A] font-medium block mb-1">
-                  Maison Philosophy
+          {/* Left Column: Large Editorial Craftsmanship Photograph with Deep Parallax Window (6 cols) */}
+          <div className="lg:col-span-6 relative">
+            <FadeInUp>
+              <div className="relative aspect-[4/5] border border-[#EAE4DC] bg-white overflow-hidden shadow-sm">
+                <ParallaxImage
+                  src="https://images.unsplash.com/photo-1617627143750-d86bc21e42bb?auto=format&fit=crop&w=1200&q=85"
+                  alt="Jharkhand handloom textile craftsmanship"
+                  className="w-full h-full"
+                  imgClassName="object-cover object-top"
+                  offset={20}
+                  mobileOffset={10}
+                  scale={1.05}
+                />
+                <div className="absolute bottom-0 inset-x-0 h-[38%] bg-gradient-to-t from-black/80 to-transparent pointer-events-none" />
+                <div className="absolute bottom-6 left-6 right-6 text-white pointer-events-none">
+                  <span className="text-[10px] uppercase tracking-[0.28em] text-[#C8A27A] font-medium block mb-1">
+                    Maison Philosophy
+                  </span>
+                  <p className="font-serif italic text-lg sm:text-xl text-white font-light">
+                    "Where ancestral texture meets the pinnacle of Indian fine tailoring."
+                  </p>
+                </div>
+              </div>
+
+              {/* Subtle floating badge with Parallax Float */}
+              <div className="hidden sm:flex absolute -top-3 -right-3 p-4 bg-white border border-[#EAE4DC] shadow-xs flex-col items-center justify-center text-center z-10">
+                <Sparkles className="w-4 h-4 text-[#C8A27A] mb-1" />
+                <span className="text-[10px] uppercase tracking-[0.28em] text-[#161616] font-medium">
+                  Est. 2026
                 </span>
-                <p className="font-serif italic text-lg sm:text-xl text-white font-light">
-                  "Where ancestral texture meets the pinnacle of Indian fine tailoring."
+                <span className="text-xs text-[#736E66] font-light">The Jharkhand Edit</span>
+              </div>
+            </FadeInUp>
+          </div>
+
+          {/* Right Column: Narrative (6 cols) with Parallax Content Float */}
+          <div className="lg:col-span-6">
+            <ParallaxContent speed={26}>
+              <FadeInUp delay={0.15} className="space-y-6">
+                <div className="inline-flex items-center gap-2 text-[11px] font-medium uppercase tracking-[0.3em] text-[#C8A27A]">
+                  <Feather className="w-3.5 h-3.5 text-[#C8A27A]" />
+                  <span>Cultural Heritage & Atelier Story</span>
+                </div>
+
+                <h2 className="font-serif text-3xl sm:text-5xl lg:text-6xl font-normal text-[#161616] tracking-tight leading-[1.12]">
+                  Rooted In Jharkhand. <br />
+                  <span className="italic text-[#C8A27A]">Made For The World.</span>
+                </h2>
+
+                <div className="w-16 h-[1.5px] bg-[#C8A27A]" />
+
+                <p className="text-[17px] text-[#736E66] leading-relaxed font-light">
+                  KOKARÉ is born from the forested valleys and indigenous handloom communities of Jharkhand. We bring together wild tussar cocoons, organic vegetable dyes, and royal embroidery traditions into contemporary haute couture.
                 </p>
-              </div>
-            </div>
 
-            {/* Subtle floating badge */}
-            <div className="hidden sm:flex absolute -top-3 -right-3 p-4 bg-white border border-[#EAE4DC] shadow-xs flex-col items-center justify-center text-center">
-              <Sparkles className="w-4 h-4 text-[#C8A27A] mb-1" />
-              <span className="text-[10px] uppercase tracking-[0.28em] text-[#161616] font-medium">
-                Est. 2026
-              </span>
-              <span className="text-xs text-[#736E66] font-light">The Jharkhand Edit</span>
-            </div>
-          </motion.div>
+                <p className="text-[17px] text-[#736E66] leading-relaxed font-light">
+                  Each garment honours centuries-old generational weaving guilds. We partner directly with master weavers, providing fair trade dignity while translating ancient techniques into wearable poetry for modern Indian connoisseurs.
+                </p>
 
-          {/* Right Column: Narrative (6 cols) */}
-          <motion.div
-            initial={{ opacity: 0, x: 20 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.7 }}
-            className="lg:col-span-6 space-y-6"
-          >
-            <div className="inline-flex items-center gap-2 text-[11px] font-medium uppercase tracking-[0.3em] text-[#C8A27A]">
-              <Feather className="w-3.5 h-3.5 text-[#C8A27A]" />
-              <span>Cultural Heritage & Atelier Story</span>
-            </div>
+                {/* Dual Pillar Highlights */}
+                <div className="grid grid-cols-2 gap-4 pt-2">
+                  <div className="p-4 sm:p-5 bg-white border border-[#EAE4DC] shadow-2xs">
+                    <span className="font-serif text-2xl sm:text-3xl font-normal text-[#161616] block mb-1">
+                      100%
+                    </span>
+                    <span className="text-xs uppercase tracking-wider text-[#C8A27A] font-medium block">
+                      Wild Indigenous Tussar
+                    </span>
+                    <span className="text-xs text-[#736E66] font-light mt-1 block">
+                      Sourced ethically from non-mulberry natural cocoons.
+                    </span>
+                  </div>
 
-            <h2 className="font-serif text-3xl sm:text-5xl lg:text-6xl font-normal text-[#161616] tracking-tight leading-[1.12]">
-              Rooted In Jharkhand. <br />
-              <span className="italic text-[#C8A27A]">Made For The World.</span>
-            </h2>
+                  <div className="p-4 sm:p-5 bg-white border border-[#EAE4DC] shadow-2xs">
+                    <span className="font-serif text-2xl sm:text-3xl font-normal text-[#161616] block mb-1">
+                      450+
+                    </span>
+                    <span className="text-xs uppercase tracking-wider text-[#C8A27A] font-medium block">
+                      Artisans Empowered
+                    </span>
+                    <span className="text-xs text-[#736E66] font-light mt-1 block">
+                      Reviving ancestral pit looms across Jharkhand.
+                    </span>
+                  </div>
+                </div>
 
-            <div className="w-16 h-[1.5px] bg-[#C8A27A]" />
-
-            <p className="text-[17px] text-[#736E66] leading-relaxed font-light">
-              KOKARÉ is born from the forested valleys and indigenous handloom communities of Jharkhand. We bring together wild tussar cocoons, organic vegetable dyes, and royal embroidery traditions into contemporary haute couture.
-            </p>
-
-            <p className="text-[17px] text-[#736E66] leading-relaxed font-light">
-              Each garment honours centuries-old generational weaving guilds. We partner directly with master weavers, providing fair trade dignity while translating ancient techniques into wearable poetry for modern Indian connoisseurs.
-            </p>
-
-            {/* Dual Pillar Highlights */}
-            <div className="grid grid-cols-2 gap-4 pt-2">
-              <div className="p-4 sm:p-5 bg-white border border-[#EAE4DC] shadow-2xs">
-                <span className="font-serif text-2xl sm:text-3xl font-normal text-[#161616] block mb-1">
-                  100%
-                </span>
-                <span className="text-xs uppercase tracking-wider text-[#C8A27A] font-medium block">
-                  Wild Indigenous Tussar
-                </span>
-                <span className="text-xs text-[#736E66] font-light mt-1 block">
-                  Sourced ethically from non-mulberry natural cocoons.
-                </span>
-              </div>
-
-              <div className="p-4 sm:p-5 bg-white border border-[#EAE4DC] shadow-2xs">
-                <span className="font-serif text-2xl sm:text-3xl font-normal text-[#161616] block mb-1">
-                  450+
-                </span>
-                <span className="text-xs uppercase tracking-wider text-[#C8A27A] font-medium block">
-                  Artisans Empowered
-                </span>
-                <span className="text-xs text-[#736E66] font-light mt-1 block">
-                  Reviving ancestral pit looms across Jharkhand.
-                </span>
-              </div>
-            </div>
-
-            <div className="pt-2">
-              <Link
-                to="/about"
-                className="inline-flex items-center justify-center px-8 sm:px-10 py-3.5 sm:py-4 border border-[#161616] text-[#161616] hover:bg-[#161616] hover:text-white font-normal text-xs uppercase tracking-[0.25em] transition-all duration-300 shadow-xs cursor-pointer"
-              >
-                <span>Read The Complete Memoir</span>
-                <ArrowRight className="w-3.5 h-3.5 ml-2.5" />
-              </Link>
-            </div>
-          </motion.div>
+                <div className="pt-2">
+                  <Link
+                    to="/about"
+                    className="inline-flex items-center justify-center px-8 sm:px-10 py-3.5 sm:py-4 border border-[#161616] text-[#161616] hover:bg-[#161616] hover:text-white text-xs font-normal uppercase tracking-[0.25em] transition-all duration-300 cursor-pointer"
+                  >
+                    <span>Read The Complete Atelier Chronicle</span>
+                    <ArrowRight className="w-3.5 h-3.5 ml-2.5" />
+                  </Link>
+                </div>
+              </FadeInUp>
+            </ParallaxContent>
+          </div>
 
         </div>
       </div>

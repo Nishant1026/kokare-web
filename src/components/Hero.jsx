@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef, useCallback } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion, AnimatePresence, useScroll, useTransform } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import { ChevronLeft, ChevronRight, Sparkles } from 'lucide-react';
 import festiveHeroImg from '../assets/festive-hero.jpg';
@@ -109,8 +109,20 @@ export default function Hero() {
     touchStartXRef.current = null;
   };
 
+  const heroRef = useRef(null);
+  const { scrollYProgress } = useScroll({
+    target: heroRef,
+    offset: ['start start', 'end start']
+  });
+
+  // Silky smooth, touch-friendly scroll parallax
+  const backgroundY = useTransform(scrollYProgress, [0, 1], ['0%', '22%']);
+  const textY = useTransform(scrollYProgress, [0, 1], ['0%', '30%']);
+  const textOpacity = useTransform(scrollYProgress, [0, 0.75], [1, 0.15]);
+
   return (
     <section
+      ref={heroRef}
       className="relative w-full max-w-full h-[80vh] sm:h-screen sm:min-h-[640px] max-h-[1080px] overflow-hidden bg-[#161616] text-white select-none"
       onMouseEnter={() => setIsAutoPlaying(false)}
       onMouseLeave={() => setIsAutoPlaying(true)}
@@ -121,22 +133,24 @@ export default function Hero() {
       {/* ============================================================ */}
       {/* 1. FULL-BLEED CINEMATIC SLIDE BACKGROUND                      */}
       {/* ============================================================ */}
-      <AnimatePresence mode="wait">
-        <motion.div
-          key={active.id}
-          initial={{ opacity: 0, scale: 1.05 }}
-          animate={{ opacity: 1, scale: 1 }}
-          exit={{ opacity: 0, scale: 0.98 }}
-          transition={{ duration: 1.0, ease: [0.16, 1, 0.3, 1] }}
-          className="absolute inset-0 w-full h-full pointer-events-none overflow-hidden"
-        >
-          <img
-            src={active.image}
-            alt={active.title}
-            className="w-full h-full object-cover object-center filter brightness-[0.92] contrast-[1.04]"
-          />
-        </motion.div>
-      </AnimatePresence>
+      <motion.div style={{ y: backgroundY }} className="absolute inset-0 w-full h-[126%] -top-[13%] pointer-events-none will-change-transform transform-gpu">
+        <AnimatePresence mode="wait">
+          <motion.div
+            key={active.id}
+            initial={{ opacity: 0, scale: 1.05 }}
+            animate={{ opacity: 1, scale: 1 }}
+            exit={{ opacity: 0, scale: 0.98 }}
+            transition={{ duration: 1.0, ease: [0.16, 1, 0.3, 1] }}
+            className="absolute inset-0 w-full h-full pointer-events-none overflow-hidden"
+          >
+            <img
+              src={active.image}
+              alt={active.title}
+              className="w-full h-full object-cover object-center filter brightness-[0.92] contrast-[1.04]"
+            />
+          </motion.div>
+        </AnimatePresence>
+      </motion.div>
 
       {/* Atmospheric Overlays for Crystal-Clear Text & Royal Burgundy-Onyx Ambiance */}
       <div className="absolute inset-0 bg-gradient-to-r from-black/90 via-[#260e14]/45 to-transparent pointer-events-none z-10" />
@@ -145,7 +159,10 @@ export default function Hero() {
       {/* ============================================================ */}
       {/* 2. LEFT-ALIGNED HERO CONTENT (Aligned to Header Logo Margin)  */}
       {/* ============================================================ */}
-      <div className="relative z-20 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-full flex flex-col justify-center items-start pt-16 sm:pt-32 lg:pt-36 pointer-events-none">
+      <motion.div
+        style={{ y: textY, opacity: textOpacity }}
+        className="relative z-20 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-full flex flex-col justify-center items-start pt-16 sm:pt-32 lg:pt-36 pointer-events-none will-change-transform transform-gpu"
+      >
         <AnimatePresence mode="wait">
           <motion.div
             key={active.id}
@@ -167,7 +184,7 @@ export default function Hero() {
             </h1>
 
             {/* Poetic Tagline */}
-            <p className="font-serif italic text-sm sm:text-xl lg:text-2xl text-white/90 font-light mb-6 sm:mb-9 max-w-xl break-words line-clamp-2 sm:line-clamp-none">
+            <p className="font-serif italic text-[17px] sm:text-xl lg:text-2xl text-white/90 font-light mb-6 sm:mb-9 max-w-xl break-words line-clamp-2 sm:line-clamp-none">
               "{active.tagline}"
             </p>
 
@@ -182,7 +199,7 @@ export default function Hero() {
             </div>
           </motion.div>
         </AnimatePresence>
-      </div>
+      </motion.div>
 
       {/* ============================================================ */}
       {/* 3. CIRCULAR OUTLINE SIDE ARROWS (Exact to Reference)          */}

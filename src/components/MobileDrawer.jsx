@@ -149,6 +149,7 @@ export default function MobileDrawer({ isOpen, onClose }) {
 
               {/* Navigation Links — Strict 17px Editorial Typography */}
               <motion.div
+                data-lenis-prevent
                 variants={containerVariants}
                 initial="hidden"
                 animate="show"

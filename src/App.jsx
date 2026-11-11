@@ -22,17 +22,22 @@ import Checkout from './pages/Checkout';
 import About from './pages/About';
 import Contact from './pages/Contact';
 import OrderTracking from './pages/OrderTracking';
+import SmoothScroll from './components/SmoothScroll';
 
-// Scroll to top helper on route change
+// Scroll to top helper on route change with Lenis compatibility
 function ScrollToTop() {
   const { pathname, search } = useLocation();
 
   useEffect(() => {
-    window.scrollTo({
-      top: 0,
-      left: 0,
-      behavior: 'instant'
-    });
+    if (window.lenis) {
+      window.lenis.scrollTo(0, { immediate: true });
+    } else {
+      window.scrollTo({
+        top: 0,
+        left: 0,
+        behavior: 'instant'
+      });
+    }
   }, [pathname, search]);
 
   return null;
@@ -42,14 +47,15 @@ function MainLayout() {
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
 
   return (
-    <div className="min-h-screen w-full max-w-full overflow-x-hidden flex flex-col bg-[#FAF7F2] text-[#100D0D] selection:bg-[#741F32] selection:text-white font-sans relative">
-      <ScrollToTop />
+    <SmoothScroll>
+      <div className="min-h-screen w-full max-w-full overflow-x-clip flex flex-col bg-[#FAF7F2] text-[#100D0D] selection:bg-[#741F32] selection:text-white font-sans relative">
+        <ScrollToTop />
 
-      {/* 1. Festive Top Announcement Bar */}
-      <AnnouncementBar />
+        {/* 1. Festive Top Announcement Bar */}
+        <AnnouncementBar />
 
-      {/* 2. Premium Sticky Header */}
-      <Header onOpenDrawer={() => setIsDrawerOpen(true)} />
+        {/* 2. Premium Sticky Header */}
+        <Header onOpenDrawer={() => setIsDrawerOpen(true)} />
 
       {/* 3. RIGHT-SIDE SLIDING NAVIGATION DRAWER */}
       <MobileDrawer
@@ -61,7 +67,7 @@ function MainLayout() {
       <CartDrawer />
 
       {/* 5. Main Route View */}
-      <main className="flex-1 w-full max-w-full overflow-x-hidden">
+      <main className="flex-1 w-full max-w-full">
         <Routes>
           {/* 1. Home */}
           <Route path="/" element={<Home />} />
@@ -188,6 +194,7 @@ function MainLayout() {
       {/* 8. Amrapali-Style Floating Actions: Circular Back-to-Top (Black) & Concierge Chat (Red) */}
       <FloatingActions />
     </div>
+    </SmoothScroll>
   );
 }
 

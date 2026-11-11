@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { Flame, Sparkles, ArrowRight } from 'lucide-react';
 import { Link } from 'react-router-dom';
+import { FadeInUp } from './Parallax';
 
 export default function Countdown({
   targetDate = '2026-11-20T23:59:59',
@@ -50,21 +51,23 @@ export default function Countdown({
       <div className="absolute top-1/2 right-1/4 -translate-y-1/2 w-72 h-72 bg-[#B99A62]/15 blur-3xl pointer-events-none rounded-full" />
 
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center">
-        {/* Campaign pill */}
-        <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-[#191113] border border-[#B99A62]/30 mb-4">
-          <Flame className="w-3.5 h-3.5 text-[#B99A62] animate-diya" />
-          <span className="text-[10px] sm:text-xs uppercase tracking-[0.2em] text-[#B99A62] font-semibold">
-            Limited Festive Window
-          </span>
-        </div>
+        <FadeInUp>
+          {/* Campaign pill */}
+          <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-[#191113] border border-[#B99A62]/30 mb-4">
+            <Flame className="w-3.5 h-3.5 text-[#B99A62] animate-diya" />
+            <span className="text-[10px] sm:text-xs uppercase tracking-[0.2em] text-[#B99A62] font-semibold">
+              Limited Festive Window
+            </span>
+          </div>
 
-        {/* Section Heading */}
-        <h2 className="font-serif text-2xl sm:text-4xl md:text-5xl font-normal text-[#F5EBDD] tracking-wide mb-3">
-          {title}
-        </h2>
-        <p className="text-xs sm:text-sm text-[#D8C6AD] tracking-wider uppercase max-w-xl mx-auto mb-10">
-          {subtitle}
-        </p>
+          {/* Section Heading */}
+          <h2 className="font-serif text-2xl sm:text-4xl md:text-5xl font-normal text-[#F5EBDD] tracking-wide mb-3">
+            {title}
+          </h2>
+          <p className="text-[16px] sm:text-[17px] text-[#D8C6AD] tracking-wider uppercase max-w-xl mx-auto mb-10">
+            {subtitle}
+          </p>
+        </FadeInUp>
 
         {/* Gold-accented Countdown Design */}
         <div className="grid grid-cols-4 gap-2 sm:gap-6 max-w-2xl mx-auto mb-10">

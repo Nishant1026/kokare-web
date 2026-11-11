@@ -18,6 +18,7 @@ import { PRODUCTS } from '../data/products';
 import { useCart } from '../context/CartContext';
 import { useWishlist } from '../context/WishlistContext';
 import ProductCard from '../components/ProductCard';
+import { FadeInUp, ParallaxReveal, ParallaxWatermark } from '../components/Parallax';
 
 export default function ProductDetails() {
   const { id } = useParams();
@@ -26,6 +27,13 @@ export default function ProductDetails() {
   const { isInWishlist, toggleWishlist } = useWishlist();
 
   const product = PRODUCTS.find((p) => p.id === id || p.slug === id) || PRODUCTS[0];
+
+  const productDiscount =
+    product.discountPercent ||
+    product.discount ||
+    (product.originalPrice && product.price
+      ? Math.round(((product.originalPrice - product.price) / product.originalPrice) * 100)
+      : 0);
 
   const [activeImage, setActiveImage] = useState(0);
   const [selectedSize, setSelectedSize] = useState(product.sizes[0] || 'Standard');
@@ -103,8 +111,11 @@ export default function ProductDetails() {
   ).slice(0, 4);
 
   return (
-    <div className="bg-[#FAF7F2] min-h-screen py-10 text-[#161616] w-full max-w-full overflow-x-hidden">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div className="relative bg-[#FAF7F2] min-h-screen py-10 text-[#161616] w-full max-w-full overflow-x-clip">
+      {/* Background Watermark Parallax */}
+      <ParallaxWatermark text="KOKARÉ" speed={65} />
+
+      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Breadcrumb */}
         <div className="text-xs uppercase tracking-wider text-[#736E66] mb-8 flex items-center gap-2 font-light">
@@ -208,6 +219,11 @@ export default function ProductDetails() {
                 {product.originalPrice && (
                   <span className="text-lg text-[#736E66] line-through font-light">
                     ₹{product.originalPrice.toLocaleString('en-IN')}
+                  </span>
+                )}
+                {productDiscount > 0 && (
+                  <span className="text-xs uppercase tracking-wider text-[#721C2B] font-medium bg-[#FBF1F2] border border-[#721C2B]/30 px-2 py-0.5 leading-none shrink-0">
+                    Save {productDiscount}%
                   </span>
                 )}
                 <span className="text-[10px] text-[#C8A27A] font-medium bg-[#FAF7F2] border border-[#EAE4DC] px-2.5 py-0.5 tracking-wider uppercase ml-auto">
@@ -419,14 +435,14 @@ export default function ProductDetails() {
             </div>
 
             {/* Atelier Trust Features */}
-            <div className="grid grid-cols-2 gap-3 pt-2 text-xs text-[#736E66] font-light">
-              <div className="flex items-center gap-2 p-2.5 bg-white border border-[#EAE4DC]">
-                <ShieldCheck className="w-4 h-4 text-[#C8A27A]" />
-                <span>100% Certified Silk Mark</span>
+            <div className="grid grid-cols-2 gap-3 pt-2 text-[#736E66] font-light">
+              <div className="flex items-center gap-2.5 p-3 bg-white border border-[#EAE4DC]">
+                <ShieldCheck className="w-4 h-4 text-[#C8A27A] shrink-0" />
+                <span className="text-[13px] sm:text-[14px] text-[#161616]">100% Certified Silk Mark</span>
               </div>
-              <div className="flex items-center gap-2 p-2.5 bg-white border border-[#EAE4DC]">
-                <RotateCcw className="w-4 h-4 text-[#C8A27A]" />
-                <span>7-Day Keepsake Exchange</span>
+              <div className="flex items-center gap-2.5 p-3 bg-white border border-[#EAE4DC]">
+                <RotateCcw className="w-4 h-4 text-[#C8A27A] shrink-0" />
+                <span className="text-[13px] sm:text-[14px] text-[#161616]">7-Day Keepsake Exchange</span>
               </div>
             </div>
 
@@ -434,37 +450,43 @@ export default function ProductDetails() {
 
         </div>
 
-        {/* Detailed Fabric & Craft Specifications */}
-        <div className="mb-20 bg-white border border-[#EAE4DC] p-6 sm:p-10 shadow-2xs">
-          <h2 className="font-serif text-2xl sm:text-3xl text-[#161616] font-normal mb-6 border-b border-[#EAE4DC] pb-4">
+        {/* Detailed Fabric & Craft Specifications with Smooth Reveal */}
+        <FadeInUp className="mb-20 bg-white border border-[#EAE4DC] p-6 sm:p-10 shadow-2xs">
+          <h2 className="font-serif text-2xl sm:text-4xl text-[#161616] font-normal mb-8 border-b border-[#EAE4DC] pb-4">
             Fabric & Textile Craftsmanship
           </h2>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 text-[#736E66]">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 sm:gap-10 text-[#736E66]">
             <div>
-              <h4 className="text-xs uppercase tracking-wider text-[#161616] font-normal mb-2">Weave & Origin</h4>
-              <p className="text-sm font-light leading-relaxed">
+              <h4 className="font-serif text-xl sm:text-2xl font-normal text-[#161616] mb-3">
+                Weave & Origin
+              </h4>
+              <p className="text-[17px] font-light leading-relaxed text-[#736E66]">
                 Hand-woven on traditional pit looms in Jharkhand using 100% pure wild tussar and mulberry silk yarns. The fabric undergoes natural washing to yield an organic, luminous drape.
               </p>
             </div>
             <div>
-              <h4 className="text-xs uppercase tracking-wider text-[#161616] font-normal mb-2">Ornamentation</h4>
-              <p className="text-sm font-light leading-relaxed">
+              <h4 className="font-serif text-xl sm:text-2xl font-normal text-[#161616] mb-3">
+                Ornamentation
+              </h4>
+              <p className="text-[17px] font-light leading-relaxed text-[#736E66]">
                 Intricate zardozi and antique champagne-gold zari borders sculpted with floral bel motifs. Created by hereditary master artisans over 40+ hours of hand embroidery.
               </p>
             </div>
             <div>
-              <h4 className="text-xs uppercase tracking-wider text-[#161616] font-normal mb-2">Atelier Care Instructions</h4>
-              <p className="text-sm font-light leading-relaxed">
+              <h4 className="font-serif text-xl sm:text-2xl font-normal text-[#161616] mb-3">
+                Atelier Care Instructions
+              </h4>
+              <p className="text-[17px] font-light leading-relaxed text-[#736E66]">
                 Dry clean only. Store in the complimentary KOKARÉ breathable cotton keepsake cover. Preserve with dry neem leaves and avoid direct sunlight exposure.
               </p>
             </div>
           </div>
-        </div>
+        </FadeInUp>
 
         {/* Related Silhouettes */}
         {relatedProducts.length > 0 && (
-          <div>
+          <FadeInUp delay={0.15}>
             <div className="text-center max-w-xl mx-auto mb-10">
               <span className="text-[11px] uppercase tracking-[0.28em] text-[#C8A27A] font-medium block mb-1">
                 Complementary Curations
@@ -474,11 +496,17 @@ export default function ProductDetails() {
               </h2>
             </div>
             <div className="grid grid-cols-2 md:grid-cols-4 gap-4 sm:gap-6">
-              {relatedProducts.map((p) => (
-                <ProductCard key={p.id} product={p} />
+              {relatedProducts.map((p, idx) => (
+                <ParallaxReveal
+                  key={p.id}
+                  delay={(idx % 4) * 0.05}
+                  speed={idx % 2 === 0 ? 14 : -14}
+                >
+                  <ProductCard product={p} />
+                </ParallaxReveal>
               ))}
             </div>
-          </div>
+          </FadeInUp>
         )}
 
       </div>

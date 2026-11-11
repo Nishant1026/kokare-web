@@ -59,6 +59,7 @@ export default function SearchModal({ isOpen, onClose }) {
 
           <div className="relative min-h-screen flex items-start justify-center pt-20 px-4 pb-12">
             <motion.div
+              data-lenis-prevent
               initial={{ opacity: 0, y: -15, scale: 0.98 }}
               animate={{ opacity: 1, y: 0, scale: 1 }}
               exit={{ opacity: 0, y: -15, scale: 0.98 }}
@@ -132,10 +133,10 @@ export default function SearchModal({ isOpen, onClose }) {
                             <span className="text-[10px] uppercase tracking-wider text-[#C8A27A] block font-light">
                               {product.category}
                             </span>
-                            <h4 className="font-serif text-base text-[#161616] font-normal">
+                            <h4 className="font-serif text-[17px] sm:text-[18px] text-[#161616] font-normal">
                               {product.name}
                             </h4>
-                            <p className="font-serif text-sm text-[#736E66] font-light">
+                            <p className="font-serif text-[15px] sm:text-[16px] text-[#736E66] font-light">
                               ₹{product.price.toLocaleString('en-IN')}
                             </p>
                           </div>

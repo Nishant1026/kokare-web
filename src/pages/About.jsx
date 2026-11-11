@@ -2,14 +2,18 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { Sparkles, Feather, Compass, Heart, ArrowRight } from 'lucide-react';
 import { Link } from 'react-router-dom';
+import { ParallaxImage, ParallaxWatermark, FadeInUp } from '../components/Parallax';
 
 export default function About() {
   return (
-    <div className="bg-[#FAF7F2] min-h-screen py-16 text-[#161616]">
-      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div className="relative bg-[#FAF7F2] min-h-screen py-16 text-[#161616] overflow-x-clip">
+      {/* Background Watermark Parallax */}
+      <ParallaxWatermark text="CHRONICLE" speed={70} />
+
+      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Editorial Hero Header */}
-        <div className="text-center max-w-3xl mx-auto mb-16">
+        <FadeInUp className="text-center max-w-3xl mx-auto mb-16">
           <div className="inline-flex items-center gap-2 px-4 py-1.5 border border-[#EAE4DC] bg-white mb-4 shadow-2xs">
             <Feather className="w-3.5 h-3.5 text-[#C8A27A]" />
             <span className="text-[11px] font-medium uppercase tracking-[0.3em] text-[#161616]">
@@ -27,36 +31,45 @@ export default function About() {
           <p className="font-serif italic text-xl sm:text-2xl text-[#736E66] font-light leading-relaxed">
             "A luxury Indian fine fashion atelier inspired by wearable art, ancestral wild tussar silks, and the celebratory elegance of Diwali."
           </p>
-        </div>
+        </FadeInUp>
 
-        {/* Campaign Imagery Grid — Architectural Lookbook Silhouettes */}
+        {/* Campaign Imagery Grid — Architectural Lookbook Silhouettes with Differential Parallax */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-20">
-          <div className="aspect-[3/4] overflow-hidden border border-[#EAE4DC] bg-white shadow-2xs">
-            <img
+          <FadeInUp delay={0.05} className="aspect-[3/4] overflow-hidden border border-[#EAE4DC] bg-white shadow-2xs">
+            <ParallaxImage
               src="https://images.unsplash.com/photo-1610030469983-98e550d6193c?auto=format&fit=crop&w=800&q=85"
               alt="Mulberry silk saree"
-              className="w-full h-full object-cover"
+              className="w-full h-full"
+              offset={55}
+              mobileOffset={24}
+              scale={1.22}
             />
-          </div>
-          <div className="aspect-[3/4] overflow-hidden border border-[#C8A27A]/50 bg-white md:-translate-y-6 shadow-lg">
-            <img
+          </FadeInUp>
+          <FadeInUp delay={0.15} className="aspect-[3/4] overflow-hidden border border-[#C8A27A]/50 bg-white md:-translate-y-6 shadow-lg">
+            <ParallaxImage
               src="https://images.unsplash.com/photo-1507679799987-c73779587ccf?auto=format&fit=crop&w=800&q=85"
               alt="Midnight sherwani tailoring"
-              className="w-full h-full object-cover"
+              className="w-full h-full"
+              offset={80}
+              mobileOffset={32}
+              scale={1.24}
             />
-          </div>
-          <div className="aspect-[3/4] overflow-hidden border border-[#EAE4DC] bg-white shadow-2xs">
-            <img
+          </FadeInUp>
+          <FadeInUp delay={0.25} className="aspect-[3/4] overflow-hidden border border-[#EAE4DC] bg-white shadow-2xs">
+            <ParallaxImage
               src="https://images.unsplash.com/photo-1583391733956-3750e0ff4e8b?auto=format&fit=crop&w=800&q=85"
               alt="Festive lehenga embroidery"
-              className="w-full h-full object-cover"
+              className="w-full h-full"
+              offset={55}
+              mobileOffset={24}
+              scale={1.22}
             />
-          </div>
+          </FadeInUp>
         </div>
 
         {/* Narrative Sections */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-12 lg:gap-16 items-center mb-20">
-          <div className="space-y-6">
+          <FadeInUp className="space-y-6">
             <span className="text-[11px] font-medium uppercase tracking-[0.3em] text-[#C8A27A] block">
               The Genesis
             </span>
@@ -70,9 +83,9 @@ export default function About() {
             <p className="text-[17px] text-[#736E66] leading-relaxed font-light">
               KOKARÉ anchors itself in our signature luxury palette: <strong className="text-[#161616] font-medium">Deep Onyx</strong>, <strong className="text-[#C8A27A] font-medium">Champagne Rose Gold</strong>, <strong className="text-[#FAF7F2] font-medium">Cashmere Alabaster</strong>, and <strong className="text-[#FFFFFF] font-medium">Pure Pearl White</strong>.
             </p>
-          </div>
+          </FadeInUp>
 
-          <div className="p-8 bg-white border border-[#EAE4DC] space-y-6 shadow-2xs">
+          <FadeInUp delay={0.15} className="p-8 bg-white border border-[#EAE4DC] space-y-6 shadow-2xs">
             <h3 className="font-serif text-2xl text-[#161616] font-normal border-b border-[#EAE4DC] pb-3">
               Design Pillars of KOKARÉ
             </h3>
@@ -102,11 +115,11 @@ export default function About() {
                 </div>
               </div>
             </div>
-          </div>
+          </FadeInUp>
         </div>
 
         {/* Closing CTA */}
-        <div className="p-8 sm:p-14 bg-[#161616] text-white text-center border border-[#C8A27A]/30">
+        <FadeInUp className="p-8 sm:p-14 bg-[#161616] text-white text-center border border-[#C8A27A]/30">
           <span className="text-[11px] font-medium uppercase tracking-[0.3em] text-[#C8A27A] block mb-2">
             Diwali Festive Collection 2026
           </span>
@@ -123,7 +136,7 @@ export default function About() {
             <span>Explore The Festive Edit</span>
             <ArrowRight className="w-4 h-4 ml-2.5" />
           </Link>
-        </div>
+        </FadeInUp>
 
       </div>
     </div>

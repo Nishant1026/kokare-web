@@ -58,11 +58,12 @@ export default function QuickViewModal({ product, isOpen, onClose }) {
 
           <div className="min-h-screen px-4 flex items-center justify-center py-12">
             <motion.div
+              data-lenis-prevent
               initial={{ opacity: 0, scale: 0.96, y: 15 }}
               animate={{ opacity: 1, scale: 1, y: 0 }}
               exit={{ opacity: 0, scale: 0.96, y: 15 }}
               transition={{ duration: 0.25 }}
-              className="relative w-full max-w-4xl bg-white border border-[#EAE4DC] shadow-2xl overflow-hidden z-10 text-[#161616]"
+              className="relative w-full max-w-4xl bg-white border border-[#EAE4DC] shadow-2xl overflow-y-auto max-h-[92vh] z-10 text-[#161616]"
             >
               {/* Close Button */}
               <button
@@ -114,18 +115,23 @@ export default function QuickViewModal({ product, isOpen, onClose }) {
                     <h3 className="font-serif text-2xl sm:text-3xl font-normal text-[#161616] mb-1 leading-snug">
                       {product.name}
                     </h3>
-                    <p className="font-serif italic text-sm text-[#736E66] font-light mb-3">
+                    <p className="font-serif italic text-[16px] text-[#736E66] font-light mb-3">
                       {product.tagline}
                     </p>
 
-                    {/* Price */}
-                    <div className="flex items-baseline gap-2 mb-4 pb-3 border-b border-[#EAE4DC]">
+                    {/* Price & Offer */}
+                    <div className="flex items-baseline gap-2 mb-4 pb-3 border-b border-[#EAE4DC] flex-wrap">
                       <span className="font-serif text-2xl font-normal text-[#161616]">
                         ₹{product.price.toLocaleString('en-IN')}
                       </span>
                       {product.originalPrice && (
                         <span className="text-sm text-[#736E66] line-through font-light">
                           ₹{product.originalPrice.toLocaleString('en-IN')}
+                        </span>
+                      )}
+                      {(product.discountPercent || product.discount) && (
+                        <span className="text-[10px] uppercase tracking-wider text-[#721C2B] font-medium bg-[#FBF1F2] border border-[#721C2B]/30 px-1.5 py-0.5 leading-none">
+                          Save {product.discountPercent || product.discount}%
                         </span>
                       )}
                     </div>

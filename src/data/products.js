@@ -918,7 +918,7 @@ export const COLLECTIONS = [
     subtitle: 'Modern Silhouettes',
     description: 'Pleated maxi gowns, asymmetric drapes, and organic linen shirts.',
     tagline: 'Designed for the modern celebration.',
-    image: 'https://images.unsplash.com/photo-1566174053879-31528523f8ae?auto=format&fit=crop&w=1000&q=85',
+    image: 'https://images.unsplash.com/photo-1617627143750-d86bc21e42bb?auto=format&fit=crop&w=1000&q=85',
     link: '/shop?collection=contemporary-ethnic',
     accent: 'Fusion Couture'
   },
@@ -928,7 +928,7 @@ export const COLLECTIONS = [
     subtitle: 'Grand Occasions',
     description: 'Heirloom zardozi lehengas and forest charcoal raw silk sherwanis.',
     tagline: 'Unforgettable grace for your grand milestones.',
-    image: 'https://images.unsplash.com/photo-1507679799987-c73779587ccf?auto=format&fit=crop&w=1000&q=85',
+    image: 'https://images.unsplash.com/photo-1617137984095-74e4e5e3613f?auto=format&fit=crop&w=1000&q=85',
     link: '/shop?collection=wedding-stories',
     accent: 'Regal Edit'
   }

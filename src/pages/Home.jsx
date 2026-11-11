@@ -13,7 +13,7 @@ import Newsletter from '../components/Newsletter';
 
 export default function Home() {
   return (
-    <div className="bg-[#FAF7F2] text-[#161616] w-full max-w-full overflow-x-hidden">
+    <div className="bg-[#FAF7F2] text-[#161616] w-full max-w-full overflow-x-clip">
       {/* 1. Hero Section (Zoya Lookbook Composition) */}
       <Hero />
 

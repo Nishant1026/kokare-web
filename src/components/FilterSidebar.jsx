@@ -223,8 +223,8 @@ export default function FilterSidebar({
 
   return (
     <>
-      {/* Desktop Sticky Sidebar */}
-      <aside className="hidden lg:block w-72 shrink-0 bg-white p-6 border border-[#EAE4DC] shadow-2xs self-start sticky top-24">
+      {/* Desktop Sticky Sidebar: Stays firmly pinned on left while right products scroll */}
+      <aside data-lenis-prevent className="hidden lg:block w-72 xl:w-80 shrink-0 bg-white p-6 border border-[#EAE4DC] shadow-2xs self-start sticky top-20 lg:top-24 max-h-[calc(100vh-6.5rem)] overflow-y-auto overscroll-contain luxury-sidebar-scroll z-20">
         {content}
       </aside>
 
@@ -255,7 +255,7 @@ export default function FilterSidebar({
                     <X className="w-5 h-5" />
                   </button>
                 </div>
-                <div className="p-5 flex-1 overflow-y-auto">{content}</div>
+                <div data-lenis-prevent className="p-5 flex-1 overflow-y-auto">{content}</div>
                 <div className="p-4 border-t border-[#EAE4DC] bg-[#FAF7F2]">
                   <button
                     onClick={onClose}

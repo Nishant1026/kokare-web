@@ -65,7 +65,7 @@ export default function Cart() {
   const recommendations = PRODUCTS.filter((p) => !cartIds.includes(p.id)).slice(0, 4);
 
   return (
-    <div className="bg-[#FAF7F2] min-h-screen py-12 text-[#161616] w-full max-w-full overflow-x-hidden">
+    <div className="bg-[#FAF7F2] min-h-screen py-12 text-[#161616] w-full max-w-full overflow-x-clip">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Breadcrumb */}
@@ -191,12 +191,12 @@ export default function Cart() {
                   return (
                     <div
                       key={item.cartItemId || `${itemId}-${itemSize}-${itemColor}-${idx}`}
-                      className="p-4 sm:p-6 bg-white border border-[#EAE4DC] flex flex-col sm:flex-row gap-5 sm:gap-6 shadow-2xs group"
+                      className="p-3.5 sm:p-6 bg-white border border-[#EAE4DC] flex flex-row gap-3.5 sm:gap-6 shadow-2xs group"
                     >
                       {/* Thumbnail */}
                       <Link
                         to={`/product/${itemId}`}
-                        className="w-24 h-32 sm:w-28 sm:h-36 bg-[#FAF7F2] shrink-0 border border-[#EAE4DC] overflow-hidden block"
+                        className="w-20 h-28 sm:w-28 sm:h-36 bg-[#FAF7F2] shrink-0 border border-[#EAE4DC] overflow-hidden block"
                       >
                         <img
                           src={itemImg}
