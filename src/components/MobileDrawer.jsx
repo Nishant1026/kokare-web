@@ -22,7 +22,7 @@ const DRAWER_LINKS = [
   { name: 'Men’s Atelier', path: '/men' },
   { name: 'Heritage Ethnic Wear', path: '/ethnic-wear' },
   { name: 'Western Fusion', path: '/western-wear' },
-  { name: 'Diwali Festive Edit 2026', path: '/festive-collection', featured: true },
+  { name: 'All Festival Edit 2026', path: '/festive-collection', featured: true },
   { name: 'New Arrivals', path: '/new-arrivals' },
   { name: 'Best Sellers', path: '/best-sellers' },
   { name: 'Track Order & Account', path: '/track-order' },
@@ -117,7 +117,7 @@ export default function MobileDrawer({ isOpen, onClose }) {
                   <span className="font-serif text-2xl tracking-[0.24em] font-normal text-[#161616] group-hover:text-[#C8A27A] transition-colors block">
                     KOKARÉ
                   </span>
-                  <span className="text-[10px] uppercase tracking-[0.35em] text-[#C8A27A] font-medium -mt-0.5">
+                  <span className="text-[15px] uppercase tracking-[0.2em] text-[#C8A27A] font-medium -mt-0.5">
                     The Jharkhand Edit
                   </span>
                 </Link>
@@ -137,8 +137,8 @@ export default function MobileDrawer({ isOpen, onClose }) {
                 <div className="flex items-center gap-2.5">
                   <Sparkles className="w-4 h-4 text-[#C8A27A] shrink-0" />
                   <div>
-                    <span className="text-[10px] tracking-[0.28em] uppercase text-[#C8A27A] font-medium block">
-                      Diwali Edition 2026
+                    <span className="text-[15px] tracking-[0.2em] uppercase text-[#C8A27A] font-medium block">
+                      All Festival Edition 2026
                     </span>
                     <p className="font-serif italic text-xs text-[#161616]/90 mt-0.5">
                       "Where artistry meets the soul of Jharkhand."
@@ -172,7 +172,7 @@ export default function MobileDrawer({ isOpen, onClose }) {
                               {link.name}
                             </span>
                           </div>
-                          <span className="text-[10px] tracking-[0.2em] uppercase bg-[#C8A27A] text-white px-2 py-0.5 font-medium shadow-xs">
+                          <span className="text-[15px] tracking-[0.16em] uppercase bg-[#C8A27A] text-white px-2 py-0.5 font-medium shadow-xs">
                             Special
                           </span>
                         </Link>
@@ -229,7 +229,7 @@ export default function MobileDrawer({ isOpen, onClose }) {
                         }`}
                       />
                       {wishlistCount > 0 && (
-                        <span className="absolute -top-2.5 -right-3.5 bg-[#C8A27A] text-white text-[10px] font-semibold rounded-full h-4.5 min-w-[18px] px-1 flex items-center justify-center border border-white shadow-xs">
+                        <span className="absolute -top-2.5 -right-3.5 bg-[#C8A27A] text-white text-[15px] font-semibold rounded-full h-5 min-w-[20px] px-1 flex items-center justify-center border border-white shadow-xs">
                           {wishlistCount}
                         </span>
                       )}
@@ -247,7 +247,7 @@ export default function MobileDrawer({ isOpen, onClose }) {
                     <div className="relative flex items-center justify-center">
                       <ShoppingBag className="w-5 h-5 text-white transition-transform duration-200 group-hover:scale-110" />
                       {totalItems > 0 && (
-                        <span className="absolute -top-2.5 -right-3.5 bg-[#C8A27A] text-white text-[10px] font-semibold rounded-full h-4.5 min-w-[18px] px-1 flex items-center justify-center border border-white shadow-xs">
+                        <span className="absolute -top-2.5 -right-3.5 bg-[#C8A27A] text-white text-[15px] font-semibold rounded-full h-5 min-w-[20px] px-1 flex items-center justify-center border border-white shadow-xs">
                           {totalItems}
                         </span>
                       )}
@@ -275,8 +275,8 @@ export default function MobileDrawer({ isOpen, onClose }) {
 
                 {/* Social Channels */}
                 <div className="flex items-center justify-between pt-1 border-t border-[#EAE4DC]/60 text-[#736E66]">
-                  <span className="text-[10px] uppercase tracking-[0.25em] text-[#C8A27A] font-medium">
-                    Follow Atelier
+                  <span className="text-[15px] uppercase tracking-[0.2em] text-[#C8A27A] font-medium">
+                    Follow Boutique
                   </span>
                   <div className="flex items-center gap-2.5">
                     <a

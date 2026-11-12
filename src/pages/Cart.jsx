@@ -89,7 +89,7 @@ export default function Cart() {
         {/* Page Header */}
         <div className="border-b border-[#EAE4DC] pb-6 mb-10 flex flex-col sm:flex-row justify-between sm:items-end gap-3">
           <div>
-            <div className="inline-flex items-center gap-1.5 text-[11px] font-medium uppercase tracking-[0.3em] text-[#C8A27A] mb-1">
+            <div className="inline-flex items-center gap-1.5 text-[15px] font-medium uppercase tracking-[0.2em] text-[#C8A27A] mb-1">
               <Sparkles className="w-3.5 h-3.5 text-[#C8A27A]" />
               <span>The House of KOKARÉ · Festive Selection</span>
             </div>
@@ -97,7 +97,7 @@ export default function Cart() {
               Shopping Bag
             </h1>
             <p className="text-[17px] text-[#736E66] mt-1 font-light">
-              {totalItems} {totalItems === 1 ? 'handcrafted silhouette' : 'handcrafted silhouettes'} selected for Diwali 2026
+              {totalItems} {totalItems === 1 ? 'handcrafted silhouette' : 'handcrafted silhouettes'} selected for your celebrations
             </p>
           </div>
 
@@ -139,7 +139,7 @@ export default function Cart() {
                 to="/festive-collection"
                 className="px-8 py-3.5 bg-[#161616] text-white hover:bg-[#C8A27A] text-xs font-normal uppercase tracking-[0.25em] transition-all border border-[#161616] hover:border-[#C8A27A]"
               >
-                Diwali Festive Edit
+                All Festival & Wedding Edit
               </Link>
               <Link
                 to="/women"
@@ -176,7 +176,7 @@ export default function Cart() {
                       </span>
                     )}
                   </div>
-                  <span className="text-[11px] font-mono text-[#736E66]">{shippingPercent}%</span>
+                  <span className="text-[15px] font-mono text-[#736E66]">{shippingPercent}%</span>
                 </div>
                 <div className="w-full h-1.5 bg-[#FAF7F2] overflow-hidden">
                   <div
@@ -221,7 +221,7 @@ export default function Cart() {
                         <div>
                           <div className="flex justify-between items-start gap-3">
                             <div>
-                              <span className="text-[10px] uppercase tracking-[0.25em] text-[#C8A27A] font-medium block mb-1">
+                              <span className="text-[15px] uppercase tracking-[0.2em] text-[#C8A27A] font-medium block mb-1">
                                 {itemCategory} · {itemGender.toUpperCase()}
                               </span>
                               <Link to={`/product/${itemId}`}>
@@ -349,7 +349,7 @@ export default function Cart() {
                       ₹{total.toLocaleString('en-IN')}
                     </span>
                   </div>
-                  <p className="text-[11px] text-[#736E66] text-right font-light">
+                  <p className="text-[15px] text-[#736E66] text-right font-light">
                     Inclusive of all central & state Goods & Services Tax (GST)
                   </p>
                 </div>
@@ -363,14 +363,14 @@ export default function Cart() {
                   {/* One-click quick apply pills */}
                   <div className="flex gap-2">
                     <button
-                      onClick={() => handleApplyCoupon('DIWALI20')}
+                      onClick={() => handleApplyCoupon('FESTIVE20')}
                       className={`px-3 py-1.5 text-xs font-mono border transition-all cursor-pointer ${
-                        appliedCoupon?.code === 'DIWALI20'
+                        appliedCoupon?.code === 'FESTIVE20'
                           ? 'border-[#C8A27A] bg-[#C8A27A] text-white'
                           : 'border-[#EAE4DC] bg-[#FAF7F2] hover:border-[#C8A27A] text-[#161616]'
                       }`}
                     >
-                      DIWALI20 (20% OFF)
+                      FESTIVE20 (20% OFF)
                     </button>
                     <button
                       onClick={() => handleApplyCoupon('KOKARE10')}
@@ -394,7 +394,7 @@ export default function Cart() {
                       </div>
                       <button
                         onClick={removeCoupon}
-                        className="text-[11px] text-[#736E66] hover:text-red-500 uppercase tracking-wider underline cursor-pointer"
+                        className="text-[15px] text-[#736E66] hover:text-red-500 uppercase tracking-wider underline cursor-pointer"
                       >
                         Remove
                       </button>
@@ -481,7 +481,7 @@ export default function Cart() {
         {recommendations.length > 0 && (
           <div className="border-t border-[#EAE4DC] pt-16">
             <div className="text-center max-w-xl mx-auto mb-12">
-              <span className="text-[11px] uppercase tracking-[0.3em] text-[#C8A27A] font-medium block mb-1">
+              <span className="text-[15px] uppercase tracking-[0.2em] text-[#C8A27A] font-medium block mb-1">
                 Curated Pairings
               </span>
               <h2 className="font-serif text-3xl sm:text-4xl font-normal text-[#161616]">

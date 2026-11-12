@@ -8,7 +8,7 @@ import { FadeInUp, ParallaxReveal, ParallaxWatermark } from './Parallax';
 
 export default function ProductGrid({
   title = 'The Pieces Everyone Loves',
-  subtitle = 'Diwali Festive Collection 2026',
+  subtitle = 'All Festival & Wedding Collection 2026',
   limit,
   showTabs = true,
   filterGender,
@@ -76,7 +76,7 @@ export default function ProductGrid({
                 { id: 'all', label: 'All Curations' },
                 { id: 'women', label: 'Women’s Edit' },
                 { id: 'men', label: 'Men’s Atelier' },
-                { id: 'festive', label: 'Diwali Festive' },
+                { id: 'festive', label: 'All Festival Edit' },
                 { id: 'bestseller', label: 'Patron Favorites' }
               ].map((tab) => {
                 const isActive = activeTab === tab.id;
@@ -105,7 +105,7 @@ export default function ProductGrid({
         )}
 
         {/* Product Cards Grid with Parallel Parallax */}
-        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 sm:gap-6 lg:gap-8">
+        <div className="grid grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-4 sm:gap-6 lg:gap-6 xl:gap-8">
           {filteredProducts.map((product, idx) => (
             <ParallaxReveal
               key={product.id}
@@ -117,15 +117,15 @@ export default function ProductGrid({
           ))}
         </div>
 
-        {/* View Complete Collection CTA Button (Clean Rectangular Outline Button) */}
+        {/* View Complete Collection CTA Button — Luxury High-Contrast Button */}
         {limit && (
-          <FadeInUp delay={0.2} className="mt-14 sm:mt-16 text-center">
+          <FadeInUp delay={0.2} className="mt-12 sm:mt-16 text-center px-4 sm:px-0">
             <Link
               to="/shop"
-              className="inline-flex items-center justify-center px-8 sm:px-12 py-3.5 sm:py-4 border border-[#161616] text-[#161616] hover:bg-[#161616] hover:text-white text-[15px] sm:text-[16px] font-normal uppercase tracking-[0.22em] transition-all duration-300 shadow-xs cursor-pointer"
+              className="w-full sm:w-auto inline-flex items-center justify-center px-8 sm:px-12 py-3.5 sm:py-4 bg-[#161616] text-[#FAF7F2] hover:bg-[#721C2B] hover:text-white border border-[#C8A27A]/50 text-xs sm:text-sm font-medium uppercase tracking-[0.24em] transition-all duration-300 shadow-md hover:shadow-lg active:scale-[0.98] group cursor-pointer"
             >
-              <span className="text-[15px] sm:text-[16px]">Explore All Silhouettes</span>
-              <ArrowRight className="w-4 h-4 ml-2.5" />
+              <span>Explore All Silhouettes</span>
+              <ArrowRight className="w-4 h-4 ml-2.5 text-[#C8A27A] transition-transform duration-300 group-hover:translate-x-1" />
             </Link>
           </FadeInUp>
         )}

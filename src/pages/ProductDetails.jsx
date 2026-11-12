@@ -184,12 +184,12 @@ export default function ProductDetails() {
               {/* Badges */}
               <div className="absolute top-4 left-4 flex flex-col gap-1.5 pointer-events-none">
                 {product.isBestseller && (
-                  <span className="bg-[#161616] text-white text-[10px] font-normal uppercase tracking-[0.25em] px-3 py-1 border border-[#C8A27A]/40 shadow-xs">
+                  <span className="bg-[#161616] text-white text-[15px] font-normal uppercase tracking-[0.2em] px-3 py-1 border border-[#C8A27A]/40 shadow-xs">
                     Bestseller
                   </span>
                 )}
                 {product.isNew && (
-                  <span className="bg-white text-[#161616] border border-[#EAE4DC] text-[10px] font-normal uppercase tracking-[0.25em] px-3 py-1 shadow-xs">
+                  <span className="bg-white text-[#161616] border border-[#EAE4DC] text-[15px] font-normal uppercase tracking-[0.2em] px-3 py-1 shadow-xs">
                     New Arrival
                   </span>
                 )}
@@ -198,7 +198,7 @@ export default function ProductDetails() {
               {/* Zoom Instruction */}
               <div className="absolute bottom-4 right-4 bg-white/90 text-[#161616] p-2 text-xs flex items-center gap-1.5 opacity-80 group-hover:opacity-100 transition-opacity border border-[#EAE4DC] pointer-events-none">
                 <ZoomIn className="w-3.5 h-3.5" />
-                <span className="text-[11px] uppercase tracking-wider hidden sm:inline">Hover to inspect silk weave</span>
+                <span className="text-[15px] uppercase tracking-wider hidden sm:inline">Hover to inspect silk weave</span>
               </div>
             </div>
 
@@ -211,7 +211,7 @@ export default function ProductDetails() {
             <div>
               <div className="flex items-center gap-2 text-xs uppercase tracking-[0.28em] text-[#C8A27A] font-medium mb-1.5">
                 <Sparkles className="w-3.5 h-3.5 text-[#C8A27A]" />
-                <span>The Jharkhand Edit · Diwali 2026</span>
+                <span>The Jharkhand Edit · All Festival Fashion</span>
               </div>
 
               <h1 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-normal text-[#161616] tracking-tight leading-tight mb-2">
@@ -258,7 +258,7 @@ export default function ProductDetails() {
                     Save {productDiscount}%
                   </span>
                 )}
-                <span className="text-[10px] text-[#C8A27A] font-medium bg-[#FAF7F2] border border-[#EAE4DC] px-2.5 py-0.5 tracking-wider uppercase ml-auto">
+                <span className="text-[15px] text-[#C8A27A] font-medium bg-[#FAF7F2] border border-[#EAE4DC] px-2.5 py-0.5 tracking-wider uppercase ml-auto">
                   Inclusive of all taxes
                 </span>
               </div>
@@ -372,7 +372,7 @@ export default function ProductDetails() {
                       window.scrollTo(0, 0);
                       navigate('/cart');
                     }}
-                    className="text-[11px] font-medium text-[#C8A27A] hover:text-[#161616] uppercase tracking-wider underline cursor-pointer"
+                    className="text-[15px] font-medium text-[#C8A27A] hover:text-[#161616] uppercase tracking-wider underline cursor-pointer"
                   >
                     View Bag →
                   </button>
@@ -415,7 +415,7 @@ export default function ProductDetails() {
                     className="px-4 py-4 border border-[#EAE4DC] hover:border-[#C8A27A] bg-white hover:bg-[#FAF7F2] text-[#161616] text-xs font-normal transition-colors cursor-pointer flex items-center gap-1 shrink-0"
                   >
                     <span className="text-[#C8A27A] font-bold text-sm">+</span>
-                    <span className="hidden sm:inline uppercase text-[10px] tracking-wider">1 More</span>
+                    <span className="hidden sm:inline uppercase text-[15px] tracking-wider">1 More</span>
                   </button>
                 )}
 
@@ -530,7 +530,7 @@ export default function ProductDetails() {
         {relatedProducts.length > 0 && (
           <FadeInUp delay={0.15}>
             <div className="text-center max-w-xl mx-auto mb-10">
-              <span className="text-[11px] uppercase tracking-[0.28em] text-[#C8A27A] font-medium block mb-1">
+              <span className="text-[15px] uppercase tracking-[0.2em] text-[#C8A27A] font-medium block mb-1">
                 Complementary Curations
               </span>
               <h2 className="font-serif text-2xl sm:text-4xl font-normal text-[#161616]">
@@ -573,7 +573,7 @@ export default function ProductDetails() {
               >
                 <div className="flex items-center justify-between border-b border-[#EAE4DC] pb-4 mb-6">
                   <div>
-                    <span className="text-[10px] uppercase tracking-[0.24em] text-[#C8A27A] font-medium block">
+                    <span className="text-[15px] uppercase tracking-[0.2em] text-[#C8A27A] font-medium block">
                       KOKARÉ Atelier Measurements
                     </span>
                     <h3 className="font-serif text-2xl font-normal text-[#161616]">

@@ -19,7 +19,7 @@ import { useWishlist } from '../context/WishlistContext';
 import SearchModal from './SearchModal';
 
 const COLLECTIONS_DROPDOWN = [
-  { name: 'The Festive Edit', path: '/festive-collection', desc: 'Diwali 2026: Royal brocades & antique zardozi rose-gold' },
+  { name: 'The Festive Edit', path: '/festive-collection', desc: 'All Festival Offers: Royal brocades, designer kurtas & silks' },
   { name: 'Wild Tussar Handlooms', path: '/shop?collection=heritage-classics', desc: 'Indigenous wild tussar silks & organic tribal looms' },
   { name: 'Ceremonial Menswear', path: '/shop?gender=men', desc: 'Midnight bandhgalas & tailored raw silk kurtas' },
   { name: 'Wedding Stories', path: '/shop?collection=wedding-stories', desc: 'Heirloom bridal lehengas & architectural drapes' }
@@ -83,7 +83,7 @@ export default function Header({ onOpenDrawer }) {
 
   const handleCopyCode = (e) => {
     e.preventDefault();
-    navigator.clipboard.writeText('DIWALI20');
+    navigator.clipboard.writeText('FESTIVE20');
     setCopiedCoupon(true);
     setTimeout(() => setCopiedCoupon(false), 2000);
   };
@@ -96,7 +96,7 @@ export default function Header({ onOpenDrawer }) {
   const renderMicroBarContent = (transparent) => (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-2 flex items-center justify-between">
       {/* Left: Store Location & Email */}
-      <div className="flex items-center space-x-3 sm:space-x-6 text-[11px] sm:text-xs tracking-wider">
+      <div className="flex items-center space-x-3 sm:space-x-6 text-[15px] tracking-wider">
         <Link
           to="/contact"
           className={`flex items-center gap-1.5 transition-colors cursor-pointer ${
@@ -118,16 +118,16 @@ export default function Header({ onOpenDrawer }) {
         </a>
       </div>
 
-      {/* Center: Diwali Festive Announcement */}
-      <div className="hidden lg:flex items-center gap-2 text-[11px] uppercase tracking-[0.22em] font-medium">
-        <Sparkles className="w-3 h-3 text-[#C8A27A]" />
-        <span>Diwali Festive Special — Extra 20% Off With Code</span>
+      {/* Center: All Festival Offers Announcement */}
+      <div className="hidden lg:flex items-center gap-2 text-[15px] uppercase tracking-[0.16em] font-medium">
+        <Sparkles className="w-3.5 h-3.5 text-[#C8A27A]" />
+        <span>All Festival Offers — Extra 20% Off With Code</span>
         <button
           onClick={handleCopyCode}
           className="font-mono text-[#C8A27A] font-semibold underline underline-offset-2 hover:opacity-80 cursor-pointer ml-0.5 inline-flex items-center gap-1"
           title="Click to copy coupon code"
         >
-          DIWALI20
+          FESTIVE20
           {copiedCoupon && <Check className="w-3 h-3 text-green-400" />}
         </button>
       </div>
@@ -136,7 +136,7 @@ export default function Header({ onOpenDrawer }) {
       <div className="relative" ref={currencyDropdownRef}>
         <button
           onClick={() => setIsCurrencyOpen(!isCurrencyOpen)}
-          className={`flex items-center gap-1 text-[11px] sm:text-xs uppercase tracking-wider py-0.5 px-2 rounded-xs border transition-colors cursor-pointer ${
+          className={`flex items-center gap-1 text-[15px] uppercase tracking-wider py-0.5 px-2 rounded-xs border transition-colors cursor-pointer ${
             transparent
               ? 'border-white/30 hover:border-white text-white'
               : 'border-[#EAE4DC] hover:border-[#161616] text-[#161616]'
@@ -221,12 +221,13 @@ export default function Header({ onOpenDrawer }) {
           <div className="flex items-center shrink-0">
             <Link to="/" className="group flex flex-col">
               <span
-                className={`font-serif text-xl sm:text-2xl lg:text-[27px] font-normal tracking-[0.2em] sm:tracking-[0.26em] transition-colors ${isTransparent ? 'text-white group-hover:text-[#C8A27A]' : 'text-[#161616] group-hover:text-[#C8A27A]'
-                  }`}
+                className={`font-serif text-xl sm:text-2xl lg:text-[27px] font-normal tracking-[0.18em] sm:tracking-[0.26em] transition-colors ${
+                  isTransparent ? 'text-white group-hover:text-[#C8A27A]' : 'text-[#161616] group-hover:text-[#C8A27A]'
+                }`}
               >
                 KOKARÉ
               </span>
-              <span className="text-[8px] sm:text-[9px] tracking-[0.22em] sm:tracking-[0.32em] uppercase text-[#C8A27A] font-medium -mt-0.5">
+              <span className="text-[11px] sm:text-[14px] lg:text-[15px] tracking-[0.14em] sm:tracking-[0.2em] uppercase text-[#C8A27A] font-medium -mt-0.5 whitespace-nowrap">
                 The Jharkhand Edit
               </span>
             </Link>
@@ -234,8 +235,9 @@ export default function Header({ onOpenDrawer }) {
 
           {/* Desktop Center Navigation Links — Balanced separation from Logo */}
           <nav
-            className={`hidden lg:flex items-center justify-center space-x-5 xl:space-x-7 text-[12px] xl:text-[13px] tracking-[0.16em] xl:tracking-[0.2em] uppercase font-normal transition-colors ml-8 lg:ml-10 xl:ml-14 ${isTransparent ? 'text-white' : 'text-[#161616]'
-              }`}
+            className={`hidden lg:flex items-center justify-center space-x-3 xl:space-x-6 text-[11.5px] xl:text-[13px] tracking-[0.13em] xl:tracking-[0.2em] uppercase font-normal transition-colors ml-4 lg:ml-6 xl:ml-12 ${
+              isTransparent ? 'text-white' : 'text-[#161616]'
+            }`}
           >
             <Link
               to="/"
@@ -304,7 +306,7 @@ export default function Header({ onOpenDrawer }) {
               {isCollectionsOpen && (
                 <div className="absolute top-full left-0 w-84 bg-white border border-[#EAE4DC] shadow-2xl py-3 mt-1 animate-fadeIn z-50 text-[#161616]">
                   <div className="px-5 py-2 border-b border-[#EAE4DC]">
-                    <span className="text-[10px] tracking-[0.28em] uppercase text-[#C8A27A] font-medium block">
+                    <span className="text-[15px] tracking-[0.2em] uppercase text-[#C8A27A] font-medium block">
                       Curated Editions
                     </span>
                   </div>
@@ -327,7 +329,7 @@ export default function Header({ onOpenDrawer }) {
                     <Link
                       to="/shop"
                       onClick={() => setIsCollectionsOpen(false)}
-                      className="flex items-center justify-between px-2 text-[11px] tracking-[0.2em] uppercase text-[#C8A27A] font-medium hover:text-[#161616]"
+                      className="flex items-center justify-between px-2 text-[15px] tracking-[0.16em] uppercase text-[#C8A27A] font-medium hover:text-[#161616]"
                     >
                       <span>Explore All Silhouettes</span>
                       <ArrowRight className="w-3.5 h-3.5" />
@@ -411,7 +413,7 @@ export default function Header({ onOpenDrawer }) {
             >
               <Heart className={`w-4.5 h-4.5 sm:w-5 sm:h-5 stroke-[1.5] ${wishlistCount > 0 ? 'fill-[#C8A27A] text-[#C8A27A]' : ''}`} />
               {wishlistCount > 0 && (
-                <span className="absolute top-0.5 right-0.5 bg-[#C8A27A] text-white text-[9px] sm:text-[10px] font-semibold rounded-full h-4 sm:h-4.5 min-w-[16px] sm:min-w-[18px] px-1 flex items-center justify-center border border-white shadow-xs">
+                <span className="absolute top-0 right-0 bg-[#C8A27A] text-white text-[11px] sm:text-xs font-semibold rounded-full h-4.5 min-w-[18px] sm:h-5 sm:min-w-[20px] px-1 flex items-center justify-center border border-white shadow-xs">
                   {wishlistCount}
                 </span>
               )}
@@ -437,7 +439,7 @@ export default function Header({ onOpenDrawer }) {
                   />
                   {totalItems > 0 && (
                     <span
-                      className={`absolute -top-1 -right-1.5 bg-[#C8A27A] text-white text-[9px] sm:text-[10px] font-semibold rounded-full h-4 sm:h-4.5 min-w-[16px] sm:min-w-[18px] px-1 flex items-center justify-center border border-white shadow-xs transition-transform ${cartBump ? 'scale-125 ring-2 ring-[#C8A27A]/60 ring-offset-1' : ''
+                      className={`absolute -top-1 -right-1 bg-[#C8A27A] text-white text-[11px] sm:text-xs font-semibold rounded-full h-4.5 min-w-[18px] sm:h-5 sm:min-w-[20px] px-1 flex items-center justify-center border border-white shadow-xs transition-transform ${cartBump ? 'scale-125 ring-2 ring-[#C8A27A]/60 ring-offset-1' : ''
                         }`}
                     >
                       {totalItems}
@@ -453,11 +455,11 @@ export default function Header({ onOpenDrawer }) {
                     <div className="text-center py-4">
                       <ShoppingBag className="w-8 h-8 text-[#C8A27A]/60 mx-auto mb-2" />
                       <p className="text-xs text-[#161616] font-serif">Your Bag is Empty</p>
-                      <p className="text-[11px] text-[#736E66] mt-0.5">Explore our Diwali 2026 festive edit.</p>
+                      <p className="text-[15px] text-[#736E66] mt-1 font-normal">Explore our latest festive & wedding collections.</p>
                       <Link
                         to="/shop"
                         onClick={() => setIsBagHovered(false)}
-                        className="inline-block mt-3 px-4 py-1.5 bg-[#161616] text-white text-[10px] uppercase tracking-wider hover:bg-[#C8A27A] transition-colors"
+                        className="inline-block mt-3 px-4 py-2 bg-[#161616] text-white text-[15px] uppercase tracking-wider hover:bg-[#C8A27A] transition-colors"
                       >
                         Explore Silhouettes
                       </Link>
@@ -465,10 +467,10 @@ export default function Header({ onOpenDrawer }) {
                   ) : (
                     <div>
                       <div className="flex items-center justify-between pb-2 border-b border-[#EAE4DC] mb-3">
-                        <span className="text-[10px] uppercase tracking-[0.25em] text-[#C8A27A] font-medium">
+                        <span className="text-[15px] uppercase tracking-[0.16em] text-[#C8A27A] font-medium">
                           Shopping Bag ({totalItems})
                         </span>
-                        <span className="text-xs font-serif font-normal text-[#161616]">
+                        <span className="text-sm font-serif font-normal text-[#161616]">
                           ₹{subtotal.toLocaleString('en-IN')}
                         </span>
                       </div>
@@ -493,7 +495,7 @@ export default function Header({ onOpenDrawer }) {
                                 <p className="text-xs font-serif text-[#161616] truncate font-normal">
                                   {itemName}
                                 </p>
-                                <p className="text-[10px] text-[#736E66]">
+                                <p className="text-[15px] text-[#736E66]">
                                   Qty: {itemQty} · {item.selectedSize || item.size || 'Standard'}
                                 </p>
                                 <p className="text-xs font-serif text-[#161616] mt-0.5">
@@ -506,7 +508,7 @@ export default function Header({ onOpenDrawer }) {
                       </div>
 
                       {cart.length > 3 && (
-                        <p className="text-[10px] text-[#736E66] text-center pt-2 italic">
+                        <p className="text-[15px] text-[#736E66] text-center pt-2 italic">
                           +{cart.length - 3} more silhouettes in bag
                         </p>
                       )}
@@ -516,7 +518,7 @@ export default function Header({ onOpenDrawer }) {
                         <Link
                           to="/cart"
                           onClick={() => setIsBagHovered(false)}
-                          className="py-2 text-center bg-[#FAF7F2] hover:bg-[#EAE4DC] text-[#161616] text-[10px] uppercase tracking-wider font-normal border border-[#EAE4DC] transition-colors"
+                          className="py-2 text-center bg-[#FAF7F2] hover:bg-[#EAE4DC] text-[#161616] text-[15px] uppercase tracking-wider font-normal border border-[#EAE4DC] transition-colors"
                         >
                           View Bag
                         </Link>
@@ -525,7 +527,7 @@ export default function Header({ onOpenDrawer }) {
                             setIsBagHovered(false);
                             setIsCartOpen(true);
                           }}
-                          className="py-2 text-center bg-[#161616] hover:bg-[#C8A27A] text-white text-[10px] uppercase tracking-wider font-normal transition-colors cursor-pointer"
+                          className="py-2 text-center bg-[#161616] hover:bg-[#C8A27A] text-white text-[15px] uppercase tracking-wider font-normal transition-colors cursor-pointer"
                         >
                           Slide Bag →
                         </button>

@@ -6,8 +6,8 @@ import { FadeInUp } from './Parallax';
 
 export default function Countdown({
   targetDate = '2026-11-20T23:59:59',
-  title = 'THE FESTIVAL OF LIGHT IS HERE',
-  subtitle = 'Diwali Festive Edition 2026 — Limited Festive Releases'
+  title = 'ALL FESTIVAL SPECIAL OFFERS',
+  subtitle = 'Exclusive Festive Releases — Limited Time Special Offers'
 }) {
   const calculateTimeLeft = () => {
     let difference = +new Date(targetDate) - +new Date();
@@ -55,7 +55,7 @@ export default function Countdown({
           {/* Campaign pill */}
           <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-[#191113] border border-[#B99A62]/30 mb-4">
             <Flame className="w-3.5 h-3.5 text-[#B99A62] animate-diya" />
-            <span className="text-[10px] sm:text-xs uppercase tracking-[0.2em] text-[#B99A62] font-semibold">
+            <span className="text-[15px] uppercase tracking-[0.16em] text-[#B99A62] font-semibold">
               Limited Festive Window
             </span>
           </div>
@@ -86,7 +86,7 @@ export default function Countdown({
               <div className="font-serif text-2xl sm:text-4xl md:text-5xl font-light text-[#F5EBDD] tracking-normal mb-1">
                 {formatNumber(unit.value)}
               </div>
-              <div className="text-[9px] sm:text-xs uppercase tracking-[0.2em] text-[#B99A62] font-medium">
+              <div className="text-[15px] uppercase tracking-[0.16em] text-[#B99A62] font-medium">
                 {unit.label}
               </div>
             </motion.div>
@@ -96,13 +96,13 @@ export default function Countdown({
         {/* Claim Offer CTA */}
         <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
           <span className="text-xs sm:text-sm text-[#F5EBDD]/90">
-            Use Code <strong className="text-[#B99A62] bg-[#35151E] px-2 py-0.5 rounded border border-[#B99A62]/30 ml-1">DIWALI20</strong> for Extra 20% Off
+            Use Code <strong className="text-[#B99A62] bg-[#35151E] px-2 py-0.5 rounded border border-[#B99A62]/30 ml-1">FESTIVE20</strong> for Extra 20% Off
           </span>
           <Link
             to="/festive-collection"
             className="inline-flex items-center gap-2 text-xs uppercase tracking-widest font-semibold text-[#B99A62] hover:text-[#F5EBDD] underline underline-offset-8 transition-colors"
           >
-            <span>Explore Festive Edit</span>
+            <span>Explore Festival Offers</span>
             <ArrowRight className="w-3.5 h-3.5" />
           </Link>
         </div>

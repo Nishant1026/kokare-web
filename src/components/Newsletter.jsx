@@ -70,7 +70,7 @@ export default function Newsletter() {
                     className="w-full px-4 py-3.5 bg-[#FAF7F2] border border-[#EAE4DC] text-sm text-[#161616] placeholder-[#736E66]/60 focus:outline-none focus:border-[#C8A27A] transition-colors font-light"
                   />
                   {error && (
-                    <span className="text-[11px] text-red-500 absolute -bottom-5 left-0">
+                    <span className="text-[15px] text-red-500 absolute -bottom-6 left-0">
                       {error}
                     </span>
                   )}

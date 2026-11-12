@@ -194,7 +194,7 @@ function MainLayout() {
               <Shop
                 isNewArrivals={true}
                 pageTitle="New Festive Arrivals"
-                pageSubtitle="Latest Silhouettes for the Diwali 2026 Season"
+                pageSubtitle="Latest Styles for All Festival & Wedding Celebrations"
               />
             }
           />

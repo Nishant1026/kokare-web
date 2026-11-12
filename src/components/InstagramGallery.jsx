@@ -15,7 +15,7 @@ export default function InstagramGallery() {
         
         {/* Header */}
         <FadeInUp className="text-center max-w-xl mx-auto mb-12">
-          <div className="inline-flex items-center gap-2 text-[11px] font-medium uppercase tracking-[0.3em] text-[#C8A27A] mb-2">
+          <div className="inline-flex items-center gap-2 text-[15px] font-medium uppercase tracking-[0.2em] text-[#C8A27A] mb-2">
             <InstagramIcon className="w-3.5 h-3.5" />
             <span>@kokare.official</span>
           </div>

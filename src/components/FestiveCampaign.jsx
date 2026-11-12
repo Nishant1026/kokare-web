@@ -21,7 +21,7 @@ export default function FestiveCampaign() {
       <div className="fixed inset-0 w-full h-full pointer-events-none z-0">
         <img
           src="/images/festive-campaign-bg.jpg"
-          alt="KOKARÉ Haute Couture Diwali Festive Gala Royal Heritage"
+          alt="KOKARÉ All Festival Royal Heritage Fashion"
           className="w-full h-full object-cover object-center filter brightness-[0.92] contrast-[1.06]"
         />
 
@@ -72,7 +72,7 @@ export default function FestiveCampaign() {
       )}
 
       {/* Subtle Background Watermark Parallax */}
-      <ParallaxWatermark text="DIWALI" speed={75} className="!text-white/[0.035] z-[2]" />
+      <ParallaxWatermark text="FESTIVE" speed={75} className="!text-white/[0.035] z-[2]" />
 
       {/* ============================================================ */}
       {/* 2. FOREGROUND CONTENT THAT SCROLLS UP OVER FIXED BACKGROUND  */}
@@ -88,15 +88,15 @@ export default function FestiveCampaign() {
             <ParallaxContent speed={20}>
               <FadeInUp className="space-y-6">
                 {/* Festive Tag with Golden Glow */}
-                <div className="inline-flex items-center gap-2.5 text-[11px] font-medium uppercase tracking-[0.32em] text-[#E8D3BD] bg-black/45 border border-[#C8A27A]/60 px-4 py-1.5 rounded-full shadow-[0_0_20px_rgba(200,162,122,0.4)] backdrop-blur-md">
-                  <Sparkles className="w-3.5 h-3.5 text-[#E8D3BD] animate-pulse drop-shadow-[0_0_8px_rgba(216,178,138,0.95)]" />
-                  <span className="drop-shadow-[0_1px_2px_rgba(0,0,0,0.8)]">Diwali Festive Gala 2026</span>
+                <div className="inline-flex items-center gap-2 text-xs sm:text-[15px] font-medium uppercase tracking-[0.15em] sm:tracking-[0.2em] text-[#E8D3BD] bg-black/45 border border-[#C8A27A]/60 px-3.5 sm:px-4 py-1.5 rounded-full shadow-[0_0_20px_rgba(200,162,122,0.4)] backdrop-blur-md max-w-full">
+                  <Sparkles className="w-3.5 h-3.5 text-[#E8D3BD] animate-pulse drop-shadow-[0_0_8px_rgba(216,178,138,0.95)] shrink-0" />
+                  <span className="drop-shadow-[0_1px_2px_rgba(0,0,0,0.8)]">All Festival Gala 2026</span>
                 </div>
 
                 {/* Primary Headline with Rich Depth and Glowing Subtitle */}
-                <h2 className="font-serif text-3xl sm:text-5xl md:text-6xl font-normal tracking-tight leading-[1.08] text-white drop-shadow-[0_3px_14px_rgba(0,0,0,0.95)]">
+                <h2 className="font-serif text-3xl sm:text-5xl md:text-6xl font-normal tracking-tight leading-[1.12] text-white drop-shadow-[0_3px_14px_rgba(0,0,0,0.95)]">
                   Celebrate <br />
-                  <span className="italic text-[#E8D3BD] drop-shadow-[0_0_25px_rgba(200,162,122,0.65)]">
+                  <span className="block font-serif italic text-[#E8D3BD] text-2xl sm:text-4xl md:text-5xl drop-shadow-[0_0_25px_rgba(200,162,122,0.65)] mt-1.5 sm:mt-2">
                     In Timeless Grace
                   </span>
                 </h2>
@@ -117,7 +117,7 @@ export default function FestiveCampaign() {
                 <div className="pt-4">
                   <Link
                     to="/festive-collection"
-                    className="inline-flex items-center justify-center px-8 sm:px-10 py-3.5 sm:py-4 border border-[#C8A27A]/80 bg-black/45 backdrop-blur-sm text-white hover:bg-[#721C2B] hover:border-[#E8D3BD] hover:text-white font-normal text-xs uppercase tracking-[0.28em] transition-all duration-300 shadow-[0_0_22px_rgba(200,162,122,0.35)] hover:shadow-[0_0_35px_rgba(200,162,122,0.7)] cursor-pointer group/btn"
+                    className="w-full sm:w-auto inline-flex items-center justify-center px-8 sm:px-10 py-3.5 sm:py-4 border border-[#C8A27A]/80 bg-black/45 backdrop-blur-sm text-white hover:bg-[#721C2B] hover:border-[#E8D3BD] hover:text-white font-normal text-xs uppercase tracking-[0.22em] sm:tracking-[0.28em] transition-all duration-300 shadow-[0_0_22px_rgba(200,162,122,0.35)] hover:shadow-[0_0_35px_rgba(200,162,122,0.7)] cursor-pointer group/btn text-center"
                   >
                     <span className="drop-shadow-[0_1px_2px_rgba(0,0,0,0.8)]">Shop The Festive Edit</span>
                     <ArrowRight className="w-4 h-4 ml-2.5 text-[#E8D3BD] transition-transform duration-300 group-hover/btn:translate-x-1" />
@@ -142,8 +142,8 @@ export default function FestiveCampaign() {
                 
                 {/* Floating Atelier Caption Bar with Festive Golden Accents */}
                 <div className="absolute bottom-6 left-6 right-6 p-4 bg-black/85 backdrop-blur-md border border-[#C8A27A]/50 shadow-[0_0_25px_rgba(200,162,122,0.25)] pointer-events-none">
-                  <span className="text-[10px] uppercase tracking-[0.28em] text-[#E8D3BD] font-medium block drop-shadow-[0_0_8px_rgba(200,162,122,0.7)]">
-                    The Diwali Gala Edit
+                  <span className="text-[15px] uppercase tracking-[0.2em] text-[#E8D3BD] font-medium block drop-shadow-[0_0_8px_rgba(200,162,122,0.7)]">
+                    The Grand Festive Edit
                   </span>
                   <p className="font-serif italic text-base text-white mt-0.5 drop-shadow-[0_1px_3px_rgba(0,0,0,0.8)]">
                     Hand-spun Gold Tissue & Tussar Saree with Antique Zari Borders

@@ -27,8 +27,8 @@ export default function BrandStory() {
                 />
                 <div className="absolute bottom-0 inset-x-0 h-[38%] bg-gradient-to-t from-black/80 to-transparent pointer-events-none" />
                 <div className="absolute bottom-6 left-6 right-6 text-white pointer-events-none">
-                  <span className="text-[10px] uppercase tracking-[0.28em] text-[#C8A27A] font-medium block mb-1">
-                    Maison Philosophy
+                  <span className="text-[15px] uppercase tracking-[0.2em] text-[#C8A27A] font-medium block mb-1">
+                    Boutique Philosophy
                   </span>
                   <p className="font-serif italic text-lg sm:text-xl text-white font-light">
                     "Where ancestral texture meets the pinnacle of Indian fine tailoring."
@@ -39,7 +39,7 @@ export default function BrandStory() {
               {/* Floating badge with Parallax Float across all screens */}
               <div className="flex absolute -top-2 -right-2 sm:-top-3 sm:-right-3 p-3 sm:p-4 bg-white border border-[#EAE4DC] shadow-xs flex-col items-center justify-center text-center z-10">
                 <Sparkles className="w-4 h-4 text-[#C8A27A] mb-1" />
-                <span className="text-[10px] uppercase tracking-[0.28em] text-[#161616] font-medium">
+                <span className="text-[15px] uppercase tracking-[0.2em] text-[#161616] font-medium">
                   Est. 2026
                 </span>
                 <span className="text-xs text-[#736E66] font-light">The Jharkhand Edit</span>
@@ -51,14 +51,16 @@ export default function BrandStory() {
           <div className="lg:col-span-6">
             <ParallaxContent speed={26}>
               <FadeInUp delay={0.15} className="space-y-6">
-                <div className="inline-flex items-center gap-2 text-[11px] font-medium uppercase tracking-[0.3em] text-[#C8A27A]">
+                <div className="inline-flex items-center gap-2 text-[15px] font-medium uppercase tracking-[0.2em] text-[#C8A27A]">
                   <Feather className="w-3.5 h-3.5 text-[#C8A27A]" />
-                  <span>Cultural Heritage & Atelier Story</span>
+                  <span>Our Heritage & Local Fashion Story</span>
                 </div>
 
-                <h2 className="font-serif text-3xl sm:text-5xl lg:text-6xl font-normal text-[#161616] tracking-tight leading-[1.12]">
+                <h2 className="font-serif text-3xl sm:text-5xl lg:text-6xl font-normal text-[#161616] tracking-tight leading-[1.15]">
                   Rooted In Jharkhand. <br />
-                  <span className="italic text-[#C8A27A]">Made For The World.</span>
+                  <span className="block font-serif italic text-[#C8A27A] text-2xl sm:text-4xl lg:text-5xl tracking-normal mt-1.5 sm:mt-2">
+                    Made For The World.
+                  </span>
                 </h2>
 
                 <div className="w-16 h-[1.5px] bg-[#C8A27A]" />
@@ -101,9 +103,9 @@ export default function BrandStory() {
                 <div className="pt-2">
                   <Link
                     to="/about"
-                    className="inline-flex items-center justify-center px-8 sm:px-10 py-3.5 sm:py-4 border border-[#161616] text-[#161616] hover:bg-[#161616] hover:text-white text-xs font-normal uppercase tracking-[0.25em] transition-all duration-300 cursor-pointer"
+                    className="w-full sm:w-auto inline-flex items-center justify-center px-6 sm:px-10 py-3.5 sm:py-4 border border-[#161616] text-[#161616] hover:bg-[#161616] hover:text-white text-xs font-normal uppercase tracking-[0.18em] sm:tracking-[0.25em] transition-all duration-300 cursor-pointer text-center"
                   >
-                    <span>Read The Complete Atelier Chronicle</span>
+                    <span>Read Atelier Chronicle</span>
                     <ArrowRight className="w-3.5 h-3.5 ml-2.5" />
                   </Link>
                 </div>

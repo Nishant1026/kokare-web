@@ -113,7 +113,7 @@ export default function CartDrawer() {
                       </span>
                     )}
                   </span>
-                  <span className="text-[11px] font-mono text-[#736E66]">{shippingProgress}%</span>
+                  <span className="text-[15px] font-mono text-[#736E66]">{shippingProgress}%</span>
                 </div>
                 <div className="w-full bg-[#EAE4DC] h-1.5 overflow-hidden">
                   <div
@@ -129,8 +129,8 @@ export default function CartDrawer() {
                   <div className="h-full flex flex-col items-center justify-center text-center py-16">
                     <ShoppingBag className="w-12 h-12 text-[#C8A27A]/60 mb-3" />
                     <h4 className="font-serif text-xl font-normal text-[#161616]">Your bag is empty</h4>
-                    <p className="text-xs text-[#736E66] max-w-xs mt-1 mb-6 font-light">
-                      Discover our Diwali 2026 festive collection for your celebrations.
+                    <p className="text-sm text-[#736E66] max-w-xs mt-1 mb-6 font-light">
+                      Discover our latest festive & wedding collections for your celebrations.
                     </p>
                     <button
                       onClick={() => {
@@ -188,7 +188,7 @@ export default function CartDrawer() {
                               </button>
                             </div>
 
-                            <div className="text-[11px] text-[#736E66] space-y-0.5 mt-0.5 font-light">
+                            <div className="text-[15px] text-[#736E66] space-y-0.5 mt-0.5 font-light">
                               <p>
                                 Size: <span className="font-normal text-[#161616]">{itemSize}</span>
                                 {itemColor && (
@@ -262,7 +262,7 @@ export default function CartDrawer() {
                           type="text"
                           value={couponInput}
                           onChange={(e) => setCouponInput(e.target.value)}
-                          placeholder="Coupon (e.g. DIWALI20)"
+                          placeholder="Coupon (e.g. FESTIVE20)"
                           className="flex-1 bg-white border border-[#EAE4DC] px-3.5 py-2 text-xs text-[#161616] placeholder-[#736E66]/60 focus:border-[#C8A27A] focus:outline-none uppercase font-mono"
                         />
                         <button
@@ -274,10 +274,10 @@ export default function CartDrawer() {
                       </form>
                     )}
                     {couponError && (
-                      <p className="text-[11px] text-red-500 mt-1">{couponError}</p>
+                      <p className="text-[15px] text-red-500 mt-1">{couponError}</p>
                     )}
                     {couponSuccess && (
-                      <p className="text-[11px] text-[#C8A27A] font-medium mt-1">{couponSuccess}</p>
+                      <p className="text-[15px] text-[#C8A27A] font-medium mt-1">{couponSuccess}</p>
                     )}
                   </div>
 
@@ -296,7 +296,7 @@ export default function CartDrawer() {
                     <div className="flex justify-between">
                       <span>Shipping</span>
                       <span className="text-[#161616]">
-                        {shipping === 0 ? <span className="text-[#C8A27A] uppercase font-normal text-[11px] tracking-wider">Free</span> : `₹${shipping}`}
+                        {shipping === 0 ? <span className="text-[#C8A27A] uppercase font-normal text-[15px] tracking-wider">Free</span> : `₹${shipping}`}
                       </span>
                     </div>
                     <div className="flex justify-between text-base font-normal text-[#161616] pt-2 border-t border-[#EAE4DC]">
@@ -325,7 +325,7 @@ export default function CartDrawer() {
                     </Link>
                   </div>
 
-                  <div className="flex items-center justify-center gap-1.5 text-[10px] text-[#736E66] pt-1 uppercase tracking-wider font-light">
+                  <div className="flex items-center justify-center gap-1.5 text-[15px] text-[#736E66] pt-1 uppercase tracking-wider font-light">
                     <ShieldCheck className="w-3.5 h-3.5 text-[#C8A27A]" />
                     <span>100% Certified Authentic Handcrafted Haute Couture</span>
                   </div>

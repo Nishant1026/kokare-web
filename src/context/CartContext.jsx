@@ -3,7 +3,8 @@ import React, { createContext, useContext, useState, useEffect, useMemo } from '
 const CartContext = createContext();
 
 const VALID_COUPONS = {
-  'DIWALI20': { code: 'DIWALI20', discountPercent: 20, label: 'Diwali Festive 20% Off' },
+  'FESTIVE20': { code: 'FESTIVE20', discountPercent: 20, label: 'All Festival Offer 20% Off' },
+  'DIWALI20': { code: 'FESTIVE20', discountPercent: 20, label: 'All Festival Offer 20% Off' },
   'KOKARE10': { code: 'KOKARE10', discountPercent: 10, label: 'KOKARÉ Welcome 10% Off' }
 };
 
@@ -261,7 +262,7 @@ export function CartProvider({ children }) {
       setAppliedCoupon(VALID_COUPONS[clean]);
       return { success: true, message: `Coupon ${clean} applied: ${VALID_COUPONS[clean].discountPercent}% off!` };
     }
-    return { success: false, message: 'Invalid coupon code. Try DIWALI20 or KOKARE10.' };
+    return { success: false, message: 'Invalid coupon code. Try FESTIVE20 or KOKARE10.' };
   };
 
   const removeCoupon = () => {

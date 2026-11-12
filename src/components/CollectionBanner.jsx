@@ -18,7 +18,7 @@ export default function CollectionBanner() {
         {/* Section Header */}
         <FadeInUp className="flex flex-col md:flex-row md:items-end justify-between mb-12 sm:mb-16">
           <div>
-            <div className="flex items-center gap-2 text-[11px] font-medium uppercase tracking-[0.3em] text-[#C8A27A] mb-2">
+            <div className="flex items-center gap-2 text-[15px] font-medium uppercase tracking-[0.2em] text-[#C8A27A] mb-2">
               <Sparkles className="w-3.5 h-3.5 text-[#C8A27A]" />
               <span>Curated Editions · The Jharkhand Edit</span>
             </div>
@@ -53,10 +53,10 @@ export default function CollectionBanner() {
             {/* Crisp Floating Atelier Caption Panel — No Dark Gradient */}
             <div className="relative z-10 m-4 sm:m-6 lg:m-8 p-5 sm:p-7 bg-white/95 backdrop-blur-md border border-[#EAE4DC] group-hover:border-[#C8A27A] shadow-md transition-all duration-300">
               <div className="flex items-center justify-between gap-4 mb-1.5">
-                <span className="text-[10px] sm:text-[11px] uppercase tracking-[0.28em] text-[#C8A27A] font-medium">
+                <span className="text-[15px] uppercase tracking-[0.2em] text-[#C8A27A] font-medium">
                   {heroCol.subtitle} · {heroCol.accent}
                 </span>
-                <span className="hidden sm:inline-block text-[10px] uppercase tracking-[0.2em] text-[#736E66]">
+                <span className="hidden sm:inline-block text-[15px] uppercase tracking-[0.16em] text-[#736E66]">
                   Limited Edition
                 </span>
               </div>
@@ -93,9 +93,9 @@ export default function CollectionBanner() {
               />
 
               {/* Floating Atelier Caption — Clear and readable without darkening photo */}
-              <div className="relative z-10 m-3 sm:m-4 p-3.5 sm:p-4 bg-white/95 backdrop-blur-md border border-[#EAE4DC] group-hover:border-[#C8A27A] shadow-sm transition-all duration-300 flex items-center justify-between gap-4">
+              <div className="relative z-10 m-3 sm:m-4 p-3.5 sm:p-4 bg-white/95 backdrop-blur-md border border-[#EAE4DC] group-hover:border-[#C8A27A] shadow-sm transition-all duration-300 flex flex-col sm:flex-row sm:items-center justify-between gap-3 sm:gap-4">
                 <div>
-                  <span className="text-[9px] sm:text-[10px] uppercase tracking-[0.25em] text-[#C8A27A] font-medium block">
+                  <span className="text-xs sm:text-[14px] uppercase tracking-[0.16em] sm:tracking-[0.2em] text-[#C8A27A] font-medium block">
                     {col2.subtitle}
                   </span>
                   <h4 className="font-serif text-lg sm:text-xl font-normal text-[#161616] leading-tight">
@@ -104,7 +104,7 @@ export default function CollectionBanner() {
                 </div>
                 <Link
                   to={`/shop?collection=${col2.id}`}
-                  className="shrink-0 inline-flex items-center gap-1.5 px-3 py-1.5 bg-[#161616] hover:bg-[#721C2B] text-white text-[10px] uppercase tracking-[0.2em] font-normal transition-colors"
+                  className="self-start sm:self-auto shrink-0 inline-flex items-center gap-1.5 px-3 py-1.5 bg-[#161616] hover:bg-[#721C2B] text-white text-xs sm:text-[14px] uppercase tracking-[0.16em] font-normal transition-colors"
                 >
                   <span>Explore</span>
                   <ArrowRight className="w-3 h-3" />
@@ -127,7 +127,7 @@ export default function CollectionBanner() {
                 />
 
                 <div className="relative z-10 m-3 p-3 bg-white/95 backdrop-blur-md border border-[#EAE4DC] group-hover:border-[#C8A27A] shadow-xs transition-all duration-300">
-                  <span className="text-[9px] uppercase tracking-[0.22em] text-[#C8A27A] font-medium block">
+                  <span className="text-[15px] uppercase tracking-[0.2em] text-[#C8A27A] font-medium block">
                     {col3.subtitle}
                   </span>
                   <h4 className="font-serif text-base sm:text-lg font-normal text-[#161616] mb-1 leading-tight">
@@ -135,7 +135,7 @@ export default function CollectionBanner() {
                   </h4>
                   <Link
                     to={`/shop?collection=${col3.id}`}
-                    className="inline-flex items-center gap-1 text-[10px] uppercase tracking-[0.18em] font-normal text-[#161616] group-hover:text-[#C8A27A] transition-colors"
+                    className="inline-flex items-center gap-1 text-[15px] uppercase tracking-[0.16em] font-normal text-[#161616] group-hover:text-[#C8A27A] transition-colors"
                   >
                     <span>View Edit</span>
                     <ArrowRight className="w-3 h-3" />
@@ -155,7 +155,7 @@ export default function CollectionBanner() {
                 />
 
                 <div className="relative z-10 m-3 p-3 bg-white/95 backdrop-blur-md border border-[#EAE4DC] group-hover:border-[#C8A27A] shadow-xs transition-all duration-300">
-                  <span className="text-[9px] uppercase tracking-[0.22em] text-[#C8A27A] font-medium block">
+                  <span className="text-[15px] uppercase tracking-[0.2em] text-[#C8A27A] font-medium block">
                     {col4.subtitle}
                   </span>
                   <h4 className="font-serif text-base sm:text-lg font-normal text-[#161616] mb-1 leading-tight">
@@ -163,7 +163,7 @@ export default function CollectionBanner() {
                   </h4>
                   <Link
                     to={`/shop?collection=${col4.id}`}
-                    className="inline-flex items-center gap-1 text-[10px] uppercase tracking-[0.18em] font-normal text-[#161616] group-hover:text-[#C8A27A] transition-colors"
+                    className="inline-flex items-center gap-1 text-[15px] uppercase tracking-[0.16em] font-normal text-[#161616] group-hover:text-[#C8A27A] transition-colors"
                   >
                     <span>View Edit</span>
                     <ArrowRight className="w-3 h-3" />

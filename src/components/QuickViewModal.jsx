@@ -84,7 +84,7 @@ export default function QuickViewModal({ product, isOpen, onClose }) {
                       className="w-full h-full object-cover"
                     />
                     {product.isBestseller && (
-                      <span className="absolute top-3 left-3 bg-[#161616] text-white text-[10px] uppercase font-normal tracking-[0.2em] px-2.5 py-1 border border-[#C8A27A]/40">
+                      <span className="absolute top-3 left-3 bg-[#161616] text-white text-[15px] uppercase font-normal tracking-[0.16em] px-2.5 py-1 border border-[#C8A27A]/40">
                         Bestseller
                       </span>
                     )}
@@ -109,7 +109,7 @@ export default function QuickViewModal({ product, isOpen, onClose }) {
                 {/* Details & Actions */}
                 <div className="p-6 sm:p-8 flex flex-col justify-between bg-white space-y-4">
                   <div>
-                    <span className="text-[10px] uppercase tracking-[0.28em] text-[#C8A27A] font-medium block mb-1">
+                    <span className="text-[15px] uppercase tracking-[0.2em] text-[#C8A27A] font-medium block mb-1">
                       {product.category} · {product.gender.toUpperCase()}
                     </span>
                     <h3 className="font-serif text-2xl sm:text-3xl font-normal text-[#161616] mb-1 leading-snug">
@@ -130,7 +130,7 @@ export default function QuickViewModal({ product, isOpen, onClose }) {
                         </span>
                       )}
                       {(product.discountPercent || product.discount) && (
-                        <span className="text-[10px] uppercase tracking-wider text-[#721C2B] font-medium bg-[#FBF1F2] border border-[#721C2B]/30 px-1.5 py-0.5 leading-none">
+                        <span className="text-[15px] uppercase tracking-wider text-[#721C2B] font-medium bg-[#FBF1F2] border border-[#721C2B]/30 px-1.5 py-0.5 leading-none">
                           Save {product.discountPercent || product.discount}%
                         </span>
                       )}
@@ -232,7 +232,7 @@ export default function QuickViewModal({ product, isOpen, onClose }) {
                             onClose();
                             navigate('/cart');
                           }}
-                          className="text-[11px] font-medium text-[#C8A27A] hover:text-[#161616] uppercase tracking-wider underline cursor-pointer"
+                          className="text-[15px] font-medium text-[#C8A27A] hover:text-[#161616] uppercase tracking-wider underline cursor-pointer"
                         >
                           View Bag →
                         </button>
@@ -275,7 +275,7 @@ export default function QuickViewModal({ product, isOpen, onClose }) {
                           className="px-3.5 py-3.5 border border-[#EAE4DC] hover:border-[#C8A27A] bg-white hover:bg-[#FAF7F2] text-[#161616] text-xs font-normal transition-colors cursor-pointer flex items-center gap-1 shrink-0"
                         >
                           <Plus className="w-3.5 h-3.5 text-[#C8A27A]" />
-                          <span className="hidden sm:inline uppercase text-[10px] tracking-wider">+1 More</span>
+                          <span className="hidden sm:inline uppercase text-[15px] tracking-wider">+1 More</span>
                         </button>
                       )}
 

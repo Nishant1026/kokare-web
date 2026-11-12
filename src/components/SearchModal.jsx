@@ -91,12 +91,12 @@ export default function SearchModal({ isOpen, onClose }) {
               {/* Popular Suggested Searches */}
               {query.trim() === '' && (
                 <div className="pt-6">
-                  <div className="flex items-center gap-2 text-[10px] uppercase tracking-[0.28em] text-[#C8A27A] font-medium mb-3">
+                  <div className="flex items-center gap-2 text-[15px] uppercase tracking-[0.2em] text-[#C8A27A] font-medium mb-3">
                     <Sparkles className="w-3.5 h-3.5 text-[#C8A27A]" />
                     <span>Popular Festive Searches</span>
                   </div>
                   <div className="flex flex-wrap gap-2">
-                    {['Silk Saree', 'Embroidered Kurta', 'Bandhgala', 'Nehru Jacket', 'Diwali 2026', 'Lehenga'].map((tag) => (
+                    {['Silk Saree', 'Embroidered Kurta', 'Bandhgala', 'Nehru Jacket', 'Festive Offers', 'Lehenga'].map((tag) => (
                       <button
                         key={tag}
                         onClick={() => setQuery(tag)}
@@ -130,7 +130,7 @@ export default function SearchModal({ isOpen, onClose }) {
                             className="w-12 h-16 object-cover object-top border border-[#EAE4DC]"
                           />
                           <div>
-                            <span className="text-[10px] uppercase tracking-wider text-[#C8A27A] block font-light">
+                            <span className="text-[15px] uppercase tracking-wider text-[#C8A27A] block font-light">
                               {product.category}
                             </span>
                             <h4 className="font-serif text-[17px] sm:text-[18px] text-[#161616] font-normal">

@@ -63,7 +63,7 @@ export default function FilterSidebar({
     <div className="space-y-6 text-[#161616]">
       {/* Active Filter Clear Bar */}
       <div className="flex items-center justify-between pb-4 border-b border-[#EAE4DC]">
-        <span className="text-[11px] font-medium uppercase tracking-[0.25em] text-[#161616]">
+        <span className="text-[15px] font-medium uppercase tracking-[0.2em] text-[#161616]">
           Filters ({totalResults} Results)
         </span>
         <button
@@ -77,7 +77,7 @@ export default function FilterSidebar({
 
       {/* Gender Filter */}
       <div>
-        <label className="text-[11px] font-medium uppercase tracking-[0.2em] text-[#161616] block mb-3">
+        <label className="text-[15px] font-medium uppercase tracking-[0.16em] text-[#161616] block mb-3">
           Gender
         </label>
         <div className="grid grid-cols-3 gap-2">
@@ -99,7 +99,7 @@ export default function FilterSidebar({
 
       {/* Category Filter */}
       <div>
-        <label className="text-[11px] font-medium uppercase tracking-[0.2em] text-[#161616] block mb-3">
+        <label className="text-[15px] font-medium uppercase tracking-[0.16em] text-[#161616] block mb-3">
           Category
         </label>
         <div className="space-y-1.5">
@@ -123,7 +123,7 @@ export default function FilterSidebar({
       {/* Max Price Slider */}
       <div>
         <div className="flex justify-between items-center mb-2">
-          <label className="text-[11px] font-medium uppercase tracking-[0.2em] text-[#161616]">
+          <label className="text-[15px] font-medium uppercase tracking-[0.16em] text-[#161616]">
             Price Range
           </label>
           <span className="font-serif text-sm font-normal text-[#161616]">
@@ -141,7 +141,7 @@ export default function FilterSidebar({
           }
           className="w-full accent-[#161616] bg-[#EAE4DC] h-1.5 cursor-pointer"
         />
-        <div className="flex justify-between text-[11px] text-[#736E66] font-mono mt-1 font-light">
+        <div className="flex justify-between text-[15px] text-[#736E66] font-mono mt-1 font-light">
           <span>₹2,000</span>
           <span>₹15,000</span>
         </div>
@@ -149,7 +149,7 @@ export default function FilterSidebar({
 
       {/* Sizes */}
       <div>
-        <label className="text-[11px] font-medium uppercase tracking-[0.2em] text-[#161616] block mb-2.5">
+        <label className="text-[15px] font-medium uppercase tracking-[0.16em] text-[#161616] block mb-2.5">
           Sizes
         </label>
         <div className="flex flex-wrap gap-1.5">
@@ -174,7 +174,7 @@ export default function FilterSidebar({
 
       {/* Shades */}
       <div>
-        <label className="text-[11px] font-medium uppercase tracking-[0.2em] text-[#161616] block mb-2.5">
+        <label className="text-[15px] font-medium uppercase tracking-[0.16em] text-[#161616] block mb-2.5">
           Atelier Color Palette
         </label>
         <div className="space-y-1.5">
@@ -215,7 +215,7 @@ export default function FilterSidebar({
             }
             className="w-4 h-4 accent-[#161616]"
           />
-          <span>In Stock Ready For Diwali Dispatch</span>
+          <span>In Stock Ready For Express Festival Dispatch</span>
         </label>
       </div>
     </div>

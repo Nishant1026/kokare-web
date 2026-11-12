@@ -173,8 +173,8 @@ export default function Shop({ defaultCategory, defaultGender, defaultType, defa
       : filters.type === 'western'
       ? 'Western Fusion Edit'
       : filters.collection === 'festive-edit' || filters.collection === 'diwali'
-      ? 'Diwali Festive Edit 2026'
-      : 'All Festive Silhouettes');
+      ? 'The All Festival & Wedding Edit 2026'
+      : 'All Fashion Collections');
 
   return (
     <div className="relative bg-[#FAF7F2] min-h-screen py-10 text-[#161616] w-full max-w-full overflow-x-clip">
@@ -185,9 +185,9 @@ export default function Shop({ defaultCategory, defaultGender, defaultType, defa
         
         {/* Breadcrumb & Title Banner */}
         <FadeInUp className="mb-10 text-center sm:text-left border-b border-[#EAE4DC] pb-8">
-          <div className="inline-flex items-center gap-1.5 text-[11px] font-medium uppercase tracking-[0.3em] text-[#C8A27A] mb-2">
+          <div className="inline-flex items-center gap-1.5 text-[15px] font-medium uppercase tracking-[0.2em] text-[#C8A27A] mb-2">
             <Sparkles className="w-3.5 h-3.5 text-[#C8A27A]" />
-            <span>{pageSubtitle || 'The Jharkhand Edit · Diwali Festive Edition'}</span>
+            <span>{pageSubtitle || 'The Jharkhand Edit · All Festival & Wedding Fashion'}</span>
           </div>
           <h1 className="font-serif text-3xl sm:text-5xl lg:text-6xl font-normal text-[#161616] tracking-tight mb-2">
             {title}
@@ -202,10 +202,10 @@ export default function Shop({ defaultCategory, defaultGender, defaultType, defa
           {/* Mobile Filter Button */}
           <button
             onClick={() => setIsMobileFilterOpen(true)}
-            className="lg:hidden flex items-center gap-1.5 px-3.5 py-2 bg-[#161616] text-white text-[11px] font-normal uppercase tracking-[0.16em] hover:bg-[#721C2B] transition-colors cursor-pointer whitespace-nowrap shrink-0"
+            className="lg:hidden flex items-center gap-1.5 px-3.5 py-2 bg-[#161616] text-white text-[15px] font-normal uppercase tracking-[0.16em] hover:bg-[#721C2B] transition-colors cursor-pointer whitespace-nowrap shrink-0"
           >
             <SlidersHorizontal className="w-3.5 h-3.5 text-[#C8A27A]" />
-            <span className="text-[11px] leading-none uppercase tracking-[0.14em]">
+            <span className="text-[15px] leading-none uppercase tracking-[0.14em]">
               Filters ({filteredAndSortedProducts.length})
             </span>
           </button>
@@ -266,7 +266,7 @@ export default function Shop({ defaultCategory, defaultGender, defaultType, defa
                 </button>
               </div>
             ) : (
-              <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 gap-4 sm:gap-6">
+              <div className="grid grid-cols-2 lg:grid-cols-2 xl:grid-cols-3 gap-4 sm:gap-6">
                 {filteredAndSortedProducts.map((p, idx) => (
                   <ParallaxReveal
                     key={p.id}

@@ -94,6 +94,10 @@
     letter-spacing: -0.02em;
     line-height: 1.15;
   }
+
+  h1 span, h2 span, h3 span, h4 span, h5 span, h6 span {
+    font-size: inherit;
+  }
 }
 
 /* Force suppress horizontal scrollbars without breaking position: sticky */

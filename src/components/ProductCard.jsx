@@ -76,27 +76,27 @@ export default function ProductCard({ product }) {
           </Link>
 
           {/* Badges: Bestseller / New / In Bag / Festive Privilege */}
-          <div className="absolute top-2.5 left-2.5 flex flex-col gap-1 z-10 pointer-events-none max-w-[70%]">
+          <div className="absolute top-2 left-2 sm:top-2.5 sm:left-2.5 flex flex-col gap-1 z-10 pointer-events-none max-w-[85%]">
             {isInBag && (
-              <span className="bg-[#161616] text-[#C8A27A] border border-[#C8A27A]/80 text-[10px] sm:text-[12px] font-medium uppercase tracking-[0.18em] px-2 py-0.5 sm:px-2.5 sm:py-1 shadow-xs flex items-center gap-1.5 backdrop-blur-xs whitespace-nowrap">
+              <span className="bg-[#161616] text-[#C8A27A] border border-[#C8A27A]/80 text-[11px] sm:text-xs font-medium uppercase tracking-[0.14em] px-2 py-0.5 sm:px-2.5 sm:py-1 shadow-xs flex items-center gap-1 backdrop-blur-xs whitespace-nowrap">
                 <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse shrink-0" />
                 <span>In Bag ({totalInBag})</span>
               </span>
             )}
             {product.isBestseller && (
-              <span className="bg-[#161616] text-white text-[10px] sm:text-[12px] font-normal uppercase tracking-[0.2em] px-2 py-0.5 sm:px-2.5 sm:py-1 shadow-xs border border-[#C8A27A]/40 whitespace-nowrap">
+              <span className="bg-[#161616] text-white text-[11px] sm:text-xs font-normal uppercase tracking-[0.14em] px-2 py-0.5 sm:px-2.5 sm:py-1 shadow-xs border border-[#C8A27A]/40 whitespace-nowrap">
                 Bestseller
               </span>
             )}
             {product.isNew && !product.isBestseller && (
-              <span className="bg-white text-[#161616] border border-[#EAE4DC] text-[10px] sm:text-[12px] font-normal uppercase tracking-[0.2em] px-2 py-0.5 sm:px-2.5 sm:py-1 shadow-xs whitespace-nowrap">
+              <span className="bg-white text-[#161616] border border-[#EAE4DC] text-[11px] sm:text-xs font-normal uppercase tracking-[0.14em] px-2 py-0.5 sm:px-2.5 sm:py-1 shadow-xs whitespace-nowrap">
                 New Arrival
               </span>
             )}
             {discountVal > 0 && !product.isBestseller && !product.isNew && (
-              <span className="bg-[#721C2B] text-[#FAF7F2] border border-[#C8A27A]/40 text-[10px] sm:text-[12px] font-normal uppercase tracking-[0.18em] px-2 py-0.5 sm:px-2.5 sm:py-1 shadow-xs backdrop-blur-xs flex items-center gap-1 whitespace-nowrap">
+              <span className="bg-[#721C2B] text-[#FAF7F2] border border-[#C8A27A]/40 text-[11px] sm:text-xs font-normal uppercase tracking-[0.14em] px-2 py-0.5 sm:px-2.5 sm:py-1 shadow-xs backdrop-blur-xs flex items-center gap-1 whitespace-nowrap">
                 <Sparkles className="w-3 h-3 text-[#C8A27A] shrink-0" />
-                <span>{discountVal}% Privilege</span>
+                <span>{discountVal}% Offer</span>
               </span>
             )}
           </div>
@@ -105,7 +105,7 @@ export default function ProductCard({ product }) {
           <button
             onClick={handleWishlistToggle}
             aria-label={isFavorited ? 'Remove from Wishlist' : 'Add to Wishlist'}
-            className="absolute top-2.5 right-2.5 sm:top-3 sm:right-3 z-10 w-8 h-8 sm:w-9 sm:h-9 rounded-full bg-white/95 text-[#161616] hover:text-[#C8A27A] backdrop-blur-sm border border-[#EAE4DC] flex items-center justify-center transition-colors shadow-2xs cursor-pointer active:scale-90"
+            className="absolute top-2 right-2 sm:top-3 sm:right-3 z-10 w-8.5 h-8.5 sm:w-9 sm:h-9 rounded-full bg-white/95 text-[#161616] hover:text-[#C8A27A] backdrop-blur-sm border border-[#C8A27A]/30 hover:border-[#C8A27A] flex items-center justify-center transition-all shadow-xs cursor-pointer active:scale-90"
           >
             <motion.div whileTap={{ scale: 0.85 }}>
               <Heart
@@ -121,14 +121,14 @@ export default function ProductCard({ product }) {
             to={`/product/${product.id}`}
             aria-label={`View ${product.name} Details`}
             title="View Details"
-            className="lg:hidden absolute bottom-2.5 right-2.5 z-10 w-8 h-8 rounded-full bg-white/95 text-[#161616] hover:text-[#C8A27A] backdrop-blur-sm border border-[#EAE4DC] flex items-center justify-center transition-colors shadow-2xs cursor-pointer active:scale-90"
+            className="xl:hidden absolute bottom-2 right-2 z-10 w-8.5 h-8.5 rounded-full bg-white/95 text-[#161616] hover:text-[#C8A27A] backdrop-blur-sm border border-[#C8A27A]/30 hover:border-[#C8A27A] flex items-center justify-center transition-all shadow-xs cursor-pointer active:scale-90"
           >
             <Eye className="w-3.5 h-3.5 stroke-[1.5]" />
           </Link>
 
-          {/* Desktop Hover Action Bar (Visible on lg screens with mouse hover) */}
+          {/* Desktop Hover Action Bar (Visible on xl screens with mouse hover) */}
           <div
-            className={`hidden lg:flex absolute bottom-0 inset-x-0 p-3 bg-gradient-to-t from-black/85 via-black/45 to-transparent items-center justify-center gap-2 transition-all duration-300 z-10 ${
+            className={`hidden xl:flex absolute bottom-0 inset-x-0 p-3 bg-gradient-to-t from-black/85 via-black/45 to-transparent items-center justify-center gap-2 transition-all duration-300 z-10 ${
               isHovered ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-2 pointer-events-none'
             }`}
           >
@@ -167,11 +167,11 @@ export default function ProductCard({ product }) {
           <div>
             {/* Category / Collection Tag — Balanced single line with zero awkward breaking */}
             <div className="flex items-center justify-between gap-1 mb-1 font-light">
-              <span className="text-[11px] sm:text-[13px] uppercase tracking-[0.16em] text-[#161616] font-medium truncate">
+              <span className="text-xs sm:text-[14px] uppercase tracking-[0.12em] text-[#161616] font-medium truncate">
                 {product.category}
               </span>
-              <span className="text-[10px] sm:text-[11px] uppercase tracking-[0.14em] text-[#C8A27A] font-medium shrink-0 whitespace-nowrap">
-                {product.collection === 'festive-edit' ? 'Festive' : 'Atelier'}
+              <span className="text-xs sm:text-[14px] uppercase tracking-[0.12em] text-[#C8A27A] font-medium shrink-0 whitespace-nowrap">
+                {product.collection === 'festive-edit' ? 'Festive' : 'Fashion'}
               </span>
             </div>
 
@@ -195,12 +195,12 @@ export default function ProductCard({ product }) {
                 ₹{product.price.toLocaleString('en-IN')}
               </span>
               {product.originalPrice && (
-                <span className="text-[11px] sm:text-[13px] text-[#736E66] line-through font-light">
+                <span className="text-[15px] text-[#736E66] line-through font-light">
                   ₹{product.originalPrice.toLocaleString('en-IN')}
                 </span>
               )}
               {discountVal > 0 && (
-                <span className="inline-flex items-center text-[10px] sm:text-[11px] uppercase tracking-wider text-[#721C2B] font-medium bg-[#FBF1F2] border border-[#721C2B]/25 px-1.5 py-[1px] leading-tight shrink-0 whitespace-nowrap">
+                <span className="inline-flex items-center text-[15px] uppercase tracking-wider text-[#721C2B] font-medium bg-[#FBF1F2] border border-[#721C2B]/25 px-1.5 py-[1px] leading-tight shrink-0 whitespace-nowrap">
                   {discountVal}% OFF
                 </span>
               )}
@@ -218,7 +218,7 @@ export default function ProductCard({ product }) {
                   />
                 ))}
                 {product.colors.length > 2 && (
-                  <span className="text-[10px] text-[#736E66] font-mono leading-none">
+                  <span className="text-[15px] text-[#736E66] font-mono leading-none">
                     +{product.colors.length - 2}
                   </span>
                 )}
@@ -226,24 +226,24 @@ export default function ProductCard({ product }) {
             )}
           </div>
 
-          {/* Mobile & Tablet Full-Width Action Button — Visible on all mobile & tablet screens */}
-          <div className="lg:hidden mt-2.5 pt-2 border-t border-[#EAE4DC]/60">
+          {/* Mobile & Tablet Full-Width Action Button — Sleek Luxury Atelier Styling */}
+          <div className="xl:hidden mt-3 pt-2.5 border-t border-[#EAE4DC]/80">
             <button
               onClick={handleQuickAdd}
-              className={`w-full h-8.5 sm:h-9 px-2 sm:px-3 flex items-center justify-center gap-1.5 border transition-all duration-300 shadow-2xs cursor-pointer ${
+              className={`w-full h-9 sm:h-10 px-3 flex items-center justify-center gap-2 transition-all duration-300 shadow-xs active:scale-[0.98] cursor-pointer ${
                 isInBag
-                  ? 'border-[#721C2B] bg-[#721C2B] text-white'
-                  : 'border-[#161616] bg-white text-[#161616] hover:border-[#C8A27A] hover:text-[#C8A27A] active:bg-[#FAF7F2]'
+                  ? 'bg-[#721C2B] text-white border border-[#C8A27A]/80 shadow-[0_0_12px_rgba(200,162,122,0.25)]'
+                  : 'bg-[#161616] hover:bg-[#721C2B] active:bg-[#721C2B] text-white border border-[#C8A27A]/40 hover:border-[#C8A27A]'
               }`}
             >
               {isInBag ? (
-                <span className="text-[11px] leading-none uppercase tracking-[0.16em] font-medium flex items-center gap-1.5 text-white">
+                <span className="text-xs sm:text-[13px] leading-none uppercase tracking-[0.14em] font-medium flex items-center gap-1.5 text-white whitespace-nowrap">
                   <Check className="w-3.5 h-3.5 stroke-[2.5] text-[#C8A27A]" />
                   IN BAG
                 </span>
               ) : (
-                <span className="text-[11px] leading-none uppercase tracking-[0.16em] font-normal flex items-center gap-1.5 text-[#161616]">
-                  <ShoppingBag className="w-3.5 h-3.5 text-[#161616] stroke-[1.5]" />
+                <span className="text-xs sm:text-[13px] leading-none uppercase tracking-[0.14em] font-medium flex items-center gap-1.5 text-[#FAF7F2] whitespace-nowrap">
+                  <ShoppingBag className="w-3.5 h-3.5 text-[#C8A27A] stroke-[1.5]" />
                   ADD TO BAG
                 </span>
               )}

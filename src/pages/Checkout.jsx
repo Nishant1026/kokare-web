@@ -82,7 +82,7 @@ export default function Checkout() {
 
   const handlePlaceOrder = (e) => {
     e.preventDefault();
-    const generatedId = `KOKARE-DWL-${Math.floor(100000 + Math.random() * 900000)}`;
+    const generatedId = `KOKARE-FST-${Math.floor(100000 + Math.random() * 900000)}`;
     setOrderId(generatedId);
     setOrderConfirmed(true);
     clearCart();
@@ -133,7 +133,7 @@ export default function Checkout() {
                 <CheckCircle2 className="w-8 h-8 text-[#C8A27A]" />
               </div>
 
-              <span className="text-[11px] uppercase tracking-[0.3em] text-[#C8A27A] font-medium block mb-1">
+              <span className="text-[15px] uppercase tracking-[0.2em] text-[#C8A27A] font-medium block mb-1">
                 Order Placed Successfully
               </span>
               <h2 className="font-serif text-3xl sm:text-5xl font-normal mb-3 text-[#161616]">
@@ -142,7 +142,7 @@ export default function Checkout() {
               <div className="w-16 h-[1.5px] bg-[#C8A27A] mx-auto mb-4" />
 
               <p className="text-[17px] text-[#736E66] max-w-md mx-auto mb-6 font-light">
-                Thank you for welcoming KOKARÉ into your celebratory rituals. Your artisanal order has been registered at our Ranchi atelier.
+                Thank you for welcoming KOKARÉ into your celebratory rituals. Your order has been registered at our Ranchi boutique and design studio.
               </p>
 
               <div className="p-4 bg-[#FAF7F2] border border-[#EAE4DC] max-w-sm mx-auto mb-8 text-left space-y-1.5 text-xs text-[#736E66] font-light">
@@ -183,9 +183,9 @@ export default function Checkout() {
             <div>
               {/* Header */}
               <div className="border-b border-[#EAE4DC] pb-6 mb-10">
-                <div className="inline-flex items-center gap-1.5 text-[11px] font-medium uppercase tracking-[0.3em] text-[#C8A27A] mb-1">
+                <div className="inline-flex items-center gap-1.5 text-[15px] font-medium uppercase tracking-[0.2em] text-[#C8A27A] mb-1">
                   <Sparkles className="w-3.5 h-3.5 text-[#C8A27A]" />
-                  <span>The Jharkhand Edit · Bespoke Order</span>
+                  <span>The Jharkhand Edit · Express Delivery</span>
                 </div>
                 <h1 className="font-serif text-3xl sm:text-5xl lg:text-6xl font-normal tracking-tight text-[#161616]">
                   Atelier Checkout
@@ -469,9 +469,9 @@ export default function Checkout() {
                       <span>Confirm & Place Order</span>
                     </button>
 
-                    <div className="flex items-center justify-center gap-2 text-[11px] text-[#736E66] font-light text-center">
+                    <div className="flex items-center justify-center gap-2 text-[15px] text-[#736E66] font-light text-center">
                       <ShieldCheck className="w-4 h-4 text-[#C8A27A]" />
-                      <span>Encrypted SSL Atelier Security</span>
+                      <span>Encrypted SSL Boutique Security</span>
                     </div>
 
                   </div>

@@ -27,7 +27,7 @@ export default function Wishlist() {
         {/* Page Header */}
         <div className="flex flex-col sm:flex-row sm:items-end justify-between border-b border-[#EAE4DC] pb-6 mb-10">
           <div>
-            <div className="inline-flex items-center gap-1.5 text-[11px] font-medium uppercase tracking-[0.3em] text-[#C8A27A] mb-1">
+            <div className="inline-flex items-center gap-1.5 text-[15px] font-medium uppercase tracking-[0.2em] text-[#C8A27A] mb-1">
               <Sparkles className="w-3.5 h-3.5 text-[#C8A27A]" />
               <span>Personal Vault · The Jharkhand Edit</span>
             </div>
@@ -35,7 +35,7 @@ export default function Wishlist() {
               Your Festive Wishlist
             </h1>
             <p className="text-[17px] text-[#736E66] mt-1 font-light">
-              {wishlist.length} {wishlist.length === 1 ? 'piece saved' : 'pieces saved'} for Diwali 2026
+              {wishlist.length} {wishlist.length === 1 ? 'piece saved' : 'pieces saved'} for your celebrations
             </p>
           </div>
 
@@ -98,7 +98,7 @@ export default function Wishlist() {
 
                 <div className="p-4 sm:p-5 flex flex-col flex-1 justify-between bg-white">
                   <div>
-                    <span className="text-[10px] text-[#736E66] uppercase tracking-[0.2em] font-light block mb-1">
+                    <span className="text-[15px] text-[#736E66] uppercase tracking-[0.16em] font-light block mb-1">
                       {item.category}
                     </span>
                     <Link to={`/product/${item.id}`}>

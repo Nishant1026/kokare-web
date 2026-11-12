@@ -12,7 +12,7 @@ export default function AnnouncementBar() {
 
   const handleCopy = (e) => {
     e.preventDefault();
-    navigator.clipboard.writeText('DIWALI20');
+    navigator.clipboard.writeText('FESTIVE20');
     setCopied(true);
     setTimeout(() => setCopied(false), 2200);
   };
@@ -24,32 +24,32 @@ export default function AnnouncementBar() {
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-2.5 flex items-center justify-between">
         {/* Left Maison Identifier */}
-        <div className="hidden lg:flex items-center gap-2 text-[#C8A27A] text-[11px] uppercase tracking-[0.28em] font-light">
+        <div className="hidden lg:flex items-center gap-2 text-[#C8A27A] text-[15px] uppercase tracking-[0.2em] font-light">
           <span>The House of KOKARÉ</span>
-          <span className="w-1 h-1 rounded-full bg-[#C8A27A]" />
-          <span>Haute Couture Edit</span>
+          <span className="w-1.5 h-1.5 rounded-full bg-[#C8A27A]" />
+          <span>Local Fashion Studio</span>
         </div>
 
         {/* Center Festive Invitation */}
         <div className="flex-1 flex justify-center items-center gap-2 text-center">
           <Sparkles className="w-3.5 h-3.5 text-[#C8A27A] shrink-0" />
-          <span className="text-[#FAF7F2] text-[11px] sm:text-xs font-normal tracking-[0.2em] uppercase">
-            DIWALI FESTIVE PRIVILEGE — EXTRA 20% OFF ON ORDERS OVER ₹5,000 WITH CODE
+          <span className="text-[#FAF7F2] text-[15px] font-normal tracking-[0.16em] uppercase">
+            ALL FESTIVAL OFFERS — EXTRA 20% OFF ON ORDERS OVER ₹5,000 WITH CODE
             <button
               onClick={handleCopy}
               className="text-[#C8A27A] font-mono tracking-widest font-semibold ml-1.5 underline underline-offset-2 hover:text-[#E8D3BD] cursor-pointer inline-flex items-center gap-1"
-              title="Click to copy privilege code"
+              title="Click to copy coupon code"
             >
-              <span>DIWALI20</span>
-              {copied && <Check className="w-3 h-3 text-emerald-400" />}
+              <span>FESTIVE20</span>
+              {copied && <Check className="w-3.5 h-3.5 text-emerald-400" />}
             </button>
           </span>
           <Link
             to="/festive-collection"
-            className="hidden md:inline-flex items-center gap-1 text-[#C8A27A] hover:text-[#E8D3BD] font-medium text-[11px] uppercase tracking-[0.2em] underline underline-offset-4 ml-2 transition-colors"
+            className="hidden md:inline-flex items-center gap-1 text-[#C8A27A] hover:text-[#E8D3BD] font-medium text-[15px] uppercase tracking-[0.16em] underline underline-offset-4 ml-2 transition-colors"
           >
-            <span>Explore Edit</span>
-            <ArrowRight className="w-3 h-3" />
+            <span>Shop Offers</span>
+            <ArrowRight className="w-3.5 h-3.5" />
           </Link>
         </div>
 

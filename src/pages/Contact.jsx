@@ -5,12 +5,12 @@ import { ParallaxWatermark, FadeInUp } from '../components/Parallax';
 
 const FAQS = [
   {
-    q: 'How fast will my Diwali order be delivered?',
-    a: 'Orders placed during our Diwali 2026 campaign are processed within 24 hours. Metro deliveries arrive in 2–3 business days, while standard pan-India delivery completes in 3–5 days.'
+    q: 'How fast will my festival order be delivered?',
+    a: 'Orders placed for festive & wedding collections are processed within 24 hours. Metro deliveries arrive in 2–3 business days, while standard pan-India delivery completes in 3–5 days.'
   },
   {
     q: 'What is included in the complimentary festive gift packaging?',
-    a: 'Every Diwali order ships in a rigid keepsake box finished in warm alabaster and rose-gold foil, accompanied by a festive greeting card, cotton garment protector, and a handcrafted decorative brass diya.'
+    a: 'Every festive order ships in a rigid keepsake box finished in warm alabaster and rose-gold foil, accompanied by a celebratory greeting card, cotton garment protector, and handcrafted boutique brass keepsake.'
   },
   {
     q: 'What is your return or exchange policy during the festive season?',
@@ -27,7 +27,7 @@ export default function Contact() {
     name: '',
     email: '',
     phone: '',
-    subject: 'Diwali Styling & Atelier Appointment',
+    subject: 'Festive Styling & Boutique Appointment',
     message: ''
   });
 
@@ -48,8 +48,8 @@ export default function Contact() {
         
         {/* Header */}
         <div className="text-center max-w-2xl mx-auto mb-16">
-          <span className="text-[11px] font-medium uppercase tracking-[0.3em] text-[#C8A27A] block mb-2">
-            Festive Concierge · The Jharkhand Edit
+          <span className="text-[15px] font-medium uppercase tracking-[0.2em] text-[#C8A27A] block mb-2">
+            All Festival Concierge · Local Fashion Boutique
           </span>
           <h1 className="font-serif text-3xl sm:text-5xl lg:text-6xl font-normal tracking-tight mb-3 text-[#161616]">
             Connect With KOKARÉ
@@ -215,7 +215,7 @@ export default function Contact() {
                         onChange={(e) => setFormData({ ...formData, subject: e.target.value })}
                         className="w-full px-3.5 py-2.5 bg-[#FAF7F2] border border-[#EAE4DC] text-sm text-[#161616] focus:outline-none focus:border-[#C8A27A] cursor-pointer"
                       >
-                        <option>Diwali Styling & Atelier Appointment</option>
+                        <option>Festive Styling & Boutique Appointment</option>
                         <option>Bespoke Sizing & Custom Draping</option>
                         <option>Order Status & Dispatch Inquiries</option>
                         <option>Corporate & Bulk Gifting</option>
@@ -254,7 +254,7 @@ export default function Contact() {
         {/* Accordion FAQ Section */}
         <div className="max-w-3xl mx-auto">
           <div className="text-center mb-8">
-            <span className="text-[11px] uppercase tracking-[0.25em] text-[#C8A27A] font-medium block mb-1">
+            <span className="text-[15px] uppercase tracking-[0.2em] text-[#C8A27A] font-medium block mb-1">
               Curated Guidance
             </span>
             <h3 className="font-serif text-2xl sm:text-3xl font-normal text-[#161616]">

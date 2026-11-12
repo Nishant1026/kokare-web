@@ -16,7 +16,7 @@ const HERO_SLIDES = [
   {
     id: 1,
     title: 'Masterpieces',
-    subtitle: 'DIWALI FESTIVE COLLECTION · 2026',
+    subtitle: 'ALL FESTIVAL FASHION COLLECTION · 2026',
     tagline: 'A celebration of Indian elegance and wearable art.',
     ctaText: 'EXPLORE NOW',
     ctaLink: '/festive-collection',
@@ -173,7 +173,7 @@ export default function Hero() {
             className="w-full max-w-2xl text-left pointer-events-auto"
           >
             {/* Minimal Festive Badge */}
-            <div className="inline-flex flex-wrap items-center gap-1.5 sm:gap-2 text-[10px] sm:text-xs uppercase tracking-[0.25em] sm:tracking-[0.35em] text-[#C8A27A] font-medium mb-2.5 sm:mb-3.5 max-w-full">
+            <div className="inline-flex flex-wrap items-center gap-1.5 sm:gap-2 text-[15px] uppercase tracking-[0.2em] sm:tracking-[0.25em] text-[#C8A27A] font-medium mb-2.5 sm:mb-3.5 max-w-full">
               <Sparkles className="w-3.5 h-3.5 text-[#C8A27A] shrink-0" />
               <span className="break-words">{active.subtitle}</span>
             </div>

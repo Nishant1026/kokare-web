@@ -26,7 +26,7 @@ export default function CustomerReviews() {
         
         {/* Section Header (Curated Patron Voices) */}
         <FadeInUp className="text-center mb-14">
-          <div className="inline-flex items-center gap-1.5 text-[11px] font-medium uppercase tracking-[0.3em] text-[#C8A27A] mb-2">
+          <div className="inline-flex items-center gap-1.5 text-[15px] font-medium uppercase tracking-[0.2em] text-[#C8A27A] mb-2">
             <Sparkles className="w-3.5 h-3.5 text-[#C8A27A]" />
             <span>Patron Voices</span>
           </div>
@@ -77,9 +77,9 @@ export default function CustomerReviews() {
                         {activeReview.name}
                       </span>
                       {activeReview.verified && (
-                        <span className="inline-flex items-center gap-1 text-[10px] text-[#C8A27A] font-medium tracking-wider uppercase ml-1">
+                        <span className="inline-flex items-center gap-1 text-[15px] text-[#C8A27A] font-medium tracking-wider uppercase ml-1">
                           <CheckCircle2 className="w-3.5 h-3.5 text-[#C8A27A]" />
-                          Verified Patron
+                          Verified Customer
                         </span>
                       )}
                     </div>

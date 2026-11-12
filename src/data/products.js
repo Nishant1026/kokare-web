@@ -1,6 +1,6 @@
 // Curated luxury designer products for KOKARÉ — The Jharkhand Edit
 // Brand Tagline: "Tradition, Reimagined."
-// Campaign: Diwali Festive Collection 2026
+// Campaign: All Festival & Wedding Collection 2026
 // High-quality editorial Indian designer fashion photography
 
 export const PRODUCTS = [
@@ -21,7 +21,7 @@ export const PRODUCTS = [
     isNew: true,
     inStock: true,
     tagline: 'Woven with champagne gold zari motifs inspired by Jharkhand heritage crafts.',
-    description: 'An iconic statement of modern Indian luxury. Tailored in luminous mulberry silk in our signature deep emerald hue, this drape features intricate antique gold floral zari borders and an ornate pallu. Styled for timeless Diwali evening celebrations.',
+    description: 'An iconic statement of modern Indian luxury. Tailored in luminous mulberry silk in our signature deep emerald hue, this drape features intricate antique gold floral zari borders and an ornate pallu. Styled for timeless festive and wedding celebrations.',
     fabricCare: '100% Pure Handloom Silk. Professional dry clean only. Store in a cotton muslin bag.',
     deliveryDays: 'Delivered in 2-4 business days. Free shipping included.',
     colors: [
@@ -84,7 +84,7 @@ export const PRODUCTS = [
     isNew: true,
     inStock: true,
     tagline: 'Structured raw silk with bespoke antique brass button placket.',
-    description: 'Tailored for monumental festive moments. Cut from rich forest charcoal raw silk with subtle geometric tone-on-tone embroidery along the Mandarin collar and cuffs. Designed for evening Diwali galas and wedding celebrations.',
+    description: 'Tailored for monumental festive moments. Cut from rich forest charcoal raw silk with subtle geometric tone-on-tone embroidery along the Mandarin collar and cuffs. Designed for festive galas and grand wedding celebrations.',
     fabricCare: 'Raw Silk blend with satin lining. Professional dry clean only.',
     deliveryDays: 'Delivered in 2-4 business days.',
     colors: [
@@ -395,8 +395,8 @@ export const PRODUCTS = [
     isBestseller: true,
     isNew: true,
     inStock: true,
-    tagline: 'The iconic Diwali campaign drape with antique champagne zari jaal.',
-    description: 'Our definitive festive masterwork. Cut from heirloom mulberry silk hand-dyed in deep royal wine, embellished with dense Banarasi zari shikargah motifs along the border and an elaborate grand pallu. Styled for Diwali evening rituals and grand receptions.',
+    tagline: 'The iconic festive campaign drape with antique champagne zari jaal.',
+    description: 'Our definitive festive masterwork. Cut from heirloom mulberry silk hand-dyed in deep royal wine, embellished with dense Banarasi zari shikargah motifs along the border and an elaborate grand pallu. Styled for festive celebrations and grand receptions.',
     fabricCare: '100% Pure Mulberry Silk. Professional dry clean only.',
     deliveryDays: 'Delivered in 2-3 business days. Free shipping included.',
     colors: [
@@ -940,8 +940,8 @@ export const REVIEWS = [
     name: 'Ananya Deshmukh',
     city: 'Mumbai',
     rating: 5,
-    title: 'Pure designer luxury for Diwali',
-    comment: 'The Emerald Zari Handloom Saree is truly heirloom grade. The lustre of the silk and the subtle antique gold zari border catch the warm light of diyas so gracefully.',
+    title: 'Pure designer luxury for every celebration',
+    comment: 'The Emerald Zari Handloom Saree is truly heirloom grade. The lustre of the silk and the subtle antique gold zari border catch the warm celebratory light so gracefully.',
     productName: 'Emerald Zari Handloom Saree',
     date: 'October 2026',
     verified: true
@@ -952,7 +952,7 @@ export const REVIEWS = [
     city: 'Bengaluru',
     rating: 5,
     title: 'The fit on the sherwani is bespoke-level',
-    comment: 'Ordered the Forest Charcoal Architectural Sherwani for our family Diwali celebration. The structure on the Mandarin collar and the antique brass buttons look like couture.',
+    comment: 'Ordered the Forest Charcoal Architectural Sherwani for our family festive celebration. The structure on the Mandarin collar and the antique brass buttons look like couture.',
     productName: 'Forest Charcoal Architectural Sherwani',
     date: 'October 2026',
     verified: true
@@ -986,7 +986,7 @@ export const INSTAGRAM_POSTS = [
     id: 'ig-1',
     handle: '@kokare.official',
     image: 'https://images.unsplash.com/photo-1610030469983-98e550d6193c?auto=format&fit=crop&w=600&q=85',
-    caption: 'Diwali evenings draped in pure emerald handloom silk.',
+    caption: 'Festive celebrations draped in pure emerald handloom silk.',
     likes: '1,420'
   },
   {

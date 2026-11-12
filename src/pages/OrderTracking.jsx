@@ -86,9 +86,9 @@ export default function OrderTracking() {
         
         {/* Header */}
         <div className="text-center max-w-xl mx-auto mb-12">
-          <div className="inline-flex items-center gap-1.5 text-[11px] font-medium uppercase tracking-[0.3em] text-[#C8A27A] mb-1">
+          <div className="inline-flex items-center gap-1.5 text-[15px] font-medium uppercase tracking-[0.2em] text-[#C8A27A] mb-1">
             <Sparkles className="w-3.5 h-3.5 text-[#C8A27A]" />
-            <span>Real-time Logistics · The Jharkhand Edit</span>
+            <span>Real-time Logistics · Local Boutique Dispatch</span>
           </div>
           <h1 className="font-serif text-3xl sm:text-5xl lg:text-6xl font-normal tracking-tight mb-3 text-[#161616]">
             Track Your Festive Order
@@ -108,7 +108,7 @@ export default function OrderTracking() {
                 type="text"
                 value={orderIdInput}
                 onChange={(e) => setOrderIdInput(e.target.value.toUpperCase())}
-                placeholder="Enter Consignment ID (e.g. KOKARE-DWL-78421)"
+                placeholder="Enter Consignment ID (e.g. KOKARE-FST-78421)"
                 className="w-full pl-10 pr-4 py-3 bg-[#FAF7F2] border border-[#EAE4DC] text-sm text-[#161616] font-mono uppercase placeholder-[#736E66]/60 focus:outline-none focus:border-[#C8A27A]"
               />
             </div>
@@ -127,7 +127,7 @@ export default function OrderTracking() {
           {/* Order Header Summary */}
           <div className="flex flex-col sm:flex-row justify-between sm:items-center gap-4 pb-6 border-b border-[#EAE4DC]">
             <div>
-              <span className="text-[11px] uppercase tracking-wider text-[#736E66] font-light block">
+              <span className="text-[15px] uppercase tracking-wider text-[#736E66] font-light block">
                 Consignment Reference
               </span>
               <h3 className="font-mono text-xl sm:text-2xl font-normal text-[#161616]">
@@ -192,7 +192,7 @@ export default function OrderTracking() {
           <div className="pt-6 border-t border-[#EAE4DC] flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-[#736E66] font-light">
             <div className="flex items-center gap-2">
               <ShieldCheck className="w-4 h-4 text-[#C8A27A]" />
-              <span>Complimentary insured shipping on all Diwali 2026 consignments.</span>
+              <span>Complimentary insured shipping on all festival orders.</span>
             </div>
             <Link
               to="/contact"

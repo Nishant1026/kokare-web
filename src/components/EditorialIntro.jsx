@@ -17,25 +17,27 @@ export default function EditorialIntro() {
           <div className="lg:col-span-7">
             <ParallaxContent speed={26} reverse={false}>
               <FadeInUp className="space-y-6">
-                <div className="inline-flex items-center gap-2 text-[11px] uppercase tracking-[0.3em] text-[#C8A27A] font-medium">
-                  <Sparkles className="w-3.5 h-3.5 text-[#C8A27A]" />
-                  <span>The House of KOKARÉ · Atelier Philosophy</span>
+                <div className="inline-flex items-center gap-2 text-xs sm:text-[15px] uppercase tracking-[0.15em] sm:tracking-[0.2em] text-[#C8A27A] font-medium flex-wrap max-w-full">
+                  <Sparkles className="w-3.5 h-3.5 text-[#C8A27A] shrink-0" />
+                  <span>The House of KOKARÉ · Our Design Philosophy</span>
                 </div>
 
-                <h2 className="font-serif text-3xl sm:text-5xl lg:text-6xl font-normal text-[#161616] tracking-tight leading-[1.12]">
-                  Wearable Art Crafted For <br />
-                  <span className="italic text-[#C8A27A]">Moments of Grace</span>
+                <h2 className="font-serif text-3xl sm:text-5xl lg:text-6xl font-normal text-[#161616] tracking-tight leading-[1.15] break-words">
+                  Handcrafted Fashion For <br />
+                  <span className="block font-serif italic text-[#C8A27A] text-2xl sm:text-4xl lg:text-5xl tracking-normal mt-1.5 sm:mt-2">
+                    Every Celebration
+                  </span>
                 </h2>
 
                 {/* Slender champagne separator line */}
                 <div className="w-16 h-[1.5px] bg-[#C8A27A]" />
 
                 <p className="text-[17px] text-[#736E66] leading-relaxed font-light max-w-xl">
-                  Where the ancestral artisanal heritage of Jharkhand meets the refined elegance of modern Indian luxury. Discover meticulously hand-loomed creations conceived not merely as attire, but as timeless expressions of wearable art.
+                  Where traditional Indian craftsmanship meets modern luxury style. Discover thoughtfully designed festive wear, royal sarees, elegant kurtas, and timeless outfits created for your most special moments.
                 </p>
 
                 <p className="text-[17px] text-[#736E66] leading-relaxed font-light max-w-lg">
-                  Every fold of unbleached wild tussar, handloom chanderi, and structured raw silk carries a narrative of restraint and grandeur. Tailored with devotion for festive rituals, joyful family celebrations, and Diwali evenings.
+                  From pure mulberry silks and delicate chanderi to structured raw silks, every piece is made with care and precision. Designed for wedding celebrations, festive gatherings, and unforgettable family occasions.
                 </p>
 
                 <div className="pt-4">
@@ -43,7 +45,7 @@ export default function EditorialIntro() {
                     to="/about"
                     className="inline-flex items-center justify-center px-8 sm:px-10 py-3.5 sm:py-4 border border-[#161616] text-[#161616] hover:bg-[#161616] hover:text-white text-xs font-normal uppercase tracking-[0.25em] transition-all duration-300 cursor-pointer"
                   >
-                    <span>Discover Our World</span>
+                    <span>Explore Our Story</span>
                     <ArrowRight className="w-3.5 h-3.5 ml-2.5" />
                   </Link>
                 </div>
@@ -65,11 +67,11 @@ export default function EditorialIntro() {
                 />
                 <div className="absolute bottom-0 inset-x-0 h-[40%] bg-gradient-to-t from-black/80 to-transparent pointer-events-none" />
                 <div className="absolute bottom-6 left-6 right-6 text-white pointer-events-none">
-                  <span className="text-[10px] uppercase tracking-[0.25em] text-[#C8A27A] font-medium block mb-1">
-                    Artisanal Intricacy
+                  <span className="text-[15px] uppercase tracking-[0.2em] text-[#C8A27A] font-medium block mb-1">
+                    Fine Craftsmanship
                   </span>
                   <p className="font-serif italic text-base sm:text-lg text-white font-light">
-                    Hand-embroidered zardozi and antique rose-gold resham work.
+                    Hand-embroidered zardozi and delicate resham detailing
                   </p>
                 </div>
               </div>

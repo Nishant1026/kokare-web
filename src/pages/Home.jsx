@@ -29,7 +29,7 @@ export default function Home() {
       {/* 5. Bestsellers Product Grid ("THE PIECES EVERYONE LOVES") */}
       <ProductGrid
         title="THE PIECES EVERYONE LOVES"
-        subtitle="Diwali Festive Collection 2026"
+        subtitle="All Festival & Wedding Collection 2026"
         limit={8}
         showTabs={true}
       />

@@ -15,7 +15,7 @@ export default function CategoryGrid() {
         
         {/* Section Header */}
         <FadeInUp className="text-center max-w-2xl mx-auto mb-14">
-          <div className="inline-flex items-center gap-1.5 text-[11px] font-medium uppercase tracking-[0.3em] text-[#C8A27A] mb-2">
+          <div className="inline-flex items-center gap-1.5 text-[15px] font-medium uppercase tracking-[0.2em] text-[#C8A27A] mb-2">
             <Sparkles className="w-3.5 h-3.5 text-[#C8A27A]" />
             <span>Curated Silhouettes</span>
           </div>
@@ -65,7 +65,7 @@ export default function CategoryGrid() {
 
                     {/* Bottom Text Content */}
                     <div className="absolute bottom-4 sm:bottom-6 left-4 sm:left-6 right-4 sm:right-6 text-white z-10">
-                      <span className="text-[10px] sm:text-[11px] uppercase tracking-[0.25em] text-[#F3E5D4] font-medium block mb-1 drop-shadow-[0_1px_2px_rgba(0,0,0,0.9)]">
+                      <span className="text-[15px] uppercase tracking-[0.2em] text-[#F3E5D4] font-medium block mb-1 drop-shadow-[0_1px_2px_rgba(0,0,0,0.9)]">
                         {exactCount} Silhouettes
                       </span>
                       <h3 className="font-serif text-xl sm:text-2xl lg:text-[28px] font-normal group-hover:text-[#C8A27A] transition-colors leading-snug text-white drop-shadow-[0_2px_4px_rgba(0,0,0,0.9)]">

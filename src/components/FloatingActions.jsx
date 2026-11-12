@@ -29,14 +29,14 @@ export default function FloatingActions() {
   };
 
   const handleWhatsAppRedirect = (customText) => {
-    const text = customText || conciergeMsg || 'Hello Kokaré Atelier, I would like personal styling assistance with the Diwali 2026 Collection.';
+    const text = customText || conciergeMsg || 'Hello Kokaré Boutique, I would like personal styling assistance with your latest festive fashion collections.';
     const encoded = encodeURIComponent(text);
     window.open(`https://wa.me/919876543210?text=${encoded}`, '_blank');
     setIsConciergeOpen(false);
   };
 
   const handleCopyCoupon = () => {
-    navigator.clipboard.writeText('DIWALI20');
+    navigator.clipboard.writeText('FESTIVE20');
     setCopiedCoupon(true);
     setTimeout(() => setCopiedCoupon(false), 2200);
   };
@@ -57,10 +57,10 @@ export default function FloatingActions() {
               exit={{ opacity: 0, scale: 0.7, y: 10 }}
               onClick={scrollToTop}
               aria-label="Scroll to Top"
-              className="w-9 h-9 sm:w-10 sm:h-10 lg:w-11 lg:h-11 rounded-full bg-[#161616]/95 hover:bg-[#C8A27A] text-white shadow-xl flex items-center justify-center transition-all duration-300 border border-white/20 cursor-pointer group"
+              className="w-10 h-10 sm:w-11 sm:h-11 rounded-full bg-[#161616] hover:bg-[#C8A27A] text-white shadow-xl flex items-center justify-center transition-all duration-300 border border-[#C8A27A]/50 hover:border-[#C8A27A] cursor-pointer group active:scale-90"
               title="Back to Top"
             >
-              <ArrowUp className="w-3.5 h-3.5 sm:w-4 sm:h-4 lg:w-5 lg:h-5 stroke-[2] group-hover:-translate-y-0.5 transition-transform" />
+              <ArrowUp className="w-4 h-4 sm:w-5 sm:h-5 stroke-[2] group-hover:-translate-y-0.5 transition-transform" />
             </motion.button>
           )}
         </AnimatePresence>
@@ -71,7 +71,7 @@ export default function FloatingActions() {
           whileTap={{ scale: 0.95 }}
           onClick={() => setIsConciergeOpen(!isConciergeOpen)}
           aria-label="Atelier Concierge & Stylist Assistance"
-          className="w-10 h-10 sm:w-11 sm:h-11 lg:w-13 lg:h-13 rounded-full bg-[#721C2B] hover:bg-[#581422] text-white shadow-2xl flex items-center justify-center transition-all duration-300 cursor-pointer relative group border-2 border-[#C8A27A]/40"
+          className="w-11 h-11 sm:w-12 sm:h-12 rounded-full bg-[#721C2B] hover:bg-[#581422] text-white shadow-2xl flex items-center justify-center transition-all duration-300 cursor-pointer relative group border-2 border-[#C8A27A]/60 shadow-[0_4px_20px_rgba(200,162,122,0.35)]"
           title="Atelier Concierge"
         >
           {/* Subtle pulse ring */}
@@ -100,11 +100,11 @@ export default function FloatingActions() {
             <div className="bg-[#161616] text-white p-5 border-b border-[#C8A27A]/30 relative">
               <div className="flex items-center justify-between">
                 <div>
-                  <span className="text-[10px] uppercase tracking-[0.3em] text-[#C8A27A] font-medium block">
+                  <span className="text-[15px] uppercase tracking-[0.2em] text-[#C8A27A] font-medium block">
                     Bespoke Service
                   </span>
                   <h3 className="font-serif text-xl text-white font-normal tracking-wide mt-0.5">
-                    KOKARÉ Atelier Concierge
+                    KOKARÉ Boutique Concierge
                   </h3>
                 </div>
                 <button
@@ -116,7 +116,7 @@ export default function FloatingActions() {
                 </button>
               </div>
               <p className="text-xs text-white/80 mt-2 font-light">
-                Our master stylists are available for Diwali sizing, bespoke silhouettes, and express atelier shipping.
+                Our fashion stylists are available for sizing, bespoke custom tailoring, and express boutique delivery.
               </p>
             </div>
 
@@ -125,12 +125,12 @@ export default function FloatingActions() {
               <div className="flex items-center gap-2">
                 <Sparkles className="w-3.5 h-3.5 text-[#C8A27A]" />
                 <span className="text-xs uppercase tracking-wider text-[#161616]">
-                  Code: <strong className="font-mono text-[#C8A27A] ml-1">DIWALI20</strong>
+                  Code: <strong className="font-mono text-[#C8A27A] ml-1">FESTIVE20</strong>
                 </span>
               </div>
               <button
                 onClick={handleCopyCoupon}
-                className="text-[11px] uppercase tracking-widest px-2.5 py-1 border border-[#C8A27A] text-[#161616] hover:bg-[#C8A27A] hover:text-white transition-all cursor-pointer font-medium"
+                className="text-[15px] uppercase tracking-widest px-2.5 py-1 border border-[#C8A27A] text-[#161616] hover:bg-[#C8A27A] hover:text-white transition-all cursor-pointer font-medium"
               >
                 {copiedCoupon ? 'Copied!' : 'Copy 20%'}
               </button>
@@ -139,7 +139,7 @@ export default function FloatingActions() {
             {/* Quick Consultation Actions */}
             <div className="p-4 space-y-2.5">
               <button
-                onClick={() => handleWhatsAppRedirect('Hello Kokaré Atelier, I need help selecting the right size and silhouette for Diwali 2026.')}
+                onClick={() => handleWhatsAppRedirect('Hello Kokaré Boutique, I need help selecting the right size and festive outfit.')}
                 className="w-full flex items-center justify-between p-3 border border-[#EAE4DC] hover:border-[#161616] hover:bg-[#FAF7F2] transition-colors text-left group cursor-pointer"
               >
                 <div className="flex items-center gap-3">
@@ -150,7 +150,7 @@ export default function FloatingActions() {
                     <p className="text-xs font-medium text-[#161616] uppercase tracking-wider">
                       WhatsApp Live Stylist
                     </p>
-                    <p className="text-[11px] text-[#736E66]">Instant response in ~5 mins</p>
+                    <p className="text-[15px] text-[#736E66]">Instant response in ~5 mins</p>
                   </div>
                 </div>
                 <Send className="w-3.5 h-3.5 text-[#C8A27A] group-hover:translate-x-0.5 transition-transform" />
@@ -167,9 +167,9 @@ export default function FloatingActions() {
                   </div>
                   <div>
                     <p className="text-xs font-medium text-[#161616] uppercase tracking-wider">
-                      Book Atelier Appointment
+                      Book Boutique Appointment
                     </p>
-                    <p className="text-[11px] text-[#736E66]">Ranchi · New Delhi · Mumbai</p>
+                    <p className="text-[15px] text-[#736E66]">Ranchi · New Delhi · Mumbai</p>
                   </div>
                 </div>
                 <Compass className="w-3.5 h-3.5 text-[#C8A27A] group-hover:rotate-45 transition-transform" />
@@ -188,7 +188,7 @@ export default function FloatingActions() {
                     <p className="text-xs font-medium text-[#161616] uppercase tracking-wider">
                       Track Festive Order
                     </p>
-                    <p className="text-[11px] text-[#736E66]">Live dispatch status & PIN check</p>
+                    <p className="text-[15px] text-[#736E66]">Live dispatch status & PIN check</p>
                   </div>
                 </div>
                 <Package className="w-3.5 h-3.5 text-[#C8A27A]" />
@@ -218,7 +218,7 @@ export default function FloatingActions() {
                   Send
                 </button>
               </form>
-              <div className="flex items-center justify-between mt-2.5 text-[10px] text-[#9B958B]">
+              <div className="flex items-center justify-between mt-2.5 text-[15px] text-[#9B958B]">
                 <span className="flex items-center gap-1">
                   <Phone className="w-2.5 h-2.5" /> +91 651 291 2026
                 </span>
