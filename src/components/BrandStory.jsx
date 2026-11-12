@@ -22,9 +22,8 @@ export default function BrandStory() {
                   alt="Jharkhand handloom textile craftsmanship"
                   className="w-full h-full"
                   imgClassName="object-cover object-top"
-                  offset={20}
-                  mobileOffset={10}
-                  scale={1.05}
+                  offset={35}
+                  scale={1.1}
                 />
                 <div className="absolute bottom-0 inset-x-0 h-[38%] bg-gradient-to-t from-black/80 to-transparent pointer-events-none" />
                 <div className="absolute bottom-6 left-6 right-6 text-white pointer-events-none">
@@ -37,8 +36,8 @@ export default function BrandStory() {
                 </div>
               </div>
 
-              {/* Subtle floating badge with Parallax Float */}
-              <div className="hidden sm:flex absolute -top-3 -right-3 p-4 bg-white border border-[#EAE4DC] shadow-xs flex-col items-center justify-center text-center z-10">
+              {/* Floating badge with Parallax Float across all screens */}
+              <div className="flex absolute -top-2 -right-2 sm:-top-3 sm:-right-3 p-3 sm:p-4 bg-white border border-[#EAE4DC] shadow-xs flex-col items-center justify-center text-center z-10">
                 <Sparkles className="w-4 h-4 text-[#C8A27A] mb-1" />
                 <span className="text-[10px] uppercase tracking-[0.28em] text-[#161616] font-medium">
                   Est. 2026

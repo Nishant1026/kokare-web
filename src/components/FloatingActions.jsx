@@ -47,7 +47,7 @@ export default function FloatingActions() {
       {/* FLOATING ACTION BUTTONS (Exact to Reference Screenshot 3)     */}
       {/* Bottom Right: Circular Scroll-to-Top (Black) & Chat (Red)    */}
       {/* ============================================================ */}
-      <div className="fixed bottom-5 sm:bottom-6 right-4 sm:right-6 z-40 flex flex-col items-center gap-2.5 sm:gap-3">
+      <div className="fixed bottom-3 sm:bottom-5 lg:bottom-6 right-2.5 sm:right-4 lg:right-6 z-40 flex flex-col items-center gap-2 sm:gap-3">
         {/* 1. Circular Scroll-to-Top Button (Amrapali black circle with white up arrow) */}
         <AnimatePresence>
           {showScrollTop && (
@@ -57,10 +57,10 @@ export default function FloatingActions() {
               exit={{ opacity: 0, scale: 0.7, y: 10 }}
               onClick={scrollToTop}
               aria-label="Scroll to Top"
-              className="w-10 h-10 sm:w-11 sm:h-11 rounded-full bg-[#161616] text-white shadow-xl hover:bg-[#C8A27A] flex items-center justify-center transition-all duration-300 border border-white/20 cursor-pointer group"
+              className="w-9 h-9 sm:w-10 sm:h-10 lg:w-11 lg:h-11 rounded-full bg-[#161616]/95 hover:bg-[#C8A27A] text-white shadow-xl flex items-center justify-center transition-all duration-300 border border-white/20 cursor-pointer group"
               title="Back to Top"
             >
-              <ArrowUp className="w-4 h-4 sm:w-5 sm:h-5 stroke-[2] group-hover:-translate-y-0.5 transition-transform" />
+              <ArrowUp className="w-3.5 h-3.5 sm:w-4 sm:h-4 lg:w-5 lg:h-5 stroke-[2] group-hover:-translate-y-0.5 transition-transform" />
             </motion.button>
           )}
         </AnimatePresence>
@@ -71,15 +71,15 @@ export default function FloatingActions() {
           whileTap={{ scale: 0.95 }}
           onClick={() => setIsConciergeOpen(!isConciergeOpen)}
           aria-label="Atelier Concierge & Stylist Assistance"
-          className="w-11 h-11 sm:w-13 sm:h-13 rounded-full bg-[#721C2B] hover:bg-[#581422] text-white shadow-2xl flex items-center justify-center transition-all duration-300 cursor-pointer relative group border-2 border-[#C8A27A]/40"
+          className="w-10 h-10 sm:w-11 sm:h-11 lg:w-13 lg:h-13 rounded-full bg-[#721C2B] hover:bg-[#581422] text-white shadow-2xl flex items-center justify-center transition-all duration-300 cursor-pointer relative group border-2 border-[#C8A27A]/40"
           title="Atelier Concierge"
         >
           {/* Subtle pulse ring */}
           <span className="absolute inset-0 rounded-full bg-[#721C2B]/30 animate-ping pointer-events-none" />
           {isConciergeOpen ? (
-            <X className="w-5 h-5 sm:w-6 sm:h-6 stroke-[2]" />
+            <X className="w-4.5 h-4.5 sm:w-5 sm:h-5 lg:w-6 lg:h-6 stroke-[2]" />
           ) : (
-            <MessageCircle className="w-5 h-5 sm:w-6 sm:h-6 fill-white stroke-[1.5]" />
+            <MessageCircle className="w-4.5 h-4.5 sm:w-5 sm:h-5 lg:w-6 lg:h-6 fill-white stroke-[1.5]" />
           )}
         </motion.button>
       </div>

@@ -46,9 +46,8 @@ export default function CollectionBanner() {
               alt={heroCol.title}
               className="absolute inset-0 w-full h-full"
               imgClassName="object-cover object-top transition-transform duration-700 ease-out group-hover:scale-105"
-              offset={15}
-              mobileOffset={8}
-              scale={1.03}
+              offset={28}
+              scale={1.08}
             />
 
             {/* Crisp Floating Atelier Caption Panel — No Dark Gradient */}
@@ -89,9 +88,8 @@ export default function CollectionBanner() {
                 alt={col2.title}
                 className="absolute inset-0 w-full h-full"
                 imgClassName="object-cover object-top transition-transform duration-700 ease-out group-hover:scale-105"
-                offset={15}
-                mobileOffset={8}
-                scale={1.03}
+                offset={28}
+                scale={1.08}
               />
 
               {/* Floating Atelier Caption — Clear and readable without darkening photo */}
@@ -124,9 +122,8 @@ export default function CollectionBanner() {
                   alt={col3.title}
                   className="absolute inset-0 w-full h-full"
                   imgClassName="object-cover object-top transition-transform duration-700 ease-out group-hover:scale-105"
-                  offset={15}
-                  mobileOffset={8}
-                  scale={1.03}
+                  offset={28}
+                  scale={1.08}
                 />
 
                 <div className="relative z-10 m-3 p-3 bg-white/95 backdrop-blur-md border border-[#EAE4DC] group-hover:border-[#C8A27A] shadow-xs transition-all duration-300">
@@ -153,9 +150,8 @@ export default function CollectionBanner() {
                   alt={col4.title}
                   className="absolute inset-0 w-full h-full"
                   imgClassName="object-cover object-top transition-transform duration-700 ease-out group-hover:scale-105"
-                  offset={15}
-                  mobileOffset={8}
-                  scale={1.03}
+                  offset={28}
+                  scale={1.08}
                 />
 
                 <div className="relative z-10 m-3 p-3 bg-white/95 backdrop-blur-md border border-[#EAE4DC] group-hover:border-[#C8A27A] shadow-xs transition-all duration-300">

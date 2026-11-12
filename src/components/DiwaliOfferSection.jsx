@@ -49,9 +49,8 @@ export default function DiwaliOfferSection({
                   alt="Festive Indian fashion offer"
                   className="w-full h-full"
                   imgClassName="object-cover object-top"
-                  offset={18}
-                  mobileOffset={10}
-                  scale={1.05}
+                  offset={35}
+                  scale={1.1}
                 />
                 <div className="absolute top-4 left-4 bg-white/95 text-[#161616] px-3.5 py-1 text-[10px] font-medium tracking-[0.25em] uppercase border border-[#EAE4DC] shadow-2xs z-10 pointer-events-none">
                   Diwali Special 2026

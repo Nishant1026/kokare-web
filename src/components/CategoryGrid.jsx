@@ -23,7 +23,7 @@ export default function CategoryGrid() {
             Shop By Category
           </h2>
           <div className="w-16 h-[1.5px] bg-[#C8A27A] mx-auto mb-4" />
-          <p className="text-[17px] text-[#736E66] tracking-normal font-light">
+          <p className="text-[16px] sm:text-[18px] text-[#2C2723] tracking-normal font-normal">
             Conceived for milestone celebrations. From handloom tussar sarees to architectural bandhgalas.
           </p>
         </FadeInUp>
@@ -51,13 +51,12 @@ export default function CategoryGrid() {
                       alt={cat.name}
                       className="w-full h-full"
                       imgClassName="object-top object-cover transition-transform duration-700 ease-out group-hover:scale-105"
-                      offset={18}
-                      mobileOffset={10}
-                      scale={1.05}
+                      offset={30}
+                      scale={1.1}
                     />
 
                     {/* Gradient Overlay strictly at bottom for readable text while keeping images bright */}
-                    <div className="absolute bottom-0 inset-x-0 h-[45%] bg-gradient-to-t from-black/85 via-black/25 to-transparent pointer-events-none" />
+                    <div className="absolute bottom-0 inset-x-0 h-[62%] sm:h-[54%] bg-gradient-to-t from-black/95 via-black/80 via-40% to-transparent pointer-events-none" />
 
                     {/* Top-Right Circular Refined Arrow */}
                     <div className="absolute top-4 right-4 w-9 h-9 rounded-full bg-white/90 text-[#161616] flex items-center justify-center group-hover:bg-[#161616] group-hover:text-white transition-all border border-[#EAE4DC] shadow-sm">
@@ -65,14 +64,14 @@ export default function CategoryGrid() {
                     </div>
 
                     {/* Bottom Text Content */}
-                    <div className="absolute bottom-5 sm:bottom-7 left-5 sm:left-7 right-5 sm:right-7 text-white">
-                      <span className="text-[10px] uppercase tracking-[0.28em] text-[#C8A27A] font-medium block mb-1">
+                    <div className="absolute bottom-4 sm:bottom-6 left-4 sm:left-6 right-4 sm:right-6 text-white z-10">
+                      <span className="text-[10px] sm:text-[11px] uppercase tracking-[0.25em] text-[#F3E5D4] font-medium block mb-1 drop-shadow-[0_1px_2px_rgba(0,0,0,0.9)]">
                         {exactCount} Silhouettes
                       </span>
-                      <h3 className="font-serif text-xl sm:text-2xl lg:text-3xl font-normal group-hover:text-[#C8A27A] transition-colors leading-tight text-white">
+                      <h3 className="font-serif text-xl sm:text-2xl lg:text-[28px] font-normal group-hover:text-[#C8A27A] transition-colors leading-snug text-white drop-shadow-[0_2px_4px_rgba(0,0,0,0.9)]">
                         {cat.name}
                       </h3>
-                      <p className="text-[17px] text-white/80 font-light mt-1 hidden sm:block line-clamp-1">
+                      <p className="text-[13px] sm:text-[15px] lg:text-[16px] text-white font-normal mt-1 leading-snug line-clamp-2 drop-shadow-[0_1px_3px_rgba(0,0,0,0.95)]">
                         {cat.description}
                       </p>
                     </div>

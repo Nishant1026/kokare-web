@@ -4,12 +4,10 @@ import { Link, useNavigate } from 'react-router-dom';
 import { Heart, Eye, ShoppingBag, Check, Sparkles } from 'lucide-react';
 import { useWishlist } from '../context/WishlistContext';
 import { useCart } from '../context/CartContext';
-import QuickViewModal from './QuickViewModal';
 
 export default function ProductCard({ product }) {
   const navigate = useNavigate();
   const [isHovered, setIsHovered] = useState(false);
-  const [isQuickViewOpen, setIsQuickViewOpen] = useState(false);
   const { isInWishlist, toggleWishlist } = useWishlist();
   const { cart, addToCart, getProductTotalInCart } = useCart();
 
@@ -33,6 +31,7 @@ export default function ProductCard({ product }) {
     e.preventDefault();
     e.stopPropagation();
     if (isInBag) {
+      window.scrollTo(0, 0);
       navigate('/cart');
       return;
     }
@@ -47,19 +46,12 @@ export default function ProductCard({ product }) {
     toggleWishlist(product);
   };
 
-  const handleOpenQuickView = (e) => {
-    e.preventDefault();
-    e.stopPropagation();
-    setIsQuickViewOpen(true);
-  };
-
   return (
-    <>
-      <div
-        className="group relative flex flex-col bg-white border border-[#EAE4DC] hover:border-[#C8A27A] transition-all duration-300 shadow-2xs hover:shadow-lg overflow-hidden"
-        onMouseEnter={() => setIsHovered(true)}
-        onMouseLeave={() => setIsHovered(false)}
-      >
+    <div
+      className="group relative flex flex-col bg-white border border-[#EAE4DC] hover:border-[#C8A27A] transition-all duration-300 shadow-2xs hover:shadow-lg overflow-hidden"
+      onMouseEnter={() => setIsHovered(true)}
+      onMouseLeave={() => setIsHovered(false)}
+    >
         {/* Image Container with Hover Swap */}
         <div className="relative aspect-[3/4] overflow-hidden bg-[#FAF7F2]">
           <Link to={`/product/${product.id}`} className="block w-full h-full">
@@ -84,25 +76,25 @@ export default function ProductCard({ product }) {
           </Link>
 
           {/* Badges: Bestseller / New / In Bag / Festive Privilege */}
-          <div className="absolute top-3 left-3 flex flex-col gap-1.5 z-10 pointer-events-none">
+          <div className="absolute top-2.5 left-2.5 flex flex-col gap-1 z-10 pointer-events-none max-w-[70%]">
             {isInBag && (
-              <span className="bg-[#161616] text-[#C8A27A] border border-[#C8A27A]/80 text-[11px] sm:text-[12px] font-medium uppercase tracking-[0.2em] px-2.5 py-1 shadow-xs flex items-center gap-1.5 backdrop-blur-xs">
-                <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
+              <span className="bg-[#161616] text-[#C8A27A] border border-[#C8A27A]/80 text-[10px] sm:text-[12px] font-medium uppercase tracking-[0.18em] px-2 py-0.5 sm:px-2.5 sm:py-1 shadow-xs flex items-center gap-1.5 backdrop-blur-xs whitespace-nowrap">
+                <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse shrink-0" />
                 <span>In Bag ({totalInBag})</span>
               </span>
             )}
             {product.isBestseller && (
-              <span className="bg-[#161616] text-white text-[11px] sm:text-[12px] font-normal uppercase tracking-[0.22em] px-2.5 py-1 shadow-xs border border-[#C8A27A]/40">
+              <span className="bg-[#161616] text-white text-[10px] sm:text-[12px] font-normal uppercase tracking-[0.2em] px-2 py-0.5 sm:px-2.5 sm:py-1 shadow-xs border border-[#C8A27A]/40 whitespace-nowrap">
                 Bestseller
               </span>
             )}
             {product.isNew && !product.isBestseller && (
-              <span className="bg-white text-[#161616] border border-[#EAE4DC] text-[11px] sm:text-[12px] font-normal uppercase tracking-[0.22em] px-2.5 py-1 shadow-xs">
+              <span className="bg-white text-[#161616] border border-[#EAE4DC] text-[10px] sm:text-[12px] font-normal uppercase tracking-[0.2em] px-2 py-0.5 sm:px-2.5 sm:py-1 shadow-xs whitespace-nowrap">
                 New Arrival
               </span>
             )}
             {discountVal > 0 && !product.isBestseller && !product.isNew && (
-              <span className="bg-[#721C2B] text-[#FAF7F2] border border-[#C8A27A]/40 text-[11px] sm:text-[12px] font-normal uppercase tracking-[0.2em] px-2.5 py-1 shadow-xs backdrop-blur-xs flex items-center gap-1">
+              <span className="bg-[#721C2B] text-[#FAF7F2] border border-[#C8A27A]/40 text-[10px] sm:text-[12px] font-normal uppercase tracking-[0.18em] px-2 py-0.5 sm:px-2.5 sm:py-1 shadow-xs backdrop-blur-xs flex items-center gap-1 whitespace-nowrap">
                 <Sparkles className="w-3 h-3 text-[#C8A27A] shrink-0" />
                 <span>{discountVal}% Privilege</span>
               </span>
@@ -113,30 +105,40 @@ export default function ProductCard({ product }) {
           <button
             onClick={handleWishlistToggle}
             aria-label={isFavorited ? 'Remove from Wishlist' : 'Add to Wishlist'}
-            className="absolute top-3 right-3 z-10 p-2.5 rounded-full bg-white/95 text-[#161616] hover:text-[#C8A27A] backdrop-blur-sm border border-[#EAE4DC] transition-colors shadow-2xs cursor-pointer"
+            className="absolute top-2.5 right-2.5 sm:top-3 sm:right-3 z-10 w-8 h-8 sm:w-9 sm:h-9 rounded-full bg-white/95 text-[#161616] hover:text-[#C8A27A] backdrop-blur-sm border border-[#EAE4DC] flex items-center justify-center transition-colors shadow-2xs cursor-pointer active:scale-90"
           >
             <motion.div whileTap={{ scale: 0.85 }}>
               <Heart
-                className={`w-4 h-4 transition-colors ${
+                className={`w-3.5 h-3.5 sm:w-4 sm:h-4 transition-colors ${
                   isFavorited ? 'fill-[#C8A27A] text-[#C8A27A]' : 'text-[#161616]'
                 }`}
               />
             </motion.div>
           </button>
 
-          {/* Desktop Hover Action Bar */}
+          {/* Mobile & Tablet View Details Icon (Bottom Right of Image) */}
+          <Link
+            to={`/product/${product.id}`}
+            aria-label={`View ${product.name} Details`}
+            title="View Details"
+            className="lg:hidden absolute bottom-2.5 right-2.5 z-10 w-8 h-8 rounded-full bg-white/95 text-[#161616] hover:text-[#C8A27A] backdrop-blur-sm border border-[#EAE4DC] flex items-center justify-center transition-colors shadow-2xs cursor-pointer active:scale-90"
+          >
+            <Eye className="w-3.5 h-3.5 stroke-[1.5]" />
+          </Link>
+
+          {/* Desktop Hover Action Bar (Visible on lg screens with mouse hover) */}
           <div
-            className={`hidden sm:flex absolute bottom-0 inset-x-0 p-3 bg-gradient-to-t from-black/85 via-black/45 to-transparent items-center justify-center gap-2 transition-all duration-300 z-10 ${
+            className={`hidden lg:flex absolute bottom-0 inset-x-0 p-3 bg-gradient-to-t from-black/85 via-black/45 to-transparent items-center justify-center gap-2 transition-all duration-300 z-10 ${
               isHovered ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-2 pointer-events-none'
             }`}
           >
-            <button
-              onClick={handleOpenQuickView}
+            <Link
+              to={`/product/${product.id}`}
               className="flex-1 py-2.5 bg-white/95 hover:bg-white text-[#161616] text-[12px] sm:text-[13px] font-normal uppercase tracking-[0.2em] transition-colors flex items-center justify-center gap-1.5 cursor-pointer backdrop-blur-xs shadow-xs"
             >
               <Eye className="w-4 h-4" />
-              <span>Quick View</span>
-            </button>
+              <span>View Details</span>
+            </Link>
             <button
               onClick={handleQuickAdd}
               className={`py-2.5 px-3.5 transition-colors flex items-center justify-center cursor-pointer shadow-xs ${
@@ -161,43 +163,45 @@ export default function ProductCard({ product }) {
         </div>
 
         {/* Product Information */}
-        <div className="p-3.5 sm:p-5 flex flex-col flex-1 justify-between bg-white">
+        <div className="p-3 sm:p-4.5 flex flex-col flex-1 justify-between bg-white">
           <div>
-            {/* Category / Collection Tag */}
-            <div className="flex items-center justify-between text-[13px] sm:text-[14px] text-[#736E66] uppercase tracking-[0.18em] mb-1.5 font-light">
-              <span className="text-[#161616] font-normal tracking-[0.16em]">{product.category}</span>
-              <span className="text-[12px] sm:text-[13px] uppercase tracking-[0.16em] text-[#C8A27A] font-medium">
-                {product.collection === 'festive-edit' ? 'Diwali 2026' : 'Atelier Edit'}
+            {/* Category / Collection Tag — Balanced single line with zero awkward breaking */}
+            <div className="flex items-center justify-between gap-1 mb-1 font-light">
+              <span className="text-[11px] sm:text-[13px] uppercase tracking-[0.16em] text-[#161616] font-medium truncate">
+                {product.category}
+              </span>
+              <span className="text-[10px] sm:text-[11px] uppercase tracking-[0.14em] text-[#C8A27A] font-medium shrink-0 whitespace-nowrap">
+                {product.collection === 'festive-edit' ? 'Festive' : 'Atelier'}
               </span>
             </div>
 
-            {/* Product Name (Strict 16px - 17px Editorial Typography) */}
+            {/* Product Name (Strict 15px - 17px Editorial Typography) */}
             <Link to={`/product/${product.id}`} className="block">
-              <h3 className="font-serif text-[16px] sm:text-[17px] font-normal text-[#161616] group-hover:text-[#C8A27A] transition-colors leading-snug line-clamp-1">
+              <h3 className="font-serif text-[15px] sm:text-[17px] font-normal text-[#161616] group-hover:text-[#C8A27A] transition-colors leading-snug line-clamp-1">
                 {product.name}
               </h3>
             </Link>
 
             {/* Fabric Tagline */}
-            <p className="text-[15px] sm:text-[17px] text-[#736E66] font-light mt-1 line-clamp-1">
+            <p className="text-[13px] sm:text-[15px] text-[#736E66] font-light mt-0.5 sm:mt-1 line-clamp-1">
               {product.fabric || product.tagline}
             </p>
           </div>
 
           {/* Pricing & Offers Showcase */}
-          <div className="mt-2.5 pt-2.5 sm:mt-3 sm:pt-3 border-t border-[#EAE4DC] flex items-center justify-between gap-2">
-            <div className="flex items-baseline gap-1.5 sm:gap-2 flex-wrap">
-              <span className="font-serif text-[16px] sm:text-[17px] text-[#161616] font-normal">
+          <div className="mt-2.5 pt-2 sm:mt-3 sm:pt-3 border-t border-[#EAE4DC] flex items-center justify-between gap-1">
+            <div className="flex items-baseline gap-1 sm:gap-2 flex-wrap">
+              <span className="font-serif text-[15px] sm:text-[17px] text-[#161616] font-normal">
                 ₹{product.price.toLocaleString('en-IN')}
               </span>
               {product.originalPrice && (
-                <span className="text-[13px] sm:text-[14px] text-[#736E66] line-through font-light">
+                <span className="text-[11px] sm:text-[13px] text-[#736E66] line-through font-light">
                   ₹{product.originalPrice.toLocaleString('en-IN')}
                 </span>
               )}
               {discountVal > 0 && (
-                <span className="inline-flex items-center text-[12px] uppercase tracking-wider text-[#721C2B] font-medium bg-[#FBF1F2] border border-[#721C2B]/25 px-2 py-[2px] leading-tight shrink-0 whitespace-nowrap">
-                  Save {discountVal}%
+                <span className="inline-flex items-center text-[10px] sm:text-[11px] uppercase tracking-wider text-[#721C2B] font-medium bg-[#FBF1F2] border border-[#721C2B]/25 px-1.5 py-[1px] leading-tight shrink-0 whitespace-nowrap">
+                  {discountVal}% OFF
                 </span>
               )}
             </div>
@@ -205,81 +209,47 @@ export default function ProductCard({ product }) {
             {/* Color Swatch Previews */}
             {product.colors && product.colors.length > 0 && (
               <div className="flex items-center gap-1 shrink-0">
-                {product.colors.slice(0, 3).map((col) => (
+                {product.colors.slice(0, 2).map((col) => (
                   <span
                     key={col.name}
-                    className="w-2.5 h-2.5 rounded-full border border-black/15"
+                    className="w-2.5 h-2.5 rounded-full border border-black/15 shrink-0"
                     style={{ backgroundColor: col.hex }}
                     title={col.name}
                   />
                 ))}
-                {product.colors.length > 3 && (
-                  <span className="text-[11px] text-[#736E66] font-mono">
-                    +{product.colors.length - 3}
+                {product.colors.length > 2 && (
+                  <span className="text-[10px] text-[#736E66] font-mono leading-none">
+                    +{product.colors.length - 2}
                   </span>
                 )}
               </div>
             )}
           </div>
 
-          {/* Mobile Tap Action Bar (Refined Atelier Architectural Segmented Bar) */}
-          <div className="sm:hidden mt-3 pt-2.5 border-t border-[#EAE4DC]/60">
-            <div
-              className={`flex items-stretch border transition-all duration-300 shadow-2xs ${
+          {/* Mobile & Tablet Full-Width Action Button — Visible on all mobile & tablet screens */}
+          <div className="lg:hidden mt-2.5 pt-2 border-t border-[#EAE4DC]/60">
+            <button
+              onClick={handleQuickAdd}
+              className={`w-full h-8.5 sm:h-9 px-2 sm:px-3 flex items-center justify-center gap-1.5 border transition-all duration-300 shadow-2xs cursor-pointer ${
                 isInBag
-                  ? 'border-[#721C2B] bg-[#721C2B]'
-                  : 'border-[#161616] bg-white hover:border-[#C8A27A]'
+                  ? 'border-[#721C2B] bg-[#721C2B] text-white'
+                  : 'border-[#161616] bg-white text-[#161616] hover:border-[#C8A27A] hover:text-[#C8A27A] active:bg-[#FAF7F2]'
               }`}
             >
-              {/* Add To Bag Primary Touch Action */}
-              <button
-                onClick={handleQuickAdd}
-                className={`flex-1 h-9 px-2.5 flex items-center justify-center gap-1.5 transition-colors cursor-pointer whitespace-nowrap overflow-hidden ${
-                  isInBag
-                    ? 'text-white'
-                    : 'text-[#161616] hover:text-[#C8A27A] active:bg-[#FAF7F2]'
-                }`}
-              >
-                {isInBag ? (
-                  <span className="text-[11px] leading-none uppercase tracking-[0.18em] font-medium flex items-center gap-1.5 text-white">
-                    <Check className="w-3.5 h-3.5 stroke-[3] text-[#C8A27A]" />
-                    IN BAG
-                  </span>
-                ) : (
-                  <span className="text-[11px] leading-none uppercase tracking-[0.2em] font-normal flex items-center gap-1.5">
-                    <ShoppingBag className="w-3.5 h-3.5 text-[#161616] stroke-[1.5]" />
-                    ADD TO BAG
-                  </span>
-                )}
-              </button>
-
-              {/* Slender Vertical Divider */}
-              <div className={`w-[1px] ${isInBag ? 'bg-white/20' : 'bg-[#EAE4DC]'}`} />
-
-              {/* Quick View End-cap */}
-              <button
-                onClick={handleOpenQuickView}
-                className={`w-9 h-9 flex items-center justify-center transition-colors cursor-pointer shrink-0 ${
-                  isInBag
-                    ? 'text-white/80 hover:text-white'
-                    : 'bg-[#FAF7F2] hover:bg-white text-[#736E66] hover:text-[#161616]'
-                }`}
-                aria-label="Quick View Silhouette"
-                title="Quick View"
-              >
-                <Eye className="w-3.5 h-3.5 stroke-[1.5]" />
-              </button>
-            </div>
+              {isInBag ? (
+                <span className="text-[11px] leading-none uppercase tracking-[0.16em] font-medium flex items-center gap-1.5 text-white">
+                  <Check className="w-3.5 h-3.5 stroke-[2.5] text-[#C8A27A]" />
+                  IN BAG
+                </span>
+              ) : (
+                <span className="text-[11px] leading-none uppercase tracking-[0.16em] font-normal flex items-center gap-1.5 text-[#161616]">
+                  <ShoppingBag className="w-3.5 h-3.5 text-[#161616] stroke-[1.5]" />
+                  ADD TO BAG
+                </span>
+              )}
+            </button>
           </div>
         </div>
       </div>
-
-      {/* Quick View Modal */}
-      <QuickViewModal
-        product={product}
-        isOpen={isQuickViewOpen}
-        onClose={() => setIsQuickViewOpen(false)}
-      />
-    </>
   );
 }

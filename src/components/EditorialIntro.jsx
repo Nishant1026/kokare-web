@@ -60,9 +60,8 @@ export default function EditorialIntro() {
                   alt="Fine Indian textile embroidery and craftsmanship"
                   className="w-full h-full"
                   imgClassName="object-cover object-top group-hover:scale-105 transition-transform duration-700 ease-out"
-                  offset={20}
-                  mobileOffset={10}
-                  scale={1.05}
+                  offset={35}
+                  scale={1.1}
                 />
                 <div className="absolute bottom-0 inset-x-0 h-[40%] bg-gradient-to-t from-black/80 to-transparent pointer-events-none" />
                 <div className="absolute bottom-6 left-6 right-6 text-white pointer-events-none">

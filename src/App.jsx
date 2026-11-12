@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useLayoutEffect } from 'react';
 import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
 import { CartProvider } from './context/CartContext';
 import { WishlistProvider } from './context/WishlistContext';
@@ -24,21 +24,73 @@ import Contact from './pages/Contact';
 import OrderTracking from './pages/OrderTracking';
 import SmoothScroll from './components/SmoothScroll';
 
-// Scroll to top helper on route change with Lenis compatibility
+// Bulletproof Scroll-to-Top on every route change (instant pre-paint, RAF, and post-mount ticks)
 function ScrollToTop() {
-  const { pathname, search } = useLocation();
+  const { pathname, search, key } = useLocation();
 
-  useEffect(() => {
-    if (window.lenis) {
-      window.lenis.scrollTo(0, { immediate: true });
-    } else {
+  useLayoutEffect(() => {
+    // 1. Enforce manual scroll restoration
+    if ('scrollRestoration' in window.history) {
+      window.history.scrollRestoration = 'manual';
+    }
+
+    const forceScrollToTop = () => {
+      // Direct window and DOM document reset
+      window.scrollTo(0, 0);
       window.scrollTo({
         top: 0,
         left: 0,
         behavior: 'instant'
       });
-    }
-  }, [pathname, search]);
+      if (document.documentElement) {
+        document.documentElement.scrollTop = 0;
+      }
+      if (document.body) {
+        document.body.scrollTop = 0;
+      }
+
+      // Lenis smooth scroll engine synchronization (desktop)
+      if (window.lenis) {
+        try {
+          window.lenis.velocity = 0;
+          window.lenis.targetScroll = 0;
+          window.lenis.animatedScroll = 0;
+          window.lenis.actualScroll = 0;
+          window.lenis.scrollTo(0, { immediate: true, force: true, lock: false });
+          window.lenis.resize?.();
+        } catch {
+          // ignore
+        }
+      }
+    };
+
+    // 1. Synchronously execute immediately BEFORE paint
+    forceScrollToTop();
+
+    // 2. Next animation frame (after React commits DOM for new route)
+    const raf1 = requestAnimationFrame(() => {
+      forceScrollToTop();
+    });
+
+    const raf2 = requestAnimationFrame(() => {
+      requestAnimationFrame(() => {
+        forceScrollToTop();
+      });
+    });
+
+    // 3. Guards for asynchronously loaded components / images
+    const t1 = setTimeout(forceScrollToTop, 20);
+    const t2 = setTimeout(forceScrollToTop, 60);
+    const t3 = setTimeout(forceScrollToTop, 150);
+
+    return () => {
+      cancelAnimationFrame(raf1);
+      cancelAnimationFrame(raf2);
+      clearTimeout(t1);
+      clearTimeout(t2);
+      clearTimeout(t3);
+    };
+  }, [pathname, search, key]);
 
   return null;
 }

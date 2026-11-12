@@ -34,6 +34,13 @@ export default function Shop({ defaultCategory, defaultGender, defaultType, defa
 
   // Sync state if URL changes
   useEffect(() => {
+    window.scrollTo({ top: 0, left: 0, behavior: 'instant' });
+    if (document.documentElement) document.documentElement.scrollTop = 0;
+    if (document.body) document.body.scrollTop = 0;
+    if (window.lenis) {
+      window.lenis.scrollTo(0, { immediate: true, force: true });
+      window.lenis.resize?.();
+    }
     setFilters((prev) => ({
       ...prev,
       category: searchParams.get('category') || defaultCategory || 'All',

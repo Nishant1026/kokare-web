@@ -41,7 +41,6 @@ export default function About() {
               alt="Mulberry silk saree"
               className="w-full h-full"
               offset={55}
-              mobileOffset={24}
               scale={1.22}
             />
           </FadeInUp>
@@ -51,7 +50,6 @@ export default function About() {
               alt="Midnight sherwani tailoring"
               className="w-full h-full"
               offset={80}
-              mobileOffset={32}
               scale={1.24}
             />
           </FadeInUp>
@@ -61,7 +59,6 @@ export default function About() {
               alt="Festive lehenga embroidery"
               className="w-full h-full"
               offset={55}
-              mobileOffset={24}
               scale={1.22}
             />
           </FadeInUp>

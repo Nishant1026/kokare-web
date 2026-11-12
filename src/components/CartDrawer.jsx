@@ -52,6 +52,7 @@ export default function CartDrawer() {
 
   const handleCheckout = () => {
     setIsCartOpen(false);
+    window.scrollTo(0, 0);
     navigate('/checkout');
   };
 

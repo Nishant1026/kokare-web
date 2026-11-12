@@ -226,9 +226,20 @@ html, body, #root {
   color: #FFFFFF;
 }
 
+/* Hide scrollbar utility for sleek horizontal tab navigation */
+.no-scrollbar::-webkit-scrollbar {
+  display: none !important;
+  width: 0px !important;
+  height: 0px !important;
+}
+.no-scrollbar {
+  -ms-overflow-style: none !important;
+  scrollbar-width: none !important;
+}
+
 /* ============================================================ */
 /* Festive Fixed Background Parallax (Stationary Viewport BG)    */
-/* "bg is stop, content move like up" - Tripledots Parallax Style*/
+/* "bg is stop, content move like up" - Desktop & Supported Devs */
 /* ============================================================ */
 .festive-parallax-section {
   position: relative;
@@ -238,12 +249,13 @@ html, body, #root {
   background-repeat: no-repeat;
   background-size: cover;
   overflow: hidden;
+  -webkit-overflow-scrolling: touch;
 }
 
-@media (max-width: 768px) {
-  /* On touch devices where fixed background causes repaints, smooth scroll */
-  .festive-parallax-section {
-    background-attachment: scroll;
-  }
+.festive-campaign-section {
+  position: relative;
+  background-color: #120D0A;
+  overflow: hidden;
+  -webkit-overflow-scrolling: touch;
 }
 

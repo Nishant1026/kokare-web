@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useRef } from 'react';
 import { motion, useReducedMotion } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import { ArrowRight, Sparkles } from 'lucide-react';
@@ -6,27 +6,39 @@ import { ParallaxContent, ParallaxWatermark, FadeInUp } from './Parallax';
 
 export default function FestiveCampaign() {
   const shouldReduceMotion = useReducedMotion();
+  const sectionRef = useRef(null);
 
   return (
-    <section className="festive-parallax-section relative text-white py-24 sm:py-32 border-y border-[#C8A27A]/40 w-full max-w-full overflow-hidden shadow-[0_0_60px_-15px_rgba(200,162,122,0.18)]">
+    <section
+      ref={sectionRef}
+      className="festive-parallax-section relative text-white py-24 sm:py-32 border-y border-[#C8A27A]/40 w-full max-w-full overflow-hidden shadow-[0_0_60px_-15px_rgba(200,162,122,0.18)]"
+      style={{ clipPath: 'inset(0)' }}
+    >
       {/* ============================================================ */}
-      {/* 1. BALANCED LIGHTING OVER STATIONARY FIXED BACKDROP          */}
-      {/* Reduced dark overlay so the royal palace architecture shines */}
-      {/* through clearly with rich golden festive illumination        */}
+      {/* 1. FIXED BACKGROUND VIEWPORT WINDOW ("bg is stop, content move like up") */}
+      {/* Anchored to viewport on mobile & desktop with clipPath confinement */}
       {/* ============================================================ */}
-      {/* Ultra-light base tint (down from 35% to 15%) */}
-      <div className="absolute inset-0 bg-black/15 pointer-events-none z-0" />
+      <div className="fixed inset-0 w-full h-full pointer-events-none z-0">
+        <img
+          src="/images/festive-campaign-bg.jpg"
+          alt="KOKARÉ Haute Couture Diwali Festive Gala Royal Heritage"
+          className="w-full h-full object-cover object-center filter brightness-[0.92] contrast-[1.06]"
+        />
 
-      {/* Soft directional gradient for text legibility without obscuring palace details */}
-      <div className="absolute inset-0 bg-gradient-to-r from-black/55 via-black/25 to-black/10 pointer-events-none z-0" />
+        {/* Ultra-light base tint */}
+        <div className="absolute inset-0 bg-black/15 pointer-events-none" />
 
-      {/* Gentle vertical border vignettes */}
-      <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-black/50 pointer-events-none z-0" />
+        {/* Soft directional gradient for text legibility without obscuring palace details */}
+        <div className="absolute inset-0 bg-gradient-to-r from-black/55 via-black/25 to-black/10 pointer-events-none" />
 
-      {/* Warm Golden Festive Radiance & Lighting Overlays */}
-      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_80%_35%,rgba(216,178,138,0.25)_0%,transparent_60%)] pointer-events-none z-0 mix-blend-screen" />
-      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_25%_65%,rgba(200,162,122,0.2)_0%,transparent_50%)] pointer-events-none z-0 mix-blend-screen" />
-      <div className="absolute inset-0 bg-gradient-to-t from-[#C8A27A]/15 via-transparent to-transparent pointer-events-none z-0" />
+        {/* Gentle vertical border vignettes */}
+        <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-black/50 pointer-events-none" />
+
+        {/* Warm Golden Festive Radiance & Lighting Overlays */}
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_80%_35%,rgba(216,178,138,0.25)_0%,transparent_60%)] pointer-events-none mix-blend-screen" />
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_25%_65%,rgba(200,162,122,0.2)_0%,transparent_50%)] pointer-events-none mix-blend-screen" />
+        <div className="absolute inset-0 bg-gradient-to-t from-[#C8A27A]/15 via-transparent to-transparent pointer-events-none" />
+      </div>
 
       {/* Floating Gentle Festive Golden Sparkle / Ember Motifs with warm golden glow */}
       {!shouldReduceMotion && (

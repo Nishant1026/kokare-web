@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect, useLayoutEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import {
   ShoppingBag,
@@ -42,6 +42,17 @@ export default function Cart() {
   const [couponCode, setCouponCode] = useState('');
   const [couponMsg, setCouponMsg] = useState(null);
   const navigate = useNavigate();
+
+  useLayoutEffect(() => {
+    window.scrollTo(0, 0);
+    window.scrollTo({ top: 0, left: 0, behavior: 'instant' });
+    if (document.documentElement) document.documentElement.scrollTop = 0;
+    if (document.body) document.body.scrollTop = 0;
+    if (window.lenis) {
+      window.lenis.scrollTo(0, { immediate: true, force: true });
+      window.lenis.resize?.();
+    }
+  }, []);
 
   const handleApplyCoupon = (codeToApply) => {
     const code = codeToApply || couponCode;
@@ -296,8 +307,8 @@ export default function Cart() {
 
             </div>
 
-            {/* Right Summary Column (5 cols) */}
-            <div className="lg:col-span-5 space-y-5">
+            {/* Right Summary Column (5 cols) — Sticky pinned on desktop so it stops while cart items scroll */}
+            <div className="lg:col-span-5 space-y-5 lg:sticky lg:top-28 lg:self-start">
               
               {/* Order Summary Box */}
               <div className="bg-white p-6 sm:p-8 border border-[#EAE4DC] space-y-6 shadow-2xs">
@@ -426,7 +437,10 @@ export default function Cart() {
                 {/* Primary CTA Buttons */}
                 <div className="space-y-2.5 pt-2">
                   <button
-                    onClick={() => navigate('/checkout')}
+                    onClick={() => {
+                      window.scrollTo(0, 0);
+                      navigate('/checkout');
+                    }}
                     className="w-full py-4 bg-[#721C2B] hover:bg-[#581422] text-white font-normal text-xs uppercase tracking-[0.28em] transition-all flex items-center justify-center gap-2 border border-[#721C2B] hover:border-[#581422] shadow-sm cursor-pointer"
                   >
                     <span>Proceed To Atelier Checkout</span>

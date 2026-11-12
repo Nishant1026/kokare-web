@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useLayoutEffect } from 'react';
 import { useParams, Link, useNavigate } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import {
@@ -12,7 +12,8 @@ import {
   Check,
   MapPin,
   ZoomIn,
-  ShieldCheck
+  ShieldCheck,
+  X
 } from 'lucide-react';
 import { PRODUCTS } from '../data/products';
 import { useCart } from '../context/CartContext';
@@ -48,8 +49,18 @@ export default function ProductDetails() {
   const [pincode, setPincode] = useState('');
   const [pinStatus, setPinStatus] = useState(null);
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     window.scrollTo(0, 0);
+    window.scrollTo({ top: 0, left: 0, behavior: 'instant' });
+    if (document.documentElement) document.documentElement.scrollTop = 0;
+    if (document.body) document.body.scrollTop = 0;
+    if (window.lenis) {
+      window.lenis.scrollTo(0, { immediate: true, force: true });
+      window.lenis.resize?.();
+    }
+  }, [id]);
+
+  useEffect(() => {
     setActiveImage(0);
     setSelectedSize(product.sizes[0] || 'Standard');
     setSelectedColor(product.colors?.[0]?.name || 'Standard');
@@ -86,6 +97,7 @@ export default function ProductDetails() {
 
   const handleAddToCart = () => {
     if (isInBag) {
+      window.scrollTo(0, 0);
       navigate('/cart');
       return;
     }
@@ -100,6 +112,7 @@ export default function ProductDetails() {
 
   const handleBuyNow = () => {
     addToCart(product, selectedSize, selectedColor, quantity, false);
+    window.scrollTo(0, 0);
     navigate('/checkout');
   };
 
@@ -208,6 +221,25 @@ export default function ProductDetails() {
               <p className="font-serif italic text-lg text-[#736E66] font-light">
                 {product.tagline}
               </p>
+
+              {/* Star Rating & Reviews */}
+              <div className="flex items-center gap-2.5 mt-2.5">
+                <div className="flex items-center text-[#C8A27A]">
+                  {[...Array(5)].map((_, i) => (
+                    <Star
+                      key={i}
+                      className={`w-3.5 h-3.5 ${
+                        i < Math.floor(product.rating || 5)
+                          ? 'fill-[#C8A27A]'
+                          : 'text-[#EAE4DC]'
+                      }`}
+                    />
+                  ))}
+                </div>
+                <span className="text-xs text-[#161616] font-medium">{product.rating || 4.9}</span>
+                <span className="text-xs text-[#736E66]">· {product.reviewsCount || 140} Verified Reviews</span>
+                <span className="text-xs text-emerald-600 font-medium ml-2">● In Stock & Ready to Dispatch</span>
+              </div>
             </div>
 
             {/* Price Box */}
@@ -231,6 +263,13 @@ export default function ProductDetails() {
                 </span>
               </div>
             </div>
+
+            {/* Product Editorial Description */}
+            {product.description && (
+              <div className="p-4 bg-[#FAF7F2] border-l-2 border-[#C8A27A] text-[15px] sm:text-[16px] text-[#555048] font-light leading-relaxed">
+                {product.description}
+              </div>
+            )}
 
             {/* Colors */}
             {product.colors && product.colors.length > 0 && (
@@ -329,7 +368,10 @@ export default function ProductDetails() {
                     </span>
                   </div>
                   <button
-                    onClick={() => navigate('/cart')}
+                    onClick={() => {
+                      window.scrollTo(0, 0);
+                      navigate('/cart');
+                    }}
                     className="text-[11px] font-medium text-[#C8A27A] hover:text-[#161616] uppercase tracking-wider underline cursor-pointer"
                   >
                     View Bag →
@@ -478,7 +520,7 @@ export default function ProductDetails() {
                 Atelier Care Instructions
               </h4>
               <p className="text-[17px] font-light leading-relaxed text-[#736E66]">
-                Dry clean only. Store in the complimentary KOKARÉ breathable cotton keepsake cover. Preserve with dry neem leaves and avoid direct sunlight exposure.
+                {product.fabricCare || 'Dry clean only. Store in the complimentary KOKARÉ breathable cotton keepsake cover. Preserve with dry neem leaves and avoid direct sunlight exposure.'}
               </p>
             </div>
           </div>
@@ -510,6 +552,117 @@ export default function ProductDetails() {
         )}
 
       </div>
+
+      {/* Size Guide Modal */}
+      <AnimatePresence>
+        {isSizeGuideOpen && (
+          <div className="fixed inset-0 z-50 overflow-y-auto">
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              onClick={() => setIsSizeGuideOpen(false)}
+              className="fixed inset-0 bg-black/60 backdrop-blur-xs"
+            />
+            <div className="min-h-screen px-4 flex items-center justify-center py-10">
+              <motion.div
+                initial={{ opacity: 0, scale: 0.95, y: 15 }}
+                animate={{ opacity: 1, scale: 1, y: 0 }}
+                exit={{ opacity: 0, scale: 0.95, y: 15 }}
+                className="relative w-full max-w-2xl bg-white border border-[#EAE4DC] p-6 sm:p-8 z-10 shadow-2xl text-[#161616]"
+              >
+                <div className="flex items-center justify-between border-b border-[#EAE4DC] pb-4 mb-6">
+                  <div>
+                    <span className="text-[10px] uppercase tracking-[0.24em] text-[#C8A27A] font-medium block">
+                      KOKARÉ Atelier Measurements
+                    </span>
+                    <h3 className="font-serif text-2xl font-normal text-[#161616]">
+                      {product.gender === 'men' ? "Men's Silhouette Size Guide" : "Women's Silhouette Size Guide"}
+                    </h3>
+                  </div>
+                  <button
+                    onClick={() => setIsSizeGuideOpen(false)}
+                    className="p-2 border border-[#EAE4DC] hover:border-[#161616] text-[#736E66] hover:text-[#161616] transition-colors cursor-pointer"
+                  >
+                    <X className="w-4 h-4" />
+                  </button>
+                </div>
+
+                <p className="text-xs text-[#736E66] mb-4 font-light">
+                  All measurements are in inches. For custom bespoke fitting consultations, contact our royal concierge.
+                </p>
+
+                <div className="overflow-x-auto border border-[#EAE4DC] mb-6">
+                  <table className="w-full text-xs text-left">
+                    <thead className="bg-[#FAF7F2] border-b border-[#EAE4DC] text-[#161616] uppercase tracking-wider">
+                      <tr>
+                        <th className="p-3 font-normal">Size</th>
+                        <th className="p-3 font-normal">Bust / Chest</th>
+                        <th className="p-3 font-normal">Waist</th>
+                        <th className="p-3 font-normal">Hip</th>
+                        <th className="p-3 font-normal">Garment Length</th>
+                      </tr>
+                    </thead>
+                    <tbody className="divide-y divide-[#EAE4DC] text-[#736E66] font-light">
+                      <tr>
+                        <td className="p-3 font-medium text-[#161616]">XS / 36</td>
+                        <td className="p-3">34 - 36"</td>
+                        <td className="p-3">28 - 30"</td>
+                        <td className="p-3">36 - 38"</td>
+                        <td className="p-3">42"</td>
+                      </tr>
+                      <tr>
+                        <td className="p-3 font-medium text-[#161616]">S / 38</td>
+                        <td className="p-3">36 - 38"</td>
+                        <td className="p-3">30 - 32"</td>
+                        <td className="p-3">38 - 40"</td>
+                        <td className="p-3">43"</td>
+                      </tr>
+                      <tr>
+                        <td className="p-3 font-medium text-[#161616]">M / 40</td>
+                        <td className="p-3">38 - 40"</td>
+                        <td className="p-3">32 - 34"</td>
+                        <td className="p-3">40 - 42"</td>
+                        <td className="p-3">44"</td>
+                      </tr>
+                      <tr>
+                        <td className="p-3 font-medium text-[#161616]">L / 42</td>
+                        <td className="p-3">40 - 42"</td>
+                        <td className="p-3">34 - 36"</td>
+                        <td className="p-3">42 - 44"</td>
+                        <td className="p-3">45"</td>
+                      </tr>
+                      <tr>
+                        <td className="p-3 font-medium text-[#161616]">XL / 44</td>
+                        <td className="p-3">42 - 44"</td>
+                        <td className="p-3">36 - 38"</td>
+                        <td className="p-3">44 - 46"</td>
+                        <td className="p-3">45.5"</td>
+                      </tr>
+                      <tr>
+                        <td className="p-3 font-medium text-[#161616]">XXL / 46</td>
+                        <td className="p-3">44 - 46"</td>
+                        <td className="p-3">38 - 40"</td>
+                        <td className="p-3">46 - 48"</td>
+                        <td className="p-3">46"</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+
+                <div className="flex justify-end">
+                  <button
+                    onClick={() => setIsSizeGuideOpen(false)}
+                    className="px-6 py-2.5 bg-[#161616] text-white text-xs uppercase tracking-[0.2em] hover:bg-[#C8A27A] transition-colors cursor-pointer"
+                  >
+                    Got It
+                  </button>
+                </div>
+              </motion.div>
+            </div>
+          </div>
+        )}
+      </AnimatePresence>
     </div>
   );
 }

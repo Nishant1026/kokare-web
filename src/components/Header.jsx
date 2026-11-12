@@ -49,10 +49,22 @@ export default function Header({ onOpenDrawer }) {
   const { totalItems, setIsCartOpen, cartBump, cart, subtotal } = useCart();
   const { wishlistCount } = useWishlist();
 
-  // Scroll detection for sticky header and transparent-to-solid transition
+  // Scroll detection with hysteresis and RAF throttling to eliminate boundary oscillation
   useEffect(() => {
+    let ticking = false;
     const handleScroll = () => {
-      setIsScrolled(window.scrollY > 40);
+      if (!ticking) {
+        window.requestAnimationFrame(() => {
+          const currentY = window.scrollY;
+          setIsScrolled((prev) => {
+            if (!prev && currentY > 100) return true;
+            if (prev && currentY < 30) return false;
+            return prev;
+          });
+          ticking = false;
+        });
+        ticking = true;
+      }
     };
     window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);
@@ -81,10 +93,105 @@ export default function Header({ onOpenDrawer }) {
   // When scrolled or on any subpage: Solid luxury pearl white with dark charcoal text
   const isTransparent = isHome && !isScrolled;
 
+  const renderMicroBarContent = (transparent) => (
+    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-2 flex items-center justify-between">
+      {/* Left: Store Location & Email */}
+      <div className="flex items-center space-x-3 sm:space-x-6 text-[11px] sm:text-xs tracking-wider">
+        <Link
+          to="/contact"
+          className={`flex items-center gap-1.5 transition-colors cursor-pointer ${
+            transparent ? 'hover:text-[#C8A27A]' : 'hover:text-[#161616]'
+          }`}
+        >
+          <MapPin className="w-3.5 h-3.5 stroke-[1.5]" />
+          <span className="hidden sm:inline">Store Location</span>
+          <span className="sm:hidden">Ranchi, Jharkhand</span>
+        </Link>
+        <a
+          href="mailto:concierge@kokare.in"
+          className={`hidden md:flex items-center gap-1.5 transition-colors ${
+            transparent ? 'hover:text-[#C8A27A]' : 'hover:text-[#161616]'
+          }`}
+        >
+          <Mail className="w-3.5 h-3.5 stroke-[1.5]" />
+          <span>concierge@kokare.in</span>
+        </a>
+      </div>
+
+      {/* Center: Diwali Festive Announcement */}
+      <div className="hidden lg:flex items-center gap-2 text-[11px] uppercase tracking-[0.22em] font-medium">
+        <Sparkles className="w-3 h-3 text-[#C8A27A]" />
+        <span>Diwali Festive Special — Extra 20% Off With Code</span>
+        <button
+          onClick={handleCopyCode}
+          className="font-mono text-[#C8A27A] font-semibold underline underline-offset-2 hover:opacity-80 cursor-pointer ml-0.5 inline-flex items-center gap-1"
+          title="Click to copy coupon code"
+        >
+          DIWALI20
+          {copiedCoupon && <Check className="w-3 h-3 text-green-400" />}
+        </button>
+      </div>
+
+      {/* Right: Currency Selector */}
+      <div className="relative" ref={currencyDropdownRef}>
+        <button
+          onClick={() => setIsCurrencyOpen(!isCurrencyOpen)}
+          className={`flex items-center gap-1 text-[11px] sm:text-xs uppercase tracking-wider py-0.5 px-2 rounded-xs border transition-colors cursor-pointer ${
+            transparent
+              ? 'border-white/30 hover:border-white text-white'
+              : 'border-[#EAE4DC] hover:border-[#161616] text-[#161616]'
+          }`}
+          aria-label="Select Currency"
+        >
+          <span>{selectedCurrency.flag}</span>
+          <span className="font-medium ml-1">{selectedCurrency.code}</span>
+          <ChevronDown className="w-3 h-3 opacity-70 ml-0.5" />
+        </button>
+
+        {/* Currency Dropdown Menu */}
+        {isCurrencyOpen && (
+          <div className="absolute right-0 top-full mt-1.5 w-36 bg-white border border-[#EAE4DC] shadow-xl py-1 z-50 animate-fadeIn text-[#161616]">
+            {CURRENCIES.map((curr) => (
+              <button
+                key={curr.code}
+                onClick={() => {
+                  setSelectedCurrency(curr);
+                  setIsCurrencyOpen(false);
+                }}
+                className={`w-full flex items-center justify-between px-3 py-1.5 text-xs text-left hover:bg-[#FAF7F2] transition-colors ${
+                  selectedCurrency.code === curr.code ? 'font-semibold text-[#C8A27A]' : 'text-[#161616]'
+                }`}
+              >
+                <span className="flex items-center gap-2">
+                  <span>{curr.flag}</span>
+                  <span>{curr.label}</span>
+                </span>
+                {selectedCurrency.code === curr.code && <Check className="w-3 h-3 text-[#C8A27A]" />}
+              </button>
+            ))}
+          </div>
+        )}
+      </div>
+    </div>
+  );
+
   return (
     <>
+      {/* ============================================================ */}
+      {/* 1. TOP UTILITY MICRO-BAR (On subpages: regular flow)         */}
+      {/* Scrolls off naturally with page to prevent sticky oscillation*/}
+      {/* ============================================================ */}
+      {!isHome && (
+        <div className="w-full max-w-full border-b border-[#EAE4DC] bg-[#FAF7F2] text-[#736E66] text-xs">
+          {renderMicroBarContent(false)}
+        </div>
+      )}
+
+      {/* ============================================================ */}
+      {/* 2. MAIN NAVIGATION HEADER (Rock-solid constant height)        */}
+      {/* ============================================================ */}
       <header
-        className={`w-full max-w-full z-40 transition-all duration-300 ${
+        className={`w-full max-w-full z-40 transition-[background-color,border-color,color,box-shadow] duration-300 ${
           isHome
             ? isScrolled
               ? 'fixed top-0 left-0 bg-white/95 backdrop-blur-md border-b border-[#EAE4DC] shadow-sm text-[#161616]'
@@ -92,99 +199,18 @@ export default function Header({ onOpenDrawer }) {
             : 'sticky top-0 bg-white border-b border-[#EAE4DC] shadow-xs text-[#161616]'
         }`}
       >
-        {/* ============================================================ */}
-        {/* 1. TOP UTILITY MICRO-BAR (Exact to Amrapali Screenshot 3)    */}
-        {/* Left: Store Location & Email | Center: Promo | Right: Currency*/}
-        {/* ============================================================ */}
-        <div
-          className={`transition-all duration-300 border-b ${
-            isScrolled
-              ? 'hidden'
-              : isTransparent
-              ? 'border-white/15 bg-black/25 text-white/90 text-xs'
-              : 'border-[#EAE4DC] bg-[#FAF7F2] text-[#736E66] text-xs'
-          }`}
-        >
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-2 flex items-center justify-between">
-            {/* Left: Store Location & Email */}
-            <div className="flex items-center space-x-3 sm:space-x-6 text-[11px] sm:text-xs tracking-wider">
-              <Link
-                to="/contact"
-                className={`flex items-center gap-1.5 transition-colors cursor-pointer ${
-                  isTransparent ? 'hover:text-[#C8A27A]' : 'hover:text-[#161616]'
-                }`}
-              >
-                <MapPin className="w-3.5 h-3.5 stroke-[1.5]" />
-                <span className="hidden sm:inline">Store Location</span>
-                <span className="sm:hidden">Atelier</span>
-              </Link>
-              <a
-                href="mailto:concierge@kokare.in"
-                className={`hidden md:flex items-center gap-1.5 transition-colors ${
-                  isTransparent ? 'hover:text-[#C8A27A]' : 'hover:text-[#161616]'
-                }`}
-              >
-                <Mail className="w-3.5 h-3.5 stroke-[1.5]" />
-                <span>concierge@kokare.in</span>
-              </a>
-            </div>
-
-            {/* Center: Diwali Festive Announcement */}
-            <div className="hidden lg:flex items-center gap-2 text-[11px] uppercase tracking-[0.22em] font-medium">
-              <Sparkles className="w-3 h-3 text-[#C8A27A]" />
-              <span>Diwali Festive Special — Extra 20% Off With Code</span>
-              <button
-                onClick={handleCopyCode}
-                className="font-mono text-[#C8A27A] font-semibold underline underline-offset-2 hover:opacity-80 cursor-pointer ml-0.5 inline-flex items-center gap-1"
-                title="Click to copy coupon code"
-              >
-                DIWALI20
-                {copiedCoupon && <Check className="w-3 h-3 text-green-400" />}
-              </button>
-            </div>
-
-            {/* Right: Currency Selector (INR v like reference) */}
-            <div className="relative" ref={currencyDropdownRef}>
-              <button
-                onClick={() => setIsCurrencyOpen(!isCurrencyOpen)}
-                className={`flex items-center gap-1 text-[11px] sm:text-xs uppercase tracking-wider py-0.5 px-2 rounded-xs border transition-colors cursor-pointer ${
-                  isTransparent
-                    ? 'border-white/30 hover:border-white text-white'
-                    : 'border-[#EAE4DC] hover:border-[#161616] text-[#161616]'
-                }`}
-                aria-label="Select Currency"
-              >
-                <span>{selectedCurrency.flag}</span>
-                <span className="font-medium ml-1">{selectedCurrency.code}</span>
-                <ChevronDown className="w-3 h-3 opacity-70 ml-0.5" />
-              </button>
-
-              {/* Currency Dropdown Menu */}
-              {isCurrencyOpen && (
-                <div className="absolute right-0 top-full mt-1.5 w-36 bg-white border border-[#EAE4DC] shadow-xl py-1 z-50 animate-fadeIn text-[#161616]">
-                  {CURRENCIES.map((curr) => (
-                    <button
-                      key={curr.code}
-                      onClick={() => {
-                        setSelectedCurrency(curr);
-                        setIsCurrencyOpen(false);
-                      }}
-                      className={`w-full flex items-center justify-between px-3 py-1.5 text-xs text-left hover:bg-[#FAF7F2] transition-colors ${
-                        selectedCurrency.code === curr.code ? 'font-semibold text-[#C8A27A]' : 'text-[#161616]'
-                      }`}
-                    >
-                      <span className="flex items-center gap-2">
-                        <span>{curr.flag}</span>
-                        <span>{curr.label}</span>
-                      </span>
-                      {selectedCurrency.code === curr.code && <Check className="w-3 h-3 text-[#C8A27A]" />}
-                    </button>
-                  ))}
-                </div>
-              )}
-            </div>
+        {/* On Home page: Top micro-bar integrated inside transparent hero header */}
+        {isHome && (
+          <div
+            className={`transition-opacity duration-300 border-b ${
+              isScrolled
+                ? 'hidden'
+                : 'border-white/15 bg-black/25 text-white/90 text-xs'
+            }`}
+          >
+            {renderMicroBarContent(isTransparent)}
           </div>
-        </div>
+        )}
 
         {/* ============================================================ */}
         {/* 2. MAIN NAVIGATION BAR                                       */}
@@ -195,9 +221,8 @@ export default function Header({ onOpenDrawer }) {
           <div className="flex items-center shrink-0">
             <Link to="/" className="group flex flex-col">
               <span
-                className={`font-serif text-xl sm:text-2xl lg:text-[27px] font-normal tracking-[0.2em] sm:tracking-[0.26em] transition-colors ${
-                  isTransparent ? 'text-white group-hover:text-[#C8A27A]' : 'text-[#161616] group-hover:text-[#C8A27A]'
-                }`}
+                className={`font-serif text-xl sm:text-2xl lg:text-[27px] font-normal tracking-[0.2em] sm:tracking-[0.26em] transition-colors ${isTransparent ? 'text-white group-hover:text-[#C8A27A]' : 'text-[#161616] group-hover:text-[#C8A27A]'
+                  }`}
               >
                 KOKARÉ
               </span>
@@ -209,19 +234,17 @@ export default function Header({ onOpenDrawer }) {
 
           {/* Desktop Center Navigation Links — Balanced separation from Logo */}
           <nav
-            className={`hidden lg:flex items-center justify-center space-x-5 xl:space-x-7 text-[12px] xl:text-[13px] tracking-[0.16em] xl:tracking-[0.2em] uppercase font-normal transition-colors ml-8 lg:ml-10 xl:ml-14 ${
-              isTransparent ? 'text-white' : 'text-[#161616]'
-            }`}
+            className={`hidden lg:flex items-center justify-center space-x-5 xl:space-x-7 text-[12px] xl:text-[13px] tracking-[0.16em] xl:tracking-[0.2em] uppercase font-normal transition-colors ml-8 lg:ml-10 xl:ml-14 ${isTransparent ? 'text-white' : 'text-[#161616]'
+              }`}
           >
             <Link
               to="/"
-              className={`py-2 transition-colors relative ${
-                location.pathname === '/'
+              className={`py-2 transition-colors relative ${location.pathname === '/'
                   ? 'text-[#C8A27A] font-medium'
                   : isTransparent
-                  ? 'text-white/90 hover:text-[#C8A27A]'
-                  : 'text-[#161616]/80 hover:text-[#C8A27A]'
-              }`}
+                    ? 'text-white/90 hover:text-[#C8A27A]'
+                    : 'text-[#161616]/80 hover:text-[#C8A27A]'
+                }`}
             >
               <span>Home</span>
               {location.pathname === '/' && (
@@ -231,13 +254,12 @@ export default function Header({ onOpenDrawer }) {
 
             <Link
               to="/women"
-              className={`py-2 transition-colors relative ${
-                location.pathname === '/women'
+              className={`py-2 transition-colors relative ${location.pathname === '/women'
                   ? 'text-[#C8A27A] font-medium'
                   : isTransparent
-                  ? 'text-white/90 hover:text-[#C8A27A]'
-                  : 'text-[#161616]/80 hover:text-[#C8A27A]'
-              }`}
+                    ? 'text-white/90 hover:text-[#C8A27A]'
+                    : 'text-[#161616]/80 hover:text-[#C8A27A]'
+                }`}
             >
               <span>Women</span>
               {location.pathname === '/women' && (
@@ -247,13 +269,12 @@ export default function Header({ onOpenDrawer }) {
 
             <Link
               to="/men"
-              className={`py-2 transition-colors relative ${
-                location.pathname === '/men'
+              className={`py-2 transition-colors relative ${location.pathname === '/men'
                   ? 'text-[#C8A27A] font-medium'
                   : isTransparent
-                  ? 'text-white/90 hover:text-[#C8A27A]'
-                  : 'text-[#161616]/80 hover:text-[#C8A27A]'
-              }`}
+                    ? 'text-white/90 hover:text-[#C8A27A]'
+                    : 'text-[#161616]/80 hover:text-[#C8A27A]'
+                }`}
             >
               <span>Men</span>
               {location.pathname === '/men' && (
@@ -268,13 +289,12 @@ export default function Header({ onOpenDrawer }) {
               onMouseLeave={() => setIsCollectionsOpen(false)}
             >
               <button
-                className={`flex items-center gap-1.5 py-2 transition-colors cursor-pointer ${
-                  isCollectionsOpen || location.pathname.includes('collection')
+                className={`flex items-center gap-1.5 py-2 transition-colors cursor-pointer ${isCollectionsOpen || location.pathname.includes('collection')
                     ? 'text-[#C8A27A] font-medium'
                     : isTransparent
-                    ? 'text-white/90 hover:text-[#C8A27A]'
-                    : 'text-[#161616]/80 hover:text-[#C8A27A]'
-                }`}
+                      ? 'text-white/90 hover:text-[#C8A27A]'
+                      : 'text-[#161616]/80 hover:text-[#C8A27A]'
+                  }`}
               >
                 <span>Collections</span>
                 <ChevronDown className="w-3.5 h-3.5 opacity-70" />
@@ -319,9 +339,8 @@ export default function Header({ onOpenDrawer }) {
 
             <Link
               to="/festive-collection"
-              className={`flex items-center gap-1.5 transition-colors py-2 font-medium ${
-                isTransparent ? 'text-[#C8A27A] hover:text-white' : 'text-[#C8A27A] hover:text-[#721C2B]'
-              }`}
+              className={`flex items-center gap-1.5 transition-colors py-2 font-medium ${isTransparent ? 'text-[#C8A27A] hover:text-white' : 'text-[#C8A27A] hover:text-[#721C2B]'
+                }`}
             >
               <Sparkles className="w-3.5 h-3.5 text-[#C8A27A]" />
               <span>Festive Edit</span>
@@ -329,13 +348,12 @@ export default function Header({ onOpenDrawer }) {
 
             <Link
               to="/about"
-              className={`py-2 transition-colors relative ${
-                location.pathname === '/about'
+              className={`py-2 transition-colors relative ${location.pathname === '/about'
                   ? 'text-[#C8A27A] font-medium'
                   : isTransparent
-                  ? 'text-white/90 hover:text-[#C8A27A]'
-                  : 'text-[#161616]/80 hover:text-[#C8A27A]'
-              }`}
+                    ? 'text-white/90 hover:text-[#C8A27A]'
+                    : 'text-[#161616]/80 hover:text-[#C8A27A]'
+                }`}
             >
               <span>Our Story</span>
               {location.pathname === '/about' && (
@@ -345,13 +363,12 @@ export default function Header({ onOpenDrawer }) {
 
             <Link
               to="/contact"
-              className={`py-2 transition-colors relative ${
-                location.pathname === '/contact'
+              className={`py-2 transition-colors relative ${location.pathname === '/contact'
                   ? 'text-[#C8A27A] font-medium'
                   : isTransparent
-                  ? 'text-white/90 hover:text-[#C8A27A]'
-                  : 'text-[#161616]/80 hover:text-[#C8A27A]'
-              }`}
+                    ? 'text-white/90 hover:text-[#C8A27A]'
+                    : 'text-[#161616]/80 hover:text-[#C8A27A]'
+                }`}
             >
               <span>Contact</span>
               {location.pathname === '/contact' && (
@@ -362,9 +379,8 @@ export default function Header({ onOpenDrawer }) {
 
           {/* Right Action Icons: Strictly Icon-Only Buttons (Search, Account, Wishlist, Bag) */}
           <div
-            className={`flex items-center gap-1 sm:gap-2 lg:gap-3 transition-colors ${
-              isTransparent ? 'text-white' : 'text-[#161616]'
-            }`}
+            className={`flex items-center gap-1 sm:gap-2 lg:gap-3 transition-colors ${isTransparent ? 'text-white' : 'text-[#161616]'
+              }`}
           >
             {/* 1. Search (Icon-Only) */}
             <button
@@ -410,22 +426,19 @@ export default function Header({ onOpenDrawer }) {
               <button
                 onClick={() => setIsCartOpen(true)}
                 aria-label={`Shopping Bag (${totalItems} items)`}
-                className={`relative w-9 h-9 sm:w-10 sm:h-10 flex items-center justify-center rounded-full hover:bg-white/10 text-inherit transition-all focus:outline-none cursor-pointer group ${
-                  cartBump ? 'text-[#C8A27A] scale-110' : 'hover:text-[#C8A27A]'
-                }`}
+                className={`relative w-9 h-9 sm:w-10 sm:h-10 flex items-center justify-center rounded-full hover:bg-white/10 text-inherit transition-all focus:outline-none cursor-pointer group ${cartBump ? 'text-[#C8A27A] scale-110' : 'hover:text-[#C8A27A]'
+                  }`}
                 title={totalItems > 0 ? `Shopping Bag: ${totalItems} items` : 'Shopping Bag'}
               >
                 <div className="relative flex items-center justify-center">
                   <ShoppingBag
-                    className={`w-4.5 h-4.5 sm:w-5 sm:h-5 stroke-[1.5] transition-transform duration-300 ${
-                      cartBump ? 'animate-bounce text-[#C8A27A]' : 'group-hover:scale-105'
-                    }`}
+                    className={`w-4.5 h-4.5 sm:w-5 sm:h-5 stroke-[1.5] transition-transform duration-300 ${cartBump ? 'animate-bounce text-[#C8A27A]' : 'group-hover:scale-105'
+                      }`}
                   />
                   {totalItems > 0 && (
                     <span
-                      className={`absolute -top-1 -right-1.5 bg-[#C8A27A] text-white text-[9px] sm:text-[10px] font-semibold rounded-full h-4 sm:h-4.5 min-w-[16px] sm:min-w-[18px] px-1 flex items-center justify-center border border-white shadow-xs transition-transform ${
-                        cartBump ? 'scale-125 ring-2 ring-[#C8A27A]/60 ring-offset-1' : ''
-                      }`}
+                      className={`absolute -top-1 -right-1.5 bg-[#C8A27A] text-white text-[9px] sm:text-[10px] font-semibold rounded-full h-4 sm:h-4.5 min-w-[16px] sm:min-w-[18px] px-1 flex items-center justify-center border border-white shadow-xs transition-transform ${cartBump ? 'scale-125 ring-2 ring-[#C8A27A]/60 ring-offset-1' : ''
+                        }`}
                     >
                       {totalItems}
                     </span>

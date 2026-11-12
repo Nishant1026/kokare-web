@@ -11,7 +11,7 @@ export default function Footer() {
       <ParallaxWatermark text="KOKARÉ" speed={60} className="!text-white/[0.025]" />
 
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        
+
         {/* Trust & Heritage Markers (Amrapali & Zoya Hallmark Row) */}
         <FadeInUp className="grid grid-cols-2 md:grid-cols-4 gap-6 pb-12 mb-12 border-b border-white/10 text-center">
           <div className="flex flex-col items-center p-3">
@@ -38,7 +38,7 @@ export default function Footer() {
 
         {/* Main Footer Columns */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-10 pb-12 border-b border-white/10">
-          
+
           {/* Brand Info (2 Columns on large) */}
           <div className="lg:col-span-2 space-y-4">
             <Link to="/" className="inline-block group">
@@ -217,7 +217,7 @@ export default function Footer() {
 
         {/* Bottom Bar: Copyright & Payment Badges */}
         <div className="pt-8 flex flex-col sm:flex-row items-center justify-between text-xs text-[#FAF7F2]/50 font-light gap-4 text-center sm:text-left">
-          <p>© 2026 KOKARÉ — The Jharkhand Edit. All rights reserved.</p>
+          <p>© 2026 KOKARÉ — The Jharkhand Edit. All rights reserved. Developed By Nishant Kumar</p>
           <div className="flex flex-wrap items-center justify-center sm:justify-end gap-x-3 gap-y-1.5 text-[11px] uppercase tracking-wider">
             <span>UPI Instant</span>
             <span className="hidden sm:inline">·</span>

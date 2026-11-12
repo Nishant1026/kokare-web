@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect, useLayoutEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import {
@@ -34,6 +34,48 @@ export default function Checkout() {
   const [orderConfirmed, setOrderConfirmed] = useState(false);
   const [orderId, setOrderId] = useState('');
 
+  useLayoutEffect(() => {
+    window.scrollTo(0, 0);
+    window.scrollTo({ top: 0, left: 0, behavior: 'instant' });
+    if (document.documentElement) document.documentElement.scrollTop = 0;
+    if (document.body) document.body.scrollTop = 0;
+    if (window.lenis) {
+      window.lenis.scrollTo(0, { immediate: true, force: true });
+      window.lenis.resize?.();
+    }
+  }, []);
+
+  // When order is placed, immediately scroll to the very top to display confirmation details
+  useLayoutEffect(() => {
+    if (orderConfirmed) {
+      const resetToTop = () => {
+        window.scrollTo(0, 0);
+        window.scrollTo({ top: 0, left: 0, behavior: 'instant' });
+        if (document.documentElement) document.documentElement.scrollTop = 0;
+        if (document.body) document.body.scrollTop = 0;
+        if (window.lenis) {
+          window.lenis.scrollTo(0, { immediate: true, force: true });
+          window.lenis.resize?.();
+        }
+      };
+
+      resetToTop();
+      const raf1 = requestAnimationFrame(resetToTop);
+      const raf2 = requestAnimationFrame(() => requestAnimationFrame(resetToTop));
+      const t1 = setTimeout(resetToTop, 10);
+      const t2 = setTimeout(resetToTop, 50);
+      const t3 = setTimeout(resetToTop, 150);
+
+      return () => {
+        cancelAnimationFrame(raf1);
+        cancelAnimationFrame(raf2);
+        clearTimeout(t1);
+        clearTimeout(t2);
+        clearTimeout(t3);
+      };
+    }
+  }, [orderConfirmed]);
+
   const handleChange = (e) => {
     setFormData((prev) => ({ ...prev, [e.target.name]: e.target.value }));
   };
@@ -44,6 +86,15 @@ export default function Checkout() {
     setOrderId(generatedId);
     setOrderConfirmed(true);
     clearCart();
+
+    // Instant viewport reset to the top of the confirmation screen
+    window.scrollTo(0, 0);
+    window.scrollTo({ top: 0, left: 0, behavior: 'instant' });
+    if (document.documentElement) document.documentElement.scrollTop = 0;
+    if (document.body) document.body.scrollTop = 0;
+    if (window.lenis) {
+      window.lenis.scrollTo(0, { immediate: true, force: true });
+    }
   };
 
   if (cart.length === 0 && !orderConfirmed) {
@@ -336,8 +387,8 @@ export default function Checkout() {
 
                 </div>
 
-                {/* Right Summary Column (5 cols) */}
-                <div className="lg:col-span-5 space-y-6">
+                {/* Right Summary Column (5 cols) — Sticky pinned on desktop so it stops while left content scrolls */}
+                <div className="lg:col-span-5 space-y-6 lg:sticky lg:top-28 lg:self-start">
                   
                   <div className="bg-white p-6 sm:p-7 border border-[#EAE4DC] space-y-5 shadow-2xs">
                     <h3 className="font-serif text-xl sm:text-2xl font-normal text-[#161616] border-b border-[#EAE4DC] pb-4">
