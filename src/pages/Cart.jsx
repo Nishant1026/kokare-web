@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useLayoutEffect } from 'react';
+import React, { useState, useLayoutEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import {
   ShoppingBag,
@@ -12,7 +12,6 @@ import {
   Sparkles,
   Heart,
   RotateCcw,
-  Check,
   Package
 } from 'lucide-react';
 import { useCart } from '../context/CartContext';
@@ -33,8 +32,7 @@ export default function Cart() {
     removeFromCart,
     clearCart,
     applyCoupon,
-    removeCoupon,
-    addToCart
+    removeCoupon
   } = useCart();
 
   const { addToWishlist } = useWishlist();
@@ -191,7 +189,7 @@ export default function Cart() {
                 {cart.map((item, idx) => {
                   const itemId = item.id || item.product?.id || `item-${idx}`;
                   const itemName = item.name || item.product?.name || 'Silk Silhouette';
-                  const itemImg = item.images?.[0] || item.product?.images?.[0] || 'https://images.unsplash.com/photo-1610030469983-98e550d6193c?auto=format&fit=crop&w=1000&q=85';
+                  const itemImg = item.images?.[0] || item.product?.images?.[0] || 'https://images.unsplash.com/photo-1610030469983-98e550d6193c?auto=format&fit=crop&w=800&q=80&fm=webp';
                   const itemSize = item.selectedSize || item.size || 'Standard';
                   const itemColor = item.selectedColor || item.color || '';
                   const itemPrice = Number(item.price || item.product?.price || 0);

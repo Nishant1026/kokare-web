@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import {
   Search,
@@ -9,7 +9,6 @@ import {
   Sparkles,
   User,
   ArrowRight,
-  Compass,
   MapPin,
   Mail,
   Check
@@ -411,7 +410,7 @@ export default function Header({ onOpenDrawer }) {
                         {cart.slice(0, 3).map((item, idx) => {
                           const itemId = item.id || item.product?.id || `m-${idx}`;
                           const itemName = item.name || item.product?.name || 'Silk Silhouette';
-                          const itemImg = item.images?.[0] || item.product?.images?.[0] || 'https://images.unsplash.com/photo-1610030469983-98e550d6193c?auto=format&fit=crop&w=1000&q=85';
+                          const itemImg = item.images?.[0] || item.product?.images?.[0] || 'https://images.unsplash.com/photo-1610030469983-98e550d6193c?auto=format&fit=crop&w=800&q=80&fm=webp';
                           const itemPrice = Number(item.price || item.product?.price || 0);
                           const itemQty = Number(item.quantity || 1);
 

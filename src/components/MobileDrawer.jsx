@@ -40,17 +40,12 @@ const MENU_ITEMS = [
 export default function MobileDrawer({ isOpen, onClose }) {
   const location = useLocation();
   const drawerRef = useRef(null);
-  const [isCollectionsOpen, setIsCollectionsOpen] = useState(false);
-
-  // Automatically expand Collections submenu if user is on a collections subpage
-  useEffect(() => {
-    if (
+  const [isCollectionsOpen, setIsCollectionsOpen] = useState(() => {
+    return (
       location.pathname.includes('collection') ||
       location.search.includes('collection=')
-    ) {
-      setIsCollectionsOpen(true);
-    }
-  }, [location.pathname, location.search]);
+    );
+  });
 
   // Lock body scrolling when drawer is open
   useEffect(() => {
@@ -75,7 +70,7 @@ export default function MobileDrawer({ isOpen, onClose }) {
   }, [isOpen, onClose]);
 
   // Reliable navigation handler that closes the drawer and guarantees instant scroll-to-top
-  const handleNavigate = (path) => {
+  const handleNavigate = () => {
     onClose();
     window.scrollTo({ top: 0, left: 0, behavior: 'instant' });
     if (document.documentElement) {

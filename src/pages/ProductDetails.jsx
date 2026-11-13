@@ -159,7 +159,7 @@ export default function ProductDetails() {
                       : 'border-[#EAE4DC] hover:border-[#C8A27A] opacity-75 hover:opacity-100'
                   }`}
                 >
-                  <img src={img} alt="" className="w-full h-full object-cover object-top" />
+                  <img src={img} alt="" className="w-full h-full object-cover object-top" loading="lazy" decoding="async" width="80" height="96" />
                 </button>
               ))}
             </div>
@@ -179,6 +179,10 @@ export default function ProductDetails() {
                   transformOrigin: `${zoomPosition.x}% ${zoomPosition.y}%`,
                   transform: isZoomed ? 'scale(1.8)' : 'scale(1)'
                 }}
+                fetchPriority="high"
+                decoding="async"
+                width="600"
+                height="800"
               />
 
               {/* Badges */}

@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useLayoutEffect } from 'react';
+import React, { useState, useEffect, useLayoutEffect, lazy, Suspense } from 'react';
 import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
 import { CartProvider } from './context/CartContext';
 import { WishlistProvider } from './context/WishlistContext';
@@ -11,18 +11,30 @@ import CartDrawer from './components/CartDrawer';
 import Footer from './components/Footer';
 import Toast from './components/Toast';
 import FloatingActions from './components/FloatingActions';
-
-// Pages
-import Home from './pages/Home';
-import Shop from './pages/Shop';
-import ProductDetails from './pages/ProductDetails';
-import Wishlist from './pages/Wishlist';
-import Cart from './pages/Cart';
-import Checkout from './pages/Checkout';
-import About from './pages/About';
-import Contact from './pages/Contact';
-import OrderTracking from './pages/OrderTracking';
 import SmoothScroll from './components/SmoothScroll';
+
+// Pages: Eager-load Home for instant FCP; lazy-load subpages
+import Home from './pages/Home';
+const Shop = lazy(() => import('./pages/Shop'));
+const ProductDetails = lazy(() => import('./pages/ProductDetails'));
+const Wishlist = lazy(() => import('./pages/Wishlist'));
+const Cart = lazy(() => import('./pages/Cart'));
+const Checkout = lazy(() => import('./pages/Checkout'));
+const About = lazy(() => import('./pages/About'));
+const Contact = lazy(() => import('./pages/Contact'));
+const OrderTracking = lazy(() => import('./pages/OrderTracking'));
+
+// Luxury Brand Route Suspense Fallback
+function RouteFallback() {
+  return (
+    <div className="min-h-[60vh] w-full flex flex-col items-center justify-center py-24 bg-[#FAF7F2]">
+      <div className="w-9 h-9 border-2 border-[#EAE4DC] border-t-[#C8A27A] rounded-full animate-spin mb-3.5" />
+      <span className="font-serif text-xs tracking-[0.24em] uppercase text-[#736E66]">
+        KOKARÉ · The Ethnic Edit
+      </span>
+    </div>
+  );
+}
 
 // Bulletproof Scroll-to-Top on every route change (instant pre-paint, RAF, and post-mount ticks)
 function ScrollToTop() {
@@ -120,132 +132,134 @@ function MainLayout() {
 
       {/* 5. Main Route View */}
       <main className="flex-1 w-full max-w-full">
-        <Routes>
-          {/* 1. Home */}
-          <Route path="/" element={<Home />} />
+        <Suspense fallback={<RouteFallback />}>
+          <Routes>
+            {/* 1. Home */}
+            <Route path="/" element={<Home />} />
 
-          {/* 2. Shop All */}
-          <Route path="/shop" element={<Shop />} />
+            {/* 2. Shop All */}
+            <Route path="/shop" element={<Shop />} />
 
-          {/* 3. Men */}
-          <Route
-            path="/men"
-            element={
-              <Shop
-                defaultGender="men"
-                pageTitle="Men's Designer Collection"
-                pageSubtitle="Handcrafted Raw Silk Sherwanis, Kurtas & Velvet Nehru Jackets"
-              />
-            }
-          />
+            {/* 3. Men */}
+            <Route
+              path="/men"
+              element={
+                <Shop
+                  defaultGender="men"
+                  pageTitle="Men's Designer Collection"
+                  pageSubtitle="Handcrafted Raw Silk Sherwanis, Kurtas & Velvet Nehru Jackets"
+                />
+              }
+            />
 
-          {/* 4. Women */}
-          <Route
-            path="/women"
-            element={
-              <Shop
-                defaultGender="women"
-                pageTitle="Women's Designer Collection"
-                pageSubtitle="Heirloom Zari Sarees, Bridal Lehengas & Festive Anarkalis"
-              />
-            }
-          />
+            {/* 4. Women */}
+            <Route
+              path="/women"
+              element={
+                <Shop
+                  defaultGender="women"
+                  pageTitle="Women's Designer Collection"
+                  pageSubtitle="Heirloom Zari Sarees, Bridal Lehengas & Festive Anarkalis"
+                />
+              }
+            />
 
-          {/* 5. Ethnic Wear */}
-          <Route
-            path="/ethnic-wear"
-            element={
-              <Shop
-                defaultType="ethnic"
-                pageTitle="Ethnic Silhouettes & Heritage Weaves"
-                pageSubtitle="Centuries of Indian Textile Craftsmanship"
-              />
-            }
-          />
+            {/* 5. Ethnic Wear */}
+            <Route
+              path="/ethnic-wear"
+              element={
+                <Shop
+                  defaultType="ethnic"
+                  pageTitle="Ethnic Silhouettes & Heritage Weaves"
+                  pageSubtitle="Centuries of Indian Textile Craftsmanship"
+                />
+              }
+            />
 
-          {/* 6. Western Wear */}
-          <Route
-            path="/western-wear"
-            element={
-              <Shop
-                defaultType="western"
-                pageTitle="Contemporary Fusion & Modern Tailoring"
-                pageSubtitle="Modern Silhouettes with Subtle Heritage Textures"
-              />
-            }
-          />
+            {/* 6. Western Wear */}
+            <Route
+              path="/western-wear"
+              element={
+                <Shop
+                  defaultType="western"
+                  pageTitle="Contemporary Fusion & Modern Tailoring"
+                  pageSubtitle="Modern Silhouettes with Subtle Heritage Textures"
+                />
+              }
+            />
 
-          {/* 7. Festive Collection */}
-          <Route
-            path="/festive-collection"
-            element={
-              <Shop
-                defaultCollection="festive-edit"
-                pageTitle="The Festive Edit 2026"
-                pageSubtitle="Tradition, Reimagined."
-              />
-            }
-          />
+            {/* 7. Festive Collection */}
+            <Route
+              path="/festive-collection"
+              element={
+                <Shop
+                  defaultCollection="festive-edit"
+                  pageTitle="The Festive Edit 2026"
+                  pageSubtitle="Tradition, Reimagined."
+                />
+              }
+            />
 
-          {/* Curated Collections */}
-          <Route
-            path="/collections"
-            element={
-              <Shop
-                pageTitle="Curated Collections"
-                pageSubtitle="Explore our exclusive festive, bridal & heritage editions"
-              />
-            }
-          />
+            {/* Curated Collections */}
+            <Route
+              path="/collections"
+              element={
+                <Shop
+                  pageTitle="Curated Collections"
+                  pageSubtitle="Explore our exclusive festive, bridal & heritage editions"
+                />
+              }
+            />
 
-          {/* 8. New Arrivals */}
-          <Route
-            path="/new-arrivals"
-            element={
-              <Shop
-                isNewArrivals={true}
-                pageTitle="New Festive Arrivals"
-                pageSubtitle="Latest Styles for All Festival & Wedding Celebrations"
-              />
-            }
-          />
+            {/* 8. New Arrivals */}
+            <Route
+              path="/new-arrivals"
+              element={
+                <Shop
+                  isNewArrivals={true}
+                  pageTitle="New Festive Arrivals"
+                  pageSubtitle="Latest Styles for All Festival & Wedding Celebrations"
+                />
+              }
+            />
 
-          {/* 9. Best Sellers */}
-          <Route
-            path="/best-sellers"
-            element={
-              <Shop
-                isBestSellers={true}
-                pageTitle="KOKARÉ Bestsellers"
-                pageSubtitle="Most Celebrated and Cherished Silhouettes"
-              />
-            }
-          />
+            {/* 9. Best Sellers */}
+            <Route
+              path="/best-sellers"
+              element={
+                <Shop
+                  isBestSellers={true}
+                  pageTitle="KOKARÉ Bestsellers"
+                  pageSubtitle="Most Celebrated and Cherished Silhouettes"
+                />
+              }
+            />
 
-          {/* 10. Product Details */}
-          <Route path="/product/:id" element={<ProductDetails />} />
+            {/* 10. Product Details */}
+            <Route path="/product/:id" element={<ProductDetails />} />
 
-          {/* 11. Wishlist */}
-          <Route path="/wishlist" element={<Wishlist />} />
+            {/* 11. Wishlist */}
+            <Route path="/wishlist" element={<Wishlist />} />
 
-          {/* 12. Shopping Cart */}
-          <Route path="/cart" element={<Cart />} />
+            {/* 12. Shopping Cart */}
+            <Route path="/cart" element={<Cart />} />
 
-          {/* 13. Checkout UI */}
-          <Route path="/checkout" element={<Checkout />} />
+            {/* 13. Checkout UI */}
+            <Route path="/checkout" element={<Checkout />} />
 
-          {/* 14. About Us */}
-          <Route path="/about" element={<About />} />
+            {/* 14. About Us */}
+            <Route path="/about" element={<About />} />
 
-          {/* 15. Contact Us */}
-          <Route path="/contact" element={<Contact />} />
+            {/* 15. Contact Us */}
+            <Route path="/contact" element={<Contact />} />
 
-          {/* 16. Order Tracking */}
-          <Route path="/track-order" element={<OrderTracking />} />
+            {/* 16. Order Tracking */}
+            <Route path="/track-order" element={<OrderTracking />} />
 
-          {/* Fallback */}
-          <Route path="*" element={<Home />} />
-        </Routes>
+            {/* Fallback */}
+            <Route path="*" element={<Home />} />
+          </Routes>
+        </Suspense>
       </main>
 
       {/* 6. Global Luxury Footer */}

@@ -39,7 +39,7 @@ export default function About() {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-20">
           <FadeInUp delay={0.05} className="aspect-[3/4] overflow-hidden border border-[#EAE4DC] bg-white shadow-2xs">
             <ParallaxImage
-              src="https://images.unsplash.com/photo-1610030469983-98e550d6193c?auto=format&fit=crop&w=800&q=85"
+              src="https://images.unsplash.com/photo-1610030469983-98e550d6193c?auto=format&fit=crop&w=800&q=80&fm=webp"
               alt="Mulberry silk saree"
               className="w-full h-full"
               offset={55}
@@ -48,7 +48,7 @@ export default function About() {
           </FadeInUp>
           <FadeInUp delay={0.15} className="aspect-[3/4] overflow-hidden border border-[#C8A27A]/50 bg-white md:-translate-y-6 shadow-lg">
             <ParallaxImage
-              src="https://images.unsplash.com/photo-1507679799987-c73779587ccf?auto=format&fit=crop&w=800&q=85"
+              src="https://images.unsplash.com/photo-1507679799987-c73779587ccf?auto=format&fit=crop&w=800&q=80&fm=webp"
               alt="Midnight sherwani tailoring"
               className="w-full h-full"
               offset={80}
@@ -57,7 +57,7 @@ export default function About() {
           </FadeInUp>
           <FadeInUp delay={0.25} className="aspect-[3/4] overflow-hidden border border-[#EAE4DC] bg-white shadow-2xs">
             <ParallaxImage
-              src="https://images.unsplash.com/photo-1583391733956-3750e0ff4e8b?auto=format&fit=crop&w=800&q=85"
+              src="https://images.unsplash.com/photo-1583391733956-3750e0ff4e8b?auto=format&fit=crop&w=800&q=80&fm=webp"
               alt="Festive lehenga embroidery"
               className="w-full h-full"
               offset={55}

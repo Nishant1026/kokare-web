@@ -47,6 +47,7 @@ export function ParallaxImage({
         style={{ y, scale: shouldReduceMotion ? 1 : scale }}
         className={`w-full h-full object-cover will-change-transform transform-gpu ${imgClassName}`}
         loading={loading}
+        decoding="async"
       />
     </div>
   );
@@ -131,14 +132,18 @@ export function ParallaxReveal({
   return (
     <motion.div
       ref={ref}
-      style={{ y: parallaxY }}
-      initial={shouldReduceMotion ? { opacity: 1, y: 0 } : { opacity: 0, y: 24 }}
+      initial={shouldReduceMotion ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, amount: 0.05 }}
-      transition={{ duration: 0.75, delay, ease: [0.16, 1, 0.3, 1] }}
-      className={`will-change-transform transform-gpu ${className}`}
+      transition={{ duration: 0.6, delay, ease: [0.16, 1, 0.3, 1] }}
+      className={className}
     >
-      {children}
+      <motion.div
+        style={{ y: parallaxY }}
+        className="w-full h-full will-change-transform transform-gpu"
+      >
+        {children}
+      </motion.div>
     </motion.div>
   );
 }

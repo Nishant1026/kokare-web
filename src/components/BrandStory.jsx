@@ -18,7 +18,7 @@ export default function BrandStory() {
             <FadeInUp>
               <div className="relative aspect-[4/5] border border-[#EAE4DC] bg-white overflow-hidden shadow-sm">
                 <ParallaxImage
-                  src="https://images.unsplash.com/photo-1617627143750-d86bc21e42bb?auto=format&fit=crop&w=1200&q=85"
+                  src="https://images.unsplash.com/photo-1617627143750-d86bc21e42bb?auto=format&fit=crop&w=1200&q=80&fm=webp"
                   alt="Jharkhand handloom textile craftsmanship"
                   className="w-full h-full"
                   imgClassName="object-cover object-top"

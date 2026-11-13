@@ -58,7 +58,7 @@ export default function EditorialIntro() {
             <FadeInUp delay={0.15}>
               <div className="relative aspect-[4/5] border border-[#EAE4DC] bg-[#FAF7F2] group overflow-hidden shadow-xs">
                 <ParallaxImage
-                  src="https://images.unsplash.com/photo-1583391733956-3750e0ff4e8b?auto=format&fit=crop&w=900&q=85"
+                  src="https://images.unsplash.com/photo-1583391733956-3750e0ff4e8b?auto=format&fit=crop&w=800&q=80&fm=webp"
                   alt="Fine Indian textile embroidery and craftsmanship"
                   className="w-full h-full"
                   imgClassName="object-cover object-top group-hover:scale-105 transition-transform duration-700 ease-out"

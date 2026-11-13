@@ -1,15 +1,15 @@
-import React, { useState } from 'react';
+import React, { useState, memo } from 'react';
 import { motion } from 'framer-motion';
 import { Link, useNavigate } from 'react-router-dom';
 import { Heart, Eye, ShoppingBag, Check, Sparkles } from 'lucide-react';
 import { useWishlist } from '../context/WishlistContext';
 import { useCart } from '../context/CartContext';
 
-export default function ProductCard({ product }) {
+const ProductCard = memo(function ProductCard({ product }) {
   const navigate = useNavigate();
   const [isHovered, setIsHovered] = useState(false);
   const { isInWishlist, toggleWishlist } = useWishlist();
-  const { cart, addToCart, getProductTotalInCart } = useCart();
+  const { addToCart, getProductTotalInCart } = useCart();
 
   const isFavorited = isInWishlist(product.id);
   const totalInBag = getProductTotalInCart(product.id);
@@ -62,6 +62,9 @@ export default function ProductCard({ product }) {
                 isHovered && secondaryImg !== primaryImg ? 'opacity-0' : 'opacity-100'
               }`}
               loading="lazy"
+              decoding="async"
+              width="400"
+              height="533"
             />
             {secondaryImg && secondaryImg !== primaryImg && (
               <img
@@ -71,6 +74,9 @@ export default function ProductCard({ product }) {
                   isHovered ? 'opacity-100' : 'opacity-0'
                 }`}
                 loading="lazy"
+                decoding="async"
+                width="400"
+                height="533"
               />
             )}
           </Link>
@@ -252,4 +258,6 @@ export default function ProductCard({ product }) {
         </div>
       </div>
   );
-}
+});
+
+export default ProductCard;

@@ -10,8 +10,20 @@ export default function FloatingActions() {
   const [copiedCoupon, setCopiedCoupon] = useState(false);
 
   useEffect(() => {
+    let ticking = false;
+    let prev = false;
     const handleScroll = () => {
-      setShowScrollTop(window.scrollY > 320);
+      if (!ticking) {
+        window.requestAnimationFrame(() => {
+          const isOver = window.scrollY > 320;
+          if (isOver !== prev) {
+            prev = isOver;
+            setShowScrollTop(isOver);
+          }
+          ticking = false;
+        });
+        ticking = true;
+      }
     };
     window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);

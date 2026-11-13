@@ -23,6 +23,8 @@ export default function FestiveCampaign() {
           src="/images/festive-campaign-bg.jpg"
           alt="KOKARÉ All Festival Royal Heritage Fashion"
           className="w-full h-full object-cover object-center filter brightness-[0.92] contrast-[1.06]"
+          loading="lazy"
+          decoding="async"
         />
 
         {/* Ultra-light base tint */}
@@ -135,7 +137,7 @@ export default function FestiveCampaign() {
             <FadeInUp delay={0.15}>
               <div className="relative aspect-[4/5] max-h-[580px] border border-[#C8A27A]/60 ring-1 ring-black/40 bg-[#181818] overflow-hidden shadow-[0_25px_60px_-15px_rgba(0,0,0,0.7),0_0_35px_rgba(200,162,122,0.22)] group rounded-sm">
                 <img
-                  src="https://images.unsplash.com/photo-1610030469983-98e550d6193c?auto=format&fit=crop&w=1200&q=85"
+                  src="https://images.unsplash.com/photo-1610030469983-98e550d6193c?auto=format&fit=crop&w=1200&q=80&fm=webp"
                   alt="Festive Campaign Indian Haute Couture"
                   className="w-full h-full object-cover object-top transition-transform duration-700 ease-out group-hover:scale-105"
                 />

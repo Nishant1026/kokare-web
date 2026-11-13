@@ -6,12 +6,10 @@ import { useCart } from '../context/CartContext';
 import { useWishlist } from '../context/WishlistContext';
 
 export default function QuickViewModal({ product, isOpen, onClose }) {
-  if (!product) return null;
-
   const navigate = useNavigate();
   const [activeImageIndex, setActiveImageIndex] = useState(0);
-  const [selectedSize, setSelectedSize] = useState(product.sizes?.[0] || 'Standard');
-  const [selectedColor, setSelectedColor] = useState(product.colors?.[0]?.name || 'Standard');
+  const [selectedSize, setSelectedSize] = useState(product?.sizes?.[0] || 'Standard');
+  const [selectedColor, setSelectedColor] = useState(product?.colors?.[0]?.name || 'Standard');
   const [quantity, setQuantity] = useState(1);
   const [justAdded, setJustAdded] = useState(false);
 
@@ -21,6 +19,8 @@ export default function QuickViewModal({ product, isOpen, onClose }) {
   useEffect(() => {
     setJustAdded(false);
   }, [product?.id, selectedSize, selectedColor]);
+
+  if (!product) return null;
 
   const inBagQty = getCartItemQuantity(product.id, selectedSize, selectedColor);
   const isInBag = inBagQty > 0 || justAdded;

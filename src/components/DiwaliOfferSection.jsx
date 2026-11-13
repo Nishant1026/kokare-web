@@ -45,7 +45,7 @@ export default function DiwaliOfferSection({
             <FadeInUp>
               <div className="relative aspect-[4/5] border border-[#C8A27A]/35 overflow-hidden bg-[#FAF7F2] shadow-md">
                 <ParallaxImage
-                  src="https://images.unsplash.com/photo-1609357605129-26f69add5d6e?auto=format&fit=crop&w=1000&q=85"
+                  src="https://images.unsplash.com/photo-1609357605129-26f69add5d6e?auto=format&fit=crop&w=800&q=80&fm=webp"
                   alt="Festive Indian fashion offer"
                   className="w-full h-full"
                   imgClassName="object-cover object-top"

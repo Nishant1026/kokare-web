@@ -20,7 +20,7 @@ const HERO_SLIDES = [
     tagline: 'A celebration of Indian elegance and wearable art.',
     ctaText: 'EXPLORE NOW',
     ctaLink: '/festive-collection',
-    image: 'https://images.unsplash.com/photo-1610030469983-98e550d6193c?auto=format&fit=crop&w=2400&q=85',
+    image: 'https://images.unsplash.com/photo-1610030469983-98e550d6193c?auto=format&fit=crop&w=1800&q=80&fm=webp',
   },
   {
     id: 2,
@@ -38,7 +38,7 @@ const HERO_SLIDES = [
     tagline: 'Midnight obsidian bandhgalas and structured raw silk.',
     ctaText: 'EXPLORE MEN',
     ctaLink: '/men',
-    image: 'https://images.unsplash.com/photo-1507679799987-c73779587ccf?auto=format&fit=crop&w=2400&q=85',
+    image: 'https://images.unsplash.com/photo-1507679799987-c73779587ccf?auto=format&fit=crop&w=1800&q=80&fm=webp',
   },
   {
     id: 4,
@@ -47,7 +47,7 @@ const HERO_SLIDES = [
     tagline: 'Intricate zardozi and antique rose-gold resham craftsmanship.',
     ctaText: 'VIEW HEIRLOOMS',
     ctaLink: '/shop?collection=wedding-stories',
-    image: 'https://images.unsplash.com/photo-1583391733956-3750e0ff4e8b?auto=format&fit=crop&w=2400&q=85',
+    image: 'https://images.unsplash.com/photo-1583391733956-3750e0ff4e8b?auto=format&fit=crop&w=1800&q=80&fm=webp',
   }
 ];
 
@@ -70,6 +70,14 @@ export default function Hero() {
   const handleDotClick = (idx) => {
     setCurrentSlide(idx);
   };
+
+  // Preload all slider images on initial mount so slide transitions are instantaneous with zero network delay
+  useEffect(() => {
+    HERO_SLIDES.forEach((slide) => {
+      const img = new Image();
+      img.src = slide.image;
+    });
+  }, []);
 
   // Auto-slide every 6.5 seconds
   useEffect(() => {
@@ -134,19 +142,24 @@ export default function Hero() {
       {/* 1. FULL-BLEED CINEMATIC SLIDE BACKGROUND                      */}
       {/* ============================================================ */}
       <motion.div style={{ y: backgroundY }} className="absolute inset-0 w-full h-[126%] -top-[13%] pointer-events-none will-change-transform transform-gpu">
-        <AnimatePresence mode="wait">
+        <AnimatePresence mode="popLayout" initial={false}>
           <motion.div
             key={active.id}
-            initial={{ opacity: 0, scale: 1.05 }}
+            initial={{ opacity: 0, scale: 1.04 }}
             animate={{ opacity: 1, scale: 1 }}
-            exit={{ opacity: 0, scale: 0.98 }}
-            transition={{ duration: 1.0, ease: [0.16, 1, 0.3, 1] }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.65, ease: [0.16, 1, 0.3, 1] }}
             className="absolute inset-0 w-full h-full pointer-events-none overflow-hidden"
           >
             <img
               src={active.image}
               alt={active.title}
               className="w-full h-full object-cover object-center filter brightness-[0.92] contrast-[1.04]"
+              loading={currentSlide === 0 ? "eager" : "lazy"}
+              fetchPriority={currentSlide === 0 ? "high" : "auto"}
+              decoding="async"
+              width="1800"
+              height="1080"
             />
           </motion.div>
         </AnimatePresence>
@@ -166,10 +179,10 @@ export default function Hero() {
         <AnimatePresence mode="wait">
           <motion.div
             key={active.id}
-            initial={{ opacity: 0, y: 22 }}
+            initial={{ opacity: 0, y: 16 }}
             animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -18 }}
-            transition={{ duration: 0.75, ease: [0.16, 1, 0.3, 1] }}
+            exit={{ opacity: 0, y: -12 }}
+            transition={{ duration: 0.45, ease: [0.16, 1, 0.3, 1] }}
             className="w-full max-w-2xl text-left pointer-events-auto"
           >
             {/* Minimal Festive Badge */}

@@ -1,4 +1,4 @@
-import React, { createContext, useContext, useState, useEffect, useMemo } from 'react';
+import React, { createContext, useContext, useState, useEffect, useMemo, useCallback } from 'react';
 
 const CartContext = createContext();
 
@@ -17,7 +17,7 @@ export const normalizeCartItem = (item) => {
     ? item.images
     : (Array.isArray(prod.images) && prod.images.length > 0)
       ? prod.images
-      : [item.image || 'https://images.unsplash.com/photo-1610030469983-98e550d6193c?auto=format&fit=crop&w=1000&q=85'];
+      : [item.image || 'https://images.unsplash.com/photo-1610030469983-98e550d6193c?auto=format&fit=crop&w=800&q=80&fm=webp'];
   const price = Number(item.price || prod.price || 0);
   const size = item.selectedSize || item.size || 'Standard';
   const color = item.selectedColor || item.color || 'Original';
@@ -112,7 +112,7 @@ export function CartProvider({ children }) {
     }, 3200);
   };
 
-  const addToCart = (product, selectedSize, selectedColor, quantity = 1, openDrawer = false) => {
+  const addToCart = useCallback((product, selectedSize, selectedColor, quantity = 1, openDrawer = false) => {
     const size = selectedSize || (product.sizes && product.sizes[0]) || 'Standard';
     const color = selectedColor || (product.colors && product.colors[0]?.name) || 'Original';
     const cartItemId = `${product.id}-${size}-${color}`;
@@ -161,9 +161,9 @@ export function CartProvider({ children }) {
     if (openDrawer) {
       setIsCartOpen(true);
     }
-  };
+  }, []);
 
-  const removeFromCart = (idOrCartItemId, size, color) => {
+  const removeFromCart = useCallback((idOrCartItemId, size, color) => {
     setCart(prev =>
       prev.filter(item => {
         if (size !== undefined && color !== undefined) {
@@ -175,9 +175,9 @@ export function CartProvider({ children }) {
         return item.cartItemId !== idOrCartItemId && String(item.id || item.product?.id) !== String(idOrCartItemId);
       })
     );
-  };
+  }, []);
 
-  const updateQuantity = (idOrCartItemId, sizeOrQty, color, newQty) => {
+  const updateQuantity = useCallback((idOrCartItemId, sizeOrQty, color, newQty) => {
     // If called with (cartItemId, newQty)
     if (newQty === undefined && typeof sizeOrQty === 'number') {
       const targetQty = sizeOrQty;
@@ -211,9 +211,9 @@ export function CartProvider({ children }) {
           : item;
       })
     );
-  };
+  }, [removeFromCart]);
 
-  const isInCart = (productId, size, color) => {
+  const isInCart = useCallback((productId, size, color) => {
     const targetId = String(productId || '');
     return cart.some(item => {
       const matchId = String(item.id || item.product?.id || '') === targetId;
@@ -222,9 +222,19 @@ export function CartProvider({ children }) {
       if (color && item.selectedColor !== color && item.color !== color) return false;
       return true;
     });
-  };
+  }, [cart]);
 
-  const getCartItemQuantity = (productId, size, color) => {
+  const getProductTotalInCart = useCallback((productId) => {
+    const targetId = String(productId || '');
+    return cart
+      .filter(item => {
+        const idA = String(item.id || item.product?.id || '');
+        return idA && idA === targetId;
+      })
+      .reduce((sum, item) => sum + (Number(item.quantity) || 1), 0);
+  }, [cart]);
+
+  const getCartItemQuantity = useCallback((productId, size, color) => {
     const targetId = String(productId || '');
     // If exact variant requested:
     if (size || color) {
@@ -239,35 +249,25 @@ export function CartProvider({ children }) {
     }
     // Return total quantity of this product in cart
     return getProductTotalInCart(productId);
-  };
+  }, [cart, getProductTotalInCart]);
 
-  const getProductTotalInCart = (productId) => {
-    const targetId = String(productId || '');
-    return cart
-      .filter(item => {
-        const idA = String(item.id || item.product?.id || '');
-        return idA && idA === targetId;
-      })
-      .reduce((sum, item) => sum + (Number(item.quantity) || 1), 0);
-  };
-
-  const clearCart = () => {
+  const clearCart = useCallback(() => {
     setCart([]);
     setAppliedCoupon(null);
-  };
+  }, []);
 
-  const applyCoupon = (codeStr) => {
+  const applyCoupon = useCallback((codeStr) => {
     const clean = codeStr.trim().toUpperCase();
     if (VALID_COUPONS[clean]) {
       setAppliedCoupon(VALID_COUPONS[clean]);
       return { success: true, message: `Coupon ${clean} applied: ${VALID_COUPONS[clean].discountPercent}% off!` };
     }
     return { success: false, message: 'Invalid coupon code. Try FESTIVE20 or KOKARE10.' };
-  };
+  }, []);
 
-  const removeCoupon = () => {
+  const removeCoupon = useCallback(() => {
     setAppliedCoupon(null);
-  };
+  }, []);
 
   const { totalItems, subtotal, discount, shipping, total } = useMemo(() => {
     const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
@@ -285,32 +285,54 @@ export function CartProvider({ children }) {
     return { totalItems, subtotal, discount, shipping, total };
   }, [cart, appliedCoupon]);
 
+  const contextValue = useMemo(() => ({
+    cart,
+    totalItems,
+    subtotal,
+    discount,
+    shipping,
+    total,
+    appliedCoupon,
+    isCartOpen,
+    cartToast,
+    cartBump,
+    lastAddedItem,
+    setIsCartOpen,
+    addToCart,
+    removeFromCart,
+    updateQuantity,
+    isInCart,
+    getCartItemQuantity,
+    getProductTotalInCart,
+    clearCart,
+    applyCoupon,
+    removeCoupon
+  }), [
+    cart,
+    totalItems,
+    subtotal,
+    discount,
+    shipping,
+    total,
+    appliedCoupon,
+    isCartOpen,
+    cartToast,
+    cartBump,
+    lastAddedItem,
+    setIsCartOpen,
+    addToCart,
+    removeFromCart,
+    updateQuantity,
+    isInCart,
+    getCartItemQuantity,
+    getProductTotalInCart,
+    clearCart,
+    applyCoupon,
+    removeCoupon
+  ]);
+
   return (
-    <CartContext.Provider
-      value={{
-        cart,
-        totalItems,
-        subtotal,
-        discount,
-        shipping,
-        total,
-        appliedCoupon,
-        isCartOpen,
-        cartToast,
-        cartBump,
-        lastAddedItem,
-        setIsCartOpen,
-        addToCart,
-        removeFromCart,
-        updateQuantity,
-        isInCart,
-        getCartItemQuantity,
-        getProductTotalInCart,
-        clearCart,
-        applyCoupon,
-        removeCoupon
-      }}
-    >
+    <CartContext.Provider value={contextValue}>
       {children}
     </CartContext.Provider>
   );
