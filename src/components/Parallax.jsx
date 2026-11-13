@@ -34,8 +34,13 @@ export function ParallaxImage({
     shouldReduceMotion ? [0, 0] : [-activeOffset, activeOffset]
   );
 
+  const isPositioned = /\b(!?absolute|!?fixed|!?sticky)\b/.test(className);
+
   return (
-    <div ref={ref} className={`relative overflow-hidden ${className}`}>
+    <div
+      ref={ref}
+      className={`${isPositioned ? '' : 'relative'} overflow-hidden ${className}`}
+    >
       <motion.img
         src={src}
         alt={alt}

@@ -39,19 +39,20 @@ export default function CollectionBanner() {
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-stretch">
           
           {/* Card 1: Large Featured Hero Card (Left 7 Cols, Tall) */}
-          <FadeInUp className="lg:col-span-7 group relative border border-[#EAE4DC] hover:border-[#C8A27A] bg-white flex flex-col justify-end aspect-[4/5] sm:aspect-[16/10] lg:aspect-[4/5] min-h-[480px] lg:min-h-[560px] overflow-hidden shadow-xs transition-colors">
-            {/* 100% Uncovered & Crystal Clear Image */}
+          <FadeInUp className="lg:col-span-7 group relative border border-[#EAE4DC] hover:border-[#C8A27A] bg-[#FAF7F2] aspect-[4/5] sm:aspect-[16/10] lg:aspect-[4/5] min-h-[480px] sm:min-h-[500px] lg:min-h-[560px] overflow-hidden shadow-xs transition-colors">
+            {/* 100% Uncovered & Crystal Clear Image — Guaranteed full-bleed backdrop */}
             <ParallaxImage
               src={heroCol.image}
               alt={heroCol.title}
-              className="absolute inset-0 w-full h-full"
-              imgClassName="object-cover object-top transition-transform duration-700 ease-out group-hover:scale-105"
+              className="!absolute inset-0 w-full h-full"
+              imgClassName="w-full h-full object-cover object-top transition-transform duration-700 ease-out group-hover:scale-105"
               offset={28}
               scale={1.08}
+              loading="eager"
             />
 
-            {/* Crisp Floating Atelier Caption Panel — No Dark Gradient */}
-            <div className="relative z-10 m-4 sm:m-6 lg:m-8 p-5 sm:p-7 bg-white/95 backdrop-blur-md border border-[#EAE4DC] group-hover:border-[#C8A27A] shadow-md transition-all duration-300">
+            {/* Crisp Floating Atelier Caption Panel anchored to bottom */}
+            <div className="absolute bottom-3 left-3 right-3 sm:bottom-6 sm:left-6 sm:right-6 lg:bottom-8 lg:left-8 lg:right-8 z-10 p-4 sm:p-6 lg:p-7 bg-white/95 backdrop-blur-md border border-[#EAE4DC] group-hover:border-[#C8A27A] shadow-md transition-all duration-300">
               <div className="flex items-center justify-between gap-4 mb-1.5">
                 <span className="text-[15px] uppercase tracking-[0.2em] text-[#C8A27A] font-medium">
                   {heroCol.subtitle} · {heroCol.accent}
@@ -81,19 +82,19 @@ export default function CollectionBanner() {
           {/* Right Column: 3 Stacked Cards (5 Cols) — 100% Clear Images */}
           <div className="lg:col-span-5 flex flex-col gap-6 justify-between">
             
-            {/* Card 2: Wild Tussar Silks */}
-            <FadeInUp delay={0.1} className="group relative border border-[#EAE4DC] hover:border-[#C8A27A] bg-white flex flex-col justify-end aspect-[16/9] lg:aspect-[16/10] overflow-hidden shadow-xs transition-colors flex-1 min-h-[220px]">
+            {/* Card 2: Wild Tussar Silks — Generous height on mobile so garment is clearly visible */}
+            <FadeInUp delay={0.1} className="group relative border border-[#EAE4DC] hover:border-[#C8A27A] bg-[#FAF7F2] aspect-[4/5] sm:aspect-[16/9] lg:aspect-[16/10] overflow-hidden shadow-xs transition-colors flex-1 min-h-[390px] sm:min-h-[250px]">
               <ParallaxImage
                 src={col2.image}
                 alt={col2.title}
-                className="absolute inset-0 w-full h-full"
-                imgClassName="object-cover object-top transition-transform duration-700 ease-out group-hover:scale-105"
+                className="!absolute inset-0 w-full h-full"
+                imgClassName="w-full h-full object-cover object-top transition-transform duration-700 ease-out group-hover:scale-105"
                 offset={28}
                 scale={1.08}
               />
 
-              {/* Floating Atelier Caption — Clear and readable without darkening photo */}
-              <div className="relative z-10 m-3 sm:m-4 p-3.5 sm:p-4 bg-white/95 backdrop-blur-md border border-[#EAE4DC] group-hover:border-[#C8A27A] shadow-sm transition-all duration-300 flex flex-col sm:flex-row sm:items-center justify-between gap-3 sm:gap-4">
+              {/* Floating Atelier Caption anchored to bottom */}
+              <div className="absolute bottom-3 left-3 right-3 sm:bottom-4 sm:left-4 sm:right-4 z-10 p-3.5 sm:p-4 bg-white/95 backdrop-blur-md border border-[#EAE4DC] group-hover:border-[#C8A27A] shadow-sm transition-all duration-300 flex flex-col sm:flex-row sm:items-center justify-between gap-2.5 sm:gap-4">
                 <div>
                   <span className="text-xs sm:text-[14px] uppercase tracking-[0.16em] sm:tracking-[0.2em] text-[#C8A27A] font-medium block">
                     {col2.subtitle}
@@ -116,26 +117,26 @@ export default function CollectionBanner() {
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 flex-1">
               
               {/* Card 3: Contemporary Ethnic */}
-              <FadeInUp delay={0.15} className="group relative border border-[#EAE4DC] hover:border-[#C8A27A] bg-white flex flex-col justify-end aspect-[4/5] overflow-hidden shadow-xs transition-colors min-h-[250px]">
+              <FadeInUp delay={0.15} className="group relative border border-[#EAE4DC] hover:border-[#C8A27A] bg-[#FAF7F2] aspect-[4/5] overflow-hidden shadow-xs transition-colors min-h-[380px] sm:min-h-[260px]">
                 <ParallaxImage
                   src={col3.image}
                   alt={col3.title}
-                  className="absolute inset-0 w-full h-full"
-                  imgClassName="object-cover object-top transition-transform duration-700 ease-out group-hover:scale-105"
+                  className="!absolute inset-0 w-full h-full"
+                  imgClassName="w-full h-full object-cover object-top transition-transform duration-700 ease-out group-hover:scale-105"
                   offset={28}
                   scale={1.08}
                 />
 
-                <div className="relative z-10 m-3 p-3 bg-white/95 backdrop-blur-md border border-[#EAE4DC] group-hover:border-[#C8A27A] shadow-xs transition-all duration-300">
-                  <span className="text-[15px] uppercase tracking-[0.2em] text-[#C8A27A] font-medium block">
+                <div className="absolute bottom-3 left-3 right-3 z-10 p-3 sm:p-3.5 bg-white/95 backdrop-blur-md border border-[#EAE4DC] group-hover:border-[#C8A27A] shadow-xs transition-all duration-300">
+                  <span className="text-[14px] sm:text-[15px] uppercase tracking-[0.18em] sm:tracking-[0.2em] text-[#C8A27A] font-medium block">
                     {col3.subtitle}
                   </span>
-                  <h4 className="font-serif text-base sm:text-lg font-normal text-[#161616] mb-1 leading-tight">
+                  <h4 className="font-serif text-base sm:text-lg font-normal text-[#161616] mb-1.5 leading-tight">
                     {col3.title}
                   </h4>
                   <Link
                     to={`/shop?collection=${col3.id}`}
-                    className="inline-flex items-center gap-1 text-[15px] uppercase tracking-[0.16em] font-normal text-[#161616] group-hover:text-[#C8A27A] transition-colors"
+                    className="inline-flex items-center gap-1 text-[14px] sm:text-[15px] uppercase tracking-[0.16em] font-normal text-[#161616] group-hover:text-[#C8A27A] transition-colors"
                   >
                     <span>View Edit</span>
                     <ArrowRight className="w-3 h-3" />
@@ -144,26 +145,26 @@ export default function CollectionBanner() {
               </FadeInUp>
 
               {/* Card 4: Wedding Stories */}
-              <FadeInUp delay={0.2} className="group relative border border-[#EAE4DC] hover:border-[#C8A27A] bg-white flex flex-col justify-end aspect-[4/5] overflow-hidden shadow-xs transition-colors min-h-[250px]">
+              <FadeInUp delay={0.2} className="group relative border border-[#EAE4DC] hover:border-[#C8A27A] bg-[#FAF7F2] aspect-[4/5] overflow-hidden shadow-xs transition-colors min-h-[380px] sm:min-h-[260px]">
                 <ParallaxImage
                   src={col4.image}
                   alt={col4.title}
-                  className="absolute inset-0 w-full h-full"
-                  imgClassName="object-cover object-top transition-transform duration-700 ease-out group-hover:scale-105"
+                  className="!absolute inset-0 w-full h-full"
+                  imgClassName="w-full h-full object-cover object-top transition-transform duration-700 ease-out group-hover:scale-105"
                   offset={28}
                   scale={1.08}
                 />
 
-                <div className="relative z-10 m-3 p-3 bg-white/95 backdrop-blur-md border border-[#EAE4DC] group-hover:border-[#C8A27A] shadow-xs transition-all duration-300">
-                  <span className="text-[15px] uppercase tracking-[0.2em] text-[#C8A27A] font-medium block">
+                <div className="absolute bottom-3 left-3 right-3 z-10 p-3 sm:p-3.5 bg-white/95 backdrop-blur-md border border-[#EAE4DC] group-hover:border-[#C8A27A] shadow-xs transition-all duration-300">
+                  <span className="text-[14px] sm:text-[15px] uppercase tracking-[0.18em] sm:tracking-[0.2em] text-[#C8A27A] font-medium block">
                     {col4.subtitle}
                   </span>
-                  <h4 className="font-serif text-base sm:text-lg font-normal text-[#161616] mb-1 leading-tight">
+                  <h4 className="font-serif text-base sm:text-lg font-normal text-[#161616] mb-1.5 leading-tight">
                     {col4.title}
                   </h4>
                   <Link
                     to={`/shop?collection=${col4.id}`}
-                    className="inline-flex items-center gap-1 text-[15px] uppercase tracking-[0.16em] font-normal text-[#161616] group-hover:text-[#C8A27A] transition-colors"
+                    className="inline-flex items-center gap-1 text-[14px] sm:text-[15px] uppercase tracking-[0.16em] font-normal text-[#161616] group-hover:text-[#C8A27A] transition-colors"
                   >
                     <span>View Edit</span>
                     <ArrowRight className="w-3 h-3" />
