@@ -29,7 +29,7 @@ export default function Wishlist() {
           <div>
             <div className="inline-flex items-center gap-1.5 text-[15px] font-medium uppercase tracking-[0.2em] text-[#C8A27A] mb-1">
               <Sparkles className="w-3.5 h-3.5 text-[#C8A27A]" />
-              <span>Personal Vault · The Jharkhand Edit</span>
+              <span>Personal Vault · The Ethnic Edit</span>
             </div>
             <h1 className="font-serif text-3xl sm:text-5xl lg:text-6xl font-normal tracking-tight text-[#161616]">
               Your Festive Wishlist

@@ -118,7 +118,7 @@ export default function MobileDrawer({ isOpen, onClose }) {
                     KOKARÉ
                   </span>
                   <span className="text-[15px] uppercase tracking-[0.2em] text-[#C8A27A] font-medium -mt-0.5">
-                    The Jharkhand Edit
+                    The Ethnic Edit
                   </span>
                 </Link>
 

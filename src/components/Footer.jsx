@@ -73,7 +73,7 @@ export default function Footer() {
                 KOKARÉ
               </span>
               <span className="text-[15px] tracking-[0.2em] uppercase text-[#C8A27A] font-medium block mt-1.5">
-                The Jharkhand Edit · All Festival & Wedding Edition
+              The Ethnic Edit · All Festival & Wedding Edition
               </span>
             </Link>
 
@@ -88,7 +88,7 @@ export default function Footer() {
               </div>
               <div className="flex items-center gap-3">
                 <Phone className="w-5 h-5 text-[#C8A27A] shrink-0" />
-                <span>+91 98765 43210 (10 AM - 8 PM IST)</span>
+                <span>+91 XXXXX XXXXX (10 AM - 8 PM IST)</span>
               </div>
               <div className="flex items-center gap-3">
                 <Mail className="w-5 h-5 text-[#C8A27A] shrink-0" />
@@ -265,7 +265,7 @@ export default function Footer() {
 
         {/* Bottom Bar: Centered Copyright */}
         <div className="pt-8 text-center text-sm text-[#FAF7F2]/65 font-light tracking-wide">
-          <p>© 2026 KOKARÉ — The Jharkhand Edit. All rights reserved. Developed By Nishant Kumar</p>
+          <p>© 2026 KOKARÉ — The Ethnic Edit. All rights reserved. Developed By Nishant Kumar</p>
         </div>
 
       </div>

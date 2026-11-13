@@ -42,7 +42,7 @@ export default function BrandStory() {
                 <span className="text-[15px] uppercase tracking-[0.2em] text-[#161616] font-medium">
                   Est. 2026
                 </span>
-                <span className="text-xs text-[#736E66] font-light">The Jharkhand Edit</span>
+                <span className="text-xs text-[#736E66] font-light">The Ethnic Edit</span>
               </div>
             </FadeInUp>
           </div>

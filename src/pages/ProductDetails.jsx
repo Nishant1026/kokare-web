@@ -211,7 +211,7 @@ export default function ProductDetails() {
             <div>
               <div className="flex items-center gap-2 text-xs uppercase tracking-[0.28em] text-[#C8A27A] font-medium mb-1.5">
                 <Sparkles className="w-3.5 h-3.5 text-[#C8A27A]" />
-                <span>The Jharkhand Edit · All Festival Fashion</span>
+                <span>The Ethnic Edit · All Festival Fashion</span>
               </div>
 
               <h1 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-normal text-[#161616] tracking-tight leading-tight mb-2">

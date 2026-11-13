@@ -1,4 +1,4 @@
-// Curated luxury designer products for KOKARÉ — The Jharkhand Edit
+// Curated luxury designer products for KOKARÉ — The Ethnic Edit
 // Brand Tagline: "Tradition, Reimagined."
 // Campaign: All Festival & Wedding Collection 2026
 // High-quality editorial Indian designer fashion photography

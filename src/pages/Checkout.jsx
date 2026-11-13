@@ -185,7 +185,7 @@ export default function Checkout() {
               <div className="border-b border-[#EAE4DC] pb-6 mb-10">
                 <div className="inline-flex items-center gap-1.5 text-[15px] font-medium uppercase tracking-[0.2em] text-[#C8A27A] mb-1">
                   <Sparkles className="w-3.5 h-3.5 text-[#C8A27A]" />
-                  <span>The Jharkhand Edit · Express Delivery</span>
+                  <span>The Ethnic Edit · Express Delivery</span>
                 </div>
                 <h1 className="font-serif text-3xl sm:text-5xl lg:text-6xl font-normal tracking-tight text-[#161616]">
                   Atelier Checkout

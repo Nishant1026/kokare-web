@@ -20,7 +20,7 @@ export default function CollectionBanner() {
           <div>
             <div className="flex items-center gap-2 text-[15px] font-medium uppercase tracking-[0.2em] text-[#C8A27A] mb-2">
               <Sparkles className="w-3.5 h-3.5 text-[#C8A27A]" />
-              <span>Curated Editions · The Jharkhand Edit</span>
+              <span>Curated Editions · The Ethnic Edit</span>
             </div>
             <h2 className="font-serif text-3xl sm:text-5xl lg:text-6xl font-normal text-[#161616] tracking-tight">
               Explore The Collections

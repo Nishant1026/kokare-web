@@ -25,7 +25,7 @@ const HERO_SLIDES = [
   {
     id: 2,
     title: 'Royal Brocades',
-    subtitle: 'THE JHARKHAND EDIT · HANDLOOM WEAVES',
+    subtitle: 'THE ETHNIC EDIT · HANDLOOM WEAVES',
     tagline: 'Hand-woven mulberry silks and antique gold zari.',
     ctaText: 'EXPLORE WOMEN',
     ctaLink: '/women',

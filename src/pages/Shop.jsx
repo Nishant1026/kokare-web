@@ -187,7 +187,7 @@ export default function Shop({ defaultCategory, defaultGender, defaultType, defa
         <FadeInUp className="mb-10 text-center sm:text-left border-b border-[#EAE4DC] pb-8">
           <div className="inline-flex items-center gap-1.5 text-[15px] font-medium uppercase tracking-[0.2em] text-[#C8A27A] mb-2">
             <Sparkles className="w-3.5 h-3.5 text-[#C8A27A]" />
-            <span>{pageSubtitle || 'The Jharkhand Edit · All Festival & Wedding Fashion'}</span>
+            <span>{pageSubtitle || 'The Ethnic Edit · All Festival & Wedding Fashion'}</span>
           </div>
           <h1 className="font-serif text-3xl sm:text-5xl lg:text-6xl font-normal text-[#161616] tracking-tight mb-2">
             {title}
