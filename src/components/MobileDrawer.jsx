@@ -7,7 +7,9 @@ import {
   Heart,
   ShoppingBag,
   ChevronDown,
-  ArrowRight
+  ArrowRight,
+  User,
+  Mail
 } from 'lucide-react';
 import { useWishlist } from '../context/WishlistContext';
 import { useCart } from '../context/CartContext';
@@ -93,7 +95,7 @@ export default function MobileDrawer({ isOpen, onClose }) {
   };
 
   const itemVariants = {
-    hidden: { opacity: 0, x: 12 },
+    hidden: { opacity: 0, x: -12 },
     show: {
       opacity: 1,
       x: 0,
@@ -116,30 +118,30 @@ export default function MobileDrawer({ isOpen, onClose }) {
             aria-hidden="true"
           />
 
-          {/* Right-side Sliding Drawer — Width strictly sized to fit header navigation items */}
-          <div className="fixed inset-y-0 right-0 flex max-w-full">
+          {/* Left-side Sliding Drawer — Increased width with room for comfort */}
+          <div className="fixed inset-y-0 left-0 flex max-w-full">
             <motion.div
               ref={drawerRef}
               role="dialog"
               aria-modal="true"
               aria-label="Navigation Drawer"
-              initial={{ x: '100%' }}
+              initial={{ x: '-100%' }}
               animate={{ x: 0 }}
-              exit={{ x: '100%' }}
+              exit={{ x: '-100%' }}
               transition={{ duration: 0.32, ease: [0.22, 1, 0.36, 1] }}
-              className="w-[260px] max-w-[78vw] bg-white border-l border-[#EAE4DC] text-[#161616] shadow-2xl flex flex-col h-full overflow-hidden"
+              className="w-[310px] sm:w-[330px] max-w-[85vw] bg-white border-r border-[#EAE4DC] text-[#161616] shadow-2xl flex flex-col h-full overflow-hidden"
             >
               {/* Drawer Header: Brand Logo & Close */}
-              <div className="px-4 py-3.5 border-b border-[#EAE4DC] flex items-center justify-between bg-white shrink-0">
+              <div className="px-5 py-4 border-b border-[#EAE4DC] flex items-center justify-between bg-white shrink-0">
                 <Link
                   to="/"
                   onClick={() => handleNavigate('/')}
                   className="group flex flex-col"
                 >
-                  <span className="font-serif text-xl tracking-[0.2em] font-normal text-[#161616] group-hover:text-[#C8A27A] transition-colors block">
+                  <span className="font-serif text-xl sm:text-2xl tracking-[0.2em] font-normal text-[#161616] group-hover:text-[#C8A27A] transition-colors block">
                     KOKARÉ
                   </span>
-                  <span className="text-[11px] uppercase tracking-[0.18em] text-[#C8A27A] font-medium -mt-0.5">
+                  <span className="text-[12px] uppercase tracking-[0.18em] text-[#C8A27A] font-medium -mt-0.5">
                     The Ethnic Edit
                   </span>
                 </Link>
@@ -148,7 +150,7 @@ export default function MobileDrawer({ isOpen, onClose }) {
                 <button
                   onClick={onClose}
                   aria-label="Close Navigation Menu"
-                  className="w-8 h-8 rounded-full bg-[#FAF7F2] border border-[#EAE4DC] text-[#736E66] hover:text-[#161616] hover:border-[#C8A27A] flex items-center justify-center transition-all cursor-pointer focus:outline-none"
+                  className="w-8.5 h-8.5 rounded-full bg-[#FAF7F2] border border-[#EAE4DC] text-[#736E66] hover:text-[#161616] hover:border-[#C8A27A] flex items-center justify-center transition-all cursor-pointer focus:outline-none"
                 >
                   <X className="w-4 h-4" />
                 </button>
@@ -160,14 +162,14 @@ export default function MobileDrawer({ isOpen, onClose }) {
                 variants={containerVariants}
                 initial="hidden"
                 animate="show"
-                className="px-3 py-3 space-y-1 flex-1 overflow-y-auto"
+                className="px-4 py-4 space-y-1.5 flex-1 overflow-y-auto"
               >
                 {/* 1. Home */}
                 <motion.div variants={itemVariants}>
                   <Link
                     to="/"
                     onClick={() => handleNavigate('/')}
-                    className={`group flex items-center justify-between py-2.5 px-3 transition-all duration-200 border-l-2 ${
+                    className={`group flex items-center justify-between py-2.5 px-3.5 transition-all duration-200 border-l-2 ${
                       location.pathname === '/'
                         ? 'border-[#C8A27A] text-[#C8A27A] font-medium bg-[#FAF7F2]'
                         : 'border-transparent text-[#161616]/85 hover:text-[#C8A27A] hover:bg-[#FAF7F2] hover:border-[#C8A27A]/50'
@@ -191,7 +193,7 @@ export default function MobileDrawer({ isOpen, onClose }) {
                   <Link
                     to="/women"
                     onClick={() => handleNavigate('/women')}
-                    className={`group flex items-center justify-between py-2.5 px-3 transition-all duration-200 border-l-2 ${
+                    className={`group flex items-center justify-between py-2.5 px-3.5 transition-all duration-200 border-l-2 ${
                       location.pathname === '/women'
                         ? 'border-[#C8A27A] text-[#C8A27A] font-medium bg-[#FAF7F2]'
                         : 'border-transparent text-[#161616]/85 hover:text-[#C8A27A] hover:bg-[#FAF7F2] hover:border-[#C8A27A]/50'
@@ -215,7 +217,7 @@ export default function MobileDrawer({ isOpen, onClose }) {
                   <Link
                     to="/men"
                     onClick={() => handleNavigate('/men')}
-                    className={`group flex items-center justify-between py-2.5 px-3 transition-all duration-200 border-l-2 ${
+                    className={`group flex items-center justify-between py-2.5 px-3.5 transition-all duration-200 border-l-2 ${
                       location.pathname === '/men'
                         ? 'border-[#C8A27A] text-[#C8A27A] font-medium bg-[#FAF7F2]'
                         : 'border-transparent text-[#161616]/85 hover:text-[#C8A27A] hover:bg-[#FAF7F2] hover:border-[#C8A27A]/50'
@@ -238,7 +240,7 @@ export default function MobileDrawer({ isOpen, onClose }) {
                 <motion.div variants={itemVariants}>
                   <div>
                     <div
-                      className={`flex items-center justify-between px-3 border-l-2 transition-all duration-200 ${
+                      className={`flex items-center justify-between px-3.5 border-l-2 transition-all duration-200 ${
                         location.pathname === '/collections' || isCollectionsOpen
                           ? 'border-[#C8A27A] bg-[#FAF7F2]'
                           : 'border-transparent hover:bg-[#FAF7F2]'
@@ -281,14 +283,14 @@ export default function MobileDrawer({ isOpen, onClose }) {
                           animate={{ opacity: 1, height: 'auto' }}
                           exit={{ opacity: 0, height: 0 }}
                           transition={{ duration: 0.2 }}
-                          className="overflow-hidden bg-[#FAF7F2]/60 pl-4 pr-1 py-1 space-y-0.5 border-l-2 border-[#C8A27A]/30 ml-3 my-0.5"
+                          className="overflow-hidden bg-[#FAF7F2]/60 pl-4 pr-1 py-1 space-y-0.5 border-l-2 border-[#C8A27A]/30 ml-3.5 my-0.5"
                         >
                           {COLLECTIONS_SUBITEMS.map((sub) => (
                             <Link
                               key={sub.name}
                               to={sub.path}
                               onClick={() => handleNavigate(sub.path)}
-                              className="block py-1.5 px-2 text-[13px] text-[#736E66] hover:text-[#C8A27A] transition-colors rounded-xs hover:bg-white/80"
+                              className="block py-1.5 px-2 text-[13.5px] text-[#736E66] hover:text-[#C8A27A] transition-colors rounded-xs hover:bg-white/80"
                             >
                               {sub.name}
                             </Link>
@@ -304,13 +306,13 @@ export default function MobileDrawer({ isOpen, onClose }) {
                   <Link
                     to="/festive-collection"
                     onClick={() => handleNavigate('/festive-collection')}
-                    className={`group flex items-center justify-between py-2.5 px-3 transition-all duration-200 border-l-2 ${
+                    className={`group flex items-center justify-between py-2.5 px-3.5 transition-all duration-200 border-l-2 ${
                       location.pathname === '/festive-collection'
                         ? 'border-[#C8A27A] text-[#C8A27A] font-medium bg-[#FAF7F2]'
                         : 'border-transparent text-[#C8A27A] hover:text-[#721C2B] hover:bg-[#FAF7F2] hover:border-[#C8A27A]/50'
                     }`}
                   >
-                    <div className="flex items-center gap-1.5">
+                    <div className="flex items-center gap-2">
                       <Sparkles className="w-3.5 h-3.5 text-[#C8A27A] shrink-0" />
                       <span className="font-serif text-[16px] tracking-wide font-medium">
                         Festive Edit
@@ -331,7 +333,7 @@ export default function MobileDrawer({ isOpen, onClose }) {
                   <Link
                     to="/about"
                     onClick={() => handleNavigate('/about')}
-                    className={`group flex items-center justify-between py-2.5 px-3 transition-all duration-200 border-l-2 ${
+                    className={`group flex items-center justify-between py-2.5 px-3.5 transition-all duration-200 border-l-2 ${
                       location.pathname === '/about'
                         ? 'border-[#C8A27A] text-[#C8A27A] font-medium bg-[#FAF7F2]'
                         : 'border-transparent text-[#161616]/85 hover:text-[#C8A27A] hover:bg-[#FAF7F2] hover:border-[#C8A27A]/50'
@@ -355,7 +357,7 @@ export default function MobileDrawer({ isOpen, onClose }) {
                   <Link
                     to="/contact"
                     onClick={() => handleNavigate('/contact')}
-                    className={`group flex items-center justify-between py-2.5 px-3 transition-all duration-200 border-l-2 ${
+                    className={`group flex items-center justify-between py-2.5 px-3.5 transition-all duration-200 border-l-2 ${
                       location.pathname === '/contact'
                         ? 'border-[#C8A27A] text-[#C8A27A] font-medium bg-[#FAF7F2]'
                         : 'border-transparent text-[#161616]/85 hover:text-[#C8A27A] hover:bg-[#FAF7F2] hover:border-[#C8A27A]/50'
@@ -375,50 +377,68 @@ export default function MobileDrawer({ isOpen, onClose }) {
                 </motion.div>
               </motion.div>
 
-              {/* Minimal Drawer Footer: Wishlist & Bag Quick Access */}
-              <div className="p-3.5 border-t border-[#EAE4DC] bg-[#FAF7F2] space-y-2.5 shrink-0">
-                <div className="grid grid-cols-2 gap-2">
-                  {/* Wishlist Quick Button */}
+              {/* Fixed Bottom Action Strip: Circular Icon Layouts */}
+              <div className="p-4 border-t border-[#EAE4DC] bg-[#FAF7F2] shrink-0 sticky bottom-0 z-10 space-y-3">
+                {/* Circle Icons Row */}
+                <div className="flex items-center justify-center gap-3.5">
+                  {/* 1. Wishlist Circle */}
                   <Link
                     to="/wishlist"
                     onClick={() => handleNavigate('/wishlist')}
                     aria-label={`Wishlist (${wishlistCount} items)`}
                     title="Wishlist"
-                    className="relative flex items-center justify-center h-9.5 bg-white border border-[#EAE4DC] hover:border-[#C8A27A] transition-all shadow-2xs group cursor-pointer"
+                    className="relative w-11 h-11 rounded-full bg-white border border-[#EAE4DC] hover:border-[#C8A27A] flex items-center justify-center shadow-2xs hover:shadow-xs transition-all duration-200 group cursor-pointer"
                   >
-                    <div className="relative flex items-center justify-center">
-                      <Heart
-                        className={`w-4 h-4 transition-transform duration-200 group-hover:scale-110 ${
-                          wishlistCount > 0
-                            ? 'text-[#C8A27A] fill-[#C8A27A]'
-                            : 'text-[#161616] group-hover:text-[#C8A27A]'
-                        }`}
-                      />
-                      {wishlistCount > 0 && (
-                        <span className="absolute -top-2 -right-3 bg-[#C8A27A] text-white text-[10px] font-semibold rounded-full h-4 min-w-[16px] px-1 flex items-center justify-center border border-white">
-                          {wishlistCount}
-                        </span>
-                      )}
-                    </div>
+                    <Heart
+                      className={`w-4.5 h-4.5 transition-transform duration-200 group-hover:scale-110 ${
+                        wishlistCount > 0
+                          ? 'text-[#C8A27A] fill-[#C8A27A]'
+                          : 'text-[#161616] group-hover:text-[#C8A27A]'
+                      }`}
+                    />
+                    {wishlistCount > 0 && (
+                      <span className="absolute -top-1 -right-1 bg-[#C8A27A] text-white text-[10px] font-semibold rounded-full w-4.5 h-4.5 flex items-center justify-center border border-white shadow-xs">
+                        {wishlistCount}
+                      </span>
+                    )}
                   </Link>
 
-                  {/* Bag Quick Button */}
+                  {/* 2. Bag Circle */}
                   <Link
                     to="/cart"
                     onClick={() => handleNavigate('/cart')}
                     aria-label={`Shopping Bag (${totalItems} items)`}
                     title="Shopping Bag"
-                    className="relative flex items-center justify-center h-9.5 bg-[#161616] hover:bg-[#C8A27A] text-white border border-[#161616] hover:border-[#C8A27A] transition-all shadow-2xs group cursor-pointer"
+                    className="relative w-11 h-11 rounded-full bg-[#161616] hover:bg-[#721C2B] text-white border border-[#161616] hover:border-[#721C2B] flex items-center justify-center shadow-2xs hover:shadow-xs transition-all duration-200 group cursor-pointer"
                   >
-                    <div className="relative flex items-center justify-center">
-                      <ShoppingBag className="w-4 h-4 text-white transition-transform duration-200 group-hover:scale-110" />
-                      {totalItems > 0 && (
-                        <span className="absolute -top-2 -right-3 bg-[#C8A27A] text-white text-[10px] font-semibold rounded-full h-4 min-w-[16px] px-1 flex items-center justify-center border border-white">
-                          {totalItems}
-                        </span>
-                      )}
-                    </div>
+                    <ShoppingBag className="w-4.5 h-4.5 text-white transition-transform duration-200 group-hover:scale-110" />
+                    {totalItems > 0 && (
+                      <span className="absolute -top-1 -right-1 bg-[#C8A27A] text-white text-[10px] font-semibold rounded-full w-4.5 h-4.5 flex items-center justify-center border border-white shadow-xs">
+                        {totalItems}
+                      </span>
+                    )}
                   </Link>
+
+                  {/* 3. Account / Orders Circle */}
+                  <Link
+                    to="/track-order"
+                    onClick={() => handleNavigate('/track-order')}
+                    aria-label="Account & Track Order"
+                    title="Account & Orders"
+                    className="relative w-11 h-11 rounded-full bg-white border border-[#EAE4DC] hover:border-[#C8A27A] text-[#161616] hover:text-[#C8A27A] flex items-center justify-center shadow-2xs hover:shadow-xs transition-all duration-200 group cursor-pointer"
+                  >
+                    <User className="w-4.5 h-4.5 transition-transform duration-200 group-hover:scale-110" />
+                  </Link>
+
+                  {/* 4. Concierge Email Circle */}
+                  <a
+                    href="mailto:concierge@kokare.in"
+                    aria-label="Email Concierge"
+                    title="concierge@kokare.in"
+                    className="relative w-11 h-11 rounded-full bg-white border border-[#EAE4DC] hover:border-[#C8A27A] text-[#161616] hover:text-[#C8A27A] flex items-center justify-center shadow-2xs hover:shadow-xs transition-all duration-200 group cursor-pointer"
+                  >
+                    <Mail className="w-4.5 h-4.5 transition-transform duration-200 group-hover:scale-110" />
+                  </a>
                 </div>
 
                 {/* Concierge Assistance Link */}
