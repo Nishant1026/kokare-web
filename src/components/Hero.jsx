@@ -173,8 +173,8 @@ export default function Hero() {
             className="w-full max-w-2xl text-left pointer-events-auto"
           >
             {/* Minimal Festive Badge */}
-            <div className="inline-flex flex-wrap items-center gap-1.5 sm:gap-2 text-[11px] sm:text-xs uppercase tracking-[0.18em] sm:tracking-[0.25em] text-[#C8A27A] font-medium mb-2.5 sm:mb-3.5 max-w-full">
-              <Sparkles className="w-3 h-3 sm:w-3.5 sm:h-3.5 text-[#C8A27A] shrink-0" />
+            <div className="inline-flex flex-wrap items-center gap-1.5 sm:gap-2 text-[15px] uppercase tracking-[0.2em] sm:tracking-[0.25em] text-[#C8A27A] font-medium mb-2.5 sm:mb-3.5 max-w-full">
+              <Sparkles className="w-3.5 h-3.5 text-[#C8A27A] shrink-0" />
               <span className="break-words">{active.subtitle}</span>
             </div>
 

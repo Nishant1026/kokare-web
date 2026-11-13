@@ -153,7 +153,7 @@ export default function MobileDrawer({ isOpen, onClose }) {
                   <span className="font-serif text-2xl tracking-[0.24em] font-normal text-[#161616] group-hover:text-[#C8A27A] transition-colors block">
                     KOKARÉ
                   </span>
-                  <span className="text-[14px] uppercase tracking-[0.2em] text-[#C8A27A] font-medium -mt-0.5">
+                  <span className="text-[10.5px] uppercase tracking-[0.24em] text-[#C8A27A] font-medium -mt-0.5">
                     The Ethnic Edit
                   </span>
                 </Link>

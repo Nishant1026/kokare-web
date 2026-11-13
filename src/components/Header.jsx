@@ -159,7 +159,7 @@ export default function Header({ onOpenDrawer }) {
               >
                 KOKARÉ
               </span>
-              <span className="text-[14px] sm:text-[14px] lg:text-[15px] tracking-[0.14em] sm:tracking-[0.2em] uppercase text-[#C8A27A] font-medium -mt-0.5 whitespace-nowrap">
+              <span className="text-[11px] sm:text-[14px] lg:text-[15px] tracking-[0.14em] sm:tracking-[0.2em] uppercase text-[#C8A27A] font-medium -mt-0.5 whitespace-nowrap">
                 The Ethnic Edit
               </span>
             </Link>

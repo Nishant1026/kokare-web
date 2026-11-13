@@ -17,8 +17,8 @@ export default function EditorialIntro() {
           <div className="lg:col-span-7">
             <ParallaxContent speed={26} reverse={false}>
               <FadeInUp className="space-y-6">
-                <div className="inline-flex items-center gap-1.5 sm:gap-2 text-[10.5px] sm:text-xs uppercase tracking-[0.16em] sm:tracking-[0.2em] text-[#C8A27A] font-medium flex-wrap max-w-full">
-                  <Sparkles className="w-3 h-3 sm:w-3.5 sm:h-3.5 text-[#C8A27A] shrink-0" />
+                <div className="inline-flex items-center gap-2 text-xs sm:text-[15px] uppercase tracking-[0.15em] sm:tracking-[0.2em] text-[#C8A27A] font-medium flex-wrap max-w-full">
+                  <Sparkles className="w-3.5 h-3.5 text-[#C8A27A] shrink-0" />
                   <span>The House of KOKARÉ · Our Design Philosophy</span>
                 </div>
 
