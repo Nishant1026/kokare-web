@@ -7,6 +7,12 @@ import {
   ChevronDown,
   ArrowRight
 } from 'lucide-react';
+import {
+  InstagramIcon,
+  FacebookIcon,
+  PinterestIcon,
+  WhatsAppIcon
+} from './SocialIcons';
 
 // Exactly mirrors the desktop header navigation collections dropdown
 const COLLECTIONS_SUBITEMS = [
@@ -15,6 +21,22 @@ const COLLECTIONS_SUBITEMS = [
   { name: 'Wild Tussar Handlooms', path: '/shop?collection=heritage-classics' },
   { name: 'Ceremonial Menswear', path: '/shop?gender=men' },
   { name: 'Wedding Stories', path: '/shop?collection=wedding-stories' },
+];
+
+const MENU_ITEMS = [
+  { id: '01', name: 'Home', path: '/' },
+  { id: '02', name: 'Women', path: '/women' },
+  { id: '03', name: 'Men', path: '/men' },
+  {
+    id: '04',
+    name: 'Collections',
+    path: '/collections',
+    hasSubmenu: true,
+    subItems: COLLECTIONS_SUBITEMS
+  },
+  { id: '05', name: 'Festive Edit', path: '/festive-collection', isFestive: true },
+  { id: '06', name: 'Our Story', path: '/about' },
+  { id: '07', name: 'Contact', path: '/contact' }
 ];
 
 export default function MobileDrawer({ isOpen, onClose }) {
@@ -80,18 +102,18 @@ export default function MobileDrawer({ isOpen, onClose }) {
     show: {
       opacity: 1,
       transition: {
-        staggerChildren: 0.03,
-        delayChildren: 0.05
+        staggerChildren: 0.035,
+        delayChildren: 0.06
       }
     }
   };
 
   const itemVariants = {
-    hidden: { opacity: 0, x: 12 },
+    hidden: { opacity: 0, x: 14 },
     show: {
       opacity: 1,
       x: 0,
-      transition: { duration: 0.25, ease: [0.16, 1, 0.3, 1] }
+      transition: { duration: 0.28, ease: [0.16, 1, 0.3, 1] }
     }
   };
 
@@ -99,18 +121,18 @@ export default function MobileDrawer({ isOpen, onClose }) {
     <AnimatePresence>
       {isOpen && (
         <div className="fixed inset-0 z-50 overflow-hidden">
-          {/* Dark translucent backdrop */}
+          {/* Silk Dark Translucent Backdrop */}
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            transition={{ duration: 0.25 }}
+            transition={{ duration: 0.28 }}
             onClick={onClose}
-            className="fixed inset-0 bg-black/60 backdrop-blur-xs transition-opacity"
+            className="fixed inset-0 bg-black/65 backdrop-blur-[3px] transition-opacity"
             aria-hidden="true"
           />
 
-          {/* Right-side Sliding Drawer — Increased width with clean luxury layout */}
+          {/* Right-side Luxury Sliding Drawer — Warm Ivory Silk Atelier Aesthetic */}
           <div className="fixed inset-y-0 right-0 flex max-w-full">
             <motion.div
               ref={drawerRef}
@@ -120,254 +142,293 @@ export default function MobileDrawer({ isOpen, onClose }) {
               initial={{ x: '100%' }}
               animate={{ x: 0 }}
               exit={{ x: '100%' }}
-              transition={{ duration: 0.32, ease: [0.22, 1, 0.36, 1] }}
-              className="w-[320px] sm:w-[340px] max-w-[85vw] bg-white border-l border-[#EAE4DC] text-[#161616] shadow-2xl flex flex-col h-full overflow-hidden"
+              transition={{ duration: 0.35, ease: [0.22, 1, 0.36, 1] }}
+              className="w-[320px] sm:w-[340px] max-w-[85vw] bg-[#FAF8F5] border-l border-[#EAE4DC] text-[#161616] shadow-[-16px_0_48px_rgba(22,22,22,0.12)] flex flex-col h-full overflow-hidden"
             >
-              {/* Drawer Header: Brand Logo & Close */}
-              <div className="px-5 py-4 border-b border-[#EAE4DC] flex items-center justify-between bg-white shrink-0">
+              {/* 1. Drawer Header: Editorial Brand Wordmark & Refined Close */}
+              <div className="px-6 py-4.5 border-b border-[#EAE4DC] flex items-center justify-between bg-white/80 backdrop-blur-md shrink-0">
                 <Link
                   to="/"
                   onClick={() => handleNavigate('/')}
                   className="group flex flex-col"
                 >
-                  <span className="font-serif text-xl sm:text-2xl tracking-[0.2em] font-normal text-[#161616] group-hover:text-[#C8A27A] transition-colors block">
+                  <span className="font-serif text-2xl tracking-[0.24em] font-normal text-[#161616] group-hover:text-[#C8A27A] transition-colors block">
                     KOKARÉ
                   </span>
-                  <span className="text-[12px] uppercase tracking-[0.18em] text-[#C8A27A] font-medium -mt-0.5">
+                  <span className="text-[10.5px] uppercase tracking-[0.24em] text-[#C8A27A] font-medium -mt-0.5">
                     The Ethnic Edit
                   </span>
                 </Link>
 
-                {/* Circular Close Button */}
+                {/* Minimalist Circular Close Button */}
                 <button
                   onClick={onClose}
                   aria-label="Close Navigation Menu"
-                  className="w-8.5 h-8.5 rounded-full bg-[#FAF7F2] border border-[#EAE4DC] text-[#736E66] hover:text-[#161616] hover:border-[#C8A27A] flex items-center justify-center transition-all cursor-pointer focus:outline-none"
+                  className="w-8.5 h-8.5 rounded-full bg-white border border-[#EAE4DC] text-[#736E66] hover:text-[#161616] hover:border-[#C8A27A] shadow-2xs flex items-center justify-center transition-all cursor-pointer focus:outline-none active:scale-95"
                 >
-                  <X className="w-4 h-4" />
+                  <X className="w-4 h-4 stroke-[1.5]" />
                 </button>
               </div>
 
-              {/* Navigation Links — Strictly identical to Desktop Header Navigation */}
+              {/* 2. Navigation Links — Curated Haute Editorial Rhythm */}
               <motion.div
                 data-lenis-prevent
                 variants={containerVariants}
                 initial="hidden"
                 animate="show"
-                className="px-4 py-4 space-y-1.5 flex-1 overflow-y-auto"
+                className="px-5 py-4 space-y-1 flex-1 overflow-y-auto"
               >
-                {/* 1. Home */}
-                <motion.div variants={itemVariants}>
-                  <Link
-                    to="/"
-                    onClick={() => handleNavigate('/')}
-                    className={`group flex items-center justify-between py-2.5 px-3.5 transition-all duration-200 border-l-2 ${
-                      location.pathname === '/'
-                        ? 'border-[#C8A27A] text-[#C8A27A] font-medium bg-[#FAF7F2]'
-                        : 'border-transparent text-[#161616]/85 hover:text-[#C8A27A] hover:bg-[#FAF7F2] hover:border-[#C8A27A]/50'
-                    }`}
-                  >
-                    <span className="font-serif text-[16px] tracking-wide">
-                      Home
-                    </span>
-                    <ArrowRight
-                      className={`w-3.5 h-3.5 transition-all duration-200 ${
-                        location.pathname === '/'
-                          ? 'text-[#C8A27A] opacity-100 translate-x-0'
-                          : 'opacity-0 -translate-x-1 group-hover:opacity-100 group-hover:translate-x-0 text-[#C8A27A]'
-                      }`}
-                    />
-                  </Link>
-                </motion.div>
+                {MENU_ITEMS.map((item) => {
+                  const isActive = location.pathname === item.path;
 
-                {/* 2. Women */}
-                <motion.div variants={itemVariants}>
-                  <Link
-                    to="/women"
-                    onClick={() => handleNavigate('/women')}
-                    className={`group flex items-center justify-between py-2.5 px-3.5 transition-all duration-200 border-l-2 ${
-                      location.pathname === '/women'
-                        ? 'border-[#C8A27A] text-[#C8A27A] font-medium bg-[#FAF7F2]'
-                        : 'border-transparent text-[#161616]/85 hover:text-[#C8A27A] hover:bg-[#FAF7F2] hover:border-[#C8A27A]/50'
-                    }`}
-                  >
-                    <span className="font-serif text-[16px] tracking-wide">
-                      Women
-                    </span>
-                    <ArrowRight
-                      className={`w-3.5 h-3.5 transition-all duration-200 ${
-                        location.pathname === '/women'
-                          ? 'text-[#C8A27A] opacity-100 translate-x-0'
-                          : 'opacity-0 -translate-x-1 group-hover:opacity-100 group-hover:translate-x-0 text-[#C8A27A]'
-                      }`}
-                    />
-                  </Link>
-                </motion.div>
+                  // Collections Accordion Item
+                  if (item.hasSubmenu) {
+                    const isAnySubActive =
+                      isActive ||
+                      location.pathname === '/collections' ||
+                      item.subItems.some((s) => location.pathname === s.path);
 
-                {/* 3. Men */}
-                <motion.div variants={itemVariants}>
-                  <Link
-                    to="/men"
-                    onClick={() => handleNavigate('/men')}
-                    className={`group flex items-center justify-between py-2.5 px-3.5 transition-all duration-200 border-l-2 ${
-                      location.pathname === '/men'
-                        ? 'border-[#C8A27A] text-[#C8A27A] font-medium bg-[#FAF7F2]'
-                        : 'border-transparent text-[#161616]/85 hover:text-[#C8A27A] hover:bg-[#FAF7F2] hover:border-[#C8A27A]/50'
-                    }`}
-                  >
-                    <span className="font-serif text-[16px] tracking-wide">
-                      Men
-                    </span>
-                    <ArrowRight
-                      className={`w-3.5 h-3.5 transition-all duration-200 ${
-                        location.pathname === '/men'
-                          ? 'text-[#C8A27A] opacity-100 translate-x-0'
-                          : 'opacity-0 -translate-x-1 group-hover:opacity-100 group-hover:translate-x-0 text-[#C8A27A]'
-                      }`}
-                    />
-                  </Link>
-                </motion.div>
+                    return (
+                      <motion.div
+                        key={item.id}
+                        variants={itemVariants}
+                        className="border-b border-[#EAE4DC]/50 last:border-b-0 pb-1"
+                      >
+                        <div
+                          className={`flex items-center justify-between py-2.5 px-3 rounded-xs transition-all duration-200 ${
+                            isAnySubActive || isCollectionsOpen
+                              ? 'bg-white shadow-2xs'
+                              : 'hover:bg-white/60'
+                          }`}
+                        >
+                          <Link
+                            to={item.path}
+                            onClick={() => handleNavigate(item.path)}
+                            className="flex items-center gap-3 flex-1 group"
+                          >
+                            <span className="text-[10px] font-mono tracking-widest text-[#C8A27A] font-medium shrink-0">
+                              {item.id}
+                            </span>
+                            <span
+                              className={`font-serif text-[17.5px] tracking-wide transition-colors ${
+                                isAnySubActive
+                                  ? 'text-[#C8A27A] font-medium'
+                                  : 'text-[#161616] group-hover:text-[#C8A27A]'
+                              }`}
+                            >
+                              {item.name}
+                            </span>
+                          </Link>
 
-                {/* 4. Collections (Accordion with curated sub-collections) */}
-                <motion.div variants={itemVariants}>
-                  <div>
-                    <div
-                      className={`flex items-center justify-between px-3.5 border-l-2 transition-all duration-200 ${
-                        location.pathname === '/collections' || isCollectionsOpen
-                          ? 'border-[#C8A27A] bg-[#FAF7F2]'
-                          : 'border-transparent hover:bg-[#FAF7F2]'
-                      }`}
+                          <button
+                            type="button"
+                            onClick={(e) => {
+                              e.preventDefault();
+                              e.stopPropagation();
+                              setIsCollectionsOpen((prev) => !prev);
+                            }}
+                            aria-label="Toggle collections menu"
+                            className="p-1.5 text-[#736E66] hover:text-[#C8A27A] transition-colors cursor-pointer"
+                          >
+                            <ChevronDown
+                              className={`w-4 h-4 stroke-[1.5] transition-transform duration-250 ${
+                                isCollectionsOpen ? 'rotate-180 text-[#C8A27A]' : ''
+                              }`}
+                            />
+                          </button>
+                        </div>
+
+                        {/* Expandable Collections Submenu */}
+                        <AnimatePresence>
+                          {isCollectionsOpen && (
+                            <motion.div
+                              initial={{ opacity: 0, height: 0 }}
+                              animate={{ opacity: 1, height: 'auto' }}
+                              exit={{ opacity: 0, height: 0 }}
+                              transition={{ duration: 0.22, ease: 'easeOut' }}
+                              className="overflow-hidden bg-white/90 border-l border-[#C8A27A]/40 ml-4 my-1 pl-4 pr-2 py-1.5 space-y-0.5 shadow-2xs"
+                            >
+                              {item.subItems.map((sub) => {
+                                const isSubActive = location.pathname === sub.path;
+                                return (
+                                  <Link
+                                    key={sub.name}
+                                    to={sub.path}
+                                    onClick={() => handleNavigate(sub.path)}
+                                    className={`group flex items-center justify-between py-1.5 px-2 text-[13.5px] rounded-xs transition-all duration-200 ${
+                                      isSubActive
+                                        ? 'text-[#C8A27A] font-medium bg-[#FAF8F5]'
+                                        : 'text-[#736E66] hover:text-[#161616] hover:bg-[#FAF8F5]'
+                                    }`}
+                                  >
+                                    <span className="font-light tracking-wide">
+                                      {sub.name}
+                                    </span>
+                                    <ArrowRight
+                                      className={`w-3 h-3 text-[#C8A27A] transition-all duration-200 ${
+                                        isSubActive
+                                          ? 'opacity-100 translate-x-0'
+                                          : 'opacity-0 -translate-x-1 group-hover:opacity-100 group-hover:translate-x-0'
+                                      }`}
+                                    />
+                                  </Link>
+                                );
+                              })}
+                            </motion.div>
+                          )}
+                        </AnimatePresence>
+                      </motion.div>
+                    );
+                  }
+
+                  // Festive Edit Special Item
+                  if (item.isFestive) {
+                    return (
+                      <motion.div
+                        key={item.id}
+                        variants={itemVariants}
+                        className="border-b border-[#EAE4DC]/50 last:border-b-0 pb-1"
+                      >
+                        <Link
+                          to={item.path}
+                          onClick={() => handleNavigate(item.path)}
+                          className={`group flex items-center justify-between py-2.5 px-3 rounded-xs transition-all duration-200 ${
+                            isActive
+                              ? 'bg-white shadow-2xs text-[#721C2B]'
+                              : 'hover:bg-white/60 text-[#721C2B]'
+                          }`}
+                        >
+                          <div className="flex items-center gap-3">
+                            <span className="text-[10px] font-mono tracking-widest text-[#C8A27A] font-medium shrink-0">
+                              {item.id}
+                            </span>
+                            <div className="flex items-center gap-1.5">
+                              <Sparkles className="w-3.5 h-3.5 text-[#C8A27A] shrink-0" />
+                              <span className="font-serif text-[17.5px] tracking-wide font-medium">
+                                Festive Edit
+                              </span>
+                            </div>
+                          </div>
+                          <span className="text-[9px] uppercase tracking-[0.2em] font-sans font-semibold text-[#721C2B] bg-[#FBF1F2] border border-[#721C2B]/25 px-2 py-0.5 rounded-xs shadow-2xs">
+                            Curated
+                          </span>
+                        </Link>
+                      </motion.div>
+                    );
+                  }
+
+                  // Standard Editorial Menu Item
+                  return (
+                    <motion.div
+                      key={item.id}
+                      variants={itemVariants}
+                      className="border-b border-[#EAE4DC]/50 last:border-b-0 pb-1"
                     >
                       <Link
-                        to="/collections"
-                        onClick={() => handleNavigate('/collections')}
-                        className={`flex-1 py-2.5 font-serif text-[16px] tracking-wide transition-colors ${
-                          location.pathname === '/collections'
-                            ? 'text-[#C8A27A] font-medium'
-                            : 'text-[#161616]/85 hover:text-[#C8A27A]'
+                        to={item.path}
+                        onClick={() => handleNavigate(item.path)}
+                        className={`group flex items-center justify-between py-2.5 px-3 rounded-xs transition-all duration-200 ${
+                          isActive
+                            ? 'bg-white shadow-2xs'
+                            : 'hover:bg-white/60'
                         }`}
                       >
-                        Collections
-                      </Link>
-                      <button
-                        type="button"
-                        onClick={(e) => {
-                          e.preventDefault();
-                          e.stopPropagation();
-                          setIsCollectionsOpen((prev) => !prev);
-                        }}
-                        aria-label="Toggle collections menu"
-                        className="p-2 text-[#736E66] hover:text-[#C8A27A] transition-colors cursor-pointer"
-                      >
-                        <ChevronDown
-                          className={`w-4 h-4 transition-transform duration-200 ${
-                            isCollectionsOpen ? 'rotate-180 text-[#C8A27A]' : ''
+                        <div className="flex items-center gap-3">
+                          <span className="text-[10px] font-mono tracking-widest text-[#C8A27A] font-medium shrink-0">
+                            {item.id}
+                          </span>
+                          <span
+                            className={`font-serif text-[17.5px] tracking-wide transition-colors ${
+                              isActive
+                                ? 'text-[#C8A27A] font-medium'
+                                : 'text-[#161616] group-hover:text-[#C8A27A]'
+                            }`}
+                          >
+                            {item.name}
+                          </span>
+                        </div>
+                        <ArrowRight
+                          className={`w-3.5 h-3.5 text-[#C8A27A] transition-all duration-200 ${
+                            isActive
+                              ? 'opacity-100 translate-x-0'
+                              : 'opacity-0 -translate-x-1 group-hover:opacity-100 group-hover:translate-x-0'
                           }`}
                         />
-                      </button>
-                    </div>
-
-                    {/* Expandable Collections Submenu */}
-                    <AnimatePresence>
-                      {isCollectionsOpen && (
-                        <motion.div
-                          initial={{ opacity: 0, height: 0 }}
-                          animate={{ opacity: 1, height: 'auto' }}
-                          exit={{ opacity: 0, height: 0 }}
-                          transition={{ duration: 0.2 }}
-                          className="overflow-hidden bg-[#FAF7F2]/60 pl-4 pr-1 py-1 space-y-0.5 border-l-2 border-[#C8A27A]/30 ml-3.5 my-0.5"
-                        >
-                          {COLLECTIONS_SUBITEMS.map((sub) => (
-                            <Link
-                              key={sub.name}
-                              to={sub.path}
-                              onClick={() => handleNavigate(sub.path)}
-                              className="block py-1.5 px-2 text-[13.5px] text-[#736E66] hover:text-[#C8A27A] transition-colors rounded-xs hover:bg-white/80"
-                            >
-                              {sub.name}
-                            </Link>
-                          ))}
-                        </motion.div>
-                      )}
-                    </AnimatePresence>
-                  </div>
-                </motion.div>
-
-                {/* 5. Festive Edit */}
-                <motion.div variants={itemVariants}>
-                  <Link
-                    to="/festive-collection"
-                    onClick={() => handleNavigate('/festive-collection')}
-                    className={`group flex items-center justify-between py-2.5 px-3.5 transition-all duration-200 border-l-2 ${
-                      location.pathname === '/festive-collection'
-                        ? 'border-[#C8A27A] text-[#C8A27A] font-medium bg-[#FAF7F2]'
-                        : 'border-transparent text-[#C8A27A] hover:text-[#721C2B] hover:bg-[#FAF7F2] hover:border-[#C8A27A]/50'
-                    }`}
-                  >
-                    <div className="flex items-center gap-2">
-                      <Sparkles className="w-3.5 h-3.5 text-[#C8A27A] shrink-0" />
-                      <span className="font-serif text-[16px] tracking-wide font-medium">
-                        Festive Edit
-                      </span>
-                    </div>
-                    <ArrowRight
-                      className={`w-3.5 h-3.5 transition-all duration-200 ${
-                        location.pathname === '/festive-collection'
-                          ? 'text-[#C8A27A] opacity-100 translate-x-0'
-                          : 'opacity-0 -translate-x-1 group-hover:opacity-100 group-hover:translate-x-0 text-[#C8A27A]'
-                      }`}
-                    />
-                  </Link>
-                </motion.div>
-
-                {/* 6. Our Story */}
-                <motion.div variants={itemVariants}>
-                  <Link
-                    to="/about"
-                    onClick={() => handleNavigate('/about')}
-                    className={`group flex items-center justify-between py-2.5 px-3.5 transition-all duration-200 border-l-2 ${
-                      location.pathname === '/about'
-                        ? 'border-[#C8A27A] text-[#C8A27A] font-medium bg-[#FAF7F2]'
-                        : 'border-transparent text-[#161616]/85 hover:text-[#C8A27A] hover:bg-[#FAF7F2] hover:border-[#C8A27A]/50'
-                    }`}
-                  >
-                    <span className="font-serif text-[16px] tracking-wide">
-                      Our Story
-                    </span>
-                    <ArrowRight
-                      className={`w-3.5 h-3.5 transition-all duration-200 ${
-                        location.pathname === '/about'
-                          ? 'text-[#C8A27A] opacity-100 translate-x-0'
-                          : 'opacity-0 -translate-x-1 group-hover:opacity-100 group-hover:translate-x-0 text-[#C8A27A]'
-                      }`}
-                    />
-                  </Link>
-                </motion.div>
-
-                {/* 7. Contact */}
-                <motion.div variants={itemVariants}>
-                  <Link
-                    to="/contact"
-                    onClick={() => handleNavigate('/contact')}
-                    className={`group flex items-center justify-between py-2.5 px-3.5 transition-all duration-200 border-l-2 ${
-                      location.pathname === '/contact'
-                        ? 'border-[#C8A27A] text-[#C8A27A] font-medium bg-[#FAF7F2]'
-                        : 'border-transparent text-[#161616]/85 hover:text-[#C8A27A] hover:bg-[#FAF7F2] hover:border-[#C8A27A]/50'
-                    }`}
-                  >
-                    <span className="font-serif text-[16px] tracking-wide">
-                      Contact
-                    </span>
-                    <ArrowRight
-                      className={`w-3.5 h-3.5 transition-all duration-200 ${
-                        location.pathname === '/contact'
-                          ? 'text-[#C8A27A] opacity-100 translate-x-0'
-                          : 'opacity-0 -translate-x-1 group-hover:opacity-100 group-hover:translate-x-0 text-[#C8A27A]'
-                      }`}
-                    />
-                  </Link>
-                </motion.div>
+                      </Link>
+                    </motion.div>
+                  );
+                })}
               </motion.div>
+
+              {/* 3. Pure Aesthetic Maison Signature with Refined Social Icons */}
+              <div className="px-6 py-5 border-t border-[#EAE4DC] bg-white/70 backdrop-blur-xs shrink-0 space-y-3">
+                {/* Champagne Gold Haute Emblem Divider */}
+                <div className="flex items-center justify-center gap-2.5 text-[#C8A27A]/60">
+                  <span className="w-10 h-[1px] bg-gradient-to-r from-transparent via-[#C8A27A]/50 to-transparent" />
+                  <span className="text-[9px] tracking-widest text-[#C8A27A]">✦</span>
+                  <span className="w-10 h-[1px] bg-gradient-to-r from-transparent via-[#C8A27A]/50 to-transparent" />
+                </div>
+
+                {/* Poetic Maison Sign-Off */}
+                <div className="text-center space-y-0.5">
+                  <p className="font-serif text-[12.5px] tracking-[0.24em] uppercase text-[#161616] font-normal">
+                    KOKARÉ ATELIER
+                  </p>
+                  <p className="font-serif italic text-[11px] text-[#736E66] font-light leading-snug">
+                    "Centuries of Indian handloom & bridal zari artistry."
+                  </p>
+                </div>
+
+                {/* Refined Circular Social Icons */}
+                <div className="flex items-center justify-center gap-2.5 pt-1">
+                  <a
+                    href="https://instagram.com"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label="Instagram"
+                    className="w-8 h-8 rounded-full bg-white border border-[#EAE4DC] hover:border-[#C8A27A] text-[#736E66] hover:text-[#C8A27A] flex items-center justify-center transition-all duration-200 shadow-2xs hover:shadow-xs active:scale-95"
+                  >
+                    <InstagramIcon className="w-3.5 h-3.5" />
+                  </a>
+                  <a
+                    href="https://facebook.com"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label="Facebook"
+                    className="w-8 h-8 rounded-full bg-white border border-[#EAE4DC] hover:border-[#C8A27A] text-[#736E66] hover:text-[#C8A27A] flex items-center justify-center transition-all duration-200 shadow-2xs hover:shadow-xs active:scale-95"
+                  >
+                    <FacebookIcon className="w-3.5 h-3.5" />
+                  </a>
+                  <a
+                    href="https://pinterest.com"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label="Pinterest"
+                    className="w-8 h-8 rounded-full bg-white border border-[#EAE4DC] hover:border-[#C8A27A] text-[#736E66] hover:text-[#C8A27A] flex items-center justify-center transition-all duration-200 shadow-2xs hover:shadow-xs active:scale-95"
+                  >
+                    <PinterestIcon className="w-3.5 h-3.5" />
+                  </a>
+                  <a
+                    href="https://wa.me/919876543210"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label="WhatsApp Concierge"
+                    className="w-8 h-8 rounded-full bg-white border border-[#EAE4DC] hover:border-[#C8A27A] text-[#736E66] hover:text-[#C8A27A] flex items-center justify-center transition-all duration-200 shadow-2xs hover:shadow-xs active:scale-95"
+                  >
+                    <WhatsAppIcon className="w-3.5 h-3.5" />
+                  </a>
+                </div>
+
+                {/* Discreet Concierge Line */}
+                <div className="text-center pt-1.5 border-t border-[#EAE4DC]/50">
+                  <a
+                    href="mailto:concierge@kokare.in"
+                    className="text-[10px] tracking-[0.2em] uppercase text-[#736E66] hover:text-[#C8A27A] transition-colors font-light"
+                  >
+                    concierge@kokare.in
+                  </a>
+                </div>
+              </div>
             </motion.div>
           </div>
         </div>
