@@ -10,7 +10,6 @@ import {
 import {
   InstagramIcon,
   FacebookIcon,
-  PinterestIcon,
   WhatsAppIcon
 } from './SocialIcons';
 
@@ -346,8 +345,8 @@ export default function MobileDrawer({ isOpen, onClose }) {
                 })}
               </motion.div>
 
-              {/* 3. Pure Aesthetic Maison Signature with Refined Social Icons */}
-              <div className="px-6 py-5 border-t border-[#EAE4DC] bg-white/70 backdrop-blur-xs shrink-0 space-y-3">
+              {/* 3. Pure Aesthetic Maison Signature with WhatsApp, Facebook & Instagram */}
+              <div className="px-6 py-5.5 border-t border-[#EAE4DC] bg-white/80 backdrop-blur-xs shrink-0 space-y-3.5">
                 {/* Champagne Gold Haute Emblem Divider */}
                 <div className="flex items-center justify-center gap-2.5 text-[#C8A27A]/60">
                   <span className="w-10 h-[1px] bg-gradient-to-r from-transparent via-[#C8A27A]/50 to-transparent" />
@@ -355,61 +354,60 @@ export default function MobileDrawer({ isOpen, onClose }) {
                   <span className="w-10 h-[1px] bg-gradient-to-r from-transparent via-[#C8A27A]/50 to-transparent" />
                 </div>
 
-                {/* Poetic Maison Sign-Off */}
-                <div className="text-center space-y-0.5">
-                  <p className="font-serif text-[12.5px] tracking-[0.24em] uppercase text-[#161616] font-normal">
+                {/* Poetic Maison Sign-Off — Increased font size for readability */}
+                <div className="text-center space-y-1">
+                  <p className="font-serif text-[14px] sm:text-[15px] tracking-[0.22em] uppercase text-[#161616] font-medium">
                     KOKARÉ ATELIER
                   </p>
-                  <p className="font-serif italic text-[11px] text-[#736E66] font-light leading-snug">
+                  <p className="font-serif italic text-[12.5px] sm:text-[13px] text-[#736E66] font-light leading-snug">
                     "Centuries of Indian handloom & bridal zari artistry."
                   </p>
                 </div>
 
-                {/* Refined Circular Social Icons */}
-                <div className="flex items-center justify-center gap-2.5 pt-1">
-                  <a
-                    href="https://instagram.com"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    aria-label="Instagram"
-                    className="w-8 h-8 rounded-full bg-white border border-[#EAE4DC] hover:border-[#C8A27A] text-[#736E66] hover:text-[#C8A27A] flex items-center justify-center transition-all duration-200 shadow-2xs hover:shadow-xs active:scale-95"
-                  >
-                    <InstagramIcon className="w-3.5 h-3.5" />
-                  </a>
-                  <a
-                    href="https://facebook.com"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    aria-label="Facebook"
-                    className="w-8 h-8 rounded-full bg-white border border-[#EAE4DC] hover:border-[#C8A27A] text-[#736E66] hover:text-[#C8A27A] flex items-center justify-center transition-all duration-200 shadow-2xs hover:shadow-xs active:scale-95"
-                  >
-                    <FacebookIcon className="w-3.5 h-3.5" />
-                  </a>
-                  <a
-                    href="https://pinterest.com"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    aria-label="Pinterest"
-                    className="w-8 h-8 rounded-full bg-white border border-[#EAE4DC] hover:border-[#C8A27A] text-[#736E66] hover:text-[#C8A27A] flex items-center justify-center transition-all duration-200 shadow-2xs hover:shadow-xs active:scale-95"
-                  >
-                    <PinterestIcon className="w-3.5 h-3.5" />
-                  </a>
+                {/* Social Icons (WhatsApp, Facebook, Instagram only) */}
+                <div className="flex items-center justify-center gap-3 pt-1">
+                  {/* WhatsApp */}
                   <a
                     href="https://wa.me/919876543210"
                     target="_blank"
                     rel="noopener noreferrer"
                     aria-label="WhatsApp Concierge"
-                    className="w-8 h-8 rounded-full bg-white border border-[#EAE4DC] hover:border-[#C8A27A] text-[#736E66] hover:text-[#C8A27A] flex items-center justify-center transition-all duration-200 shadow-2xs hover:shadow-xs active:scale-95"
+                    title="WhatsApp"
+                    className="w-9 h-9 rounded-full bg-white border border-[#EAE4DC] hover:border-[#C8A27A] text-[#736E66] hover:text-[#C8A27A] flex items-center justify-center transition-all duration-200 shadow-2xs hover:shadow-xs active:scale-95"
                   >
-                    <WhatsAppIcon className="w-3.5 h-3.5" />
+                    <WhatsAppIcon className="w-4 h-4" />
+                  </a>
+
+                  {/* Facebook */}
+                  <a
+                    href="https://facebook.com"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label="Facebook"
+                    title="Facebook"
+                    className="w-9 h-9 rounded-full bg-white border border-[#EAE4DC] hover:border-[#C8A27A] text-[#736E66] hover:text-[#C8A27A] flex items-center justify-center transition-all duration-200 shadow-2xs hover:shadow-xs active:scale-95"
+                  >
+                    <FacebookIcon className="w-4 h-4" />
+                  </a>
+
+                  {/* Instagram */}
+                  <a
+                    href="https://instagram.com"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label="Instagram"
+                    title="Instagram"
+                    className="w-9 h-9 rounded-full bg-white border border-[#EAE4DC] hover:border-[#C8A27A] text-[#736E66] hover:text-[#C8A27A] flex items-center justify-center transition-all duration-200 shadow-2xs hover:shadow-xs active:scale-95"
+                  >
+                    <InstagramIcon className="w-4 h-4" />
                   </a>
                 </div>
 
-                {/* Discreet Concierge Line */}
-                <div className="text-center pt-1.5 border-t border-[#EAE4DC]/50">
+                {/* Concierge Line — Increased font size */}
+                <div className="text-center pt-2 border-t border-[#EAE4DC]/60">
                   <a
                     href="mailto:concierge@kokare.in"
-                    className="text-[10px] tracking-[0.2em] uppercase text-[#736E66] hover:text-[#C8A27A] transition-colors font-light"
+                    className="text-[12px] sm:text-[12.5px] tracking-[0.2em] uppercase text-[#736E66] hover:text-[#C8A27A] transition-colors font-medium"
                   >
                     concierge@kokare.in
                   </a>
