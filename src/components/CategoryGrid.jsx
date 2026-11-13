@@ -15,7 +15,7 @@ export default function CategoryGrid() {
         
         {/* Section Header */}
         <FadeInUp className="text-center max-w-2xl mx-auto mb-14">
-          <div className="inline-flex items-center gap-1.5 text-[15px] font-medium uppercase tracking-[0.2em] text-[#C8A27A] mb-2">
+          <div className="inline-flex items-center gap-1.5 text-[11px] sm:text-[13px] font-medium uppercase tracking-[0.2em] text-[#C8A27A] mb-2">
             <Sparkles className="w-3.5 h-3.5 text-[#C8A27A]" />
             <span>Curated Silhouettes</span>
           </div>

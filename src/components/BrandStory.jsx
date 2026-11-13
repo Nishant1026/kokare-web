@@ -51,7 +51,7 @@ export default function BrandStory() {
           <div className="lg:col-span-6">
             <ParallaxContent speed={26}>
               <FadeInUp delay={0.15} className="space-y-6">
-                <div className="inline-flex items-center gap-2 text-[15px] font-medium uppercase tracking-[0.2em] text-[#C8A27A]">
+                <div className="inline-flex items-center gap-2 text-[11px] sm:text-[13px] font-medium uppercase tracking-[0.2em] text-[#C8A27A]">
                   <Feather className="w-3.5 h-3.5 text-[#C8A27A]" />
                   <span>Our Heritage & Local Fashion Story</span>
                 </div>
