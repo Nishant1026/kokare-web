@@ -187,6 +187,17 @@ function MainLayout() {
             }
           />
 
+          {/* Curated Collections */}
+          <Route
+            path="/collections"
+            element={
+              <Shop
+                pageTitle="Curated Collections"
+                pageSubtitle="Explore our exclusive festive, bridal & heritage editions"
+              />
+            }
+          />
+
           {/* 8. New Arrivals */}
           <Route
             path="/new-arrivals"
