@@ -312,7 +312,7 @@ export default function Header({ onOpenDrawer }) {
 
           {/* Right Action Icons: Strictly Icon-Only Buttons aligned with main content container */}
           <div
-            className={`flex items-center shrink-0 justify-end gap-0.5 sm:gap-1 transition-colors ${isTransparent ? 'text-white' : 'text-[#161616]'
+            className={`flex items-center shrink-0 justify-end gap-[12px] sm:gap-[14px] transition-colors ${isTransparent ? 'text-white' : 'text-[#161616]'
               }`}
           >
             {/* 1. Search (Icon-Only) */}
@@ -320,7 +320,7 @@ export default function Header({ onOpenDrawer }) {
               onClick={() => setIsSearchOpen(true)}
               aria-label="Search Collection"
               title="Search"
-              className="w-8.5 h-8.5 sm:w-9 sm:h-9 flex items-center justify-center rounded-full hover:bg-white/10 text-inherit hover:text-[#C8A27A] transition-all cursor-pointer focus:outline-none"
+              className="p-0 flex items-center justify-center text-inherit hover:text-[#C8A27A] transition-colors cursor-pointer focus:outline-none"
             >
               <Search className="w-4.5 h-4.5 sm:w-5 sm:h-5 stroke-[1.5]" />
             </button>
@@ -330,7 +330,7 @@ export default function Header({ onOpenDrawer }) {
               to="/track-order"
               aria-label="Account & Orders"
               title="Account & Orders"
-              className="hidden sm:flex w-8.5 h-8.5 sm:w-9 sm:h-9 items-center justify-center rounded-full hover:bg-white/10 text-inherit hover:text-[#C8A27A] transition-all cursor-pointer focus:outline-none"
+              className="hidden sm:flex p-0 items-center justify-center text-inherit hover:text-[#C8A27A] transition-colors cursor-pointer focus:outline-none"
             >
               <User className="w-4.5 h-4.5 sm:w-5 sm:h-5 stroke-[1.5]" />
             </Link>
@@ -340,11 +340,11 @@ export default function Header({ onOpenDrawer }) {
               to="/wishlist"
               aria-label={`Wishlist (${wishlistCount} items)`}
               title={wishlistCount > 0 ? `Wishlist: ${wishlistCount} items` : 'Wishlist'}
-              className="relative w-8.5 h-8.5 sm:w-9 sm:h-9 flex items-center justify-center rounded-full hover:bg-white/10 text-inherit hover:text-[#C8A27A] transition-all cursor-pointer focus:outline-none"
+              className="relative p-0 flex items-center justify-center text-inherit hover:text-[#C8A27A] transition-colors cursor-pointer focus:outline-none"
             >
               <Heart className={`w-4.5 h-4.5 sm:w-5 sm:h-5 stroke-[1.5] ${wishlistCount > 0 ? 'fill-[#C8A27A] text-[#C8A27A]' : ''}`} />
               {wishlistCount > 0 && (
-                <span className="absolute top-0 right-0 bg-[#C8A27A] text-white text-[11px] sm:text-xs font-semibold rounded-full h-4.5 min-w-[18px] sm:h-5 sm:min-w-[20px] px-1 flex items-center justify-center border border-white shadow-xs">
+                <span className="absolute -top-1.5 -right-1.5 bg-[#C8A27A] text-white text-[10px] sm:text-[11px] font-semibold rounded-full h-4 min-w-[16px] sm:h-4.5 sm:min-w-[18px] px-1 flex items-center justify-center border border-white shadow-xs pointer-events-none">
                   {wishlistCount}
                 </span>
               )}
@@ -352,14 +352,14 @@ export default function Header({ onOpenDrawer }) {
 
             {/* 4. Shopping Bag (Icon-Only as requested) */}
             <div
-              className="relative"
+              className="relative flex items-center"
               onMouseEnter={() => setIsBagHovered(true)}
               onMouseLeave={() => setIsBagHovered(false)}
             >
               <button
                 onClick={() => setIsCartOpen(true)}
                 aria-label={`Shopping Bag (${totalItems} items)`}
-                className={`relative w-8.5 h-8.5 sm:w-9 sm:h-9 flex items-center justify-center rounded-full hover:bg-white/10 text-inherit transition-all focus:outline-none cursor-pointer group ${cartBump ? 'text-[#C8A27A] scale-110' : 'hover:text-[#C8A27A]'
+                className={`relative p-0 flex items-center justify-center text-inherit transition-colors focus:outline-none cursor-pointer group ${cartBump ? 'text-[#C8A27A] scale-105' : 'hover:text-[#C8A27A]'
                   }`}
                 title={totalItems > 0 ? `Shopping Bag: ${totalItems} items` : 'Shopping Bag'}
               >
@@ -370,7 +370,7 @@ export default function Header({ onOpenDrawer }) {
                   />
                   {totalItems > 0 && (
                     <span
-                      className={`absolute -top-1 -right-1 bg-[#C8A27A] text-white text-[11px] sm:text-xs font-semibold rounded-full h-4.5 min-w-[18px] sm:h-5 sm:min-w-[20px] px-1 flex items-center justify-center border border-white shadow-xs transition-transform ${cartBump ? 'scale-125 ring-2 ring-[#C8A27A]/60 ring-offset-1' : ''
+                      className={`absolute -top-1.5 -right-1.5 bg-[#C8A27A] text-white text-[10px] sm:text-[11px] font-semibold rounded-full h-4 min-w-[16px] sm:h-4.5 sm:min-w-[18px] px-1 flex items-center justify-center border border-white shadow-xs transition-transform pointer-events-none ${cartBump ? 'scale-110 ring-2 ring-[#C8A27A]/60 ring-offset-1' : ''
                         }`}
                     >
                       {totalItems}
@@ -473,7 +473,7 @@ export default function Header({ onOpenDrawer }) {
             <button
               onClick={onOpenDrawer}
               aria-label="Open Navigation Menu"
-              className="lg:hidden w-8.5 h-8.5 sm:w-9 sm:h-9 flex items-center justify-center rounded-full hover:bg-white/10 hover:text-[#C8A27A] transition-colors focus:outline-none cursor-pointer"
+              className="lg:hidden p-0 flex items-center justify-center text-inherit hover:text-[#C8A27A] transition-colors focus:outline-none cursor-pointer"
             >
               <Menu className="w-5 h-5 stroke-[1.5]" />
             </button>
