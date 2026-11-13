@@ -75,8 +75,8 @@ export default function ProductCard({ product }) {
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
     >
-      {/* 1. LUXURY PRODUCT IMAGE BOX (Refined Ivory Matting + 700ms Micro-Zoom) */}
-      <div className="relative aspect-[3/4] overflow-hidden bg-[#FAF7F2] border-b border-[#EAE4DC]/80">
+      {/* 1. LUXURY PRODUCT IMAGE BOX (Strict Locked Aspect Ratio, shrink-0, Pure Absolute Floating Overlay) */}
+      <div className="relative w-full aspect-[3/4] shrink-0 overflow-hidden bg-[#FAF7F2] border-b border-[#EAE4DC]/80">
         <Link to={`/product/${product.id}`} className="block w-full h-full relative overflow-hidden">
           {/* Primary View */}
           <img
@@ -149,14 +149,14 @@ export default function ProductCard({ product }) {
           to={`/product/${product.id}`}
           aria-label={`View ${product.name} Details`}
           title="View Details"
-          className="xl:hidden absolute bottom-2.5 right-2.5 z-10 w-8 h-8 rounded-full bg-white/90 text-[#161616] hover:text-[#C8A27A] backdrop-blur-md border border-[#EAE4DC] flex items-center justify-center transition-all shadow-2xs cursor-pointer active:scale-90"
+          className="lg:hidden absolute bottom-2.5 right-2.5 z-10 w-8 h-8 rounded-full bg-white/90 text-[#161616] hover:text-[#C8A27A] backdrop-blur-md border border-[#EAE4DC] flex items-center justify-center transition-all shadow-2xs cursor-pointer active:scale-90"
         >
           <Eye className="w-3.5 h-3.5 stroke-[1.5]" />
         </Link>
 
-        {/* Desktop Quick Action Bar (Reveals cleanly on hover, ZERO dark gradient overlay) */}
+        {/* Desktop Floating Quick Actions Overlay (Pure Absolute — Zero Layout Shift) */}
         <div
-          className={`hidden xl:flex absolute bottom-0 inset-x-0 p-2.5 bg-white/95 backdrop-blur-md border-t border-[#EAE4DC] items-center justify-between gap-2 transition-all duration-300 z-10 ${
+          className={`hidden lg:flex absolute inset-x-3 bottom-3 z-20 items-center justify-between gap-1.5 p-1 bg-[#161616]/92 backdrop-blur-md border border-[#C8A27A]/60 shadow-lg transition-all duration-300 ease-out pointer-events-auto ${
             isHovered
               ? 'opacity-100 translate-y-0'
               : 'opacity-0 translate-y-2 pointer-events-none'
@@ -164,29 +164,29 @@ export default function ProductCard({ product }) {
         >
           <Link
             to={`/product/${product.id}`}
-            className="flex-1 py-1.5 px-2 text-[#161616] hover:text-[#C8A27A] text-[11px] font-normal uppercase tracking-[0.2em] transition-colors flex items-center justify-center gap-1.5 cursor-pointer"
+            className="flex-1 py-1.5 px-2 text-[#FAF7F2] hover:text-[#C8A27A] text-[11px] font-normal uppercase tracking-[0.2em] transition-colors flex items-center justify-center gap-1.5 cursor-pointer whitespace-nowrap"
           >
-            <Eye className="w-3.5 h-3.5" />
-            <span>View Details</span>
+            <Eye className="w-3.5 h-3.5 text-[#C8A27A] stroke-[1.5]" />
+            <span>Details</span>
           </Link>
-          <div className="w-[1px] h-3.5 bg-[#EAE4DC]" />
+          <div className="w-[1px] h-3.5 bg-[#C8A27A]/30 shrink-0" />
           <button
             onClick={handleQuickAdd}
-            className={`flex-1 py-1.5 px-2 transition-colors flex items-center justify-center gap-1.5 cursor-pointer text-[11px] font-normal uppercase tracking-[0.2em] ${
+            className={`flex-1 py-1.5 px-2 transition-colors flex items-center justify-center gap-1.5 cursor-pointer text-[11px] font-normal uppercase tracking-[0.2em] whitespace-nowrap ${
               isInBag
-                ? 'text-[#C8A27A] hover:text-[#161616]'
-                : 'text-[#161616] hover:text-[#C8A27A]'
+                ? 'text-[#C8A27A] hover:text-white'
+                : 'text-[#FAF7F2] hover:text-[#C8A27A]'
             }`}
             title={isInBag ? 'In Bag · Click to View Bag' : 'Add to Bag'}
           >
             {isInBag ? (
               <>
-                <Check className="w-3.5 h-3.5 text-emerald-600 stroke-[2.5]" />
-                <span>In Bag</span>
+                <Check className="w-3.5 h-3.5 text-emerald-400 stroke-[2.5]" />
+                <span className="text-emerald-400">In Bag</span>
               </>
             ) : (
               <>
-                <ShoppingBag className="w-3.5 h-3.5 stroke-[1.5]" />
+                <ShoppingBag className="w-3.5 h-3.5 text-[#C8A27A] stroke-[1.5]" />
                 <span>Quick Add</span>
               </>
             )}
@@ -202,7 +202,7 @@ export default function ProductCard({ product }) {
             <span className="text-[11px] sm:text-[12px] uppercase tracking-[0.16em] text-[#736E66] font-medium truncate">
               {product.category}
             </span>
-            <span className="text-[10px] sm:text-[11px] uppercase tracking-[0.16em] text-[#C8A27A] font-medium shrink-0 whitespace-nowrap">
+            <span className="text-[10px] sm:text-[11px] uppercase tracking-[0.16em] text-[#C8A27A] font-semibold shrink-0 whitespace-nowrap">
               {product.collection === 'festive-edit' ? 'Festive Edit' : 'Signature'}
             </span>
           </div>
@@ -258,8 +258,8 @@ export default function ProductCard({ product }) {
           )}
         </div>
 
-        {/* Mobile & Tablet Full-Width Action Button */}
-        <div className="xl:hidden mt-3 pt-2.5 border-t border-[#EAE4DC]/80">
+        {/* Mobile & Tablet Full-Width Action Button (Visible on screens < lg) */}
+        <div className="lg:hidden mt-3 pt-2.5 border-t border-[#EAE4DC]/80">
           <button
             onClick={handleQuickAdd}
             className={`w-full h-9 sm:h-9.5 px-3 flex items-center justify-center gap-2 transition-all duration-300 shadow-2xs active:scale-[0.98] cursor-pointer ${
