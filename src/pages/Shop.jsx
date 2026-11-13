@@ -266,15 +266,15 @@ export default function Shop({ defaultCategory, defaultGender, defaultType, defa
                 </button>
               </div>
             ) : (
-              <div className="grid grid-cols-2 lg:grid-cols-2 xl:grid-cols-3 gap-4 sm:gap-6">
+              <div className="grid grid-cols-2 lg:grid-cols-2 xl:grid-cols-3 gap-4 sm:gap-6 items-stretch">
                 {filteredAndSortedProducts.map((p, idx) => (
-                  <ParallaxReveal
+                  <FadeInUp
                     key={p.id}
-                    delay={(idx % 3) * 0.05}
-                    speed={idx % 2 === 0 ? 20 : -20}
+                    delay={(idx % 3) * 0.04}
+                    className="h-full"
                   >
                     <ProductCard product={p} />
-                  </ParallaxReveal>
+                  </FadeInUp>
                 ))}
               </div>
             )}

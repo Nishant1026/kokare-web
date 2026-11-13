@@ -104,16 +104,16 @@ export default function ProductGrid({
           </FadeInUp>
         )}
 
-        {/* Product Cards Grid with Parallel Parallax */}
-        <div className="grid grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-4 sm:gap-6 lg:gap-6 xl:gap-8">
+        {/* Product Cards Grid — Precision Baseline Alignment Across Desktop & Mobile */}
+        <div className="grid grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-4 sm:gap-6 lg:gap-6 xl:gap-8 items-stretch">
           {filteredProducts.map((product, idx) => (
-            <ParallaxReveal
+            <FadeInUp
               key={product.id}
-              delay={(idx % 4) * 0.05}
-              speed={idx % 2 === 0 ? 16 : -16}
+              delay={(idx % 4) * 0.04}
+              className="h-full"
             >
               <ProductCard product={product} />
-            </ParallaxReveal>
+            </FadeInUp>
           ))}
         </div>
 

@@ -43,14 +43,14 @@ export default function CategoryGrid() {
                 >
                   <Link
                     to={linkTarget}
-                    className="group relative block aspect-[3/4] sm:aspect-[4/5] overflow-hidden border border-[#EAE4DC] hover:border-[#C8A27A] bg-white transition-all duration-300 shadow-2xs"
+                    className="group relative block aspect-[3/4] sm:aspect-[4/5] overflow-hidden border border-[#EAE4DC] hover:border-[#C8A27A]/80 bg-[#FAF7F2] transition-all duration-500 hover:shadow-[0_12px_32px_rgba(22,22,22,0.06)]"
                   >
                     {/* Category Image with Silky Parallax Window */}
                     <ParallaxImage
                       src={cat.image}
                       alt={cat.name}
                       className="w-full h-full"
-                      imgClassName="object-top object-cover transition-transform duration-700 ease-out group-hover:scale-105"
+                      imgClassName="object-[center_16%] object-cover transition-transform duration-700 ease-out group-hover:scale-105"
                       offset={30}
                       scale={1.1}
                     />

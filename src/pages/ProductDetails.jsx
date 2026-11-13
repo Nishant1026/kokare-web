@@ -166,7 +166,7 @@ export default function ProductDetails() {
 
             {/* Main Stage Image with Zoom */}
             <div
-              className="relative flex-1 aspect-[3/4] bg-white border border-[#EAE4DC] overflow-hidden cursor-crosshair group shadow-sm"
+              className="relative flex-1 aspect-[3/4] bg-[#FAF7F2] border border-[#EAE4DC] overflow-hidden cursor-crosshair group shadow-xs"
               onMouseEnter={() => setIsZoomed(true)}
               onMouseLeave={() => setIsZoomed(false)}
               onMouseMove={handleMouseMove}
@@ -174,8 +174,9 @@ export default function ProductDetails() {
               <img
                 src={product.images[activeImage]}
                 alt={product.name}
-                className="w-full h-full object-cover object-top transition-transform duration-300"
+                className="w-full h-full object-cover transition-transform duration-300"
                 style={{
+                  objectPosition: product.category?.toLowerCase() === 'sarees' ? 'center 12%' : product.category?.toLowerCase() === 'jackets' ? 'center 22%' : 'center 18%',
                   transformOrigin: `${zoomPosition.x}% ${zoomPosition.y}%`,
                   transform: isZoomed ? 'scale(1.8)' : 'scale(1)'
                 }}
@@ -537,15 +538,15 @@ export default function ProductDetails() {
                 You May Also Admire
               </h2>
             </div>
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-4 sm:gap-6">
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-4 sm:gap-6 items-stretch">
               {relatedProducts.map((p, idx) => (
-                <ParallaxReveal
+                <FadeInUp
                   key={p.id}
-                  delay={(idx % 4) * 0.05}
-                  speed={idx % 2 === 0 ? 14 : -14}
+                  delay={(idx % 4) * 0.04}
+                  className="h-full"
                 >
                   <ProductCard product={p} />
-                </ParallaxReveal>
+                </FadeInUp>
               ))}
             </div>
           </FadeInUp>
