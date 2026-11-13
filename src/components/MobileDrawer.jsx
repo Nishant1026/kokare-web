@@ -24,19 +24,18 @@ const COLLECTIONS_SUBITEMS = [
 ];
 
 const MENU_ITEMS = [
-  { id: '01', name: 'Home', path: '/' },
-  { id: '02', name: 'Women', path: '/women' },
-  { id: '03', name: 'Men', path: '/men' },
+  { name: 'Home', path: '/' },
+  { name: 'Women', path: '/women' },
+  { name: 'Men', path: '/men' },
   {
-    id: '04',
     name: 'Collections',
     path: '/collections',
     hasSubmenu: true,
     subItems: COLLECTIONS_SUBITEMS
   },
-  { id: '05', name: 'Festive Edit', path: '/festive-collection', isFestive: true },
-  { id: '06', name: 'Our Story', path: '/about' },
-  { id: '07', name: 'Contact', path: '/contact' }
+  { name: 'Festive Edit', path: '/festive-collection', isFestive: true },
+  { name: 'Our Story', path: '/about' },
+  { name: 'Contact', path: '/contact' }
 ];
 
 export default function MobileDrawer({ isOpen, onClose }) {
@@ -170,13 +169,13 @@ export default function MobileDrawer({ isOpen, onClose }) {
                 </button>
               </div>
 
-              {/* 2. Navigation Links — Curated Haute Editorial Rhythm */}
+              {/* 2. Navigation Links — Prominent Haute Editorial Typography */}
               <motion.div
                 data-lenis-prevent
                 variants={containerVariants}
                 initial="hidden"
                 animate="show"
-                className="px-5 py-4 space-y-1 flex-1 overflow-y-auto"
+                className="px-5 py-4 space-y-1.5 flex-1 overflow-y-auto"
               >
                 {MENU_ITEMS.map((item) => {
                   const isActive = location.pathname === item.path;
@@ -190,12 +189,12 @@ export default function MobileDrawer({ isOpen, onClose }) {
 
                     return (
                       <motion.div
-                        key={item.id}
+                        key={item.name}
                         variants={itemVariants}
-                        className="border-b border-[#EAE4DC]/50 last:border-b-0 pb-1"
+                        className="border-b border-[#EAE4DC]/50 last:border-b-0 pb-1.5"
                       >
                         <div
-                          className={`flex items-center justify-between py-2.5 px-3 rounded-xs transition-all duration-200 ${
+                          className={`flex items-center justify-between py-3 px-3.5 rounded-xs transition-all duration-200 ${
                             isAnySubActive || isCollectionsOpen
                               ? 'bg-white shadow-2xs'
                               : 'hover:bg-white/60'
@@ -204,13 +203,10 @@ export default function MobileDrawer({ isOpen, onClose }) {
                           <Link
                             to={item.path}
                             onClick={() => handleNavigate(item.path)}
-                            className="flex items-center gap-3 flex-1 group"
+                            className="flex items-center flex-1 group"
                           >
-                            <span className="text-[10px] font-mono tracking-widest text-[#C8A27A] font-medium shrink-0">
-                              {item.id}
-                            </span>
                             <span
-                              className={`font-serif text-[17.5px] tracking-wide transition-colors ${
+                              className={`font-serif text-[21px] sm:text-[22px] tracking-wide transition-colors ${
                                 isAnySubActive
                                   ? 'text-[#C8A27A] font-medium'
                                   : 'text-[#161616] group-hover:text-[#C8A27A]'
@@ -231,7 +227,7 @@ export default function MobileDrawer({ isOpen, onClose }) {
                             className="p-1.5 text-[#736E66] hover:text-[#C8A27A] transition-colors cursor-pointer"
                           >
                             <ChevronDown
-                              className={`w-4 h-4 stroke-[1.5] transition-transform duration-250 ${
+                              className={`w-4.5 h-4.5 stroke-[1.5] transition-transform duration-250 ${
                                 isCollectionsOpen ? 'rotate-180 text-[#C8A27A]' : ''
                               }`}
                             />
@@ -246,7 +242,7 @@ export default function MobileDrawer({ isOpen, onClose }) {
                               animate={{ opacity: 1, height: 'auto' }}
                               exit={{ opacity: 0, height: 0 }}
                               transition={{ duration: 0.22, ease: 'easeOut' }}
-                              className="overflow-hidden bg-white/90 border-l border-[#C8A27A]/40 ml-4 my-1 pl-4 pr-2 py-1.5 space-y-0.5 shadow-2xs"
+                              className="overflow-hidden bg-white/90 border-l border-[#C8A27A]/40 ml-3.5 my-1.5 pl-4 pr-2 py-2 space-y-1 shadow-2xs"
                             >
                               {item.subItems.map((sub) => {
                                 const isSubActive = location.pathname === sub.path;
@@ -255,7 +251,7 @@ export default function MobileDrawer({ isOpen, onClose }) {
                                     key={sub.name}
                                     to={sub.path}
                                     onClick={() => handleNavigate(sub.path)}
-                                    className={`group flex items-center justify-between py-1.5 px-2 text-[13.5px] rounded-xs transition-all duration-200 ${
+                                    className={`group flex items-center justify-between py-2 px-2.5 text-[15px] sm:text-[15.5px] rounded-xs transition-all duration-200 ${
                                       isSubActive
                                         ? 'text-[#C8A27A] font-medium bg-[#FAF8F5]'
                                         : 'text-[#736E66] hover:text-[#161616] hover:bg-[#FAF8F5]'
@@ -265,7 +261,7 @@ export default function MobileDrawer({ isOpen, onClose }) {
                                       {sub.name}
                                     </span>
                                     <ArrowRight
-                                      className={`w-3 h-3 text-[#C8A27A] transition-all duration-200 ${
+                                      className={`w-3.5 h-3.5 text-[#C8A27A] transition-all duration-200 ${
                                         isSubActive
                                           ? 'opacity-100 translate-x-0'
                                           : 'opacity-0 -translate-x-1 group-hover:opacity-100 group-hover:translate-x-0'
@@ -285,31 +281,26 @@ export default function MobileDrawer({ isOpen, onClose }) {
                   if (item.isFestive) {
                     return (
                       <motion.div
-                        key={item.id}
+                        key={item.name}
                         variants={itemVariants}
-                        className="border-b border-[#EAE4DC]/50 last:border-b-0 pb-1"
+                        className="border-b border-[#EAE4DC]/50 last:border-b-0 pb-1.5"
                       >
                         <Link
                           to={item.path}
                           onClick={() => handleNavigate(item.path)}
-                          className={`group flex items-center justify-between py-2.5 px-3 rounded-xs transition-all duration-200 ${
+                          className={`group flex items-center justify-between py-3 px-3.5 rounded-xs transition-all duration-200 ${
                             isActive
                               ? 'bg-white shadow-2xs text-[#721C2B]'
                               : 'hover:bg-white/60 text-[#721C2B]'
                           }`}
                         >
-                          <div className="flex items-center gap-3">
-                            <span className="text-[10px] font-mono tracking-widest text-[#C8A27A] font-medium shrink-0">
-                              {item.id}
+                          <div className="flex items-center gap-2">
+                            <Sparkles className="w-4 h-4 text-[#C8A27A] shrink-0" />
+                            <span className="font-serif text-[21px] sm:text-[22px] tracking-wide font-medium">
+                              Festive Edit
                             </span>
-                            <div className="flex items-center gap-1.5">
-                              <Sparkles className="w-3.5 h-3.5 text-[#C8A27A] shrink-0" />
-                              <span className="font-serif text-[17.5px] tracking-wide font-medium">
-                                Festive Edit
-                              </span>
-                            </div>
                           </div>
-                          <span className="text-[9px] uppercase tracking-[0.2em] font-sans font-semibold text-[#721C2B] bg-[#FBF1F2] border border-[#721C2B]/25 px-2 py-0.5 rounded-xs shadow-2xs">
+                          <span className="text-[9.5px] uppercase tracking-[0.2em] font-sans font-semibold text-[#721C2B] bg-[#FBF1F2] border border-[#721C2B]/25 px-2 py-0.5 rounded-xs shadow-2xs">
                             Curated
                           </span>
                         </Link>
@@ -320,35 +311,30 @@ export default function MobileDrawer({ isOpen, onClose }) {
                   // Standard Editorial Menu Item
                   return (
                     <motion.div
-                      key={item.id}
+                      key={item.name}
                       variants={itemVariants}
-                      className="border-b border-[#EAE4DC]/50 last:border-b-0 pb-1"
+                      className="border-b border-[#EAE4DC]/50 last:border-b-0 pb-1.5"
                     >
                       <Link
                         to={item.path}
                         onClick={() => handleNavigate(item.path)}
-                        className={`group flex items-center justify-between py-2.5 px-3 rounded-xs transition-all duration-200 ${
+                        className={`group flex items-center justify-between py-3 px-3.5 rounded-xs transition-all duration-200 ${
                           isActive
                             ? 'bg-white shadow-2xs'
                             : 'hover:bg-white/60'
                         }`}
                       >
-                        <div className="flex items-center gap-3">
-                          <span className="text-[10px] font-mono tracking-widest text-[#C8A27A] font-medium shrink-0">
-                            {item.id}
-                          </span>
-                          <span
-                            className={`font-serif text-[17.5px] tracking-wide transition-colors ${
-                              isActive
-                                ? 'text-[#C8A27A] font-medium'
-                                : 'text-[#161616] group-hover:text-[#C8A27A]'
-                            }`}
-                          >
-                            {item.name}
-                          </span>
-                        </div>
+                        <span
+                          className={`font-serif text-[21px] sm:text-[22px] tracking-wide transition-colors ${
+                            isActive
+                              ? 'text-[#C8A27A] font-medium'
+                              : 'text-[#161616] group-hover:text-[#C8A27A]'
+                          }`}
+                        >
+                          {item.name}
+                        </span>
                         <ArrowRight
-                          className={`w-3.5 h-3.5 text-[#C8A27A] transition-all duration-200 ${
+                          className={`w-4 h-4 text-[#C8A27A] transition-all duration-200 ${
                             isActive
                               ? 'opacity-100 translate-x-0'
                               : 'opacity-0 -translate-x-1 group-hover:opacity-100 group-hover:translate-x-0'
