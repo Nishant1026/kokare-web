@@ -72,17 +72,16 @@ export default function Header({ onOpenDrawer }) {
   const isTransparent = isHome && !isScrolled;
 
   const renderMicroBarContent = (transparent) => (
-    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-2 flex items-center justify-between">
-      {/* Left: Store Location & Email */}
-      <div className="flex items-center space-x-3 sm:space-x-6 text-[15px] tracking-wider">
+    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-2 flex items-center justify-center sm:justify-between w-full">
+      {/* Left: Store Location & Email (Hidden on mobile) */}
+      <div className="hidden sm:flex items-center space-x-3 sm:space-x-6 text-[14px] lg:text-[15px] tracking-wider shrink-0">
         <Link
           to="/contact"
           className={`flex items-center gap-1.5 transition-colors cursor-pointer ${transparent ? 'hover:text-[#C8A27A]' : 'hover:text-[#161616]'
             }`}
         >
           <MapPin className="w-3.5 h-3.5 stroke-[1.5]" />
-          <span className="hidden sm:inline">Store Location</span>
-          <span className="sm:hidden">Ranchi, Jharkhand</span>
+          <span>Store Location</span>
         </Link>
         <a
           href="mailto:concierge@kokare.in"
@@ -94,18 +93,18 @@ export default function Header({ onOpenDrawer }) {
         </a>
       </div>
 
-      {/* Right: All Festival Offers Announcement */}
-      <div className="flex items-center gap-2 text-[13px] sm:text-[15px] uppercase tracking-[0.16em] font-medium">
-        <Sparkles className="w-3.5 h-3.5 text-[#C8A27A]" />
-        <span className="hidden sm:inline">All Festival Offers — Extra 20% Off With Code</span>
-        <span className="sm:hidden">Extra 20% Off Code</span>
+      {/* Promo Offer Announcement — Centered on single line on mobile */}
+      <div className="flex items-center justify-center gap-1.5 sm:gap-2 text-[11px] xs:text-[12px] sm:text-[13px] md:text-[14px] uppercase tracking-[0.12em] sm:tracking-[0.16em] font-medium whitespace-nowrap text-center">
+        <Sparkles className="w-3 h-3 sm:w-3.5 sm:h-3.5 text-[#C8A27A] shrink-0" />
+        <span className="hidden sm:inline whitespace-nowrap">All Festival Offers — Extra 20% Off With Code</span>
+        <span className="sm:hidden whitespace-nowrap">Extra 20% Off With Code</span>
         <button
           onClick={handleCopyCode}
-          className="font-mono text-[#C8A27A] font-semibold underline underline-offset-2 hover:opacity-80 cursor-pointer ml-0.5 inline-flex items-center gap-1"
+          className="font-mono text-[#C8A27A] font-semibold underline underline-offset-2 hover:opacity-80 cursor-pointer ml-0.5 inline-flex items-center gap-1 whitespace-nowrap shrink-0"
           title="Click to copy coupon code"
         >
-          FESTIVE20
-          {copiedCoupon && <Check className="w-3 h-3 text-green-400" />}
+          <span>FESTIVE20</span>
+          {copiedCoupon && <Check className="w-3 h-3 text-green-400 shrink-0" />}
         </button>
       </div>
     </div>
@@ -150,7 +149,7 @@ export default function Header({ onOpenDrawer }) {
         {/* 2. MAIN NAVIGATION BAR                                       */}
         {/* Left: Brand Logo | Center: Links | Right: Icons             */}
         {/* ============================================================ */}
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3.5 sm:py-4 flex items-center justify-between">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3.5 sm:py-4 flex items-center justify-between w-full">
           {/* Left: Brand Logo KOKARÉ — Perfectly balanced and aligned with content margin */}
           <div className="flex items-center shrink-0">
             <Link to="/" className="group flex flex-col">
@@ -166,14 +165,14 @@ export default function Header({ onOpenDrawer }) {
             </Link>
           </div>
 
-          {/* Desktop Center Navigation Links — Balanced separation from Logo */}
+          {/* Desktop Center Navigation Links — Balanced separation from Logo and Icons */}
           <nav
-            className={`hidden lg:flex items-center justify-center space-x-3 xl:space-x-6 text-[11.5px] xl:text-[13px] tracking-[0.13em] xl:tracking-[0.2em] uppercase font-normal transition-colors ml-4 lg:ml-6 xl:ml-12 ${isTransparent ? 'text-white' : 'text-[#161616]'
+            className={`hidden lg:flex flex-1 items-center justify-center gap-4 lg:gap-5 xl:gap-7 text-[12px] xl:text-[13px] tracking-[0.14em] xl:tracking-[0.2em] uppercase font-normal transition-colors px-3 lg:px-6 xl:px-10 ${isTransparent ? 'text-white' : 'text-[#161616]'
               }`}
           >
             <Link
               to="/"
-              className={`py-2 transition-colors relative ${location.pathname === '/'
+              className={`py-2 whitespace-nowrap transition-colors relative ${location.pathname === '/'
                 ? 'text-[#C8A27A] font-medium'
                 : isTransparent
                   ? 'text-white/90 hover:text-[#C8A27A]'
@@ -188,7 +187,7 @@ export default function Header({ onOpenDrawer }) {
 
             <Link
               to="/women"
-              className={`py-2 transition-colors relative ${location.pathname === '/women'
+              className={`py-2 whitespace-nowrap transition-colors relative ${location.pathname === '/women'
                 ? 'text-[#C8A27A] font-medium'
                 : isTransparent
                   ? 'text-white/90 hover:text-[#C8A27A]'
@@ -203,7 +202,7 @@ export default function Header({ onOpenDrawer }) {
 
             <Link
               to="/men"
-              className={`py-2 transition-colors relative ${location.pathname === '/men'
+              className={`py-2 whitespace-nowrap transition-colors relative ${location.pathname === '/men'
                 ? 'text-[#C8A27A] font-medium'
                 : isTransparent
                   ? 'text-white/90 hover:text-[#C8A27A]'
@@ -218,12 +217,12 @@ export default function Header({ onOpenDrawer }) {
 
             {/* Collections Dropdown */}
             <div
-              className="relative"
+              className="relative whitespace-nowrap"
               onMouseEnter={() => setIsCollectionsOpen(true)}
               onMouseLeave={() => setIsCollectionsOpen(false)}
             >
               <button
-                className={`flex items-center gap-1.5 py-2 transition-colors cursor-pointer ${isCollectionsOpen || location.pathname.includes('collection')
+                className={`flex items-center gap-1.5 py-2 whitespace-nowrap transition-colors cursor-pointer ${isCollectionsOpen || location.pathname.includes('collection')
                   ? 'text-[#C8A27A] font-medium'
                   : isTransparent
                     ? 'text-white/90 hover:text-[#C8A27A]'
@@ -231,7 +230,7 @@ export default function Header({ onOpenDrawer }) {
                   }`}
               >
                 <span>Collections</span>
-                <ChevronDown className="w-3.5 h-3.5 opacity-70" />
+                <ChevronDown className="w-3.5 h-3.5 opacity-70 shrink-0" />
               </button>
 
               {/* Luxury Dropdown Menu */}
@@ -273,23 +272,23 @@ export default function Header({ onOpenDrawer }) {
 
             <Link
               to="/festive-collection"
-              className={`flex items-center gap-1.5 transition-colors py-2 font-medium ${isTransparent ? 'text-[#C8A27A] hover:text-white' : 'text-[#C8A27A] hover:text-[#721C2B]'
+              className={`flex items-center gap-1.5 transition-colors py-2 font-medium whitespace-nowrap shrink-0 ${isTransparent ? 'text-[#C8A27A] hover:text-white' : 'text-[#C8A27A] hover:text-[#721C2B]'
                 }`}
             >
-              <Sparkles className="w-3.5 h-3.5 text-[#C8A27A]" />
-              <span>Festive Edit</span>
+              <Sparkles className="w-3.5 h-3.5 text-[#C8A27A] shrink-0" />
+              <span className="whitespace-nowrap">Festive Edit</span>
             </Link>
 
             <Link
               to="/about"
-              className={`py-2 transition-colors relative ${location.pathname === '/about'
+              className={`py-2 whitespace-nowrap transition-colors relative ${location.pathname === '/about'
                 ? 'text-[#C8A27A] font-medium'
                 : isTransparent
                   ? 'text-white/90 hover:text-[#C8A27A]'
                   : 'text-[#161616]/80 hover:text-[#C8A27A]'
                 }`}
             >
-              <span>Our Story</span>
+              <span className="whitespace-nowrap">Our Story</span>
               {location.pathname === '/about' && (
                 <span className="absolute bottom-0 left-0 w-full h-[1.5px] bg-[#C8A27A]" />
               )}
@@ -297,23 +296,23 @@ export default function Header({ onOpenDrawer }) {
 
             <Link
               to="/contact"
-              className={`py-2 transition-colors relative ${location.pathname === '/contact'
+              className={`py-2 whitespace-nowrap transition-colors relative ${location.pathname === '/contact'
                 ? 'text-[#C8A27A] font-medium'
                 : isTransparent
                   ? 'text-white/90 hover:text-[#C8A27A]'
                   : 'text-[#161616]/80 hover:text-[#C8A27A]'
                 }`}
             >
-              <span>Contact</span>
+              <span className="whitespace-nowrap">Contact</span>
               {location.pathname === '/contact' && (
                 <span className="absolute bottom-0 left-0 w-full h-[1.5px] bg-[#C8A27A]" />
               )}
             </Link>
           </nav>
 
-          {/* Right Action Icons: Strictly Icon-Only Buttons (Search, Account, Wishlist, Bag) */}
+          {/* Right Action Icons: Strictly Icon-Only Buttons aligned with main content container */}
           <div
-            className={`flex items-center gap-1 sm:gap-2 lg:gap-3 transition-colors ${isTransparent ? 'text-white' : 'text-[#161616]'
+            className={`flex items-center shrink-0 justify-end gap-0.5 sm:gap-1 transition-colors ${isTransparent ? 'text-white' : 'text-[#161616]'
               }`}
           >
             {/* 1. Search (Icon-Only) */}
@@ -321,7 +320,7 @@ export default function Header({ onOpenDrawer }) {
               onClick={() => setIsSearchOpen(true)}
               aria-label="Search Collection"
               title="Search"
-              className="w-9 h-9 sm:w-10 sm:h-10 flex items-center justify-center rounded-full hover:bg-white/10 text-inherit hover:text-[#C8A27A] transition-all cursor-pointer focus:outline-none"
+              className="w-8.5 h-8.5 sm:w-9 sm:h-9 flex items-center justify-center rounded-full hover:bg-white/10 text-inherit hover:text-[#C8A27A] transition-all cursor-pointer focus:outline-none"
             >
               <Search className="w-4.5 h-4.5 sm:w-5 sm:h-5 stroke-[1.5]" />
             </button>
@@ -331,7 +330,7 @@ export default function Header({ onOpenDrawer }) {
               to="/track-order"
               aria-label="Account & Orders"
               title="Account & Orders"
-              className="hidden sm:flex w-9 h-9 sm:w-10 sm:h-10 items-center justify-center rounded-full hover:bg-white/10 text-inherit hover:text-[#C8A27A] transition-all cursor-pointer focus:outline-none"
+              className="hidden sm:flex w-8.5 h-8.5 sm:w-9 sm:h-9 items-center justify-center rounded-full hover:bg-white/10 text-inherit hover:text-[#C8A27A] transition-all cursor-pointer focus:outline-none"
             >
               <User className="w-4.5 h-4.5 sm:w-5 sm:h-5 stroke-[1.5]" />
             </Link>
@@ -341,7 +340,7 @@ export default function Header({ onOpenDrawer }) {
               to="/wishlist"
               aria-label={`Wishlist (${wishlistCount} items)`}
               title={wishlistCount > 0 ? `Wishlist: ${wishlistCount} items` : 'Wishlist'}
-              className="relative w-9 h-9 sm:w-10 sm:h-10 flex items-center justify-center rounded-full hover:bg-white/10 text-inherit hover:text-[#C8A27A] transition-all cursor-pointer focus:outline-none"
+              className="relative w-8.5 h-8.5 sm:w-9 sm:h-9 flex items-center justify-center rounded-full hover:bg-white/10 text-inherit hover:text-[#C8A27A] transition-all cursor-pointer focus:outline-none"
             >
               <Heart className={`w-4.5 h-4.5 sm:w-5 sm:h-5 stroke-[1.5] ${wishlistCount > 0 ? 'fill-[#C8A27A] text-[#C8A27A]' : ''}`} />
               {wishlistCount > 0 && (
@@ -360,7 +359,7 @@ export default function Header({ onOpenDrawer }) {
               <button
                 onClick={() => setIsCartOpen(true)}
                 aria-label={`Shopping Bag (${totalItems} items)`}
-                className={`relative w-9 h-9 sm:w-10 sm:h-10 flex items-center justify-center rounded-full hover:bg-white/10 text-inherit transition-all focus:outline-none cursor-pointer group ${cartBump ? 'text-[#C8A27A] scale-110' : 'hover:text-[#C8A27A]'
+                className={`relative w-8.5 h-8.5 sm:w-9 sm:h-9 flex items-center justify-center rounded-full hover:bg-white/10 text-inherit transition-all focus:outline-none cursor-pointer group ${cartBump ? 'text-[#C8A27A] scale-110' : 'hover:text-[#C8A27A]'
                   }`}
                 title={totalItems > 0 ? `Shopping Bag: ${totalItems} items` : 'Shopping Bag'}
               >
@@ -474,7 +473,7 @@ export default function Header({ onOpenDrawer }) {
             <button
               onClick={onOpenDrawer}
               aria-label="Open Navigation Menu"
-              className="lg:hidden w-9 h-9 flex items-center justify-center rounded-full hover:bg-white/10 hover:text-[#C8A27A] transition-colors focus:outline-none cursor-pointer"
+              className="lg:hidden w-8.5 h-8.5 sm:w-9 sm:h-9 flex items-center justify-center rounded-full hover:bg-white/10 hover:text-[#C8A27A] transition-colors focus:outline-none cursor-pointer"
             >
               <Menu className="w-5 h-5 stroke-[1.5]" />
             </button>
