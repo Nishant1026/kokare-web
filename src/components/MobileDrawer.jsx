@@ -95,7 +95,7 @@ export default function MobileDrawer({ isOpen, onClose }) {
   };
 
   const itemVariants = {
-    hidden: { opacity: 0, x: -12 },
+    hidden: { opacity: 0, x: 12 },
     show: {
       opacity: 1,
       x: 0,
@@ -118,18 +118,18 @@ export default function MobileDrawer({ isOpen, onClose }) {
             aria-hidden="true"
           />
 
-          {/* Left-side Sliding Drawer — Increased width with room for comfort */}
-          <div className="fixed inset-y-0 left-0 flex max-w-full">
+          {/* Right-side Sliding Drawer — Increased width with generous luxury layout */}
+          <div className="fixed inset-y-0 right-0 flex max-w-full">
             <motion.div
               ref={drawerRef}
               role="dialog"
               aria-modal="true"
               aria-label="Navigation Drawer"
-              initial={{ x: '-100%' }}
+              initial={{ x: '100%' }}
               animate={{ x: 0 }}
-              exit={{ x: '-100%' }}
+              exit={{ x: '100%' }}
               transition={{ duration: 0.32, ease: [0.22, 1, 0.36, 1] }}
-              className="w-[310px] sm:w-[330px] max-w-[85vw] bg-white border-r border-[#EAE4DC] text-[#161616] shadow-2xl flex flex-col h-full overflow-hidden"
+              className="w-[320px] sm:w-[340px] max-w-[85vw] bg-white border-l border-[#EAE4DC] text-[#161616] shadow-2xl flex flex-col h-full overflow-hidden"
             >
               {/* Drawer Header: Brand Logo & Close */}
               <div className="px-5 py-4 border-b border-[#EAE4DC] flex items-center justify-between bg-white shrink-0">
