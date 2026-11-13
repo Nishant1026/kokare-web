@@ -4,15 +4,9 @@ import { Link, useLocation } from 'react-router-dom';
 import {
   X,
   Sparkles,
-  Heart,
-  ShoppingBag,
   ChevronDown,
-  ArrowRight,
-  User,
-  Mail
+  ArrowRight
 } from 'lucide-react';
-import { useWishlist } from '../context/WishlistContext';
-import { useCart } from '../context/CartContext';
 
 // Exactly mirrors the desktop header navigation collections dropdown
 const COLLECTIONS_SUBITEMS = [
@@ -27,8 +21,6 @@ export default function MobileDrawer({ isOpen, onClose }) {
   const location = useLocation();
   const drawerRef = useRef(null);
   const [isCollectionsOpen, setIsCollectionsOpen] = useState(false);
-  const { wishlistCount } = useWishlist();
-  const { totalItems } = useCart();
 
   // Automatically expand Collections submenu if user is on a collections subpage
   useEffect(() => {
@@ -118,7 +110,7 @@ export default function MobileDrawer({ isOpen, onClose }) {
             aria-hidden="true"
           />
 
-          {/* Right-side Sliding Drawer — Increased width with generous luxury layout */}
+          {/* Right-side Sliding Drawer — Increased width with clean luxury layout */}
           <div className="fixed inset-y-0 right-0 flex max-w-full">
             <motion.div
               ref={drawerRef}
@@ -376,81 +368,6 @@ export default function MobileDrawer({ isOpen, onClose }) {
                   </Link>
                 </motion.div>
               </motion.div>
-
-              {/* Fixed Bottom Action Strip: Circular Icon Layouts */}
-              <div className="p-4 border-t border-[#EAE4DC] bg-[#FAF7F2] shrink-0 sticky bottom-0 z-10 space-y-3">
-                {/* Circle Icons Row */}
-                <div className="flex items-center justify-center gap-3.5">
-                  {/* 1. Wishlist Circle */}
-                  <Link
-                    to="/wishlist"
-                    onClick={() => handleNavigate('/wishlist')}
-                    aria-label={`Wishlist (${wishlistCount} items)`}
-                    title="Wishlist"
-                    className="relative w-11 h-11 rounded-full bg-white border border-[#EAE4DC] hover:border-[#C8A27A] flex items-center justify-center shadow-2xs hover:shadow-xs transition-all duration-200 group cursor-pointer"
-                  >
-                    <Heart
-                      className={`w-4.5 h-4.5 transition-transform duration-200 group-hover:scale-110 ${
-                        wishlistCount > 0
-                          ? 'text-[#C8A27A] fill-[#C8A27A]'
-                          : 'text-[#161616] group-hover:text-[#C8A27A]'
-                      }`}
-                    />
-                    {wishlistCount > 0 && (
-                      <span className="absolute -top-1 -right-1 bg-[#C8A27A] text-white text-[10px] font-semibold rounded-full w-4.5 h-4.5 flex items-center justify-center border border-white shadow-xs">
-                        {wishlistCount}
-                      </span>
-                    )}
-                  </Link>
-
-                  {/* 2. Bag Circle */}
-                  <Link
-                    to="/cart"
-                    onClick={() => handleNavigate('/cart')}
-                    aria-label={`Shopping Bag (${totalItems} items)`}
-                    title="Shopping Bag"
-                    className="relative w-11 h-11 rounded-full bg-[#161616] hover:bg-[#721C2B] text-white border border-[#161616] hover:border-[#721C2B] flex items-center justify-center shadow-2xs hover:shadow-xs transition-all duration-200 group cursor-pointer"
-                  >
-                    <ShoppingBag className="w-4.5 h-4.5 text-white transition-transform duration-200 group-hover:scale-110" />
-                    {totalItems > 0 && (
-                      <span className="absolute -top-1 -right-1 bg-[#C8A27A] text-white text-[10px] font-semibold rounded-full w-4.5 h-4.5 flex items-center justify-center border border-white shadow-xs">
-                        {totalItems}
-                      </span>
-                    )}
-                  </Link>
-
-                  {/* 3. Account / Orders Circle */}
-                  <Link
-                    to="/track-order"
-                    onClick={() => handleNavigate('/track-order')}
-                    aria-label="Account & Track Order"
-                    title="Account & Orders"
-                    className="relative w-11 h-11 rounded-full bg-white border border-[#EAE4DC] hover:border-[#C8A27A] text-[#161616] hover:text-[#C8A27A] flex items-center justify-center shadow-2xs hover:shadow-xs transition-all duration-200 group cursor-pointer"
-                  >
-                    <User className="w-4.5 h-4.5 transition-transform duration-200 group-hover:scale-110" />
-                  </Link>
-
-                  {/* 4. Concierge Email Circle */}
-                  <a
-                    href="mailto:concierge@kokare.in"
-                    aria-label="Email Concierge"
-                    title="concierge@kokare.in"
-                    className="relative w-11 h-11 rounded-full bg-white border border-[#EAE4DC] hover:border-[#C8A27A] text-[#161616] hover:text-[#C8A27A] flex items-center justify-center shadow-2xs hover:shadow-xs transition-all duration-200 group cursor-pointer"
-                  >
-                    <Mail className="w-4.5 h-4.5 transition-transform duration-200 group-hover:scale-110" />
-                  </a>
-                </div>
-
-                {/* Concierge Assistance Link */}
-                <div className="text-[12px] text-[#736E66] text-center font-light">
-                  <a
-                    href="mailto:concierge@kokare.in"
-                    className="hover:text-[#C8A27A] transition-colors"
-                  >
-                    concierge@kokare.in
-                  </a>
-                </div>
-              </div>
             </motion.div>
           </div>
         </div>
